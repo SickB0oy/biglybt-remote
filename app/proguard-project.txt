@@ -173,3 +173,7 @@
 -assumenosideeffects class * {
     @com.biglybt.util.AssumeNoSideEffects <init>(...);
 }
+
+# Newer R8 (AGP 8.7) fails on missing classes. This one is a JDK-internal
+# class referenced by the I2P EdDSA code path, which is not available on Android.
+-dontwarn sun.security.x509.**
