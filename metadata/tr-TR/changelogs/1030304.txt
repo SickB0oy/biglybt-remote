@@ -1,0 +1,6 @@
+1.3.3
+★ Android 13’e (Tiramisu) güncellendi 
+★ Artık Android 13’te, Android’in durum çubuğunda torrent hizmeti simgesinin gösterilmesi için "Bildirimleri Gönder" iznine ihtiyaç duyulmaktadır. Tercih ederseniz torrent hizmeti yine de izinsiz çalıştırılabilir.
+★ Torrent etkinken ayar dosyasının her zaman çalışmayan İstenmeyen olarak düzeltildi
+★ Torrent verilerine erişimi doğrular ve yetkilendirme kaybolduğunda sorar
+★ BigyBT çekirdeği v3.4.0.0’a güncellendi (Mayıs 2023 kararlı yayım)

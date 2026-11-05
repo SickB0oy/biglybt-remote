@@ -1,0 +1,4 @@
+1.2.2
+★ Anzeige von Datei-Aktionen (gesucht/unerwünscht/Priorität) auf der Telefon-Benutzeroberfläche
+★ Behebt Absturz, wenn verschiedene Ansichten aktualisiert werden (Details, Peers, etc)
+★ Italienische Übersetzung (Danke, GiorgioHerbie!)

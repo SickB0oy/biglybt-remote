@@ -1,0 +1,5 @@
+1.2.4
+★ Corretta l'apertura del file .torrent con nome file non codificato (file con %, ad esempio)
+★ Corretta e riscritta la selezione della cartella sulle connessioni BiglyBT locali
+★ Aggiunte impostazioni di crittografia/offuscamento per le connessioni BiglyBT locali
+★ Corretti diversi crash segnalati su Google Play

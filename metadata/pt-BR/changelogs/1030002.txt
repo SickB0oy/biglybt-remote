@@ -1,0 +1,2 @@
+1.3.0.2
+★ Corrigido um erro na caixa de diálogo para clientes remotos

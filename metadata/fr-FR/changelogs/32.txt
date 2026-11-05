@@ -1,0 +1,5 @@
+1.1.9
+★ Tri de fichiers, filtrage
+★ Correction du lien "Connexion avancée" ne fonctionnant pas sur Android TV (Leanback)
+★ Améliorations de performance/bande passante pour la liste de fichiers torrent
+★ Réduction des problèmes "Application Not Responding" (ANR)

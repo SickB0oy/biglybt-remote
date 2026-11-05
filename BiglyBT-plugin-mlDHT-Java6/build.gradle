@@ -1,0 +1,41 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    compileSdk rootProject.ext.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion 14
+        multiDexEnabled true
+    }
+
+
+    compileOptions {
+        encoding = "UTF-8"
+
+        coreLibraryDesugaringEnabled true
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    sourceSets {
+        main {
+            resources {
+                includes = ['**/*.properties']
+                srcDirs = [
+                        'src/main/java'
+                ]
+            }
+        }
+    }
+    namespace 'lbms.plugin.mldht.java6'
+    lint {
+        abortOnError false
+    }
+}
+
+dependencies {
+    coreLibraryDesugaring "com.android.tools:desugar_jdk_libs_nio:${desugarVersion}"
+    implementation project(path: ':core')
+}

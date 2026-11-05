@@ -1,0 +1,83 @@
+name: Build BiglyBT Remote APK
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      - name: Set up signing key
+        id: sign
+        env:
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+        run: |
+          if [ -z "$KEYSTORE_BASE64" ] || [ -z "$KEYSTORE_PASSWORD" ]; then
+            echo "::warning::Secrets KEYSTORE_BASE64 / KEYSTORE_PASSWORD manquants : compilation de test uniquement, APK non publié."
+            echo "signed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          mkdir -p signing
+          echo "$KEYSTORE_BASE64" | base64 -d > signing/remote.jks
+          {
+            echo "storePassword=$KEYSTORE_PASSWORD"
+            echo "keyPassword=$KEYSTORE_PASSWORD"
+            echo "keyAlias=libretorrent-remote"
+            echo "storeFile=signing/remote.jks"
+          } > key.properties
+          echo "signed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Build release APK
+        run: |
+          chmod +x gradlew
+          ./gradlew --no-daemon --stacktrace assembleCoreFlavorFossFlavorRelease
+
+      - name: Collect APK
+        id: apk
+        run: |
+          mkdir -p out
+          apk=$(find app/build/outputs/apk -name '*.apk' | grep -i release | head -n1)
+          [ -n "$apk" ] || { echo "::error::APK introuvable"; exit 1; }
+          cp "$apk" out/BiglyBT-Remote.apk
+          ls -la out
+          echo "version=$(grep -oP 'versionName "\K[^"]+' app/build.gradle)" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: BiglyBT-Remote-apk
+          path: out/*.apk
+
+      - name: Publish release
+        if: steps.sign.outputs.signed == 'true'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: build-${{ github.run_number }}
+          name: BiglyBT Remote ${{ steps.apk.outputs.version }} (build ${{ github.run_number }})
+          body: |
+            APK à installer sur la TV : **BiglyBT-Remote.apk**.
+            Lien direct, toujours vers la dernière version :
+            https://github.com/${{ github.repository }}/releases/latest/download/BiglyBT-Remote.apk
+          files: out/BiglyBT-Remote.apk
+          make_latest: true

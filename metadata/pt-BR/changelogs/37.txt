@@ -1,0 +1,4 @@
+1.2.2
+★ Exibir Ações para Arquivo (desejado/indesejado/prioridade) na UI
+★ Corrigido um erro quando atualizava-se várias exibições (detalhes, pares, etc)
+★ Tradução para italiano (Obrigado, GiorgioHerbie!)

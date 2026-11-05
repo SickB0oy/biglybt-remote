@@ -1,0 +1,3 @@
+1.2.0/1
+★ Correction du bug lors de la connexion à distance à BiglyBT (Android 9)
+★ Correction des paramètres non appliqués lors de l'édition du profil distant 

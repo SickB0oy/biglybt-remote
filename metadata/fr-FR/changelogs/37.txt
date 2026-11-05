@@ -1,0 +1,4 @@
+1.2.2
+★ Affichage des actions de fichier (voulou/non-voulu/priorité)
+★ Correction d'un plantage lors du rafraîchissement de différentes vues (détails, pairs, etc)
+★ Traduction italienne (Merci, GiorgioHerbie !)

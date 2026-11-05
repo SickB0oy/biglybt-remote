@@ -1,0 +1,2 @@
+1.3.0.6
+★ Marcando o arquivo como indesejado agora exclui/reduz o arquivo, invés de marcando como “Não Baixar”

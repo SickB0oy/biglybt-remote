@@ -1,0 +1,5 @@
+1.2.4
+★ Behebt das Öffnen von .torrent-Dateien mit schlecht kodiertem Dateinamen (Dateien mit %, zum Beispiel)
+★ Korrigiert und überarbeitet die Ordnerauswahl auf lokalen BiglyBT-Verbindungen
+★ Füge die Transportverschlüsselung/-verschleierung Einstellungen für lokale BiglyBT-Verbindungen hinzu
+★ Behebt mehrere Abstürze, die bei Google Play gemeldet wurden

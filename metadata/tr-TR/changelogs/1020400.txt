@@ -1,0 +1,5 @@
+1.2.4
+★ Hatalı kodlanmış dosya adı ile .torrent dosyasını açma düzeltildi (örneğin, % olan dosyalar)
+★ Yerel BiglyBT bağlantılarında klasör seçimini düzeltildi ve yeniden çalışıldı
+★ Yerel BiglyBT bağlantıları için aktarım şifreleme/gizleme ayarları eklendi
+★ Google Play'de bildirilen birkaç çökme düzeltildi

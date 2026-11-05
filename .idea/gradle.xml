@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="#GRADLE_LOCAL_JAVA_HOME" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/Android-DirectoryChooser/library" />
+            <option value="$PROJECT_DIR$/BiglyBT-plugin-mlDHT" />
+            <option value="$PROJECT_DIR$/BiglyBT-plugin-mlDHT-Java6" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/core" />
+            <option value="$PROJECT_DIR$/ico4a" />
+            <option value="$PROJECT_DIR$/jiechic-tray-version/jiechic-tray" />
+            <option value="$PROJECT_DIR$/mldht" />
+            <option value="$PROJECT_DIR$/modules-with-root-src/aercm" />
+            <option value="$PROJECT_DIR$/modules-with-root-src/azutp" />
+            <option value="$PROJECT_DIR$/modules-with-root-src/xmwebui" />
+            <option value="$PROJECT_DIR$/net.i2p.android-helper" />
+            <option value="$PROJECT_DIR$/recyclerview-fastscroll" />
+          </set>
+        </option>
+        <option name="resolveExternalAnnotations" value="false" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

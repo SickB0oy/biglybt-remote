@@ -1,0 +1,29 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdk rootProject.ext.compileSdkVersion
+    namespace 'divstar.icon4a'
+
+    defaultConfig {
+        minSdkVersion 15
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    sourceSets.test.java.srcDirs = []
+    buildFeatures {
+        buildConfig true
+    }
+}
+
+dependencies {
+    implementation "androidx.appcompat:appcompat:$appcompatVersion"
+    implementation "androidx.annotation:annotation:${annotationVersion}"
+}

@@ -1,0 +1,25 @@
+include ':app'
+
+include ":net.i2p.android-helper"
+include ':recyclerview-fastscroll'
+include ':core'
+include ':mldht'
+include ':BiglyBT-plugin-mlDHT'
+include ':BiglyBT-plugin-mlDHT-Java6'
+
+include ':jiechic-tray'
+project(':jiechic-tray').projectDir = new File('jiechic-tray-version/jiechic-tray')
+
+include ':Android-DirectoryChooser'
+project(':Android-DirectoryChooser').projectDir = new File('Android-DirectoryChooser/library')
+
+include 'BiglyBT-plugin-aercm'
+project(':BiglyBT-plugin-aercm').projectDir = new File(rootDir, 'modules-with-root-src/aercm')
+
+include ':BiglyBT-plugin-xmwebui'
+project(':BiglyBT-plugin-xmwebui').projectDir = new File(rootDir, 'modules-with-root-src/xmwebui')
+
+include 'BiglyBT-plugin-azutp'
+project(':BiglyBT-plugin-azutp').projectDir = new File(rootDir, 'modules-with-root-src/azutp')
+
+include ':ico4a'

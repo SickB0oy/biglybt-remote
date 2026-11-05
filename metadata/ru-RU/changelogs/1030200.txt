@@ -1,0 +1,7 @@
+1.3.2
+★ Временно запоминаются результаты поиска
+★ Tap & Hold on current DL/UL speed to set max speeds
+★ Более чистый режим малого списка
+★ Progress ring's center fills with green based on share ratio
+★ Исправлены сбои в плагине Mainline DHT
+★ Исправление удалённого доступа во время привязки к VPN

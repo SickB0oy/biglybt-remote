@@ -1,0 +1,5 @@
+1.2.6.6
+★ Fix: ANR bei Kernabschaltung
+★ Fix: Absturz bei den Einstellungen für das Skyworth Asia-Gerät
+★ Fix: das Deaktivieren von mlDHT oder DDB nicht deaktiviert bleibt
+★ Wenn der BiglyBT-Dienst keinen Arbeitsspeicher mehr hat, stürzt er ab und wird erst wieder gestartet, wenn die Benutzeroberfläche aktiviert wird. Wir arbeiten daran. Sie können DHT oder DDB in Vollständige Einstellungen -> Plugins deaktivieren, um Arbeitsspeicher zu sparen.

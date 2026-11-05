@@ -1,0 +1,10 @@
+# From http://proguard.sourceforge.net/manual/examples.html#deadcode
+
+-dontoptimize
+-dontobfuscate
+#-printusage
+
+-keepclassmembers class * {
+    static final %                *;
+    static final java.lang.String *;
+}

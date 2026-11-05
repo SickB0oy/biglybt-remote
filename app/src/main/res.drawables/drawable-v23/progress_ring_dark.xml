@@ -1,0 +1,109 @@
+<!-- pre-23, we need to use inset instead of top/l/r/bottom on item -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@android:id/secondaryProgress"
+        android:bottom="@dimen/torrentrow_ring_second_padding"
+        android:left="@dimen/torrentrow_ring_second_padding"
+        android:right="@dimen/torrentrow_ring_second_padding"
+        android:top="@dimen/torrentrow_ring_second_padding"
+        >
+		<layer-list>
+			<item>
+				<clip
+					android:clipOrientation="vertical"
+					android:gravity="bottom"
+					>
+						<shape android:shape="oval">
+							<solid android:color="@color/dark_torrent_ring_second_middle" />
+						</shape>
+				</clip>
+			</item>
+			<item>
+				<clip
+					android:clipOrientation="vertical"
+					android:gravity="bottom"
+					>
+					<shape android:shape="oval">
+						<solid android:color="@color/transparent" />
+						<stroke
+							android:width="@dimen/torrentrow_ring_second_width"
+							android:color="@color/torrent_ring_second"
+							/>
+					</shape>
+				</clip>
+			</item>
+		</layer-list>
+	</item>
+
+	<item android:id="@android:id/progress">
+		<level-list>
+			<item
+				android:maxLevel="9999"
+				android:minLevel="0"
+				>
+				<layer-list>
+					<item android:id="@android:id/background">
+						<shape
+							android:innerRadius="@dimen/torrentrow_ring_innersize"
+							android:shape="ring"
+							android:thickness="@dimen/torrentrow_ring_done_width"
+							android:useLevel="false"
+							>
+							<solid android:color="@drawable/ring_selector_dark" />
+
+							<stroke
+								android:width="@dimen/ring_bg_width"
+								android:color="@color/dark_torrent_ring_dots"
+								android:dashWidth="@dimen/ring_bg_dashWidth"
+								android:dashGap="@dimen/ring_bg_dashGap"
+								/>
+						</shape>
+					</item>
+					<item>
+						<rotate
+							android:fromDegrees="-90"
+							android:pivotX="50%"
+							android:pivotY="50%"
+							android:toDegrees="-90"
+							>
+							<shape
+								android:innerRadius="@dimen/torrentrow_ring_innersize"
+								android:shape="ring"
+								android:thickness="@dimen/torrentrow_ring_done_width"
+								android:useLevel="true"
+								>
+
+								<stroke
+									android:width="1dp"
+									android:color="@color/torrent_ring_border"
+									/>
+
+								<gradient
+									android:centerColor="@color/torrent_ring_middle"
+									android:endColor="@color/torrent_ring_ends"
+									android:startColor="@color/torrent_ring_ends"
+									android:type="sweep"
+									android:useLevel="false"
+									/>
+							</shape>
+						</rotate>
+					</item>
+				</layer-list>
+			</item>
+			<item
+				android:maxLevel="10000"
+				android:minLevel="10000"
+				>
+				<shape
+					android:innerRadius="@dimen/torrentrow_ring_innersize"
+					android:shape="ring"
+					android:thickness="@dimen/torrentrow_ring_done_width"
+					android:useLevel="false"
+					>
+					<solid android:color="@color/dark_torrent_ring_complete" />
+				</shape>
+			</item>
+		</level-list>
+	</item>
+
+</layer-list>

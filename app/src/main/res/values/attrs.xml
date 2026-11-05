@@ -1,0 +1,44 @@
+<resources>
+
+	<attr name="login_grad_color_1" format="color|reference"/>
+	<attr name="login_grad_color_2" format="color|reference"/>
+	<attr name="login_line_color" format="color|reference"/>
+	<attr name="login_link_color" format="color|reference"/>
+	<attr name="login_text_color" format="color|reference"/>
+	<attr name="login_textbubble_color" format="color|reference"/>
+
+	<attr name="list_selector_attr" format="reference"/>
+	<attr name="singlelist_selector_attr" format="reference"/>
+
+	<attr name="bg_tag_type_0" format="color|reference"/>
+	<attr name="bg_tag_type_cat" format="color|reference"/>
+	<attr name="bg_tag_type_2" format="color|reference"/>
+	<attr name="bg_tag_type_manualtag" format="color|reference"/>
+	<attr name="fg_tag_type_0" format="color|reference"/>
+	<attr name="fg_tag_type_cat" format="color|reference"/>
+	<attr name="fg_tag_type_2" format="color|reference"/>
+	<attr name="fg_tag_type_manualtag" format="color|reference"/>
+
+	<attr name="pager_bg" format="color|reference"/>
+	<attr name="pager_fg" format="color|reference"/>
+
+	<attr name="statusbar_bg1" format="color|reference"/>
+	<attr name="statusbar_bg2" format="color|reference"/>
+
+	<attr name="drawable_statusbar" format="reference"/>
+	<attr name="drawable_listselector" format="reference"/>
+	<attr name="drawable_cardselector" format="reference"/>
+	<attr name="met_primary_color" format="reference"/>
+	<attr name="drawable_progress_ring" format="reference"/>
+
+	<attr name="sidelist_header_bg_focused" format="color|reference"/>
+	<attr name="sidelist_header_bg" format="color|reference"/>
+	<attr name="sidelist_content_bg" format="color|reference"/>
+	<attr name="sidelist_shadow" format="color|reference"/>
+	<attr name="sidelist_header_selector" format="reference"/>
+	<attr name="sidelist_content_selector" format="reference"/>
+
+	<attr name="brand_buttonColor" format="color|reference"/>
+
+	<attr name="themeName" format="string"/>
+</resources>
