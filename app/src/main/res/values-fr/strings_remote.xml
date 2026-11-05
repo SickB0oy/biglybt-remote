@@ -6,4 +6,6 @@
 	<string name="all_files_access_later">Plus tard</string>
 	<string name="all_files_access_never">Ne plus demander</string>
 	<string name="all_files_access_no_screen">Cet appareil n\'a pas d\'écran pour accorder cette autorisation. Depuis un ordinateur, lancez :\n\nadb shell appops set %1$s MANAGE_EXTERNAL_STORAGE allow</string>
+	<string name="plus_allow">Autoriser</string>
+	<string name="plus_later">Plus tard</string>
 </resources>

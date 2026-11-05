@@ -63,6 +63,37 @@ public class RemoteUtils
 	//private static final String TAG = "RemoteUtils";
 	public static String lastOpenDebug = null;
 
+	/**
+	 * Asks Android to stop optimizing battery for this app. Uses the direct
+	 * one-tap system prompt, falling back to the settings list.
+	 */
+	@android.annotation.SuppressLint("BatteryLife")
+	static void requestBatteryExemption(@NonNull AppCompatActivityM activity,
+			boolean restricted) {
+		if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.M) {
+			return;
+		}
+		android.net.Uri pkg = android.net.Uri.parse(
+				"package:" + activity.getPackageName());
+		Intent[] intents = restricted
+				// "Background restricted" is only changed from the app info page
+				? new Intent[] {
+						new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, pkg)
+				}
+				: new Intent[] {
+						new Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS, pkg),
+						new Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS)
+				};
+		for (Intent intent : intents) {
+			try {
+				activity.startActivity(intent);
+				return;
+			} catch (Throwable t) {
+				Log.w("BatteryOpt", "Can't open " + intent.getAction(), t);
+			}
+		}
+	}
+
 	public static void openRemote(final AppCompatActivityM activity,
 			final RemoteProfile remoteProfile, final boolean isMain,
 			final RunnableUIThread runOnNoOpen) {
@@ -101,31 +132,35 @@ public class RemoteUtils
 									+ isIgnoringBatteryOptimizations + "; isRestricted: "
 									+ isRestricted);
 				}
-				if (isRestricted || !isIgnoringBatteryOptimizations) {
+				// BiglyBT Plus: this used to block every launch until the user went
+				// through the system settings list. Now it is asked once, with a
+				// one-tap system prompt, and the app opens whatever the answer.
+				android.content.SharedPreferences plusPrefs = activity.getSharedPreferences(
+						"plus_prefs", Context.MODE_PRIVATE);
+				if ((isRestricted || !isIgnoringBatteryOptimizations)
+						&& !plusPrefs.getBoolean("battery_opt_asked", false)) {
+					plusPrefs.edit().putBoolean("battery_opt_asked", true).apply();
+					final boolean restricted = isRestricted;
 					OffThread.runOnUIThread(activity, false, (a) -> {
 						AlertDialog.Builder builder = new MaterialAlertDialogBuilder(
 								activity).setCancelable(true);
 						builder.setTitle(R.string.core_auto_start_on_boot);
 						builder.setMessage(R.string.core_auto_start_on_boot_auth);
-						builder.setPositiveButton(R.string.settings, (dialog, which) -> {
-							Intent intent = new Intent();
-							intent.setAction(
-									Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS);
-							activity.startActivity(intent);
-							if (runOnNoOpen != null) {
-								runOnNoOpen.run();
-							}
+						builder.setPositiveButton(R.string.plus_allow, (dialog, which) -> {
+							requestBatteryExemption(activity, restricted);
+							openRemote(activity, remoteProfile, isMain, runOnNoOpen);
 						});
+						builder.setNeutralButton(R.string.plus_later,
+								(dialog, which) -> openRemote(activity, remoteProfile, isMain,
+										runOnNoOpen));
 						builder.setNegativeButton(R.string.disable_auto_start,
 								(dialog, which) -> OffThread.runOffUIThread(() -> {
 									prefs.put(CorePrefs.PREF_CORE_AUTOSTART, false);
-
-									OffThread.runOnUIThread(
-											() -> reallyOpenRemote(activity, remoteProfile, isMain));
+									OffThread.runOnUIThread(() -> openRemote(activity,
+											remoteProfile, isMain, runOnNoOpen));
 								}));
-						if (runOnNoOpen != null) {
-							builder.setOnCancelListener(dialog -> runOnNoOpen.run());
-						}
+						builder.setOnCancelListener(dialog -> openRemote(activity,
+								remoteProfile, isMain, runOnNoOpen));
 						builder.show();
 					});
 					return;

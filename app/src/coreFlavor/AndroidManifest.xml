@@ -36,6 +36,8 @@
 	     has no daily time limit (dataSync is capped at 6 h/day on Android 15)
 	     and may be started at boot. -->
 	<uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+	<!-- One-tap "stop optimizing battery" prompt, needed for auto-start on boot -->
+	<uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
 	<!-- Android 13 (API level 33) and higher supports a runtime permission for sending non-exempt (including Foreground Services (FGS)) notifications from an app -->
 	<uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
 
