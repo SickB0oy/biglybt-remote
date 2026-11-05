@@ -11,7 +11,8 @@ if (hasKeystoreProperties) {
 android {
     signingConfigs {
         if (hasKeystoreProperties) {
-            plus {
+            // Not named "plus": that clashes with Groovy's plus() operator
+            plusRelease {
                 storeFile rootProject.file(keystoreProperties['storeFile'])
                 storePassword keystoreProperties['storePassword']
                 keyAlias keystoreProperties['keyAlias']
@@ -56,7 +57,7 @@ android {
                 'proguard-project-release.txt'
             minifyEnabled true
             matchingFallbacks = ['release']
-            signingConfig hasKeystoreProperties ? signingConfigs.plus : signingConfigs.debug
+            signingConfig hasKeystoreProperties ? signingConfigs.plusRelease : signingConfigs.debug
         }
     }
     packagingOptions {
