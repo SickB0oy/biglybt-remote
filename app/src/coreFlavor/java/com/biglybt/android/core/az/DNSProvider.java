@@ -22,6 +22,8 @@ import java.net.*;
 import java.util.*;
 
 import org.xbill.DNS.*;
+// Explicit import: Android SDK 34+ also has java.lang.Record, which made "Record" ambiguous
+import org.xbill.DNS.Record;
 
 import com.biglybt.core.util.AENetworkClassifier;
 import com.biglybt.core.util.DNSUtils;
