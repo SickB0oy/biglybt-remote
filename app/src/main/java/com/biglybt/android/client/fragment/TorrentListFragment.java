@@ -172,6 +172,43 @@ public class TorrentListFragment
 			// ready yet.
 			torrentListAdapter.setNeverSetItems(!session.isReadyForUI());
 		}
+
+		updatePlusRemoteBanner();
+	}
+
+	/**
+	 * BiglyBT Plus: shows the address, user and password to open on a phone or
+	 * computer, at the top of the list. Tapping it shows a QR code.
+	 */
+	private void updatePlusRemoteBanner() {
+		View root = getView();
+		final TextView banner = root == null ? null
+				: root.findViewById(R.id.plus_remote_banner);
+		if (banner == null || session == null
+				|| !session.getRemoteProfile().isLocalHost()) {
+			return;
+		}
+		OffThread.runOffUIThread(() -> {
+			final PlusRemoteInfo info = PlusRemoteInfo.get();
+			OffThread.runOnUIThread(this, false, activity -> {
+				if (info == null) {
+					banner.setVisibility(View.GONE);
+					return;
+				}
+				String text = info.password == null
+						? getString(R.string.plus_remote_banner_nopw, info.webUrl)
+						: getString(R.string.plus_remote_banner, info.webUrl, info.user,
+								info.password);
+				banner.setText(text);
+				banner.setVisibility(View.VISIBLE);
+				banner.setOnClickListener(v -> {
+					FragmentActivity fa = getActivity();
+					if (fa != null) {
+						info.showQr(fa);
+					}
+				});
+			});
+		});
 	}
 
 	@Override
@@ -425,22 +462,19 @@ public class TorrentListFragment
 							menuItem.setVisible(totalUnfiltered > 1);
 						}
 
-						MenuItem itemSearch = menu.findItem(R.id.action_search);
-						if (itemSearch != null) {
-							itemSearch.setVisible(session.isReadyForUI()
-									&& session.getSupports(RPCSupports.SUPPORTS_SEARCH));
-						}
-
-						MenuItem itemSwarm = menu.findItem(R.id.action_swarm_discoveries);
-						if (itemSwarm != null) {
-							itemSwarm.setVisible(session.isReadyForUI()
-									&& session.getSupports(RPCSupports.SUPPORTS_RCM));
-						}
-
-						MenuItem itemSubs = menu.findItem(R.id.action_subscriptions);
-						if (itemSubs != null) {
-							itemSubs.setVisible(session.isReadyForUI()
-									&& session.getSupports(RPCSupports.SUPPORTS_SUBSCRIPTIONS));
+						// BiglyBT Plus: web search, Swarm Discoveries and Subscriptions
+						// are removed from the interface to keep only the essentials
+						for (int id : new int[] {
+							R.id.action_search,
+							R.id.action_swarm_discoveries,
+							R.id.action_subscriptions,
+							R.id.action_giveback,
+							R.id.action_logout
+						}) {
+							MenuItem item = menu.findItem(id);
+							if (item != null) {
+								item.setVisible(false);
+							}
 						}
 					}
 
@@ -459,14 +493,9 @@ public class TorrentListFragment
 						return new int[] {
 							R.id.action_refresh,
 							R.id.action_add_torrent,
-							R.id.action_search,
-							R.id.action_swarm_discoveries,
-							R.id.action_subscriptions,
 							R.id.action_start_all,
 							R.id.action_stop_all,
 							R.id.action_settings,
-							R.id.action_giveback,
-							R.id.action_logout,
 							R.id.action_shutdown
 						};
 					}

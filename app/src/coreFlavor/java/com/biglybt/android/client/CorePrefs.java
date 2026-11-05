@@ -230,7 +230,7 @@ public class CorePrefs
 				pw = AndroidUtils.generateEasyPW(8);
 				prefs.put(PREF_CORE_RACCESS_PW, pw);
 			}
-			setRemAccessPrefs(prefs.getBoolean(PREF_CORE_ALLOWLANACCESS, false),
+			setRemAccessPrefs(prefs.getBoolean(PREF_CORE_ALLOWLANACCESS, true),
 					prefs.getBoolean(PREF_CORE_RACCESS_REQPW, true),
 					getPrefString(prefs, PREF_CORE_RACCESS_USER, "biglybt"),
 					pw);

@@ -157,6 +157,16 @@ public class IntentHandler
 			}
 		}
 
+		if (!forceProfileListOpen
+				&& "coreFlavor".equals(com.biglybt.android.client.BuildConfig.FLAVOR_coreD)) {
+			// BiglyBT Plus: always open the BiglyBT running on this device, creating
+			// it on first launch. No account, login or remote profile screens.
+			RemoteUtils.createCoreProfile(this,
+					(coreProfile, alreadyCreated) -> RemoteUtils.openRemote(this,
+							coreProfile, true, () -> showProfileSelector()));
+			return;
+		}
+
 		if (!forceProfileListOpen) {
 			boolean clearTop = (intent.getFlags()
 					& Intent.FLAG_ACTIVITY_CLEAR_TOP) > 0;

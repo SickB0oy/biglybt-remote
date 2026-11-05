@@ -57,15 +57,11 @@ public class DialogFragmentAbout
 		AndroidUtilsUI.linkify(activity,
 				alertDialogBuilder.view.findViewById(R.id.about_thanksto), null,
 				R.string.about_thanks);
+		// BiglyBT Plus: what this build is and where its source code lives
+		// (replaces the subscription / Play Store rating text)
 		AndroidUtilsUI.linkify(activity,
-				alertDialogBuilder.view.findViewById(R.id.about_ideas), link -> {
-					if ("subscribe".equals(link)) {
-						DialogFragmentGiveback.openDialog(activity,
-								AndroidUtilsUI.getSafeParentFragmentManager(this), true, TAG);
-						return true;
-					}
-					return false;
-				}, R.string.about_ideas);
+				alertDialogBuilder.view.findViewById(R.id.about_ideas), null,
+				R.string.plus_about);
 
 		TextView tvLicense = alertDialogBuilder.view.findViewById(
 				R.id.about_license);
@@ -77,8 +73,7 @@ public class DialogFragmentAbout
 				boolean isCoreBuild = flavorLC.contains(FLAVOR_coreD.toLowerCase());
 				boolean isGoogleBuild = flavorLC.contains(FLAVOR_gaD.toLowerCase());
 				String license = getResources().getString(R.string.about_version,
-						info.versionName, info.versionCode
-								+ (isGoogleBuild ? "" : isCoreBuild ? " FOSS+Core" : " FOSS"));
+						info.versionName, String.valueOf(info.versionCode));
 
 				tvLicense.setText(license);
 			}

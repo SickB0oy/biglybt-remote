@@ -543,15 +543,18 @@ public class TorrentViewActivity
 			menuRefresh.setEnabled(enable);
 		}
 
-		MenuItem menuSwarmDiscoveries = menu.findItem(
-				R.id.action_swarm_discoveries);
-		if (menuSwarmDiscoveries != null) {
-			menuSwarmDiscoveries.setEnabled(uiReady);
-		}
-
-		MenuItem menuSubscriptions = menu.findItem(R.id.action_subscriptions);
-		if (menuSubscriptions != null) {
-			menuSubscriptions.setEnabled(uiReady);
+		// BiglyBT Plus: removed features stay hidden
+		for (int id : new int[] {
+			R.id.action_search,
+			R.id.action_swarm_discoveries,
+			R.id.action_subscriptions,
+			R.id.action_giveback,
+			R.id.action_logout
+		}) {
+			MenuItem hidden = menu.findItem(id);
+			if (hidden != null) {
+				hidden.setVisible(false);
+			}
 		}
 
 		MenuItem menuAdd = menu.findItem(R.id.action_add_torrent);

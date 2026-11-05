@@ -110,7 +110,7 @@
 	<string name="error_remote_not_found">Unable to connect to your remote client.  It does not appear to be running.</string>
 	<string name="error_connecting">Error Connecting</string>
 	<string name="button_continue">Continue</string>
-	<string name="action_about">About BiglyBT</string>
+	<string name="action_about">About BiglyBT Plus</string>
 	<string name="about_thanks" translatable="false">
 &#xB7; &lt;a href="https://github.com/alibaba/fastjson">Fast JSON Processor&lt;/a>, Apache License v2, &#169; 1999-2013 Alibaba Group Holding Ltd.
 \n\n

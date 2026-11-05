@@ -97,7 +97,7 @@
 	<string name="error_remote_not_found">Impossible de se connecter à votre serveur distant.  Il ne semble pas être actif.</string>
 	<string name="error_connecting">Erreur de connexion</string>
 	<string name="button_continue">Continuer</string>
-	<string name="action_about">À propos de BiglyBT</string>
+	<string name="action_about">À propos de BiglyBT Plus</string>
 	<string name="about_thanks_header">Parties de ces applications grâce à :</string>
 	<string name="about_translator">Traduction %1$s fournie par Maxime Vanderwegen</string>
 	<string name="login_guide">Aller à | Outils | &gt; | Appariement à distance | dans le client de bureau BiglyBT ou Vuze pour obtenir votre code d\'accès distant.</string>

@@ -23,9 +23,27 @@
 							tools:showIn="@layout/activity_torrent_view"
 							tools:context="com.biglybt.android.client.fragment.TorrentListFragment">
 
+	<!-- BiglyBT Plus: remote access address and password, tap for a QR code -->
+	<TextView
+		android:id="@+id/plus_remote_banner"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="@drawable/plus_remote_banner_bg"
+		android:clickable="true"
+		android:focusable="true"
+		android:paddingStart="16dp"
+		android:paddingTop="10dp"
+		android:paddingEnd="16dp"
+		android:paddingBottom="10dp"
+		android:textColor="#FFFFFFFF"
+		android:textSize="14sp"
+		android:visibility="gone"
+		tools:text="Connexion à distance : http://192.168.1.20:9093"
+		tools:visibility="visible"/>
 	<FrameLayout
 		android:layout_width="match_parent"
-		android:layout_height="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="1"
 		android:animateLayoutChanges="true">
 
 		<include layout="@layout/incl_horizontal_progress"/>
