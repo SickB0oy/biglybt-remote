@@ -202,6 +202,41 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
   padding: 36px 44px; font-weight: 800; font-size: 20px;
 }
 
+/* ---------- Settings ---------- */
+.settings { width: min(620px, calc(100% - 24px)); }
+.settings .sheet { max-height: calc(100vh - 48px); overflow-y: auto; }
+.group { margin-top: 18px; }
+.group h3 { margin: 0 0 6px; font-size: 15px; color: var(--muted); font-weight: 700; }
+.set {
+  display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 6px 14px;
+  padding: 12px 0; border-top: 1px solid var(--line);
+}
+.group .set:first-of-type { border-top: 0; }
+.set label { font-weight: 600; }
+.set small { grid-column: 1 / -1; color: var(--muted); font-size: 13px; margin-top: -4px; }
+.set .inline { display: flex; align-items: center; gap: 8px; }
+.set .switch, .set .inline { justify-self: end; }
+.set input[type=number], .set input[type=text] {
+  border: 1px solid var(--line); background: var(--bg); border-radius: 10px; padding: 7px 10px; width: 96px;
+}
+.set input[type=text] { width: 100%; grid-column: 1 / -1; }
+.set input:disabled { opacity: .45; }
+.unit { color: var(--muted); font-size: 14px; }
+.switch { position: relative; width: 46px; height: 28px; flex: none; }
+.switch input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
+.switch span {
+  position: absolute; inset: 0; border-radius: 999px; background: var(--track); transition: background .2s;
+  pointer-events: none;
+}
+.switch span::after {
+  content: ""; position: absolute; top: 3px; left: 3px; width: 22px; height: 22px; border-radius: 50%;
+  background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.25); transition: transform .2s;
+}
+.switch input:checked + span { background: var(--indigo); }
+.switch input:checked + span::after { transform: translateX(18px); }
+.switch input:focus-visible + span { outline: 3px solid var(--violet); outline-offset: 2px; }
+.loading { color: var(--muted); padding: 24px 0; }
+
 #toast {
   position: fixed; left: 50%; transform: translateX(-50%); z-index: 30;
   bottom: calc(92px + env(safe-area-inset-bottom));
@@ -235,6 +270,9 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
       <div class="brand-sub" id="sub">Connexion…</div>
     </div>
     <span class="spacer"></span>
+    <button class="icon-btn" id="openSettings" title="Paramètres" aria-label="Paramètres">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+    </button>
     <button class="icon-btn" id="pauseAll" title="Tout mettre en pause" aria-label="Tout mettre en pause">
       <svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1.5"/><rect x="14" y="5" width="4" height="14" rx="1.5"/></svg>
     </button>
@@ -279,7 +317,6 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
 </main>
 
 <footer class="foot">
-  <a href="classic.html">Ouvrir l'interface classique</a>
   <span id="version"></span>
 </footer>
 
@@ -316,6 +353,18 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
       <button type="button" class="btn primary" id="delOk" style="background:var(--error);border-color:var(--error)">Supprimer</button>
     </div>
   </div>
+</dialog>
+
+<dialog id="setDlg" class="settings" aria-labelledby="setTitle">
+  <form class="sheet" id="setForm" method="dialog">
+    <h2 id="setTitle">Paramètres</h2>
+    <p>Ces réglages s'appliquent à BiglyBT sur l'appareil qui télécharge.</p>
+    <div id="setBody" class="loading">Chargement des paramètres…</div>
+    <div class="sheet-actions">
+      <button type="button" class="btn" id="setCancel">Annuler</button>
+      <button type="submit" class="btn primary" id="setSave">Enregistrer</button>
+    </div>
+  </form>
 </dialog>
 
 <div class="dropzone" id="dropzone"><div>Dépose les fichiers .torrent pour les ajouter</div></div>
@@ -707,6 +756,114 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
     if (!files.length) { toast("Seuls les fichiers .torrent sont acceptés"); return; }
     if (addDlg.open) { setFiles(files); return; }
     addAll([], files, false);
+  });
+
+  /* ---------- Settings ---------- */
+  var setDlg = document.getElementById("setDlg");
+  var setBody = document.getElementById("setBody");
+  var current = null;
+
+  function sw(id, on) {
+    return '<span class="switch"><input type="checkbox" id="' + id + '"' + (on ? " checked" : "") + '><span></span></span>';
+  }
+  function num(id, val, unit, step) {
+    return '<span class="inline"><input type="number" min="0" step="' + (step || 1) + '" inputmode="decimal" id="' + id +
+      '" value="' + esc(val) + '">' + (unit ? '<span class="unit">' + unit + '</span>' : '') + '</span>';
+  }
+  function limitRow(label, key, help, unit, step) {
+    return '<div class="set"><label for="' + key + '-on">' + label + '</label>' + sw(key + "-on", current[key + "-enabled"]) +
+      '<span></span>' + num(key, current[key], unit, step) + (help ? '<small>' + help + '</small>' : '') + '</div>';
+  }
+
+  function renderSettings() {
+    var c = current;
+    setBody.className = "";
+    setBody.innerHTML =
+      '<section class="group"><h3>Vitesse</h3>' +
+        '<div class="set"><label for="speed-limit-down-on">Limiter la réception</label>' + sw("speed-limit-down-on", c["speed-limit-down-enabled"]) +
+          '<span></span>' + num("speed-limit-down", c["speed-limit-down"], "Ko/s") + '</div>' +
+        '<div class="set"><label for="speed-limit-up-on">Limiter l\'envoi</label>' + sw("speed-limit-up-on", c["speed-limit-up-enabled"]) +
+          '<span></span>' + num("speed-limit-up", c["speed-limit-up"], "Ko/s") +
+          '<small>Limiter l\'envoi évite de ralentir ta connexion pendant que tu joues en ligne.</small></div>' +
+      '</section>' +
+      '<section class="group"><h3>Torrents</h3>' +
+        '<div class="set"><label for="download-dir">Dossier de téléchargement</label><span></span>' +
+          '<input type="text" id="download-dir" value="' + esc(c["download-dir"]) + '" spellcheck="false"></div>' +
+        '<div class="set"><label for="start-added-torrents">Démarrer les torrents dès l\'ajout</label>' + sw("start-added-torrents", c["start-added-torrents"]) + '</div>' +
+        '<div class="set"><label for="seedRatio-on">Arrêter le partage à un ratio</label>' + sw("seedRatio-on", c.seedRatioLimited) +
+          '<span></span>' + num("seedRatioLimit", c.seedRatioLimit, "", 0.1) +
+          '<small>Ratio 1 : le torrent s\'arrête après avoir envoyé autant qu\'il a reçu.</small></div>' +
+      '</section>' +
+      '<section class="group"><h3>File d\'attente</h3>' +
+        '<div class="set"><label for="download-queue-on">Téléchargements simultanés maximum</label>' + sw("download-queue-on", c["download-queue-enabled"]) +
+          '<span></span>' + num("download-queue-size", c["download-queue-size"]) + '</div>' +
+        '<div class="set"><label for="seed-queue-on">Partages simultanés maximum</label>' + sw("seed-queue-on", c["seed-queue-enabled"]) +
+          '<span></span>' + num("seed-queue-size", c["seed-queue-size"]) + '</div>' +
+      '</section>' +
+      '<section class="group"><h3>Réseau</h3>' +
+        '<div class="set"><label for="peer-port">Port d\'écoute</label>' + num("peer-port", c["peer-port"]) +
+          '<small>Le port que les autres utilisateurs utilisent pour se connecter à toi.</small></div>' +
+        '<div class="set"><label for="encryption-required">Exiger le chiffrement</label>' + sw("encryption-required", c.encryption === "required") +
+          '<small>Refuse les pairs qui ne chiffrent pas : plus discret, mais moins de sources.</small></div>' +
+      '</section>';
+    syncDisabled();
+  }
+
+  var PAIRS = [["speed-limit-down-on", "speed-limit-down"], ["speed-limit-up-on", "speed-limit-up"],
+    ["seedRatio-on", "seedRatioLimit"], ["download-queue-on", "download-queue-size"], ["seed-queue-on", "seed-queue-size"]];
+  function syncDisabled() {
+    PAIRS.forEach(function (p) {
+      var a = document.getElementById(p[0]), b = document.getElementById(p[1]);
+      if (a && b) b.disabled = !a.checked;
+    });
+  }
+  setBody.addEventListener("change", syncDisabled);
+
+  document.getElementById("openSettings").onclick = function () {
+    setBody.className = "loading";
+    setBody.textContent = "Chargement des paramètres…";
+    showDialog(setDlg);
+    rpc("session-get").then(function (s) { current = s; renderSettings(); })
+      .catch(function (e) { setBody.textContent = "Impossible de lire les paramètres : " + e.message; });
+  };
+  document.getElementById("setCancel").onclick = function () { closeDialog(setDlg); };
+
+  document.getElementById("setForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (!current) { closeDialog(setDlg); return; }
+    function v(id) { return document.getElementById(id); }
+    function n(id) { var x = parseFloat(String(v(id).value).replace(",", ".")); return isNaN(x) ? 0 : x; }
+    var port = Math.round(n("peer-port"));
+    if (port < 1 || port > 65535) { toast("Le port doit être entre 1 et 65535"); return; }
+    var dir = v("download-dir").value.trim();
+    var args = {
+      "speed-limit-down-enabled": v("speed-limit-down-on").checked,
+      "speed-limit-down": Math.round(n("speed-limit-down")),
+      "speed-limit-up-enabled": v("speed-limit-up-on").checked,
+      "speed-limit-up": Math.round(n("speed-limit-up")),
+      "start-added-torrents": v("start-added-torrents").checked,
+      "seedRatioLimited": v("seedRatio-on").checked,
+      "seedRatioLimit": n("seedRatioLimit"),
+      "download-queue-enabled": v("download-queue-on").checked,
+      "download-queue-size": Math.round(n("download-queue-size")),
+      "seed-queue-enabled": v("seed-queue-on").checked,
+      "seed-queue-size": Math.round(n("seed-queue-size")),
+      "peer-port": port,
+      "encryption": v("encryption-required").checked ? "required" : "preferred"
+    };
+    if (dir) args["download-dir"] = dir;
+    // Only send what changed
+    var changed = {};
+    Object.keys(args).forEach(function (k) { if (current[k] !== args[k]) changed[k] = args[k]; });
+    if (!Object.keys(changed).length) { closeDialog(setDlg); toast("Aucun changement"); return; }
+    var btn = document.getElementById("setSave");
+    btn.disabled = true;
+    rpc("session-set", changed).then(function () {
+      closeDialog(setDlg);
+      toast("Paramètres enregistrés");
+      refreshSession();
+    }).catch(function (err) { toast("Échec de l'enregistrement : " + err.message); })
+      .then(function () { btn.disabled = false; });
   });
 
   /* Start */

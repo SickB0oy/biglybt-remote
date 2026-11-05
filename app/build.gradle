@@ -28,7 +28,7 @@ android {
         applicationId "com.biglybt.android.client.plus"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionName "1.3.4.4-plus2"
+        versionName "1.3.4.4-plus3"
         // a.b.c -> aabbccdd, where dd = build #
         versionCode 1030404
         multiDexEnabled true
@@ -278,13 +278,9 @@ tasks.register('copyPluginFiles') {
             }
         }
 
-        // BiglyBT Plus: the modern remote web page replaces the Transmission one,
-        // which stays available as classic.html
+        // BiglyBT Plus: the modern remote web page replaces the Transmission one
         def webDir = file("$destDir14/xmwebui/transmission/web")
-        def classicIndex = new File(webDir, 'index.html')
-        if (classicIndex.exists()) {
-            classicIndex.renameTo(new File(webDir, 'classic.html'))
-        }
+        delete fileTree(webDir)
         copy {
             from('../remote-web')
             into(webDir)
