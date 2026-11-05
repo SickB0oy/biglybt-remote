@@ -69,6 +69,11 @@
 		<item name="colorPrimaryDark">@color/light_primaryColorDark</item>
 		<item name="colorControlHighlight">@color/light_primaryColorDark</item>
 		<item name="colorAccent">@color/light_colorAccent</item>
+		<item name="colorSecondary">@color/light_colorAccent</item>
+		<!-- BiglyBT Plus: rounder, more modern components -->
+		<item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Plus.Small</item>
+		<item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.Plus.Medium</item>
+		<item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.Plus.Large</item>
 
 		<item name="brand_buttonColor">@color/light_button_primaryColor</item>
 
@@ -124,6 +129,13 @@
 		<item name="colorOnPrimary">@color/dark_colorOnPrimary</item>
 		<item name="colorPrimaryDark">@color/dark_primaryColorDark</item>
 		<item name="colorControlHighlight">#aaaaff</item>
+		<!-- Was unset, so Material's default teal was used for accents -->
+		<item name="colorAccent">@color/dark_button_primaryColor</item>
+		<item name="colorSecondary">@color/dark_button_primaryColor</item>
+		<!-- BiglyBT Plus: rounder, more modern components -->
+		<item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Plus.Small</item>
+		<item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.Plus.Medium</item>
+		<item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.Plus.Large</item>
 
 		<item name="titleTextStyle">
 			@style/TextAppearance.AppCompat.Widget.ActionBar.Title

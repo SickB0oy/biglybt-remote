@@ -1,0 +1,721 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#4F5BEF">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="BiglyBT">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>BiglyBT Plus</title>
+<style>
+:root {
+  --indigo: #4F5BEF;
+  --violet: #8A4DFF;
+  --grad: linear-gradient(90deg, #3D7BFF, #8A4DFF);
+  --bg: #F3F4FB;
+  --surface: #FFFFFF;
+  --ink: #181A33;
+  --muted: #646887;
+  --line: #E3E5F2;
+  --soft: #ECEEFF;
+  --done: #1E9E70;
+  --paused: #A36A00;
+  --error: #D63B40;
+  --track: #E6E8F6;
+  --stroke: 8px;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #12142A;
+    --surface: #1A1D38;
+    --ink: #ECEDF8;
+    --muted: #9A9EC0;
+    --line: #2A2E52;
+    --soft: #23274A;
+    --done: #3CCB95;
+    --paused: #E3AC4C;
+    --error: #FF6B70;
+    --track: #2A2E52;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.45 ui-rounded, "SF Pro Rounded", "Nunito", "Varela Round", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-variant-numeric: tabular-nums;
+  padding-bottom: calc(96px + env(safe-area-inset-bottom));
+}
+button, input, textarea, select { font: inherit; color: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 3px solid var(--violet); outline-offset: 2px; border-radius: 10px; }
+
+/* ---------- Header: the live speed is the hero ---------- */
+.top {
+  padding: calc(18px + env(safe-area-inset-top)) 20px 18px;
+  max-width: 880px; margin: 0 auto;
+}
+.brand { display: flex; align-items: center; gap: 12px; }
+.tile { width: 36px; height: 36px; flex: none; border-radius: 10px; }
+.brand-name { font-weight: 700; font-size: 17px; }
+.brand-sub { color: var(--muted); font-size: 13px; }
+.brand-sub.bad { color: var(--error); }
+.brand .spacer { flex: 1; }
+.icon-btn {
+  border: 0; background: var(--soft); width: 40px; height: 40px; border-radius: 12px;
+  display: inline-grid; place-items: center; color: var(--ink);
+}
+.icon-btn svg { width: 20px; height: 20px; }
+
+.speed { display: flex; align-items: flex-end; gap: 28px; margin-top: 22px; flex-wrap: wrap; }
+.speed-main { display: flex; align-items: baseline; gap: 10px; }
+.speed-value { font-size: clamp(44px, 12vw, 64px); font-weight: 800; letter-spacing: -0.03em; line-height: 1; }
+.speed-unit { font-size: 20px; font-weight: 700; color: var(--muted); }
+.speed-dir { width: 30px; height: 30px; align-self: center; }
+.speed-side { color: var(--muted); font-size: 14px; display: grid; gap: 2px; padding-bottom: 6px; }
+.speed-side b { color: var(--ink); font-weight: 700; }
+
+/* ---------- Toolbar ---------- */
+.bar {
+  position: sticky; top: 0; z-index: 5;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.bar-in { max-width: 880px; margin: 0 auto; padding: 10px 16px; display: grid; gap: 10px; }
+.bar-in > * { min-width: 0; }
+.filters { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; }
+.filters::-webkit-scrollbar { display: none; }
+.chip {
+  border: 1px solid var(--line); background: var(--surface); border-radius: 999px;
+  padding: 7px 14px; white-space: nowrap; font-size: 14px; font-weight: 600; color: var(--muted);
+}
+.chip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+.chip .n { opacity: .65; margin-left: 4px; font-weight: 500; }
+.search-row { display: flex; gap: 8px; }
+.search {
+  flex: 1; min-width: 0; width: 100%; border: 1px solid var(--line); background: var(--surface);
+  border-radius: 12px; padding: 9px 12px;
+}
+.sort { flex: none; border: 1px solid var(--line); background: var(--surface); border-radius: 12px; padding: 9px 10px; }
+
+/* ---------- Torrent list: rows, not cards ---------- */
+main { max-width: 880px; margin: 0 auto; padding: 8px 16px 0; }
+.list { list-style: none; margin: 0; padding: 0; }
+.row {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 18px;
+  margin: 10px 0; overflow: hidden;
+}
+.row-head {
+  display: block; width: 100%; text-align: left; border: 0; background: none;
+  padding: 16px 16px 14px;
+}
+.name { font-weight: 700; font-size: 16px; overflow-wrap: anywhere; line-height: 1.3; }
+.state { display: flex; align-items: center; gap: 8px; margin-top: 6px; font-size: 14px; color: var(--muted); flex-wrap: wrap; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--indigo); flex: none; }
+.s-done .dot { background: var(--done); }
+.s-paused .dot { background: var(--muted); }
+.s-error .dot { background: var(--error); }
+.s-check .dot { background: var(--paused); }
+.state strong { color: var(--ink); font-weight: 700; }
+.s-error .state strong { color: var(--error); }
+
+/* The progress line echoes the round stroke of the logo */
+.progress { display: flex; align-items: center; gap: 12px; margin-top: 12px; }
+.track { flex: 1; height: var(--stroke); border-radius: 999px; background: var(--track); overflow: hidden; }
+.fill { height: 100%; border-radius: 999px; background: var(--grad); width: 0; transition: width .6s ease; }
+.s-done .fill { background: var(--done); }
+.s-paused .fill { background: var(--muted); }
+.s-error .fill { background: var(--error); }
+.pct { font-weight: 800; font-size: 15px; min-width: 3.4em; text-align: right; }
+
+.details { display: none; border-top: 1px solid var(--line); padding: 14px 16px 16px; }
+.row.open .details { display: block; }
+.facts { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px 16px; margin: 0; }
+.facts div { min-width: 0; }
+.facts dt { color: var(--muted); font-size: 13px; }
+.facts dd { margin: 0; font-weight: 700; overflow-wrap: anywhere; }
+.facts .wide { grid-column: 1 / -1; }
+.actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+.btn {
+  border: 1px solid var(--line); background: var(--surface); border-radius: 12px;
+  padding: 9px 14px; font-weight: 700; font-size: 14px; display: inline-flex; align-items: center; gap: 6px;
+}
+.btn.primary { background: var(--indigo); border-color: var(--indigo); color: #fff; }
+.btn.danger { color: var(--error); }
+.btn svg { width: 16px; height: 16px; }
+.btn:disabled { opacity: .5; }
+
+.empty { text-align: center; padding: 56px 20px; color: var(--muted); }
+.empty b { display: block; color: var(--ink); font-size: 18px; margin-bottom: 6px; }
+
+.foot { max-width: 880px; margin: 24px auto 0; padding: 0 20px; color: var(--muted); font-size: 13px; display: flex; gap: 16px; flex-wrap: wrap; }
+.foot a { color: var(--muted); }
+
+/* ---------- Add button & sheet ---------- */
+.fab {
+  position: fixed; right: 18px; bottom: calc(18px + env(safe-area-inset-bottom)); z-index: 6;
+  border: 0; border-radius: 18px; padding: 15px 20px 15px 16px;
+  background: var(--grad); color: #fff; font-weight: 800; font-size: 16px;
+  display: inline-flex; align-items: center; gap: 8px;
+  box-shadow: 0 10px 28px rgba(79, 91, 239, .38);
+}
+.fab svg { width: 22px; height: 22px; }
+
+dialog {
+  border: 0; padding: 0; background: var(--surface); color: var(--ink);
+  width: min(560px, calc(100% - 24px)); border-radius: 24px;
+}
+dialog::backdrop { background: rgba(10, 12, 30, .55); }
+.sheet { padding: 22px; }
+.sheet h2 { margin: 0 0 4px; font-size: 20px; }
+.sheet p { margin: 0 0 16px; color: var(--muted); font-size: 14px; }
+.sheet textarea {
+  width: 100%; min-height: 110px; resize: vertical; border: 1px solid var(--line); border-radius: 14px;
+  padding: 12px; background: var(--bg); font-size: 14px;
+}
+.drop {
+  margin-top: 12px; border: 2px dashed var(--line); border-radius: 14px; padding: 16px;
+  text-align: center; color: var(--muted); font-size: 14px;
+}
+.drop label { color: var(--indigo); font-weight: 700; cursor: pointer; }
+.drop input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.picked { margin-top: 8px; font-size: 13px; color: var(--ink); overflow-wrap: anywhere; }
+.opt { display: flex; align-items: center; gap: 10px; margin-top: 14px; font-size: 14px; }
+.opt input { width: 18px; height: 18px; accent-color: var(--indigo); }
+.sheet-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 20px; }
+
+.dropzone {
+  position: fixed; inset: 0; z-index: 20; display: none; place-items: center;
+  background: rgba(61, 82, 255, .18); backdrop-filter: blur(3px);
+}
+.dropzone.on { display: grid; }
+.dropzone div {
+  background: var(--surface); border: 3px dashed var(--indigo); border-radius: 24px;
+  padding: 36px 44px; font-weight: 800; font-size: 20px;
+}
+
+#toast {
+  position: fixed; left: 50%; transform: translateX(-50%); z-index: 30;
+  bottom: calc(92px + env(safe-area-inset-bottom));
+  background: var(--ink); color: var(--bg); border-radius: 14px; padding: 11px 16px;
+  font-size: 14px; max-width: calc(100% - 32px); display: none;
+}
+.offline {
+  display: none; background: var(--error); color: #fff; text-align: center; font-size: 14px; padding: 8px 12px;
+}
+
+@media (min-width: 760px) {
+  .bar-in { grid-template-columns: 1fr 340px; align-items: center; }
+  .fab { right: max(24px, calc(50% - 440px)); }
+}
+@media (prefers-reduced-motion: reduce) { .fill { transition: none; } }
+</style>
+</head>
+<body>
+<div class="offline" id="offline" role="status">Connexion perdue avec BiglyBT. Vérifie que l'appli est ouverte et que tu es sur le même Wi-Fi.</div>
+
+<header class="top">
+  <div class="brand">
+    <svg class="tile" viewBox="0 0 108 108" aria-hidden="true">
+      <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3D7BFF"/><stop offset="1" stop-color="#8A4DFF"/></linearGradient></defs>
+      <rect width="108" height="108" rx="26" fill="url(#lg)"/>
+      <path d="M36.5,33 V75 M36.5,33 H53.5 a10.5,10.5 0 0 1 0,21 H36.5 M36.5,54 H56 a10.5,10.5 0 0 1 0,21 H36.5" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="71.5" cy="33.5" r="5" fill="#fff" opacity=".9"/>
+    </svg>
+    <div>
+      <div class="brand-name">BiglyBT Plus</div>
+      <div class="brand-sub" id="sub">Connexion…</div>
+    </div>
+    <span class="spacer"></span>
+    <button class="icon-btn" id="pauseAll" title="Tout mettre en pause" aria-label="Tout mettre en pause">
+      <svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1.5"/><rect x="14" y="5" width="4" height="14" rx="1.5"/></svg>
+    </button>
+    <button class="icon-btn" id="resumeAll" title="Tout reprendre" aria-label="Tout reprendre">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg>
+    </button>
+  </div>
+
+  <div class="speed" aria-live="polite">
+    <div class="speed-main">
+      <svg class="speed-dir" viewBox="0 0 24 24" fill="none" stroke="url(#lg2)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <defs><linearGradient id="lg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3D7BFF"/><stop offset="1" stop-color="#8A4DFF"/></linearGradient></defs>
+        <path d="M12 4v15M5.5 12.5 12 19l6.5-6.5"/>
+      </svg>
+      <span class="speed-value" id="downVal">0</span>
+      <span class="speed-unit" id="downUnit">Ko/s</span>
+    </div>
+    <div class="speed-side">
+      <span>Envoi <b id="up">0 Ko/s</b></span>
+      <span>Espace libre <b id="free">—</b></span>
+    </div>
+  </div>
+</header>
+
+<div class="bar">
+  <div class="bar-in">
+    <div class="filters" role="group" aria-label="Filtrer les torrents" id="filters"></div>
+    <div class="search-row">
+      <input class="search" id="search" type="search" placeholder="Rechercher" aria-label="Rechercher un torrent">
+      <select class="sort" id="sort" aria-label="Trier">
+        <option value="added">Récents</option>
+        <option value="name">Nom</option>
+        <option value="progress">Avancement</option>
+        <option value="speed">Vitesse</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<main>
+  <ul class="list" id="list"></ul>
+</main>
+
+<footer class="foot">
+  <a href="classic.html">Ouvrir l'interface classique</a>
+  <span id="version"></span>
+</footer>
+
+<button class="fab" id="openAdd">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+  Ajouter
+</button>
+
+<dialog id="addDlg" aria-labelledby="addTitle">
+  <form class="sheet" id="addForm" method="dialog">
+    <h2 id="addTitle">Ajouter des torrents</h2>
+    <p>Colle des liens magnet ou des adresses de fichiers .torrent, un par ligne, ou choisis des fichiers.</p>
+    <textarea id="links" placeholder="magnet:?xt=urn:btih:…" aria-label="Liens magnet ou adresses .torrent"></textarea>
+    <div class="drop" id="dropArea">
+      <label for="files">Choisir des fichiers .torrent</label> ou glisse-les ici
+      <input id="files" type="file" accept=".torrent,application/x-bittorrent" multiple>
+      <div class="picked" id="picked"></div>
+    </div>
+    <label class="opt"><input type="checkbox" id="startPaused"> Ajouter en pause</label>
+    <div class="sheet-actions">
+      <button type="button" class="btn" id="cancelAdd">Annuler</button>
+      <button type="submit" class="btn primary" id="submitAdd">Ajouter</button>
+    </div>
+  </form>
+</dialog>
+
+<dialog id="delDlg" aria-labelledby="delTitle">
+  <div class="sheet">
+    <h2 id="delTitle">Supprimer ce torrent ?</h2>
+    <p id="delName"></p>
+    <label class="opt"><input type="checkbox" id="delFiles"> Supprimer aussi les fichiers téléchargés</label>
+    <div class="sheet-actions">
+      <button type="button" class="btn" id="delCancel">Annuler</button>
+      <button type="button" class="btn primary" id="delOk" style="background:var(--error);border-color:var(--error)">Supprimer</button>
+    </div>
+  </div>
+</dialog>
+
+<div class="dropzone" id="dropzone"><div>Dépose les fichiers .torrent pour les ajouter</div></div>
+<div id="toast" role="status"></div>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ---------- Transmission RPC ---------- */
+  var RPC = "/transmission/rpc";
+  var sessionId = null;
+
+  function rpc(method, args) {
+    var attempt = function (retry) {
+      var headers = { "Content-Type": "application/json" };
+      if (sessionId) headers["X-Transmission-Session-Id"] = sessionId;
+      return fetch(RPC, {
+        method: "POST", headers: headers, credentials: "same-origin",
+        body: JSON.stringify({ method: method, arguments: args || {} })
+      }).then(function (r) {
+        // 409 = new session id required: store it and send the request again
+        if (r.status === 409 && retry) {
+          sessionId = r.headers.get("X-Transmission-Session-Id");
+          return attempt(false);
+        }
+        if (r.status === 401) throw new Error("Identifiants refusés. Recharge la page pour te reconnecter.");
+        if (!r.ok) throw new Error("Erreur " + r.status);
+        return r.json().then(function (j) {
+          if (j.result !== "success") throw new Error(j.result || "Erreur inconnue");
+          return j.arguments || {};
+        });
+      });
+    };
+    return attempt(true);
+  }
+
+  /* ---------- Formatting ---------- */
+  function sizeParts(b) {
+    if (b == null || b < 0) return ["—", ""];
+    var u = ["o", "Ko", "Mo", "Go", "To"], i = 0;
+    while (b >= 1000 && i < u.length - 1) { b /= 1024; i++; }
+    var n = i === 0 ? String(Math.round(b)) : b.toFixed(b < 10 ? 1 : 0).replace(".", ",");
+    return [n, u[i]];
+  }
+  function size(b) { var p = sizeParts(b); return p[1] ? p[0] + " " + p[1] : p[0]; }
+  function speed(b) { var p = sizeParts(b || 0); return p[0] + " " + (p[1] || "o") + "/s"; }
+  function eta(s) {
+    if (s == null || s < 0) return null;
+    if (s < 60) return "moins d'une minute";
+    var m = Math.floor(s / 60), h = Math.floor(m / 60), d = Math.floor(h / 24);
+    if (d > 0) return d + " j " + (h % 24) + " h";
+    if (h > 0) return h + " h " + (m % 60) + " min";
+    return m + " min";
+  }
+  function date(t) {
+    if (!t) return "—";
+    return new Date(t * 1000).toLocaleString("fr-FR", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" });
+  }
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  /* ---------- State model ---------- */
+  // Transmission status: 0 stopped, 1 queued to check, 2 checking,
+  // 3 queued to download, 4 downloading, 5 queued to seed, 6 seeding
+  function describe(t) {
+    var pct = Math.floor((t.percentDone || 0) * 1000) / 10;
+    if (t.error > 0) return { cls: "s-error", label: "Erreur", detail: t.errorString || "", group: "error", pct: pct };
+    if (t.status === 1 || t.status === 2) {
+      return { cls: "s-check", label: "Vérification", detail: t.recheckProgress ? Math.round(t.recheckProgress * 100) + " %" : "", group: "active", pct: pct };
+    }
+    if (t.status === 0) {
+      if (t.percentDone >= 1) return { cls: "s-done", label: "Terminé", detail: "", group: "done", pct: pct };
+      return { cls: "s-paused", label: "En pause", detail: "", group: "paused", pct: pct };
+    }
+    if (t.status === 3) return { cls: "", label: "En file d'attente", detail: "", group: "active", pct: pct };
+    if (t.status === 4) {
+      if (t.metadataPercentComplete != null && t.metadataPercentComplete < 1) {
+        return { cls: "", label: "Recherche des informations", detail: t.peersConnected + " pairs", group: "active", pct: pct };
+      }
+      var e = eta(t.eta);
+      return { cls: "", label: speed(t.rateDownload), detail: e ? "encore " + e : "", group: "active", pct: pct };
+    }
+    if (t.status === 5 || t.status === 6) return { cls: "s-done", label: "Terminé, en partage", detail: t.rateUpload > 0 ? speed(t.rateUpload) + " envoyés" : "", group: "done", pct: pct };
+    return { cls: "", label: "—", detail: "", group: "active", pct: pct };
+  }
+
+  var FILTERS = [
+    ["all", "Tous"], ["active", "En cours"], ["done", "Terminés"], ["paused", "En pause"], ["error", "Erreurs"]
+  ];
+  var FIELDS = ["id", "name", "status", "percentDone", "rateDownload", "rateUpload", "eta", "totalSize",
+    "sizeWhenDone", "leftUntilDone", "peersConnected", "peersSendingToUs", "uploadRatio", "error",
+    "errorString", "addedDate", "doneDate", "metadataPercentComplete", "downloadDir", "uploadedEver",
+    "downloadedEver", "recheckProgress", "hashString"];
+
+  var torrents = [];
+  var filter = "all";
+  var open = {};
+  var downloadDir = null;
+
+  var listEl = document.getElementById("list");
+  var filtersEl = document.getElementById("filters");
+  var searchEl = document.getElementById("search");
+  var sortEl = document.getElementById("sort");
+
+  try { filter = localStorage.getItem("bbp.filter") || "all"; sortEl.value = localStorage.getItem("bbp.sort") || "added"; } catch (e) {}
+
+  function renderFilters() {
+    var counts = { all: torrents.length, active: 0, done: 0, paused: 0, error: 0 };
+    torrents.forEach(function (t) { counts[describe(t).group]++; });
+    filtersEl.innerHTML = FILTERS.filter(function (f) { return f[0] !== "error" || counts.error > 0; }).map(function (f) {
+      return '<button class="chip" data-f="' + f[0] + '" aria-pressed="' + (filter === f[0]) + '">' + f[1] +
+        '<span class="n">' + counts[f[0]] + '</span></button>';
+    }).join("");
+  }
+
+  function sorted(list) {
+    var key = sortEl.value;
+    return list.slice().sort(function (a, b) {
+      if (key === "name") return a.name.localeCompare(b.name, "fr");
+      if (key === "progress") return a.percentDone - b.percentDone;
+      if (key === "speed") return (b.rateDownload + b.rateUpload) - (a.rateDownload + a.rateUpload);
+      return b.addedDate - a.addedDate;
+    });
+  }
+
+  function renderList() {
+    var q = searchEl.value.trim().toLowerCase();
+    var shown = sorted(torrents.filter(function (t) {
+      if (filter !== "all" && describe(t).group !== filter) return false;
+      return !q || t.name.toLowerCase().indexOf(q) >= 0;
+    }));
+
+    if (!torrents.length) {
+      listEl.innerHTML = '<li class="empty"><b>Aucun torrent</b>Appuie sur « Ajouter » pour coller un lien magnet ou envoyer un fichier .torrent.</li>';
+      return;
+    }
+    if (!shown.length) {
+      listEl.innerHTML = '<li class="empty"><b>Rien dans cette catégorie</b>Change de filtre ou efface la recherche.</li>';
+      return;
+    }
+
+    listEl.innerHTML = shown.map(function (t) {
+      var d = describe(t);
+      var paused = t.status === 0;
+      var isOpen = !!open[t.id];
+      var pctTxt = String(d.pct).replace(".", ",") + " %";
+      return '<li class="row ' + d.cls + (isOpen ? " open" : "") + '" data-id="' + t.id + '">' +
+        '<button class="row-head" aria-expanded="' + isOpen + '">' +
+          '<div class="name">' + esc(t.name) + '</div>' +
+          '<div class="state"><span class="dot"></span><strong>' + esc(d.label) + '</strong>' +
+            (d.detail ? '<span>' + esc(d.detail) + '</span>' : '') + '</div>' +
+          '<div class="progress"><div class="track"><div class="fill" style="width:' + Math.min(100, d.pct) + '%"></div></div>' +
+            '<span class="pct">' + pctTxt + '</span></div>' +
+        '</button>' +
+        '<div class="details">' +
+          '<dl class="facts">' +
+            '<div><dt>Taille</dt><dd>' + size(t.sizeWhenDone || t.totalSize) + '</dd></div>' +
+            '<div><dt>Reste</dt><dd>' + size(t.leftUntilDone) + '</dd></div>' +
+            '<div><dt>Pairs</dt><dd>' + t.peersSendingToUs + ' sur ' + t.peersConnected + '</dd></div>' +
+            '<div><dt>Envoyé</dt><dd>' + size(t.uploadedEver) + '</dd></div>' +
+            '<div><dt>Ratio</dt><dd>' + (t.uploadRatio >= 0 ? t.uploadRatio.toFixed(2).replace(".", ",") : "—") + '</dd></div>' +
+            '<div><dt>Ajouté</dt><dd>' + date(t.addedDate) + '</dd></div>' +
+            '<div class="wide"><dt>Dossier</dt><dd>' + esc(t.downloadDir || "—") + '</dd></div>' +
+            (t.error > 0 ? '<div class="wide"><dt>Erreur</dt><dd>' + esc(t.errorString) + '</dd></div>' : '') +
+          '</dl>' +
+          '<div class="actions">' +
+            (paused
+              ? '<button class="btn primary" data-act="start">Reprendre</button>'
+              : '<button class="btn" data-act="stop">Mettre en pause</button>') +
+            '<button class="btn" data-act="verify">Vérifier les fichiers</button>' +
+            '<button class="btn" data-act="announce">Chercher des pairs</button>' +
+            '<button class="btn danger" data-act="remove">Supprimer</button>' +
+          '</div>' +
+        '</div>' +
+      '</li>';
+    }).join("");
+  }
+
+  /* ---------- Header ---------- */
+  function renderSpeeds(stats) {
+    var p = sizeParts(stats.downloadSpeed || 0);
+    document.getElementById("downVal").textContent = p[0];
+    document.getElementById("downUnit").textContent = (p[1] || "o") + "/s";
+    document.getElementById("up").textContent = speed(stats.uploadSpeed || 0);
+  }
+
+  var subEl = document.getElementById("sub");
+  var offlineEl = document.getElementById("offline");
+  function setOnline(ok, msg) {
+    offlineEl.style.display = ok ? "none" : "block";
+    if (msg) offlineEl.textContent = msg;
+    subEl.classList.toggle("bad", !ok);
+  }
+
+  /* ---------- Polling ---------- */
+  var busy = false;
+  function refresh() {
+    if (busy) return Promise.resolve();
+    busy = true;
+    return Promise.all([
+      rpc("torrent-get", { fields: FIELDS }),
+      rpc("session-stats")
+    ]).then(function (res) {
+      torrents = res[0].torrents || [];
+      renderSpeeds(res[1]);
+      var active = torrents.filter(function (t) { return t.status === 4; }).length;
+      subEl.textContent = torrents.length + " torrent" + (torrents.length > 1 ? "s" : "") +
+        (active ? ", " + active + " en téléchargement" : "");
+      setOnline(true);
+      renderFilters();
+      renderList();
+    }).catch(function (e) {
+      subEl.textContent = "Hors ligne";
+      setOnline(false, /Identifiants/.test(e.message) ? e.message : null);
+    }).then(function () { busy = false; });
+  }
+
+  function refreshSession() {
+    rpc("session-get").then(function (s) {
+      downloadDir = s["download-dir"];
+      if (s.version) document.getElementById("version").textContent = "BiglyBT " + s.version;
+      if (s["download-dir-free-space"] != null) {
+        document.getElementById("free").textContent = size(s["download-dir-free-space"]);
+      } else if (downloadDir) {
+        return rpc("free-space", { path: downloadDir }).then(function (f) {
+          document.getElementById("free").textContent = size(f["size-bytes"]);
+        });
+      }
+    }).catch(function () {});
+  }
+
+  /* ---------- Toast ---------- */
+  var toastEl = document.getElementById("toast"), toastTimer;
+  function toast(msg) {
+    toastEl.textContent = msg;
+    toastEl.style.display = "block";
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toastEl.style.display = "none"; }, 3600);
+  }
+
+  /* ---------- Events ---------- */
+  filtersEl.addEventListener("click", function (e) {
+    var b = e.target.closest(".chip");
+    if (!b) return;
+    filter = b.getAttribute("data-f");
+    try { localStorage.setItem("bbp.filter", filter); } catch (err) {}
+    renderFilters(); renderList();
+  });
+  searchEl.addEventListener("input", renderList);
+  sortEl.addEventListener("change", function () {
+    try { localStorage.setItem("bbp.sort", sortEl.value); } catch (err) {}
+    renderList();
+  });
+
+  var pendingDelete = null;
+  listEl.addEventListener("click", function (e) {
+    var row = e.target.closest(".row");
+    if (!row) return;
+    var id = Number(row.getAttribute("data-id"));
+    var actBtn = e.target.closest("[data-act]");
+    if (!actBtn) {
+      if (e.target.closest(".row-head")) { open[id] = !open[id]; renderList(); }
+      return;
+    }
+    var act = actBtn.getAttribute("data-act");
+    if (act === "remove") {
+      var t = torrents.filter(function (x) { return x.id === id; })[0];
+      pendingDelete = id;
+      document.getElementById("delName").textContent = t ? t.name : "";
+      document.getElementById("delFiles").checked = false;
+      showDialog(delDlg);
+      return;
+    }
+    var method = { start: "torrent-start", stop: "torrent-stop", verify: "torrent-verify", announce: "torrent-reannounce" }[act];
+    var done = { start: "Reprise", stop: "Mis en pause", verify: "Vérification lancée", announce: "Recherche de pairs relancée" }[act];
+    actBtn.disabled = true;
+    rpc(method, { ids: [id] }).then(function () { toast(done); return refresh(); })
+      .catch(function (err) { toast(err.message); actBtn.disabled = false; });
+  });
+
+  document.getElementById("pauseAll").onclick = function () {
+    rpc("torrent-stop", {}).then(function () { toast("Tous les torrents sont en pause"); refresh(); })
+      .catch(function (err) { toast(err.message); });
+  };
+  document.getElementById("resumeAll").onclick = function () {
+    rpc("torrent-start", {}).then(function () { toast("Tous les torrents ont repris"); refresh(); })
+      .catch(function (err) { toast(err.message); });
+  };
+
+  /* Dialogs */
+  var addDlg = document.getElementById("addDlg");
+  var delDlg = document.getElementById("delDlg");
+  function showDialog(d) { if (d.showModal) d.showModal(); else d.setAttribute("open", ""); }
+  function closeDialog(d) { if (d.close) d.close(); else d.removeAttribute("open"); }
+
+  document.getElementById("delCancel").onclick = function () { closeDialog(delDlg); };
+  document.getElementById("delOk").onclick = function () {
+    var withFiles = document.getElementById("delFiles").checked;
+    var id = pendingDelete;
+    closeDialog(delDlg);
+    rpc("torrent-remove", { ids: [id], "delete-local-data": withFiles }).then(function () {
+      delete open[id];
+      toast(withFiles ? "Supprimé avec ses fichiers" : "Supprimé de la liste, fichiers conservés");
+      refresh();
+    }).catch(function (err) { toast(err.message); });
+  };
+
+  /* Add */
+  var linksEl = document.getElementById("links");
+  var filesEl = document.getElementById("files");
+  var pickedEl = document.getElementById("picked");
+  var queuedFiles = [];
+
+  function setFiles(list) {
+    queuedFiles = Array.prototype.filter.call(list, function (f) { return /\.torrent$/i.test(f.name) || f.type === "application/x-bittorrent"; });
+    pickedEl.textContent = queuedFiles.length ? queuedFiles.map(function (f) { return f.name; }).join(", ") : "";
+  }
+  filesEl.addEventListener("change", function () { setFiles(filesEl.files); });
+
+  document.getElementById("openAdd").onclick = function () {
+    showDialog(addDlg);
+    setTimeout(function () { linksEl.focus(); }, 50);
+  };
+  document.getElementById("cancelAdd").onclick = function () { closeDialog(addDlg); };
+
+  function readBase64(file) {
+    return new Promise(function (resolve, reject) {
+      var r = new FileReader();
+      r.onload = function () { resolve(String(r.result).split(",")[1] || ""); };
+      r.onerror = function () { reject(new Error("Lecture impossible : " + file.name)); };
+      r.readAsDataURL(file);
+    });
+  }
+
+  function addAll(links, files, paused) {
+    var jobs = [];
+    links.forEach(function (l) {
+      jobs.push(rpc("torrent-add", { filename: l, paused: paused }).then(function (a) {
+        var t = a["torrent-added"] || a["torrent-duplicate"];
+        return { ok: true, dup: !!a["torrent-duplicate"], name: t && t.name ? t.name : l.slice(0, 40) };
+      }).catch(function (e) { return { ok: false, name: l.slice(0, 40), err: e.message }; }));
+    });
+    files.forEach(function (f) {
+      jobs.push(readBase64(f).then(function (b64) {
+        return rpc("torrent-add", { metainfo: b64, paused: paused });
+      }).then(function (a) {
+        return { ok: true, dup: !!a["torrent-duplicate"], name: f.name };
+      }).catch(function (e) { return { ok: false, name: f.name, err: e.message }; }));
+    });
+    return Promise.all(jobs).then(function (res) {
+      var ok = res.filter(function (r) { return r.ok && !r.dup; }).length;
+      var dup = res.filter(function (r) { return r.dup; }).length;
+      var bad = res.filter(function (r) { return !r.ok; });
+      var msg = [];
+      if (ok) msg.push(ok === 1 ? "1 torrent ajouté" : ok + " torrents ajoutés");
+      if (dup) msg.push(dup === 1 ? "1 déjà présent" : dup + " déjà présents");
+      if (bad.length) msg.push("échec : " + bad.map(function (b) { return b.name + " (" + b.err + ")"; }).join(", "));
+      toast(msg.join(", ") || "Rien à ajouter");
+      refresh();
+      return bad.length === 0;
+    });
+  }
+
+  document.getElementById("addForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var links = linksEl.value.split(/\s+/).map(function (s) { return s.trim(); }).filter(Boolean);
+    if (!links.length && !queuedFiles.length) { toast("Colle un lien ou choisis un fichier .torrent"); return; }
+    var btn = document.getElementById("submitAdd");
+    btn.disabled = true;
+    addAll(links, queuedFiles, document.getElementById("startPaused").checked).then(function (allOk) {
+      if (allOk) { linksEl.value = ""; filesEl.value = ""; setFiles([]); closeDialog(addDlg); }
+    }).then(function () { btn.disabled = false; });
+  });
+
+  /* Drag and drop anywhere on the page (computer) */
+  var dz = document.getElementById("dropzone"), dragDepth = 0;
+  function hasFiles(e) { return e.dataTransfer && Array.prototype.indexOf.call(e.dataTransfer.types || [], "Files") >= 0; }
+  window.addEventListener("dragenter", function (e) { if (!hasFiles(e)) return; dragDepth++; dz.classList.add("on"); });
+  window.addEventListener("dragleave", function () { dragDepth = Math.max(0, dragDepth - 1); if (!dragDepth) dz.classList.remove("on"); });
+  window.addEventListener("dragover", function (e) { if (hasFiles(e)) e.preventDefault(); });
+  window.addEventListener("drop", function (e) {
+    if (!hasFiles(e)) return;
+    e.preventDefault(); dragDepth = 0; dz.classList.remove("on");
+    var files = Array.prototype.filter.call(e.dataTransfer.files, function (f) { return /\.torrent$/i.test(f.name); });
+    if (!files.length) { toast("Seuls les fichiers .torrent sont acceptés"); return; }
+    if (addDlg.open) { setFiles(files); return; }
+    addAll([], files, false);
+  });
+
+  /* Start */
+  refresh();
+  refreshSession();
+  setInterval(function () { if (!document.hidden) refresh(); }, 2000);
+  setInterval(function () { if (!document.hidden) refreshSession(); }, 30000);
+  document.addEventListener("visibilitychange", function () { if (!document.hidden) refresh(); });
+})();
+</script>
+</body>
+</html>

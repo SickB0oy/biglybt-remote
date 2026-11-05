@@ -1,17 +1,17 @@
 <resources>
-	<color name="light_primaryColor">#3278bc</color>
+	<color name="light_primaryColor">#4F5BEF</color>
 	<color name="light_colorOnPrimary">#ffffff</color>
-	<color name="light_primaryColorDark">#2b68a3</color>
-	<color name="light_colorAccent">#0088ff</color>
+	<color name="light_primaryColorDark">#3B45C8</color>
+	<color name="light_colorAccent">#8A4DFF</color>
 
-	<color name="light_button_primaryColor">#3278bc</color>
+	<color name="light_button_primaryColor">#4F5BEF</color>
 
 	<color name="black">#000000</color>
 
-	<color name="login_grad_color_1">#404040</color>
-	<color name="login_grad_color_2">#256acb</color>
-	<color name="login_line_color">#458adb</color>
-	<color name="login_link_color">#b6d2f1</color>
+	<color name="login_grad_color_1">#3D7BFF</color>
+	<color name="login_grad_color_2">#8A4DFF</color>
+	<color name="login_line_color">#B4BAFF</color>
+	<color name="login_link_color">#E2E5FF</color>
 	<color name="login_text_color">#ffffff</color>
 	<color name="login_textbubble_color">#000000</color>
 
@@ -19,23 +19,23 @@
 	<color name="list_bg_fep">#ff00ff80</color>
 
 	<!-- Focused and Pressed -->
-	<color name="list_bg_f__p">#9FCFFF</color>
+	<color name="list_bg_f__p">#C9CDFF</color>
 	<!-- Pressed Row BG COlor -->
-	<color name="list_bg____p">#DFEFFF</color>
+	<color name="list_bg____p">#ECEEFF</color>
 	<!-- Focused (RecyclerView) -->
-	<color name="list_bg_f___">#CFE7FF</color>
+	<color name="list_bg_f___">#DCDFFF</color>
 	<!-- Since all selected become checked, there shouldn't be a "only selected" state anymore.  So, use focus color -->
 	<!-- Selected: ex. Fire TV (before we used RecyclerView) -->
-	<color name="list_bg__s__">#E7E7E7</color>
+	<color name="list_bg__s__">#ECECF2</color>
 	<!-- Checked Row BG Color -->
-	<color name="list_bg___c_">#E3E3FF</color>
+	<color name="list_bg___c_">#E8E6FF</color>
 	<color name="single_list_bg___c_">@color/list_bg_f__p</color>
 	<!-- Selected & Checked: ex. Fire TV -->
-	<color name="list_bg__sc_">#BFDFFF</color>
+	<color name="list_bg__sc_">#D3D6FF</color>
 	<!-- Focused, Selected, Checked -->
-	<color name="list_bg_fsc_">#9FCFFF</color>
+	<color name="list_bg_fsc_">#C9CDFF</color>
 	<!-- Focused and Checked (RecyclerView).  Should be the same as Focused, Selected, Checked -->
-	<color name="list_bg_f_c_">#9FCFFF</color>
+	<color name="list_bg_f_c_">#C9CDFF</color>
 
 	<color name="bg_tag_type_0">#40000000</color>
 	<color name="bg_tag_type_cat">#4000ff00</color>
@@ -48,10 +48,10 @@
 
 	<color name="torrent_ring_remaining">@color/transparent</color>
 	<color name="dark_torrent_ring_remaining">@color/transparent</color>
-	<color name="torrent_ring_dots">#A0003050</color>
-	<color name="torrent_ring_ends">#2a8bcb</color>
-	<color name="torrent_ring_middle">#71a7cb</color>
-	<color name="torrent_ring_border">#267eb8</color>
+	<color name="torrent_ring_dots">#A0202850</color>
+	<color name="torrent_ring_ends">#4F5BEF</color>
+	<color name="torrent_ring_middle">#8A93F7</color>
+	<color name="torrent_ring_border">#3B45C8</color>
 	<color name="torrent_ring_complete">#8040A0A0</color>
 	<color name="torrent_ring_second_middle">#F0FBF3</color>
 	<color name="torrent_ring_second">@color/transparent</color>
@@ -71,13 +71,13 @@
 	<!--<color name="list_sidebar_content_fg_disabled">#888</color>-->
 	<color name="light_sidelist_header_bg_focused">@color/light_primaryColor</color>
 	<color name="light_sidelist_header_bg">@color/light_primaryColorDark</color>
-	<color name="light_sidelist_content_bg">#1d456c</color>
-	<color name="light_sidelist_shadow">#163451</color>
+	<color name="light_sidelist_content_bg">#1E2250</color>
+	<color name="light_sidelist_shadow">#151838</color>
 	<color name="list_sidebar_content_fg">#ffffff</color>
 	<color name="list_sidebar_content_fg_disabled">#40ffffff</color>
 
-	<color name="light_met_primary_color">#2196f3</color>
-	<color name="dark_met_primary_color">#468fcc</color>
+	<color name="light_met_primary_color">#4F5BEF</color>
+	<color name="dark_met_primary_color">#7C85F7</color>
 
 	<color name="transparent">#00000000</color>
 	<color name="white">#ffffff</color>
