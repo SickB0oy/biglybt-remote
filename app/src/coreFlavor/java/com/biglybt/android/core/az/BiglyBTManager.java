@@ -501,7 +501,8 @@ public class BiglyBTManager
 						paramToCustom(CoreParamKeys.SPARAM_XMWEBUI_BIND_IP, "0.0.0.0"));
 				writeLine(fw,
 						paramToCustom(CoreParamKeys.SPARAM_XMWEBUI_PW_DISABLED_WHITELIST,
-								DEFAULT_WEBUI_PW_LAN_ONLY));
+								raPrefs.reqPW ? DEFAULT_WEBUI_PW_DISABLED_WHITELIST
+										: DEFAULT_WEBUI_PW_LAN_ONLY));
 			} else {
 				writeLine(fw,
 						paramToCustom(CoreParamKeys.SPARAM_XMWEBUI_BIND_IP, "127.0.0.1"));
@@ -975,9 +976,12 @@ public class BiglyBTManager
 
 		COConfigurationManager.setParameter(CoreParamKeys.SPARAM_XMWEBUI_BIND_IP,
 				raPrefs.allowLANAccess ? "0.0.0.0" : "127.0.0.1");
+		// When the user asks for a password, every LAN device must give it.
+		// Previously the whole private address range was exempted, so enabling
+		// LAN access silently let any device on the network in without one.
 		COConfigurationManager.setParameter(
 				CoreParamKeys.SPARAM_XMWEBUI_PW_DISABLED_WHITELIST,
-				raPrefs.allowLANAccess ? DEFAULT_WEBUI_PW_LAN_ONLY
+				raPrefs.allowLANAccess && !raPrefs.reqPW ? DEFAULT_WEBUI_PW_LAN_ONLY
 						: DEFAULT_WEBUI_PW_DISABLED_WHITELIST);
 		COConfigurationManager.setParameter(CoreParamKeys.BPARAM_XMWEBUI_PW_ENABLE,
 				raPrefs.reqPW);

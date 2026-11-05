@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="all_files_access_title">Allow access to all files</string>
+	<string name="all_files_access_message">To download torrents that contain folders to a USB drive or an SD card, BiglyBT needs the \"All files access\" permission. Without it, these torrents fail with \"Folder Permissions Needed\".</string>
+	<string name="all_files_access_open">Open settings</string>
+	<string name="all_files_access_later">Later</string>
+	<string name="all_files_access_never">Don\'t ask again</string>
+	<string name="all_files_access_no_screen">This device has no screen to grant this permission. From a computer, run:\n\nadb shell appops set %1$s MANAGE_EXTERNAL_STORAGE allow</string>
+</resources>

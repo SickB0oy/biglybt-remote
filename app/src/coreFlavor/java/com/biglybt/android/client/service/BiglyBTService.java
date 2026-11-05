@@ -1204,11 +1204,26 @@ public class BiglyBTService
 		 */
 		Notification notification = getNotificationBuilder().build();
 		try {
-			startForeground(NOTIFICATION_ID, notification);
+			if (Build.VERSION.SDK_INT >= 34) {
+				// Android 14+ requires the type declared in the manifest
+				startForeground(NOTIFICATION_ID, notification,
+						android.content.pm.ServiceInfo.FOREGROUND_SERVICE_TYPE_SPECIAL_USE);
+			} else {
+				startForeground(NOTIFICATION_ID, notification);
+			}
 		} catch (Throwable t) {
 			// java.lang.RuntimeException: Unable to start service com.biglybt.android.client.service.BiglyBTService@xx with Intent { act=com.biglybt.android.client.XX cmp=com.biglybt.android.client/.service.BiglyBTService } 
 			// Caused by: android.app.ForegroundServiceStartNotAllowedException: Service.startForeground() not allowed due to mAllowStartForeground false: service com.biglybt.android.client/.service.BiglyBTService
 			AnalyticsTracker.getInstance().logError(t);
+			if (Build.VERSION.SDK_INT >= 31
+					&& t instanceof android.app.ForegroundServiceStartNotAllowedException) {
+				// Previously the error was only logged. When the service had been
+				// started with startForegroundService(), Android then killed the
+				// whole app a few seconds later for not calling startForeground().
+				// Stop cleanly instead; the UI will start the service again.
+				stopSelf(startId);
+				return START_NOT_STICKY;
+			}
 		}
 
 		if (CorePrefs.DEBUG_CORE) {
@@ -1614,8 +1629,13 @@ public class BiglyBTService
 			WifiManager wifiManager = (WifiManager) BiglyBTApp.getContext().getApplicationContext().getSystemService(
 					Context.WIFI_SERVICE);
 			if (wifiManager != null) {
-				wifiLock = wifiManager.createWifiLock(WifiManager.WIFI_MODE_FULL,
-						WIFI_LOCK_TAG);
+				// WIFI_MODE_FULL is a no-op since Android 10 (API 29), so the
+				// "disable sleep" option had no effect on Wi-Fi there
+				@SuppressWarnings("deprecation")
+				int mode = Build.VERSION.SDK_INT >= 29
+						? WifiManager.WIFI_MODE_FULL_HIGH_PERF
+						: WifiManager.WIFI_MODE_FULL;
+				wifiLock = wifiManager.createWifiLock(mode, WIFI_LOCK_TAG);
 				wifiLock.acquire();
 				if (CorePrefs.DEBUG_CORE) {
 					logd("Wifi lock acquired");

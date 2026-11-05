@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
 
 	<style name="AppBaseTheme" parent="@style/Theme.MaterialComponents.Light.NoActionBar">
+		<!-- Keep the classic layout on Android 15+ (target SDK 35 forces edge-to-edge) -->
+		<item name="android:windowOptOutEdgeToEdgeEnforcement" tools:targetApi="35">true</item>
 		<item name="android:windowActionBar">false</item>
 		<item name="android:windowNoTitle">true</item>
 		<item name="android:windowActionModeOverlay">true</item>
@@ -18,6 +20,8 @@
 	</style>
 
 	<style name="AppBaseThemeDark" parent="@style/Theme.MaterialComponents.NoActionBar">
+		<!-- Keep the classic layout on Android 15+ (target SDK 35 forces edge-to-edge) -->
+		<item name="android:windowOptOutEdgeToEdgeEnforcement" tools:targetApi="35">true</item>
 		<item name="android:windowActionBar">false</item>
 		<item name="android:windowNoTitle">true</item>
 		<item name="android:windowActionModeOverlay">true</item>
@@ -89,6 +93,8 @@
 	</style>
 
 	<style name="ThemeSplash" parent="ThemeBlack">
+		<!-- Keep the classic layout on Android 15+ (target SDK 35 forces edge-to-edge) -->
+		<item name="android:windowOptOutEdgeToEdgeEnforcement" tools:targetApi="35">true</item>
 		<!-- Tried to get the logo on the splash screen, however
 		it seems to propogate to every widget.
 		

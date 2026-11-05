@@ -1404,7 +1404,8 @@ public class AndroidUtils
 		StringBuilder sb = new StringBuilder(numChars);
 		SecureRandom r = new SecureRandom();
 		for (int i = 0; i < numChars; i++) {
-			sb.append('a' + (int) (r.nextDouble() * 26));
+			// Must append a char: 'a' + int is an int, which appended digits
+			sb.append((char) ('a' + r.nextInt(26)));
 		}
 		return sb.toString();
 	}

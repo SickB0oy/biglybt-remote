@@ -32,6 +32,10 @@
 	
 	<!-- Starting API 28, foreground services must request the FOREGROUND_SERVICE permission -->
 	<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+	<!-- Android 14+: a foreground service must declare its type. "specialUse"
+	     has no daily time limit (dataSync is capped at 6 h/day on Android 15)
+	     and may be started at boot. -->
+	<uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
 	<!-- Android 13 (API level 33) and higher supports a runtime permission for sending non-exempt (including Foreground Services (FGS)) notifications from an app -->
 	<uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
 
@@ -47,7 +51,12 @@
 		<service
 			android:name="com.biglybt.android.client.service.BiglyBTService"
 			android:process=":core_service"
-			android:stopWithTask="false"/>
+			android:foregroundServiceType="specialUse"
+			android:stopWithTask="false">
+			<property
+				android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+				android:value="Torrent client that keeps downloading and seeding in the background, and serves the remote control web interface." />
+		</service>
 	</application>
 
 </manifest>

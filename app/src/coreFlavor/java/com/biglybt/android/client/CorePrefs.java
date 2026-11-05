@@ -223,11 +223,17 @@ public class CorePrefs
 				|| Arrays.binarySearch(keys, PREF_CORE_RACCESS_REQPW) >= 0
 				|| Arrays.binarySearch(keys, PREF_CORE_RACCESS_USER) >= 0
 				|| Arrays.binarySearch(keys, PREF_CORE_RACCESS_PW) >= 0) {
+			String pw = prefs.getString(PREF_CORE_RACCESS_PW, null);
+			if (pw == null || pw.isEmpty()) {
+				// Generate once and store it, otherwise a new random password was
+				// produced on every load and never matched the one shown to the user
+				pw = AndroidUtils.generateEasyPW(8);
+				prefs.put(PREF_CORE_RACCESS_PW, pw);
+			}
 			setRemAccessPrefs(prefs.getBoolean(PREF_CORE_ALLOWLANACCESS, false),
-					prefs.getBoolean(PREF_CORE_RACCESS_REQPW, false),
+					prefs.getBoolean(PREF_CORE_RACCESS_REQPW, true),
 					getPrefString(prefs, PREF_CORE_RACCESS_USER, "biglybt"),
-					getPrefString(prefs, PREF_CORE_RACCESS_PW,
-							AndroidUtils.generateEasyPW(4)));
+					pw);
 		}
 	}
 

@@ -1,13 +1,33 @@
 apply plugin: 'com.android.application'
 
+// Release signing from key.properties (written by the CI from repository secrets)
+def keystorePropertiesFile = rootProject.file('key.properties')
+def keystoreProperties = new Properties()
+def hasKeystoreProperties = keystorePropertiesFile.exists()
+if (hasKeystoreProperties) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
 android {
+    signingConfigs {
+        if (hasKeystoreProperties) {
+            plus {
+                storeFile rootProject.file(keystoreProperties['storeFile'])
+                storePassword keystoreProperties['storePassword']
+                keyAlias keystoreProperties['keyAlias']
+                keyPassword keystoreProperties['keyPassword']
+            }
+        }
+    }
+
     compileSdk rootProject.ext.compileSdkVersion
 
     defaultConfig {
-        applicationId "com.biglybt.android.client"
+        // Distinct id so it installs next to the official BiglyBT
+        applicationId "com.biglybt.android.client.plus"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionName "1.3.4.4"
+        versionName "1.3.4.4-plus1"
         // a.b.c -> aabbccdd, where dd = build #
         versionCode 1030404
         multiDexEnabled true
@@ -36,7 +56,7 @@ android {
                 'proguard-project-release.txt'
             minifyEnabled true
             matchingFallbacks = ['release']
-            signingConfig signingConfigs.debug
+            signingConfig hasKeystoreProperties ? signingConfigs.plus : signingConfigs.debug
         }
     }
     packagingOptions {
@@ -287,4 +307,4 @@ if (taskReq.contains("assembleCoreFlavor") || taskReq.contains("bundleCoreFlavor
     preBuild.dependsOn(copyPluginFiles)
 }
 
-apply plugin: 'com.getkeepsafe.dexcount'
+

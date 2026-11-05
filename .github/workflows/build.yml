@@ -1,4 +1,4 @@
-name: Build BiglyBT Remote APK
+name: Build BiglyBT Plus APK
 
 on:
   push:
@@ -60,13 +60,13 @@ jobs:
           mkdir -p out
           apk=$(find app/build/outputs/apk -name '*.apk' | grep -i release | head -n1)
           [ -n "$apk" ] || { echo "::error::APK introuvable"; exit 1; }
-          cp "$apk" out/BiglyBT-Remote.apk
+          cp "$apk" out/BiglyBT-Plus.apk
           ls -la out
           echo "version=$(grep -oP 'versionName "\K[^"]+' app/build.gradle)" >> "$GITHUB_OUTPUT"
 
       - uses: actions/upload-artifact@v4
         with:
-          name: BiglyBT-Remote-apk
+          name: BiglyBT-Plus-apk
           path: out/*.apk
 
       - name: Publish release
@@ -74,10 +74,10 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: build-${{ github.run_number }}
-          name: BiglyBT Remote ${{ steps.apk.outputs.version }} (build ${{ github.run_number }})
+          name: BiglyBT Plus ${{ steps.apk.outputs.version }} (build ${{ github.run_number }})
           body: |
-            APK à installer sur la TV : **BiglyBT-Remote.apk**.
+            APK à installer sur la TV : **BiglyBT-Plus.apk**.
             Lien direct, toujours vers la dernière version :
-            https://github.com/${{ github.repository }}/releases/latest/download/BiglyBT-Remote.apk
-          files: out/BiglyBT-Remote.apk
+            https://github.com/${{ github.repository }}/releases/latest/download/BiglyBT-Plus.apk
+          files: out/BiglyBT-Plus.apk
           make_latest: true

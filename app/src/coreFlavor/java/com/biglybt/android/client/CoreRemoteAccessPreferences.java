@@ -59,7 +59,7 @@ public class CoreRemoteAccessPreferences
 	@Override
 	public String toString() {
 		return super.toString() + "{ " + allowLANAccess + ", " + reqPW + ", " + user
-				+ ", " + (TextUtils.isEmpty(pw) ? "no pw" : pw) + "}";
+				+ ", " + (TextUtils.isEmpty(pw) ? "no pw" : "pw set") + "}";
 
 	}
 }

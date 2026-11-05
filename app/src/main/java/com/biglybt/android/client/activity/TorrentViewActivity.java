@@ -175,6 +175,9 @@ public class TorrentViewActivity
 
 		// may be inside FragmentContainerView which doesn't expand in #onCreate like Fragment does
 		progressBar = findViewById(R.id.progress_spinner);
+
+		// Without it, multi-file torrents can't be saved to USB drives (#250)
+		com.biglybt.android.util.AllFilesAccess.maybeAsk(this);
 	}
 
 	/** Called when a drawer has settled in a completely closed state. */
