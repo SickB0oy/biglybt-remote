@@ -26,7 +26,7 @@
 	<!-- BiglyBT Plus: remote access address and password, tap for a QR code -->
 	<TextView
 		android:id="@+id/plus_remote_banner"
-		android:nextFocusDown="@id/listTorrents"
+		android:nextFocusDown="@id/plus_service_stop"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:background="@drawable/plus_remote_banner_bg"
@@ -40,6 +40,32 @@
 		android:textSize="14sp"
 		android:visibility="gone"
 		tools:text="Connexion à distance : http://192.168.1.20:9093"
+		tools:visibility="visible"/>
+
+	<!-- Torrent TV: stops the torrent service (red); the stopped screen has the
+	     green button that starts it again -->
+	<com.google.android.material.button.MaterialButton
+		android:id="@+id/plus_service_stop"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="12dp"
+		android:layout_marginTop="8dp"
+		android:layout_marginEnd="12dp"
+		android:layout_marginBottom="4dp"
+		android:minHeight="52dp"
+		android:nextFocusUp="@id/plus_remote_banner"
+		android:nextFocusDown="@id/listTorrents"
+		android:text="@string/service_stop"
+		android:textAllCaps="false"
+		android:textColor="#FFFFFFFF"
+		android:textSize="16sp"
+		android:visibility="gone"
+		app:backgroundTint="@color/service_red"
+		app:cornerRadius="14dp"
+		app:icon="@drawable/ic_power"
+		app:iconGravity="textStart"
+		app:iconTint="#FFFFFFFF"
 		tools:visibility="visible"/>
 	<FrameLayout
 		android:layout_width="match_parent"

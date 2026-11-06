@@ -63,7 +63,8 @@ public class BootCompleteReceiver
 		new Thread(() -> {
 			try {
 				if (RemoteUtils.getCoreProfile() == null
-						|| !CorePrefs.getInstance().getPrefAutoStart()) {
+						|| !CorePrefs.getInstance().getPrefAutoStart()
+						|| com.biglybt.android.client.ServiceSwitch.isStopped(context)) {
 					return;
 				}
 

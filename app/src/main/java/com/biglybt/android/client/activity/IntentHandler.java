@@ -161,6 +161,20 @@ public class IntentHandler
 				&& "coreFlavor".equals(com.biglybt.android.client.BuildConfig.FLAVOR_coreD)) {
 			// BiglyBT Plus: always open the BiglyBT running on this device, creating
 			// it on first launch. No account, login or remote profile screens.
+			if (com.biglybt.android.client.ServiceSwitch.isStopped(this)) {
+				boolean opensTorrent = intent.getData() != null
+						|| intent.hasExtra(Intent.EXTRA_STREAM)
+						|| intent.hasExtra(Intent.EXTRA_TEXT) || intent.getClipData() != null;
+				if (opensTorrent) {
+					// A torrent or magnet link was opened with the app: start again
+					com.biglybt.android.client.ServiceSwitch.setStopped(this, false);
+				} else {
+					// The user stopped the service: stay stopped until "Start" is tapped
+					com.biglybt.android.client.ServiceSwitch.showStoppedScreen(this);
+					finish();
+					return;
+				}
+			}
 			RemoteUtils.createCoreProfile(this,
 					(coreProfile, alreadyCreated) -> RemoteUtils.openRemote(this,
 							coreProfile, true, () -> showProfileSelector()));

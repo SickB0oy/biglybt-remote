@@ -188,6 +188,18 @@ public class TorrentListFragment
 				|| !session.getRemoteProfile().isLocalHost()) {
 			return;
 		}
+		View stop = root.findViewById(R.id.plus_service_stop);
+		if (stop != null && session.getRemoteProfile()
+				.getRemoteType() == com.biglybt.android.client.session.RemoteProfile.TYPE_CORE) {
+			stop.setVisibility(View.VISIBLE);
+			stop.setOnClickListener(v -> {
+				FragmentActivity fa = getActivity();
+				if (fa != null && session != null) {
+					com.biglybt.android.client.ServiceSwitch.stop(fa,
+							session.getRemoteProfile().getID());
+				}
+			});
+		}
 		OffThread.runOffUIThread(() -> {
 			final PlusRemoteInfo info = PlusRemoteInfo.get();
 			OffThread.runOnUIThread(this, false, activity -> {
@@ -496,8 +508,7 @@ public class TorrentListFragment
 							R.id.action_add_torrent,
 							R.id.action_start_all,
 							R.id.action_stop_all,
-							R.id.action_settings,
-							R.id.action_shutdown
+							R.id.action_settings
 						};
 					}
 

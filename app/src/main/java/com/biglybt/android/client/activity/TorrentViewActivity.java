@@ -481,10 +481,7 @@ public class TorrentViewActivity
 			startActivity(i);
 			return true;
 		} else if (itemId == R.id.action_shutdown) {
-			BiglyCoreUtils.shutdownCoreService();
-			RemoteUtils.openRemoteList(TorrentViewActivity.this);
-			SessionManager.removeSession(getRemoteProfileID(), true);
-			finish();
+			com.biglybt.android.client.ServiceSwitch.stop(this, getRemoteProfileID());
 			return true;
 		}
 		return false;
@@ -597,9 +594,8 @@ public class TorrentViewActivity
 
 		MenuItem menuShutdownCore = menu.findItem(R.id.action_shutdown);
 		if (menuShutdownCore != null) {
-			boolean visible = session != null
-					&& session.getRemoteProfile().getRemoteType() == RemoteProfile.TYPE_CORE;
-			menuShutdownCore.setVisible(visible);
+			// Replaced by the red "Stop the service" button on the home screen
+			menuShutdownCore.setVisible(false);
 		}
 	}
 

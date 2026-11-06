@@ -114,6 +114,15 @@ public class BiglyCoreUtils
 			return false;
 		}
 
+		// The user stopped the service with the home screen button: nothing
+		// (late refresh, reconnect…) may start it again until "Start" is tapped
+		if (ServiceSwitch.isStopped(BiglyBTApp.getContext())) {
+			if (AndroidUtils.DEBUG) {
+				Log.d(TAG, "startBiglyBTCoreService: stopped by the user");
+			}
+			return false;
+		}
+
 		// Start Core
 		try {
 			if (AndroidUtils.DEBUG) {

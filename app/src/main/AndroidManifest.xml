@@ -886,6 +886,12 @@
 			android:exported="true"
 			android:label="@string/library_title"
 			android:theme="@style/Theme.TorrentTV.Library" />
+		<activity
+			android:name=".activity.ServiceStoppedActivity"
+			android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|navigation"
+			android:exported="false"
+			android:label="@string/app_name"
+			android:theme="@style/Theme.TorrentTV.Library" />
 			<!-- Torrent TV: second tile on the Android TV home screen, straight to the library -->
 		<activity-alias
 			android:name=".LibraryLauncher"

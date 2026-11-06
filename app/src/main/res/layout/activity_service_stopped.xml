@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Torrent TV: screen shown while the torrent service is stopped -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@color/library_bg"
+	android:fillViewport="true"
+	android:fitsSystemWindows="true">
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:gravity="center"
+		android:orientation="vertical"
+		android:padding="32dp">
+
+		<ImageView
+			android:layout_width="96dp"
+			android:layout_height="96dp"
+			android:importantForAccessibility="no"
+			android:src="@mipmap/ic_launcher" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="24dp"
+			android:gravity="center"
+			android:text="@string/service_stopped_title"
+			android:textColor="@color/library_text"
+			android:textSize="24sp"
+			android:textStyle="bold" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="10dp"
+			android:gravity="center"
+			android:maxWidth="520dp"
+			android:text="@string/service_stopped_text"
+			android:textColor="@color/library_muted"
+			android:textSize="15sp" />
+
+		<com.google.android.material.button.MaterialButton
+			android:id="@+id/service_start"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="32dp"
+			android:minHeight="64dp"
+			android:nextFocusDown="@id/service_library"
+			android:paddingStart="28dp"
+			android:paddingEnd="32dp"
+			android:text="@string/service_start"
+			android:textAllCaps="false"
+			android:textColor="#FFFFFFFF"
+			android:textSize="18sp"
+			app:backgroundTint="@color/service_green"
+			app:cornerRadius="16dp"
+			app:icon="@drawable/ic_power"
+			app:iconSize="26dp"
+			app:iconTint="#FFFFFFFF"
+			app:strokeColor="#FFFFFFFF"
+			app:strokeWidth="0dp" />
+
+		<com.google.android.material.button.MaterialButton
+			android:id="@+id/service_library"
+			style="@style/Widget.MaterialComponents.Button.TextButton"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="12dp"
+			android:nextFocusUp="@id/service_start"
+			android:text="@string/library_open"
+			android:textAllCaps="false"
+			android:textColor="@color/library_text"
+			app:icon="@drawable/ic_library"
+			app:iconTint="@color/library_text" />
+	</LinearLayout>
+</ScrollView>

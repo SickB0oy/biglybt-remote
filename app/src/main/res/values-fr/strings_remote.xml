@@ -63,4 +63,8 @@
 	<string name="preftitle_language">Langue</string>
 	<string name="language_system">Langue du système</string>
 	<string name="prefcat_info">Informations</string>
+	<string name="service_stop">Arrêter le service</string>
+	<string name="service_start">Démarrer le service</string>
+	<string name="service_stopped_title">Le service est arrêté</string>
+	<string name="service_stopped_text">Aucun téléchargement ni partage tant que le service est arrêté. La connexion à distance est aussi coupée. Les films déjà téléchargés restent visibles.</string>
 </resources>

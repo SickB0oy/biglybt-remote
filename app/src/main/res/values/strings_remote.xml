@@ -62,4 +62,8 @@
 	<string name="preftitle_language">Language</string>
 	<string name="language_system">System language</string>
 	<string name="prefcat_info">Information</string>
+	<string name="service_stop">Stop the service</string>
+	<string name="service_start">Start the service</string>
+	<string name="service_stopped_title">The service is stopped</string>
+	<string name="service_stopped_text">No downloading or seeding while the service is stopped. Remote access is off too. Movies already downloaded can still be watched.</string>
 </resources>
