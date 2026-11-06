@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="core_noti_title">Torrent TV 比特流服务</string>
+	<string name="core_noti_title">Torrent TV</string>
 	<string name="core_noti_restarting">正在重启...</string>
 	<string name="core_noti_starting">正在启动...</string>
 	<string name="core_noti_stopping">正在停止</string>

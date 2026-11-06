@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Status bar icon: the "Ttv" glyph of the Torrent TV logo, white on transparent -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+	android:width="24dp"
+	android:height="24dp"
+	android:viewportWidth="92"
+	android:viewportHeight="92">
+	<group
+		android:translateX="-8"
+		android:translateY="-8">
+		<path
+			android:pathData="M17,31 H47 M32,31 V76"
+			android:strokeColor="#FFFFFFFF"
+			android:strokeWidth="10"
+			android:strokeLineCap="round"
+			android:strokeLineJoin="round"/>
+		<path
+			android:pathData="M57,42 V68 Q57,76 65,76 M51,53 H64 M72,53 L80.5,75 L89,53"
+			android:strokeColor="#FFFFFFFF"
+			android:strokeWidth="9"
+			android:strokeLineCap="round"
+			android:strokeLineJoin="round"/>
+	</group>
+</vector>

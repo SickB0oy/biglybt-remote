@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="core_noti_title">Torrent TV Torrent Zerbitzua</string>
+	<string name="core_noti_title">Torrent TV</string>
 	<string name="core_noti_restarting">Berrabiarazten</string>
 	<string name="core_noti_starting">Abiatzen</string>
 	<string name="core_noti_stopping">Gelditzen</string>

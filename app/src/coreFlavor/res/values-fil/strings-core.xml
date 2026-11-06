@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="core_noti_title">Torrent TV Torrenting Serbisyo</string>
+	<string name="core_noti_title">Torrent TV</string>
 	<string name="core_noti_restarting">I-restart ang</string>
 	<string name="core_noti_starting">Simula</string>
 	<string name="core_noti_stopping">Naghihinto</string>
