@@ -5,9 +5,6 @@
     </linearGradient>
   </defs>
   <rect width="108" height="108" rx="24" fill="url(#g)"/>
-  <!-- back T: translucent, its stem ends in a download arrow -->
-  <path d="M48,40 H84 M66,40 V77 M57.5,69 L66,77.5 L74.5,69" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-  <!-- front T: solid, with a cut-out halo so the overlap reads clearly -->
-  <path d="M24,30 H60 M42,30 V74" fill="none" stroke="url(#g)" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M24,30 H60 M42,30 V74" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M17,31 H47 M32,31 V76" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M57,42 V68 Q57,76 65,76 M51,53 H64 M72,53 L80.5,75 L89,53" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
