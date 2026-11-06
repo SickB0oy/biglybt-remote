@@ -321,7 +321,7 @@ public class FileUtils
 	private static void launchInternalFolderChooser(@NonNull Context context,
 			String initialDir, @NonNull ActivityResultLauncher<Intent> launcher) {
 		DirectoryChooserConfig.Builder configBuilder = DirectoryChooserConfig.builder();
-		configBuilder.newDirectoryName("BiglyBT");
+		configBuilder.newDirectoryName("Torrent TV");
 		if (initialDir != null) {
 			if (FileUtils.isContentPath(initialDir)) {
 				initialDir = PaulBurkeFileUtils.getPath(context, Uri.parse(initialDir),

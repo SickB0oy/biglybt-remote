@@ -1144,9 +1144,9 @@ public class BiglyBTService
 			return;
 		}
 		NotificationChannel channel = new NotificationChannel(
-				NOTIFICATION_CHANNEL_ID, "BiglyBT Core Notification",
+				NOTIFICATION_CHANNEL_ID, "Torrent TV",
 				NotificationManager.IMPORTANCE_LOW);
-		channel.setDescription("Displays the state of BiglyBT core");
+		channel.setDescription("Torrent TV download service");
 		notificationManager.createNotificationChannel(channel);
 	}
 

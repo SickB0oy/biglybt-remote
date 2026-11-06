@@ -585,11 +585,11 @@ public abstract class DialogFragmentAbstractLocationPicker
 			}
 		}
 
-		// Always show Download/BiglyBT if it's there
+		// Always show Download/Torrent TV if it's there
 		File dlDir = Environment.getExternalStoragePublicDirectory(
 				Environment.DIRECTORY_DOWNLOADS);
 		if (dlDir.exists()) {
-			File defaultDLDir = new File(dlDir, "BiglyBT");
+			File defaultDLDir = new File(dlDir, "Torrent TV");
 			if (defaultDLDir.exists() && defaultDLDir.canWrite()) {
 				addPath(list, PathInfo.buildPathInfo(defaultDLDir));
 			}

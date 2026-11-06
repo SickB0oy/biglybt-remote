@@ -97,10 +97,10 @@
 	<string name="error_remote_not_found">Die Verbindung zu Ihrem Remote-Client kann nicht hergestellt werden.  Es scheint nicht zu laufen.</string>
 	<string name="error_connecting">Fehler beim Verbinden</string>
 	<string name="button_continue">Weiter</string>
-	<string name="action_about">Über BiglyBT</string>
+	<string name="action_about">Über Torrent TV</string>
 	<string name="about_thanks_header">Teile dieser App danke:</string>
 	<string name="about_translator">%1$s Übersetzung bereitgestellt von</string>
-	<string name="login_guide">Gehen Sie zu |Tools| &gt; |Remote Pairing| im BiglyBT oder Vuze Desktop-Client, um Ihren Remote-Zugriffscode zu finden.</string>
+	<string name="login_guide">Gehen Sie zu |Tools| &gt; |Remote Pairing| im Torrent TV oder Torrent TV Desktop-Client, um Ihren Remote-Zugriffscode zu finden.</string>
 	<string name="login_guide2">Um ein manuelles Remote zu konfigurieren, versuchen Sie das &lt;a href=\"biglybt://remote/cmd=advlogin\"&gt;Erweiterte Anmeldung&lt;/a&gt;. Weitere Hilfe finden Sie unter @@&lt;a href=\"http://wiki.biglybt.com/w/Android_Remote_Guide\"&gt;Guide&lt;/a&gt;.</string>
 	<string name="dialog_delete_title">Torrent entfernen?</string>
 	<string name="dialog_delete_message">Der Torrent \'%s\' wird entfernt.</string>
@@ -108,12 +108,12 @@
 	<string name="profile_list_header">Verfügbare Clients</string>
 	<string name="movedata_history">Verlauf</string>
 	<string name="move_data_storeinhistory">Speicherort im Verlauf</string>
-	<string name="biglybt_logo">BiglyBT-Logo</string>
+	<string name="biglybt_logo">Torrent TV-Logo</string>
 	<string name="action_refresh">Aktualisieren</string>
 	<string name="about_ideas">Wenn Ihnen unsere App gefällt, sollten Sie ein &lt;a href=\"subscribe\"&gt;Abonnement&lt;/a&gt; in Betracht ziehen, um die weitere Entwicklung zu unterstützen.  Oder, wenn Sie pleite sind, bewerten Sie uns im &lt;a href=\"market://details?id=com.biglybt.android.client\"&gt;Google Play Store&lt;/a&gt;!</string>
 	<string name="addtorrent_info">Wenn Sie keine Torrent-Datei haben, können Sie über die Suchvorlagen Ihres Remote-Rechners nach einer solchen suchen.  Klicken Sie einfach auf den Such-Button und geben Sie einen Suchbegriff ein.</string>
 	<string name="profile_ac_explain">Ihre Verbindungseinstellungen, wie IP-Adresse und Port, werden alle von Ihrem Zugangscode verwaltet.</string>
-	<string name="biglybt_required">Sorry, die Funktion \'%s\' erfordert eine Verbindung zu einem BiglyBT-Client. Wir würden uns freuen, wenn Sie das ändern würden! ^_^</string>
+	<string name="biglybt_required">Sorry, die Funktion \'%s\' erfordert eine Verbindung zu einem Torrent TV-Client. Wir würden uns freuen, wenn Sie das ändern würden! ^_^</string>
 	<string name="old_rpc">Auf Ihrem Remote-Rechner läuft eine alte Version von Transmission.  Einige (oder alle!) Funktionen funktionieren möglicherweise nicht.  Für bessere Ergebnisse aktualisieren Sie bitte die Übertragung auf 2.40 (RPC 14) oder höher.</string>
 	<string name="last_used_ago">Zuletzt verbunden %s</string>
 	<string name="last_used_never">Nie verbunden</string>
@@ -126,9 +126,9 @@
 	<string name="torrent_status_queued_dl">In der Warteschlange zum Herunterladen</string>
 	<string name="torrent_status_queued_ul">In der Warteschlange für das Seeding</string>
 	<string name="torrent_status_checking">Überprüfe Dateien</string>
-	<string name="local_name">Lokale BiglyBT auf %s</string>
-	<string name="local_vuze_name">Lokale Vuze-App auf %s</string>
-	<string name="local_vuze_remote_name">Lokale Vuze Remote auf %s</string>
+	<string name="local_name">Lokale Torrent TV auf %s</string>
+	<string name="local_vuze_name">Lokale Torrent TV-App auf %s</string>
+	<string name="local_vuze_remote_name">Lokale Torrent TV Remote auf %s</string>
 	<string name="dialog_delete_datatoo">Auch heruntergeladene Dateien entfernen</string>
 	<string name="multi_select_tip">Tippen &amp; Halten für Mehrfachauswahl</string>
 	<string name="generic_x_of_y">%1$s von %2$s</string>
@@ -205,7 +205,7 @@
 	<string name="title_activity_rcm">Schwarm-Entdeckungen</string>
 	<string name="accept">Annehmen</string>
 	<string name="decline">Ablehnen</string>
-	<string name="rcm_na">%1$s Ansicht benötigt eine aktuelle Version von BiglyBT.\n\nDas nächste Mal, wenn Sie sich in der Nähe Ihres Remote-Rechners befinden, wählen Sie |Hilfe| &gt; |Nach Updates suchen| in BiglyBT, um auf die neueste Version zu aktualisieren.</string>
+	<string name="rcm_na">%1$s Ansicht benötigt eine aktuelle Version von Torrent TV.\n\nDas nächste Mal, wenn Sie sich in der Nähe Ihres Remote-Rechners befinden, wählen Sie |Hilfe| &gt; |Nach Updates suchen| in Torrent TV, um auf die neueste Version zu aktualisieren.</string>
 	<string name="change_name_title">Torrent-Name ändern</string>
 	<string name="change_name_message">Das Ändern dieses Anzeigennamens ändert den Speicherort der Torrentdaten nicht</string>
 	<string name="torrent_url_add_failed">&lt;b&gt;%1$s&lt;/b&gt; ist keine gültige Torrent-Datei. Die ersten fünf Bytes sind &lt;b&gt;%2$s&lt;/b&gt;
@@ -225,7 +225,7 @@
 	<string name="torrent_open_options_title">Öffne Torrent</string>
 	<string name="not_torrent_file_kitkat">Konnte nicht öffnen &lt;b&gt;%1$s&lt;/b&gt;.  Da Sie sich auf Kitkat (Android v4) befinden, liegt es höchstwahrscheinlich daran, dass sich die Datei auf einem externen Speicher befindet oder von einer anderen App an einem Ort gespeichert wurde, den wir nicht lesen dürfen.</string>
 	<string name="x_space_free">%1$s verfügbar</string>
-	<string name="ask_rating_message">Vielen Dank für Ihre anhaltende Unterstützung. :3\n\nWenn Ihnen BiglyBT gefällt, nehmen Sie sich bitte einen Moment Zeit, um unsere App im Play Store zu bewerten.</string>
+	<string name="ask_rating_message">Vielen Dank für Ihre anhaltende Unterstützung. :3\n\nWenn Ihnen Torrent TV gefällt, nehmen Sie sich bitte einen Moment Zeit, um unsere App im Play Store zu bewerten.</string>
 	<string name="no_thanks">Nein danke</string>
 	<string name="rate_now">Jetzt bewerten</string>
 	<string name="later">Später</string>
@@ -257,7 +257,7 @@
 	<string name="export_profiles">Profile exportieren</string>
 	<string name="import_profiles">Profile importieren</string>
 	<string name="action_add_profile">Profil hinzufügen</string>
-	<string name="toast_core_starting">Starte BiglyBT Core</string>
+	<string name="toast_core_starting">Starte Torrent TV Core</string>
 	<string name="action_shutdown_core">Service beenden</string>
 	<plurals name="torrent_actions_for_multiple">
 		<item quantity="one">Aktionen für %1$d Torrent</item>
@@ -381,9 +381,9 @@
 	<string name="weeks">Wochen</string>
 	<string name="months">Monate</string>
 	<string name="years">Jahre</string>
-	<string name="giveback_consider_subscription">Bitte erwägen Sie den Kauf eines Abonnements, damit wir BiglyBT für Android weiterhin pflegen und weiterentwickeln können.</string>
+	<string name="giveback_consider_subscription">Bitte erwägen Sie den Kauf eines Abonnements, damit wir Torrent TV für Android weiterhin pflegen und weiterentwickeln können.</string>
 	<string name="giveback_already_subscribed">Sie haben bereits ein Abonnement. Vielen Dank! Sie können Ihr Abonnement jederzeit mit Google Play-&gt;Account-&gt;Abonnements&lt;br&gt;&lt;br&gt;kündigen, wenn Sie auf andere Weise beitragen möchten bitte schauen Sie unsere &lt;a href=\"https://www.biglybt.com/contribute\"&gt;Seite \"Mitwirkender&lt;/a&gt; \" an.</string>
-	<string name="giveback_firstline">BiglyBT berechnet keine Gebühren für zusätzliche Funktionen und lähmt die Software nicht, bis Sie bezahlen.</string>
+	<string name="giveback_firstline">Torrent TV berechnet keine Gebühren für zusätzliche Funktionen und lähmt die Software nicht, bis Sie bezahlen.</string>
 	<string name="giveback_title">Zurückgeben</string>
 	<string name="giveback_no_google">Bitte besuchen Sie &lt;a href=\"https://www.biglybt.com/contribute\"&gt;biglybt.com/contribute&lt;/a&gt; oder stimmen Sie über Ideen für die Android-App unter &lt;a href=\"https://vote.biglybt.com/android\"&gt;vote.biglybt.com/android&lt;/a&gt; ab.</string>
 	<string name="movedata_place_in_subfolder">Platziere in &lt;b&gt;%1$s&lt;/b&gt; Unterordner</string>
@@ -402,14 +402,14 @@
 	<string name="login_server_title">Torrent mit diesem Gerät</string>
 	<string name="login_server_subtitle">Führe einen vollständigen Torrent-Client auf Ihrem Gerät aus</string>
 	<string name="login_remote_title">Mit Remote-Client verbinden</string>
-	<string name="login_remote_subtitle">Steuere einen Remote gesteuerten BiglyBT, Transmission oder Vuze Client</string>
+	<string name="login_remote_subtitle">Steuere einen Remote gesteuerten Torrent TV, Transmission oder Torrent TV Client</string>
 	<string name="setting_speed_on_summary">Aktiviert am %1$s</string>
 	<string name="unlimited">Unlimitiert</string>
 	<string name="header_openoptions">Torrent %1$s hinzufügen</string>
 	<string name="rp_update_interval_mobile_same">Wie bei nicht Mobile</string>
-	<string name="private_external_storage">BiglyBT privater externer Speicher</string>
-	<string name="private_internal_storage">BiglyBT privater interner Speicherplatz</string>
-	<string name="private_internal_storage_warning">Warnung: Dateien im privaten internen Speicher werden gelöscht, wenn Sie BiglyBT deinstallieren</string>
+	<string name="private_external_storage">Torrent TV privater externer Speicher</string>
+	<string name="private_internal_storage">Torrent TV privater interner Speicherplatz</string>
+	<string name="private_internal_storage_warning">Warnung: Dateien im privaten internen Speicher werden gelöscht, wenn Sie Torrent TV deinstallieren</string>
 	<string name="dialog_remove_profile_title">Profil entfernen?</string>
 	<string name="dialog_remove_profile_text">Konfigurationseinstellungen für Profil \'%1$s\' werden gelöscht.</string>
 	<string name="button_remove">Entfernen</string>
@@ -527,7 +527,7 @@ Keine der Daten enthält personenbezogene Informationen, noch können die Daten 
 Die Daten werden nicht an Dritte weitergegeben und nicht dauerhaft auf unseren Servern gespeichert.
 Die gesendeten Daten lauten wie folgt:</string>
 	<string name="gdpr_full_client_data">* App-ID (immer \"az\")\n
-* App-Name (immer \"BiglyBT\")\n
+* App-Name (immer \"Torrent TV\")\n
 * Aktuelle &amp; 1. Client-Version\n
 * OS-Name &amp; Version &amp; Architektur\n
 * UI (immer \"ac\")\n
@@ -539,10 +539,10 @@ Die gesendeten Daten lauten wie folgt:</string>
 	<string name="password_is_set">Passwort festlegen</string>
 	<string name="action_remote_access_qr"><![CDATA[Speichern & QR-Code anzeigen]]></string>
 	<string name="dialog_title_remote_access_qr">QR-Code für Remote-Zugriff</string>
-	<string name="dialog_remote_access_biglybt_qr_info">Scannen Sie diesen QR-Code auf einem Android-Gerät, auf dem BiglyBT installiert ist. \n&lt;small&gt;Ältere BiglyBT Android-Clients zeigen einen Fehler von &lt;b&gt;Zugriffscode \'PROFILE\' unbekannt&lt;/b&gt;&lt;/small&gt; an.</string>
+	<string name="dialog_remote_access_biglybt_qr_info">Scannen Sie diesen QR-Code auf einem Android-Gerät, auf dem Torrent TV installiert ist. \n&lt;small&gt;Ältere Torrent TV Android-Clients zeigen einen Fehler von &lt;b&gt;Zugriffscode \'PROFILE\' unbekannt&lt;/b&gt;&lt;/small&gt; an.</string>
 	<string name="dialog_remote_access_webui_qr_info">Scannen Sie diesen QR-Code, um mit jedem modernen Browser auf das Web-UI zuzugreifen.</string>
 	<string name="dialog_remote_access_webui_qr_button">WebUI QR-Code</string>
-	<string name="dialog_remote_access_biglybt_qr_button">BiglyBT QR-Code</string>
+	<string name="dialog_remote_access_biglybt_qr_button">Torrent TV QR-Code</string>
 	<string name="rpc_not_authorized_adv">Nicht autorisiert. Bitte stellen Sie sicher, dass der Benutzername und das Passwort korrekt sind.</string>
 	<string name="password_is_required">Passwort ist erforderlich</string>
 	<string name="prefsummary_proxy_port">Port %1$d</string>

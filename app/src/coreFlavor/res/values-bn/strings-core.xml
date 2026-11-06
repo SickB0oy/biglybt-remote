@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="core_noti_title">BiglyBT Torrenting সেবা</string>
+	<string name="core_noti_title">Torrent TV Torrenting সেবা</string>
 	<string name="core_noti_restarting">পুনরায় চালু হচ্ছে</string>
 	<string name="core_noti_starting">আরম্ভ করা হচ্ছে</string>
 	<string name="core_noti_stopping">বন্ধ করা হচ্ছে</string>

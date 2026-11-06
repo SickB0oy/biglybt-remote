@@ -98,10 +98,10 @@
 	<string name="error_remote_not_found">Не удается подключиться к удаленному клиенту. Похоже, что он не работает.</string>
 	<string name="error_connecting">Ошибка подключения</string>
 	<string name="button_continue">Продолжить</string>
-	<string name="action_about">О BiglyBT</string>
+	<string name="action_about">О Torrent TV</string>
 	<string name="about_thanks_header">Части этого приложения благодаря:</string>
 	<string name="about_translator">%1$s перевод от adem</string>
-	<string name="login_guide">Перейдите в|Инструменты|&amp; gt;|Удалённое Сопряжение|в настольном клиенте BiglyBT или Vuze, чтобы найти свой код удалённого доступа.</string>
+	<string name="login_guide">Перейдите в|Инструменты|&amp; gt;|Удалённое Сопряжение|в настольном клиенте Torrent TV или Torrent TV, чтобы найти свой код удалённого доступа.</string>
 	<string name="login_guide2">Чтобы настроить управление вручную, попробуйте в &lt;а href=\"biglybt://управление/cmd=advlogin\"&gt;расширенный логин&lt;/а&gt;.  См. @@а&lt;а href=\"http://wiki.biglybt.com/w/Android_Remote_Guide\"и gt;Руководство&lt;/а&gt; для получения дополнительной помощи.</string>
 	<string name="dialog_delete_title">Удалить торрент?</string>
 	<string name="dialog_delete_message">Торрент \'%s\' будет удалён.</string>
@@ -109,12 +109,12 @@
 	<string name="profile_list_header">Доступные клиенты</string>
 	<string name="movedata_history">История</string>
 	<string name="move_data_storeinhistory">Хранить местоположение в истории</string>
-	<string name="biglybt_logo">Логотип BiglyBT</string>
+	<string name="biglybt_logo">Логотип Torrent TV</string>
 	<string name="action_refresh">Обновить</string>
 	<string name="about_ideas">Если вам нравится наше приложение, пожалуйста, рассмотрите a&lt;a href=\"подпишись\"&gt;подписка&lt;/a &amp; gt;, Чтобы помочь продолжить разработку. Или, если у вас нет возможности, оцените нас в &lt;a href=\"market://details?id=com.biglybt.android.client\"&gt;Google Play Store&lt;/a&gt;!</string>
 	<string name="addtorrent_info">Если у вас нет торрент-файла, вы можете искать его с помощью поиска в интернете.  Просто нажмите на кнопку поиска и введите поисковый запрос.</string>
 	<string name="profile_ac_explain">Ваши параметры подключения, такие как IP-адрес и порт, управляются вашим кодом доступа</string>
-	<string name="biglybt_required">К сожалению, функция \"%s \" требует подключения к клиенту BiglyBT. Мы будем очень рады если вы перейдёте! ^_^</string>
+	<string name="biglybt_required">К сожалению, функция \"%s \" требует подключения к клиенту Torrent TV. Мы будем очень рады если вы перейдёте! ^_^</string>
 	<string name="old_rpc">На вашей удаленной системе старая версия приложения. Некоторые (или все!) функции могут не работать. Для лучших результатов, пожалуйста, обновите приложение до 2.40 (RPC 14) или выше</string>
 	<string name="last_used_ago">Последнее подключение: %1$s</string>
 	<string name="last_used_never">Никогда не подключался</string>
@@ -129,8 +129,8 @@
 	<string name="torrent_status_queued_dl">В очереди для загрузки</string>
 	<string name="torrent_status_queued_ul">В очереди для раздачи</string>
 	<string name="torrent_status_checking">Проверка файлов</string>
-	<string name="local_name">Локальный BiglyBT в %s</string>
-	<string name="local_vuze_name">Локальное Vuze приложение на %s</string>
+	<string name="local_name">Локальный Torrent TV в %s</string>
+	<string name="local_vuze_name">Локальное Torrent TV приложение на %s</string>
 	<string name="dialog_delete_datatoo">Также удалить загруженные файлы</string>
 	<string name="multi_select_tip">Нажмите &amp; Удерживайте для мульти-выбора</string>
 	<string name="generic_x_of_y">%1$s из %2$s</string>
@@ -209,7 +209,7 @@
 	<string name="openoptions_lbl_name">Имя торрента</string>
 	<string name="torrent_open_options_title">Открыть торрент</string>
 	<string name="x_space_free">%1$s свободно</string>
-	<string name="ask_rating_message">Спасибо за вашу поддержку. : 3 \n\nЕсли вам нравится BiglyBT, пожалуйста, оцените наше приложение в Play Маркете.</string>
+	<string name="ask_rating_message">Спасибо за вашу поддержку. : 3 \n\nЕсли вам нравится Torrent TV, пожалуйста, оцените наше приложение в Play Маркете.</string>
 	<string name="no_thanks">Нет, спасибо</string>
 	<string name="rate_now">Оценить сейчас</string>
 	<string name="later">Позже</string>
@@ -240,8 +240,8 @@
 	<string name="export_profiles">Экспорт профилей</string>
 	<string name="import_profiles">Импорт профилей</string>
 	<string name="action_add_profile">Добавить профиль</string>
-	<string name="toast_core_starting">Запуск ядра BiglyBT</string>
-	<string name="toast_core_restarting">Перезапуск ядра BiglyBT</string>
+	<string name="toast_core_starting">Запуск ядра Torrent TV</string>
+	<string name="toast_core_restarting">Перезапуск ядра Torrent TV</string>
 	<string name="action_shutdown_core">Служба выключения</string>
 	<plurals name="torrent_actions_for_multiple">
 		<item quantity="one">Действия для %1$d торрента</item>
@@ -376,13 +376,13 @@
 	<string name="login_server_title">Торрент с использованием этого устройства</string>
 	<string name="login_server_subtitle">Запустите полноценный торрент-клиент на вашем устройстве</string>
 	<string name="login_remote_title">Подключиться к удаленному клиенту</string>
-	<string name="login_remote_subtitle">Управляйте удалённо запущенными клиентами BiglyBT, Transmission или Vuze</string>
+	<string name="login_remote_subtitle">Управляйте удалённо запущенными клиентами Torrent TV, Transmission или Torrent TV</string>
 	<string name="setting_speed_on_summary">Включено в %1$s</string>
 	<string name="unlimited">Неограниченно</string>
 	<string name="header_openoptions">Добавить торрент %1$s</string>
 	<string name="rp_update_interval_mobile_same">Такой же, что и немобильный</string>
-	<string name="private_external_storage">Личное внешнее хранилище BiglyBT</string>
-	<string name="private_internal_storage">Личное внутреннее хранилище BiglyBT</string>
+	<string name="private_external_storage">Личное внешнее хранилище Torrent TV</string>
+	<string name="private_internal_storage">Личное внутреннее хранилище Torrent TV</string>
 	<string name="dialog_remove_profile_title">Удалить профиль?</string>
 	<string name="dialog_remove_profile_text">Настройки конфигурации профиля «%1$s» будут удалены.</string>
 	<string name="button_remove">Убрать</string>
@@ -525,7 +525,7 @@
 	<string name="action_remote_access_qr"><![CDATA[Сохранить и показать QR-код]]></string>
 	<string name="dialog_title_remote_access_qr">QR-код удалённого доступа</string>
 	<string name="dialog_remote_access_webui_qr_button">QR-код веб-интерфейса</string>
-	<string name="dialog_remote_access_biglybt_qr_button">QR-код BiglyBT</string>
+	<string name="dialog_remote_access_biglybt_qr_button">QR-код Torrent TV</string>
 	<string name="password_is_required">Требуется пароль</string>
 	<string name="prefsummary_proxy_port">Порт: %1$d</string>
 	<string name="backspace">Backspace</string>

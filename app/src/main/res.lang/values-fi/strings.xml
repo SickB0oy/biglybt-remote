@@ -86,11 +86,11 @@
 	<string name="button_browse">Selaa&#8230;</string>
 	<string name="error_connecting">Yhteysvirhe</string>
 	<string name="button_continue">Jatka</string>
-	<string name="action_about">Tietoja BiglyBT:stä</string>
+	<string name="action_about">Tietoja Torrent TV:stä</string>
 	<string name="dialog_delete_title">Poistetaanko torrent?</string>
 	<string name="dialog_delete_button_remove">Poista</string>
 	<string name="movedata_history">Historia</string>
-	<string name="biglybt_logo">BiglyBT-logo</string>
+	<string name="biglybt_logo">Torrent TV-logo</string>
 	<string name="action_refresh">Päivitä</string>
 	<string name="last_used_ago">Viimeisin yhteys %s</string>
 	<string name="last_updated">Päivitetty viimeksi %s</string>
@@ -100,8 +100,8 @@
 	</plurals>
 	<string name="add_torrent">Lisää Torrentti</string>
 	<string name="torrent_status_checking">Tarkistetaan tiedostoja</string>
-	<string name="local_name">Paikallinen BiglyBT laitteella %s</string>
-	<string name="local_vuze_remote_name">Paikallinen Vuze Remote laitteella %s</string>
+	<string name="local_name">Paikallinen Torrent TV laitteella %s</string>
+	<string name="local_vuze_remote_name">Paikallinen Torrent TV Remote laitteella %s</string>
 	<string name="generic_x_of_y">%1$s/%2$s</string>
 	<string name="torrent_file_priority_high">Korkea painotus</string>
 	<string name="torrent_file_priority_low">Alhainen painotus</string>
@@ -171,8 +171,8 @@
 	<string name="export_profiles">Vie profiilit</string>
 	<string name="import_profiles">Tuo profiilit</string>
 	<string name="action_add_profile">Lisää profiili</string>
-	<string name="toast_core_starting">Käynnistetään BiglyBT Core</string>
-	<string name="toast_core_restarting">Käynnistetään BiglyBT Core uudelleen</string>
+	<string name="toast_core_starting">Käynnistetään Torrent TV Core</string>
+	<string name="toast_core_restarting">Käynnistetään Torrent TV Core uudelleen</string>
 	<string name="action_shutdown_core">Sulje palvelu</string>
 	<plurals name="torrent_count">
 		<item quantity="one">%1$d torrent</item>
@@ -246,8 +246,8 @@
 	<string name="setting_speed_on_summary">Rajoitettu %1$s</string>
 	<string name="unlimited">Rajoittamaton</string>
 	<string name="header_openoptions">Lisää torrent %1$s</string>
-	<string name="private_internal_storage">BiglyBT:n kansio yksityisessä tallennustilassa</string>
-	<string name="private_internal_storage_warning">Varoitus: Laitteen sisäisen tallennustilan rajoitetulla alueella säilytetyt tiedostot poistetaan, jos poistat BiglyBT:n asennuksen</string>
+	<string name="private_internal_storage">Torrent TV:n kansio yksityisessä tallennustilassa</string>
+	<string name="private_internal_storage_warning">Varoitus: Laitteen sisäisen tallennustilan rajoitetulla alueella säilytetyt tiedostot poistetaan, jos poistat Torrent TV:n asennuksen</string>
 	<string name="dialog_remove_profile_title">Poistetaanko profiili?</string>
 	<string name="button_remove">Poista</string>
 	<string name="statetag_tracker_error">Trakkerin virhe</string>
@@ -330,7 +330,7 @@
 	<string name="dialog_title_remote_access_qr">Etäohjauksen QR-koodi</string>
 	<string name="dialog_remote_access_webui_qr_info">Skannaa tämä QR-koodi käyttääksesi verkkokäyttöliittymää nykyaikaisilla selaimilla.</string>
 	<string name="dialog_remote_access_webui_qr_button">Web-käyttöliittymän QR-koodi</string>
-	<string name="dialog_remote_access_biglybt_qr_button">BiglyBT:n QR-koodi</string>
+	<string name="dialog_remote_access_biglybt_qr_button">Torrent TV:n QR-koodi</string>
 	<string name="prefsummary_proxy_port">Portti %1$d</string>
 	<string name="backspace">Askelpalautin</string>
 	<string name="action_sel_verify">Tarkista tiedot</string>

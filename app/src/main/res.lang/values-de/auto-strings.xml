@@ -16,24 +16,24 @@ Aber Sie gehen vollumfänglich davon aus und wir lehnen jedes Risiko ab, einschl
 \n
 Wenn Sie diese Tracker-Seiten aktivieren möchten, nachdem Sie &lt;A HREF=\"https://wiki.biglybt.com/w/Swarm_Discoveries\">hier&lt;/A>gelesen haben.
 Wählen Sie die untenstehende Option, um mehr über diese Seiten und einige Risiken bei der Nutzung zu erfahren.</string>
-	<string name="rcm_ftux_option_preselect">AKTIVIERE BiglyBT vorab ausgewählten Tracker-Seiten.
+	<string name="rcm_ftux_option_preselect">AKTIVIERE Torrent TV vorab ausgewählten Tracker-Seiten.
 Ich habe \n
 &lt;A HREF=\"https://wiki.biglybt.com/w/Swarm_Discoveries\">hier&lt;/A> und &lt;A HREF=\"https://en.wikipedia.org/wiki/BitTorrent#Legal_issues\">hier&amp;&lt;/A> über diese Seiten und einige Risiken bei deren Nutzung gelesen.
-Ich verstehe und stimme zu, dass BiglyBT keinerlei Verantwortung trägt.
+Ich verstehe und stimme zu, dass Torrent TV keinerlei Verantwortung trägt.
 Mit meiner Aktivierung dieser Funktion und der Verwendung eines dieser Tracker.
 Bin ich damit einverstanden, dass es in meiner Verantwortung liegt, sicherzustellen, dass ich nur rechtmäßige und nicht rechtsverletzende Inhalte herunterlade.</string>
-	<string name="rcm_ftux_info2">Wenn Sie möchten, dass Schwarm-Entdeckungen Dateien \"bezogen auf\" Ihre vorhandenen Torrent-Dateien aus allen Quellen findet, nicht nur aus den BiglyBT vorab ausgewählten Tracker-Seiten, wählen Sie die untenstehende Option.</string>
+	<string name="rcm_ftux_info2">Wenn Sie möchten, dass Schwarm-Entdeckungen Dateien \"bezogen auf\" Ihre vorhandenen Torrent-Dateien aus allen Quellen findet, nicht nur aus den Torrent TV vorab ausgewählten Tracker-Seiten, wählen Sie die untenstehende Option.</string>
 	<string name="rcm_ftux_option_all">AKTIVIERE ALLE Entdeckungen \n
 die verwandt mit meinen bestehenden Torrent-Dateien, unabhängig davon, welche Tracker-Seiten im Torrent befinden.
 \n
 Ich habe &lt;A HREF=\"https://wiki.biglybt.com/w/Swarm_Discoveries\">hier&lt;/A> und &lt;A HREF=\"https://en.wikipedia.org/wiki/BitTorrent#Legal_issues\">hier&lt;/A> über diese Seiten und einige Risiken bei deren Nutzung gelesen.
-Ich verstehe und stimme zu, dass BiglyBT keinerlei Verantwortung trägt, wenn ich diese Funktion aktiviere und alle Entdeckungen nutze.
+Ich verstehe und stimme zu, dass Torrent TV keinerlei Verantwortung trägt, wenn ich diese Funktion aktiviere und alle Entdeckungen nutze.
 Ich stimme zu, dass es in meiner Verantwortung liegt, sicherzustellen, dass ich nur rechtmäßige und nicht rechtsverletzende Inhalte herunterlade.</string>
-	<string name="rcm_ftux_smallprint">Jede Nutzung von BiglyBT, die die Rechte einer natürlichen oder juristischen Person verletzt, ist nicht gestattet.
+	<string name="rcm_ftux_smallprint">Jede Nutzung von Torrent TV, die die Rechte einer natürlichen oder juristischen Person verletzt, ist nicht gestattet.
 &lt;A HREF=\"https://wiki.biglybt.com/w/FAQ_Legal\">Mehr&lt;/A>.</string>
 	<string name="rcm_ftux2_heading">Zusätzliche Informationen und Warnungen zu dieser Funktion</string>
-	<string name="rcm_ftux2_info">Für Tracker-Seiten, die nicht zu den von BiglyBT vorab ausgewählten Tracker-Seiten gehören, warnen wir zusätzlich, dass einige dieser Tracker-Seiten beschuldigt werden könnten, Torrent-Dateien bereitzustellen, die gegen das Urheberrecht verstoßen könnten, sowie mehr Inhalte für \"Erwachsene\" enthalten, von denen einige die Rechte anderer verletzen könnten.\n
-Angesichts der Funktionsweise von Schwarm-Entdeckungen können Torrent-Dateien von Drittanbietern, mit den Torrent-Dateien auf Ihrem Gerät automatisch als \"verwandt\" gebracht werden, die entweder über BiglyBT vorab ausgewählte Tracker-Seiten gefunden werden oder durch Entdeckungen \"alle\" miteinander als \"verwandt\" gebracht werden können.
+	<string name="rcm_ftux2_info">Für Tracker-Seiten, die nicht zu den von Torrent TV vorab ausgewählten Tracker-Seiten gehören, warnen wir zusätzlich, dass einige dieser Tracker-Seiten beschuldigt werden könnten, Torrent-Dateien bereitzustellen, die gegen das Urheberrecht verstoßen könnten, sowie mehr Inhalte für \"Erwachsene\" enthalten, von denen einige die Rechte anderer verletzen könnten.\n
+Angesichts der Funktionsweise von Schwarm-Entdeckungen können Torrent-Dateien von Drittanbietern, mit den Torrent-Dateien auf Ihrem Gerät automatisch als \"verwandt\" gebracht werden, die entweder über Torrent TV vorab ausgewählte Tracker-Seiten gefunden werden oder durch Entdeckungen \"alle\" miteinander als \"verwandt\" gebracht werden können.
 Nur weil Sie und andere Benutzer z.B \"ABC.torrent\" und viele oder einige dieser anderen Benutzer \"XXX.torrent\" haben, könnte Schwarm-Entdeckungen den \"XXX.torrent\" als \"verwandt\" betrachten.
 \n
 Möglicherweise sollten Sie bei der Auswahl von Schwarm-Entdeckung zusätzliche Sorgfalt walten lassen.
@@ -42,7 +42,7 @@ Inhalte, die Sie herunterladen möchten, werden gleichzeitig für den Upload ber
 Aktiviere alle Entdeckungen die verwandt mit meinen bestehenden Torrent-Dateien, unabhängig davon, welche Tracker-Seiten im Torrent befinden.\n
 Ich habe &lt;A HREF=\"https://wiki.biglybt.com/w/Swarm_Discoveries\">hier&lt;/A> und &lt;A HREF=\"https://en.wikipedia.org/wiki/BitTorrent#Legal_issues\">hier&lt;/A> \n
 über diese Tracker-Seiten und einige Risiken bei deren Nutzung gelesen.
-Ich verstehe und stimme zu, dass BiglyBT keinerlei Verantwortung trägt, wenn ich diese Funktion aktiviere.
+Ich verstehe und stimme zu, dass Torrent TV keinerlei Verantwortung trägt, wenn ich diese Funktion aktiviere.
 Ich stimme zu, dass es in meiner Verantwortung liegt, sicherzustellen, dass ich nur rechtmäßige und nicht rechtsverletzende Inhalte herunterlade.</string>
 	<string name="drawer_rcm">Schwarmentdeckungen</string>
 	<string name="torrent_status_waiting">Warten</string>

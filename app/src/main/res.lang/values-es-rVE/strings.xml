@@ -137,7 +137,7 @@
 		<item>HTTP</item>
 	</string-array>
 	<string name="gdpr_full_client_data">* App id (siempre \"az\")\n
-* Nombre de la aplicación (siempre \"BiglyBT\")\n
+* Nombre de la aplicación (siempre \"Torrent TV\")\n
 * Actual &amp; 1ra versión del cliente\n
 * OS nombre &amp; versión &amp; arquitectura\n
 * UI (siempre \"ac\")\n

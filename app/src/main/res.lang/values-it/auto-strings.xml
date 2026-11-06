@@ -29,29 +29,29 @@ ma vi assumete, e noi decliniamo, tutti i rischi compresi nell’uso di questi t
 \n
 \n
 Se volete abilitare questi tracker dopo aver letto &lt;A HREF=\"https://wiki.biglybt.com/w/Swarm_Discoveries\">qui&lt;/A> alcune cose riguardanti questi siti e i rischi che si corrono durante il loro utilizzo, selezionate l\'\'opzione qui sotto.</string>
-	<string name="rcm_ftux_option_preselect">ABILITA Tracker Pre-Selezionati BiglyBT.
+	<string name="rcm_ftux_option_preselect">ABILITA Tracker Pre-Selezionati Torrent TV.
 \n
 \n
 Ho letto &lt;A HREF=\"https://wiki.biglybt.com/w/Swarm_Discoveries\">qui&lt;/A> e &lt;A HREF=\"http://en.wikipedia.org/wiki/BitTorrent#Legal_issues\">qui&lt;/A> in merito a questi siti e sui rischi che si corrono durante l\'\'utilizzo, \n
 \n
-e IO CAPISCO E SONO D’ACCORDO che BiglyBT non abbia alcuna responsabilità rispetto al fatto che io abbia abilitato questa funzione o l\'\'uso di uno qualsiasi di questi tracker.
+e IO CAPISCO E SONO D’ACCORDO che Torrent TV non abbia alcuna responsabilità rispetto al fatto che io abbia abilitato questa funzione o l\'\'uso di uno qualsiasi di questi tracker.
 \n
 \n
 Sono d\'\'accordo che è mia responsabilità assicurarmi di scaricare solo contenuti leciti e che non infraggono alcun diritto.</string>
 	<string name="rcm_ftux_info2">Se si desidera che Swarm Discovery trovi i file \"correlati\" ai file torrent esistenti da tutte le fonti, \n
 \n
-e non solo dai tracker preselezionati BiglyBT, selezionare l\'\'opzione sottostante.</string>
+e non solo dai tracker preselezionati Torrent TV, selezionare l\'\'opzione sottostante.</string>
 	<string name="rcm_ftux_option_all">ABILITA TUTTE le scoperte relative ai miei file torrent esistenti, \n
 indipendentemente dai tracker che il torrent contiene.
 \n
 Ho letto &lt;A HREF=\"https://wiki.biglybt.com/w/Swarm_Discoveries\">qui&lt;/A> e &lt;A HREF=\"http://en.wikipedia.org/wiki/BitTorrent#Legal_issues\">qui&lt;/A> a riguardo di questi siti e i rischi che si corrono durante l\'\'utilizzo, \n
-e IO CAPISCO E SONO D\'\'ACCORDO che BiglyBT non abbia alcuna responsabilità nei confronti della mia attivazione di questa funzione e l\'\'utilizzo di tutte le scoperte.
+e IO CAPISCO E SONO D\'\'ACCORDO che Torrent TV non abbia alcuna responsabilità nei confronti della mia attivazione di questa funzione e l\'\'utilizzo di tutte le scoperte.
 \n
 Sono d\'\'accordo che è mia responsabilità garantire di scaricare solo contenuti leciti e che non infraggono alcun diritto.</string>
-	<string name="rcm_ftux_smallprint">Non è permesso alcun uso di BiglyBT che violi i diritti di qualsiasi persona o entità.
+	<string name="rcm_ftux_smallprint">Non è permesso alcun uso di Torrent TV che violi i diritti di qualsiasi persona o entità.
 &lt;A HREF=\"https://wiki.biglybt.com/w/FAQ_Legal\">Continua a leggere&lt;/A>.</string>
 	<string name="rcm_ftux2_heading">Informazioni Aggiuntive e Avvertimenti su questa funzione</string>
-	<string name="rcm_ftux2_info">Per i tracker non inclusi nei tracker preselezionati da BiglyBT, \n
+	<string name="rcm_ftux2_info">Per i tracker non inclusi nei tracker preselezionati da Torrent TV, \n
 \n
 inoltre, vi avvisiamo che alcuni di questi tracker potrebbero essere accusati di essere più propensi a tracciare file di tipo \n
 \n
@@ -64,7 +64,7 @@ Tenendo conto di come funziona Swarm Discoveries, \n
 file torrent di terze parti che potrebbero essere automaticamente considerati \"correlati\" ai file torrent sul dispositivo.
 \n
 \n
-che sono trovati attraverso i tracker preselezionati di BiglyBT o \"tutte\" le scoperte, potrebbero essere \"correlate\" solo in virtù \n
+che sono trovati attraverso i tracker preselezionati di Torrent TV o \"tutte\" le scoperte, potrebbero essere \"correlate\" solo in virtù \n
 \n
 del fatto che se tu e altri utenti avete \"ABC.torrent,\" per esempio, e molti o alcuni di questi altri utenti hanno \n
 \n
@@ -85,7 +85,7 @@ Ho letto &lt;A HREF=\"https://wiki.biglybt.com/w/Swarm_Discoveries\">qui&lt;/A> 
 \n
 &lt;A HREF=\"http://en.wikipedia.org/wiki/BitTorrent#Legal_issues\">qui&lt;/A> a riguardo di questi siti e i rischi che si corrono durante l\'\'utilizzo, \n
 \n
-e IO CAPISCO E SONO D\'\'ACCORDO che BiglyBT non abbia alcuna responsabilità nei confronti della mia attivazione di questa funzione e l\'\'utilizzo di tutte le scoperte.
+e IO CAPISCO E SONO D\'\'ACCORDO che Torrent TV non abbia alcuna responsabilità nei confronti della mia attivazione di questa funzione e l\'\'utilizzo di tutte le scoperte.
 \n
 \n
 Sono d\'\'accordo che è mia responsabilità garantire di scaricare solo contenuti leciti e che non infraggono alcun diritto.</string>

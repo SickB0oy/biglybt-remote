@@ -6,7 +6,7 @@
 		<item quantity="one">%1$d abonelik girişi için eylemler</item>
 		<item quantity="other">%1$d abonelik girişi için eylemler</item>
 	</plurals>
-	<string name="subscription_results_header"><xliff:g example="Galaxy Tab üzerinde Yerel BiglyBT" id="profile_name">&lt;b&gt;%2$s&lt;/b&gt;</xliff:g> üzerinde <xliff:g example="Kedi Görüntüleri" id="subcription_name">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> Aboneliği</string>
+	<string name="subscription_results_header"><xliff:g example="Galaxy Tab üzerinde Yerel Torrent TV" id="profile_name">&lt;b&gt;%2$s&lt;/b&gt;</xliff:g> üzerinde <xliff:g example="Kedi Görüntüleri" id="subcription_name">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> Aboneliği</string>
 	<plurals name="subscription_results_subheader">
 		<item quantity="one">&lt;b&gt;%1$s&lt;/b&gt; sonuç, &lt;b&gt;%2$s&lt;/b&gt; yeni</item>
 		<item quantity="other">&lt;b&gt;%1$s&lt;/b&gt; sonuç, &lt;b&gt;%2$s&lt;/b&gt; yeni</item>

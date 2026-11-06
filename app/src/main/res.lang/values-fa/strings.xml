@@ -97,7 +97,7 @@
 	<string name="error_remote_not_found">نمی‌توان به کارخواه از راه دور شما متصل شد. به نظر می‌رسد که فعال نیست.</string>
 	<string name="error_connecting">خطا هنگام اتصال</string>
 	<string name="button_continue">ادامه</string>
-	<string name="action_about">درباره BiglyBT</string>
+	<string name="action_about">درباره Torrent TV</string>
 	<string name="about_thanks_header">تشکر برای بخش‌هایی از این برنامه:</string>
 	<string name="about_translator">%1$s ترجمه توسط reg3xp</string>
 	<string name="dialog_delete_title">تورنت پاک شود؟</string>
@@ -106,12 +106,12 @@
 	<string name="profile_list_header">کارخواه‌های در دسترس</string>
 	<string name="movedata_history">تاريخچه</string>
 	<string name="move_data_storeinhistory">مکان را در تاریخچه ذخیره کن</string>
-	<string name="biglybt_logo">لوگوی BiglyBT</string>
+	<string name="biglybt_logo">لوگوی Torrent TV</string>
 	<string name="action_refresh">نوسازی</string>
 	<string name="about_ideas">اگر برنامه ما را دوست دارید, برای کمک به ادامه توسعه یک&lt;a href=\"subscribe\"&gt;اشتراک&lt;/a&gt;   تهیه کنید.  یا، اگر وضعیت مالی خوبی ندارید به امتیاز دهید در&lt;a href=\"market://details?id=com.biglybt.android.client\"&gt;Google Play فروشگاه&lt;/a&gt;!</string>
 	<string name="addtorrent_info">اگر پرونده تورنتی ندارید، می‌توانید یکی را با استفاده از الگوهای جستجوی دستگاه از راه دورتان ، جستجو کنید. به سادگی بر روی دکمه جستجو کلیک کنید و یک عبارت جستجو را تایپ کنید.</string>
 	<string name="profile_ac_explain">تنظیمات اتصال شما، مانند نشانی IP و درگاه، همه توسط کد دسترسی شما مدیریت می‌شوند</string>
-	<string name="biglybt_required">ببخشید، ویژگی \'%s\' نیاز به اتصال به یک کارخواه BiglyBT دارد. اگر کارخواه خود را تغییر دهید متشکر خواهیم بود! ^ _ ^</string>
+	<string name="biglybt_required">ببخشید، ویژگی \'%s\' نیاز به اتصال به یک کارخواه Torrent TV دارد. اگر کارخواه خود را تغییر دهید متشکر خواهیم بود! ^ _ ^</string>
 	<string name="old_rpc">دستگاه از راه دور شما نگارش قدیمی Transmission را اجرا می‌کند. برخی از (یا همه!) عملکردها ممکن است کار نکنند. برای کسب نتایج بهتر ، لطفا Transmission را به 2.40 (RPC 14) یا بالاتر ارتقا دهید</string>
 	<string name="last_used_ago">آخرین اتصال %s</string>
 	<string name="last_used_never">هیچ‌وقت متصل نشده</string>
@@ -124,9 +124,9 @@
 	<string name="torrent_status_queued_dl">در صف برای بارگیری</string>
 	<string name="torrent_status_queued_ul">در صف برای Seed کردن</string>
 	<string name="torrent_status_checking">در حال تایید پرونده‌ها</string>
-	<string name="local_name">BiglyBT محلی روی %s</string>
-	<string name="local_vuze_name">Vuze محلی روی %s</string>
-	<string name="local_vuze_remote_name">دسترسی راه دور Vuze روی %s</string>
+	<string name="local_name">Torrent TV محلی روی %s</string>
+	<string name="local_vuze_name">Torrent TV محلی روی %s</string>
+	<string name="local_vuze_remote_name">دسترسی راه دور Torrent TV روی %s</string>
 	<string name="dialog_delete_datatoo">پرونده‌های بارگیری شده را نیز پاک کن</string>
 	<string name="multi_select_tip">برای انتخاب چند گزینه‌ای بزنید و نگه دارید</string>
 	<string name="generic_x_of_y">%1$s از %2$s</string>
@@ -201,7 +201,7 @@
 	<string name="openoptions_lbl_name">نام تورنت</string>
 	<string name="torrent_open_options_title">بازکردن تورنت</string>
 	<string name="x_space_free">%1$s آزاد است</string>
-	<string name="ask_rating_message">از حمایت مداوم شما متشکریم. :3\n\nاگر از BiglyBT لذت می‌برید، لطفا برنامه ما در فروشگاه Play ارزیابی کنید.</string>
+	<string name="ask_rating_message">از حمایت مداوم شما متشکریم. :3\n\nاگر از Torrent TV لذت می‌برید، لطفا برنامه ما در فروشگاه Play ارزیابی کنید.</string>
 	<string name="no_thanks">نه ممنون</string>
 	<string name="rate_now">هم اکنون امتیاز دهید</string>
 	<string name="later">بعدا</string>
@@ -232,7 +232,7 @@
 	<string name="export_profiles">برون‌بری نمایه‌ها</string>
 	<string name="import_profiles">وارد کردن نمایه‌ها</string>
 	<string name="action_add_profile">افزودن نمایه</string>
-	<string name="toast_core_starting">در حال راه‌اندازی هسته BiglyBT</string>
+	<string name="toast_core_starting">در حال راه‌اندازی هسته Torrent TV</string>
 	<string name="action_shutdown_core">سرویس خاموش کردن</string>
 	<plurals name="torrent_actions_for_multiple">
 		<item quantity="one">کنش‌ها برای %1$d تورنت</item>
@@ -355,8 +355,8 @@
 	<string name="weeks">هفته</string>
 	<string name="months">ماه</string>
 	<string name="years">سال</string>
-	<string name="giveback_consider_subscription">خواهشمند است یک اشتراک تهیه کنید، تا ما بتوانیم به توسعه و نگهداری BiglyBT برای اندروید ادامه دهیم.</string>
-	<string name="giveback_firstline">BiglyBT برای ویژگی های اضافی هزینه نمی‌خواهد و همچنین تا زمانی که هزینه را پرداخت نکنید، نرم افزار را فلج نمی کند.</string>
+	<string name="giveback_consider_subscription">خواهشمند است یک اشتراک تهیه کنید، تا ما بتوانیم به توسعه و نگهداری Torrent TV برای اندروید ادامه دهیم.</string>
+	<string name="giveback_firstline">Torrent TV برای ویژگی های اضافی هزینه نمی‌خواهد و همچنین تا زمانی که هزینه را پرداخت نکنید، نرم افزار را فلج نمی کند.</string>
 	<string name="giveback_title">پس دادن</string>
 	<string name="movedata_place_in_subfolder">قراردادن در &lt;b&gt;%1$s&lt;/b&gt; زیرپوشه</string>
 	<string name="movedata_currentlocation"><![CDATA[مکان کنونی <b>%1$s</b> است]]></string>
@@ -374,14 +374,14 @@
 	<string name="login_server_title">تورنت با استفاده از این دستگاه</string>
 	<string name="login_server_subtitle">یک کارخواه تورنت کامل را در دستگاه خود اجرا کنید</string>
 	<string name="login_remote_title">اتصال به کارخواه از راه دور</string>
-	<string name="login_remote_subtitle">کارخواه اجرا شده BiglyBT، Transmission، یا Vuze را از راه دور کنترل کنید</string>
+	<string name="login_remote_subtitle">کارخواه اجرا شده Torrent TV، Transmission، یا Torrent TV را از راه دور کنترل کنید</string>
 	<string name="setting_speed_on_summary">فعال شده در %1$s</string>
 	<string name="unlimited">نامحدود</string>
 	<string name="header_openoptions">افزودن تورنت %1$s</string>
 	<string name="rp_update_interval_mobile_same">همانند غیر-همراه</string>
-	<string name="private_external_storage">محل ذخیره بیرونی خصوصی BiglyBT</string>
-	<string name="private_internal_storage">محل ذخیره داخلی خصوصی BiglyBT</string>
-	<string name="private_internal_storage_warning">هشدار: پرونده‌های ذخیره شده در محل ذخیره داخلی خصوصی در صورت حذف BiglyBT پاک خواهند شد</string>
+	<string name="private_external_storage">محل ذخیره بیرونی خصوصی Torrent TV</string>
+	<string name="private_internal_storage">محل ذخیره داخلی خصوصی Torrent TV</string>
+	<string name="private_internal_storage_warning">هشدار: پرونده‌های ذخیره شده در محل ذخیره داخلی خصوصی در صورت حذف Torrent TV پاک خواهند شد</string>
 	<string name="dialog_remove_profile_title">نمایه پاک شود؟</string>
 	<string name="dialog_remove_profile_text">تنظیمات پیکربندی برای نمایه \'%1$s\' حذف خواهد شد.</string>
 	<string name="button_remove">حذف</string>
@@ -496,7 +496,7 @@
 	<string name="gdpr_one_time">اگر می‌پذیرید که ادامه دهید، ما دیگر این اعلان را دوباره نشان نخواهیم داد.</string>
 	<string name="gdpr_full_client">هنگامی که یک کارخواه کامل را در دستگاه Android خود اجرا می‌کنید ، برای تعیین ویژگی‌های موجود برای افزاره شما با سرورهایمان تماس می‌گیریم. هیچ یک از داده‌ها دارای اطلاعات شناسایی شخصی نیستند و همچنین نمی‌توان از داده‌های خارجی برای تعیین هویت شما استفاده کرد. داده‌ها با هیچ پردازنده داده شخص ثالث به اشتراک گذاشته نمی شوند ، و به طور دائم در سرورهای ما ذخیره نمی‌شوند. اطلاعات فرستاده شده به شرح زیر است:</string>
 	<string name="gdpr_full_client_data">* شناسه برنامه (همیشه \"az\")\n
-* نام برنامه (همیشه \"BiglyBT\")\n
+* نام برنامه (همیشه \"Torrent TV\")\n
 * کنونی &amp; اولین نگارش کارخواه\n
 * نام سیستم عامل &amp; نگارش &amp; معماری\n
 * رابط کاربری (همیشه \"ac\")\n
@@ -510,7 +510,7 @@
 	<string name="dialog_title_remote_access_qr">کد QR دسترسی از راه دور</string>
 	<string name="dialog_remote_access_webui_qr_info">این کد QR را اسکن کنید تا به رابط کاربری وب روی هر مرورگر مدرن دسترسی پیدا کنید.</string>
 	<string name="dialog_remote_access_webui_qr_button">کد QR WebUI</string>
-	<string name="dialog_remote_access_biglybt_qr_button">کد QR BiglyBT</string>
+	<string name="dialog_remote_access_biglybt_qr_button">کد QR Torrent TV</string>
 	<string name="rpc_not_authorized_adv">احراز هویت انجام نشد. لطفا از درست بودن نام کاربری و گذرواژه اطمینان یابید.</string>
 	<string name="password_is_required">گذرواژه الزامی است</string>
 	<string name="prefsummary_proxy_port">درگاه %1$d</string>

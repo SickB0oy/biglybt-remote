@@ -98,10 +98,10 @@
 	<string name="error_remote_not_found">Impossível conectar ao seu cliente remoto. Ele parece não estar em execução.</string>
 	<string name="error_connecting">Erro de Conexão</string>
 	<string name="button_continue">Continuar</string>
-	<string name="action_about">Sobre BiglyBT</string>
+	<string name="action_about">Sobre Torrent TV</string>
 	<string name="about_thanks_header">Partes deste aplicativo são graças à:</string>
 	<string name="about_translator">%1$s tradução feita por Havokdan</string>
-	<string name="login_guide">Ir para |Ferramentas| &gt; |Pareamento Remoto| no BiglyBT ou Vuze para desktop e encontre seu Código de Acesso Remoto.</string>
+	<string name="login_guide">Ir para |Ferramentas| &gt; |Pareamento Remoto| no Torrent TV ou Torrent TV para desktop e encontre seu Código de Acesso Remoto.</string>
 	<string name="login_guide2">Para configurar o controle remoto manual, tente &lt;a href=\"biglybt://remote/cmd=advlogin\"&gt;Advanced Login&lt;/a&gt;.  Veja @@&lt;a href=\"http://wiki.biglybt.com/w/Android_Remote_Guide\"&gt;Guide&lt;/a&gt; para mais ajuda.</string>
 	<string name="dialog_delete_title">Remover Torrent?</string>
 	<string name="dialog_delete_message">O torrent \'%s\' irá ser removido.</string>
@@ -109,12 +109,12 @@
 	<string name="profile_list_header">Clientes Disponíveis</string>
 	<string name="movedata_history">Histórico</string>
 	<string name="move_data_storeinhistory">Armazenar o local no histórico</string>
-	<string name="biglybt_logo">Logo do BiglyBT</string>
+	<string name="biglybt_logo">Logo do Torrent TV</string>
 	<string name="action_refresh">Atualizar</string>
 	<string name="about_ideas">Se você gostou de nosso app, por favor considere uma &lt;a href=\"subscribe\"&gt;subscription&lt;/a&gt; para ajudar com o desevolvimento.  Ou, se você está quebrado, avalie-nos na &lt;a href=\"market://details?id=com.biglybt.android.client\"&gt;Google Play Store&lt;/a&gt;!</string>
 	<string name="addtorrent_info">Se você não tem um arquivo torrent, você pode buscar por um usando os modelos de busca da sua máquina remota. Simples clique no botão de busca e digite o termo para busca.</string>
 	<string name="profile_ac_explain">Suas configurações de conexão, como endereço de IP e porta, são todas gerenciadas pelo seu Código de Acesso</string>
-	<string name="biglybt_required">Desculpe, recurso \'%s\' requer uma conexão com um cliente BiglyBT.  Nós amaríamos se você trocasse! ^_^</string>
+	<string name="biglybt_required">Desculpe, recurso \'%s\' requer uma conexão com um cliente Torrent TV.  Nós amaríamos se você trocasse! ^_^</string>
 	<string name="old_rpc">Sua máquina remota está executando uma versão antiga do Transmission.  Algumas(ou todas!) funcionalidade podem não funcionar.  Para melhor resultados, por favor atualize para Transmission to 2.40 (RPC 14) ou mais recente</string>
 	<string name="last_used_ago">Última conexão %s</string>
 	<string name="last_used_never">Nunca conectou</string>
@@ -127,9 +127,9 @@
 	<string name="torrent_status_queued_dl">Enfileirado para Download</string>
 	<string name="torrent_status_queued_ul">Enfileirado para Semeamento</string>
 	<string name="torrent_status_checking">Verificando arquivos</string>
-	<string name="local_name">Local BiglyBT em %s</string>
-	<string name="local_vuze_name">Aplicação Local Vuze em %s</string>
-	<string name="local_vuze_remote_name">Local Vuze Remote em %s</string>
+	<string name="local_name">Local Torrent TV em %s</string>
+	<string name="local_vuze_name">Aplicação Local Torrent TV em %s</string>
+	<string name="local_vuze_remote_name">Local Torrent TV Remote em %s</string>
 	<string name="dialog_delete_datatoo">Remover os arquivos baixados também</string>
 	<string name="multi_select_tip">Toque &amp; Segure para multi-seleção</string>
 	<string name="generic_x_of_y">%1$s de %2$s</string>
@@ -209,7 +209,7 @@
 	<string name="title_activity_rcm">Descobertas na Multidão</string>
 	<string name="accept">Aceitar</string>
 	<string name="decline">Recusar</string>
-	<string name="rcm_na">%1$s exibição requer uma versão recente do BiglyBT.\n\nA próxima vez que estiver perto da máquina remota, selecionar |Ajuda| &gt; |Checar por Atualizações| no BiglyBT para atualizar para última versão.</string>
+	<string name="rcm_na">%1$s exibição requer uma versão recente do Torrent TV.\n\nA próxima vez que estiver perto da máquina remota, selecionar |Ajuda| &gt; |Checar por Atualizações| no Torrent TV para atualizar para última versão.</string>
 	<string name="change_name_title">Alterar o Nome do Torrent</string>
 	<string name="change_name_message">Mudando o nome exibido não irá alterar o local de destino dos dados do torrent</string>
 	<string name="torrent_url_add_failed">&lt;b&gt;%1$s&lt;/b&gt; não é um arquivo torrent.  Os primeiros cinco bytes são &lt;b&gt;%2$s&lt;/b&gt;	
@@ -229,7 +229,7 @@
 	<string name="torrent_open_options_title">Abrir Torrent</string>
 	<string name="not_torrent_file_kitkat">Não pode abrir &lt;b&gt;%1$s&lt;/b&gt;.  Desde que você está em um Kitkat (Android v4), é\'s muito provável que o arquivo está em um armazenamento externo ou salvo por outro app em um local que nós não\'temos permissão para ler.</string>
 	<string name="x_space_free">%1$s livre</string>
-	<string name="ask_rating_message">Obrigado pelo seu contínuo suporte. :3\n\nSe você curte usar o BiglyBT, por favor, tome um momento para avaliar nosso app na Play Store.</string>
+	<string name="ask_rating_message">Obrigado pelo seu contínuo suporte. :3\n\nSe você curte usar o Torrent TV, por favor, tome um momento para avaliar nosso app na Play Store.</string>
 	<string name="no_thanks">Não, obrigado</string>
 	<string name="rate_now">Avaliar Agora</string>
 	<string name="later">Depois</string>
@@ -262,8 +262,8 @@
 	<string name="export_profiles">Exportar Perfis</string>
 	<string name="import_profiles">Importar Perfis</string>
 	<string name="action_add_profile">Adicionar Perfil</string>
-	<string name="toast_core_starting">Iniciando Core BiglyBT</string>
-	<string name="toast_core_restarting">Reiniciando Núcleo BiglyBT</string>
+	<string name="toast_core_starting">Iniciando Core Torrent TV</string>
+	<string name="toast_core_restarting">Reiniciando Núcleo Torrent TV</string>
 	<string name="action_shutdown_core">Desligar Serviço</string>
 	<plurals name="torrent_actions_for_multiple">
 		<item quantity="one">Ações para %1$d torrent</item>
@@ -387,9 +387,9 @@
 	<string name="weeks">semanas</string>
 	<string name="months">meses</string>
 	<string name="years">anos</string>
-	<string name="giveback_consider_subscription">Por favor, considere comprar uma assinatura, para que nós possamos continuar a manter o desenvolvimento do BiglyBT para Android.</string>
+	<string name="giveback_consider_subscription">Por favor, considere comprar uma assinatura, para que nós possamos continuar a manter o desenvolvimento do Torrent TV para Android.</string>
 	<string name="giveback_already_subscribed">Você já possui uma assinatura.  Muito obrigado! Você pode cancelar sua assinatura a qualquer tempo usando sua conta no Google Play-&gt;Account-&gt;Subscriptions&lt;br&gt;&lt;br&gt; se você gostaria de coloborar de outras formas, por favor, cheque nossa página &lt;a href=\"https://www.biglybt.com/contribute\"&gt;Contributing&lt;/a&gt;.</string>
-	<string name="giveback_firstline">O BiglyBT não cobra por recursos adicionais, nem enfraquece o software até pagar.</string>
+	<string name="giveback_firstline">O Torrent TV não cobra por recursos adicionais, nem enfraquece o software até pagar.</string>
 	<string name="giveback_title">Devolver</string>
 	<string name="giveback_no_google">Por favor, visite &lt;a href=\"https://www.biglybt.com/contribute\"&gt;biglybt.com/contribute&lt;/a&gt;, ou vote em ideias para o Android Appp em &lt;a href=\"https://vote.biglybt.com/android\"&gt;vote.biglybt.com/android&lt;/a&gt;</string>
 	<string name="movedata_place_in_subfolder">Coloque na subpasta &lt;b&gt;%1$s&lt;/b&gt;</string>
@@ -408,14 +408,14 @@
 	<string name="login_server_title">Torrent usando este dispositivo</string>
 	<string name="login_server_subtitle">Executar um cliente completo no seu dispositivo</string>
 	<string name="login_remote_title">Conectar ao Cliente Remoto</string>
-	<string name="login_remote_subtitle">Controle remotamente um cliente BiglyBT, Transmission ou Vuze</string>
+	<string name="login_remote_subtitle">Controle remotamente um cliente Torrent TV, Transmission ou Torrent TV</string>
 	<string name="setting_speed_on_summary">Habilitado para %1$s</string>
 	<string name="unlimited">Ilimitado</string>
 	<string name="header_openoptions">Adicionar Torrent %1$s</string>
 	<string name="rp_update_interval_mobile_same">Mesmo que não-móvel</string>
-	<string name="private_external_storage">BiglyBT Armazenagem Externa Privada</string>
-	<string name="private_internal_storage">BiglyBT Armazenagem Interna Privada</string>
-	<string name="private_internal_storage_warning">Aviso: Os arquivos armazenados no Armazenamento Interno Privado serão apagados se você desinstalar o BiglyBT</string>
+	<string name="private_external_storage">Torrent TV Armazenagem Externa Privada</string>
+	<string name="private_internal_storage">Torrent TV Armazenagem Interna Privada</string>
+	<string name="private_internal_storage_warning">Aviso: Os arquivos armazenados no Armazenamento Interno Privado serão apagados se você desinstalar o Torrent TV</string>
 	<string name="dialog_remove_profile_title">Remover Perfil?</string>
 	<string name="dialog_remove_profile_text">As configurações para o perfil \'%1$s\' serão excluídas.</string>
 	<string name="button_remove">Remover</string>
@@ -533,7 +533,7 @@ Nenhum dos dados contém informações pessoalmente identificáveis, nem os dado
 Os dados não são compartilhados com nenhum processador de dados de terceiros e não são permanentemente armazenados em nossos servidores.
 Os dados enviados são os seguintes:</string>
 	<string name="gdpr_full_client_data">* Id do App (sempre \"az\")\n
-* Nome do App (sempre \"BiglyBT\")\n
+* Nome do App (sempre \"Torrent TV\")\n
 * Atual &amp; 1st versão do cliente\n
 * Nome do OS &amp; versão &amp; arquitetura\n
 * UI (sempre \"ac\")\n
@@ -545,10 +545,10 @@ Os dados enviados são os seguintes:</string>
 	<string name="password_is_set">Definir senha</string>
 	<string name="action_remote_access_qr"><![CDATA[Salvar & Mostrar o código QR]]></string>
 	<string name="dialog_title_remote_access_qr">Código QR de Acesso Remoto</string>
-	<string name="dialog_remote_access_biglybt_qr_info">Escanear este Código QR no dispositivo android com BiglyBT instalado.\n&lt;small&gt;Antigos clientes BiglyBT Android irão mostrar um erro de &lt;b&gt;Código de acesso \'PROFILE\' unknown&lt;/b&gt;&lt;/small&gt;.</string>
+	<string name="dialog_remote_access_biglybt_qr_info">Escanear este Código QR no dispositivo android com Torrent TV instalado.\n&lt;small&gt;Antigos clientes Torrent TV Android irão mostrar um erro de &lt;b&gt;Código de acesso \'PROFILE\' unknown&lt;/b&gt;&lt;/small&gt;.</string>
 	<string name="dialog_remote_access_webui_qr_info">Escanear este Código QR para acessar a web ui em qualquer navegador moderno.</string>
 	<string name="dialog_remote_access_webui_qr_button">Código QR para WebUI</string>
-	<string name="dialog_remote_access_biglybt_qr_button">Código QR BiglyBT</string>
+	<string name="dialog_remote_access_biglybt_qr_button">Código QR Torrent TV</string>
 	<string name="rpc_not_authorized_adv">Não Autorizado. Por favor, assegure-se que o Nome de Usuário e Senha estão corretos.</string>
 	<string name="password_is_required">Senha é requerida</string>
 	<string name="prefsummary_proxy_port">Porta %1$d</string>
@@ -583,7 +583,7 @@ Os dados enviados são os seguintes:</string>
 	<string name="AskResetToDefault">Redefinir a configuração para o valor padrão?</string>
 	<string name="AlreadyDefault">Configuração já está no valor padrão</string>
 	<string name="folder_permissions_needed">Permissões de Pasta Necessárias</string>
-	<string name="ask_for_folder_auth">BiglyBT precisa de permissões para\n\n&lt;b&gt;%1$s&lt;/b&gt; para\n\n%2$s</string>
+	<string name="ask_for_folder_auth">Torrent TV precisa de permissões para\n\n&lt;b&gt;%1$s&lt;/b&gt; para\n\n%2$s</string>
 	<string name="ask_for_folder_auth_old">Você verá o aplicativo de seleção de pastas do Android. Você deve navegar até o caminho e clicar em \'%1$s\' para autorizar</string>
 	<string name="ask_for_folder_auth_new">Será mostrado o aplicativo de seleção de pasta do Android com a pasta necessária. Clique em \'%1$s\' para autorizar</string>
 	<string name="folder_auth_shieldtv">Para &lt;b&gt; usuários do Shield TV&lt;/b&gt; tendo dificuldade com o botão de seleção: mova uma pasta para cima e retorne à pasta para destacar automaticamente o botão. Alternativamente, você pode usar o trackpad do aplicativo SHIELD TV REMOTE.</string>

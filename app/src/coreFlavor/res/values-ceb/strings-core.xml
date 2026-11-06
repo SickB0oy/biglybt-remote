@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="core_noti_title">BiglyBT Torrenting Service</string>
+	<string name="core_noti_title">Torrent TV Torrenting Service</string>
 	<string name="core_noti_restarting">Nagsugod Pag-usab</string>
 	<string name="core_noti_starting">Nag-sugod na</string>
 	<string name="core_noti_stopping">Niundang</string>

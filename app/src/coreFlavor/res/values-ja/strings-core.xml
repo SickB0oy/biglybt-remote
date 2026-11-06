@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="core_noti_title">BiglyBT Torrent サービス</string>
+	<string name="core_noti_title">Torrent TV Torrent サービス</string>
 	<string name="core_noti_restarting">再起動中</string>
 	<string name="core_noti_starting">開始しています</string>
 	<string name="core_noti_stopping">停止中</string>

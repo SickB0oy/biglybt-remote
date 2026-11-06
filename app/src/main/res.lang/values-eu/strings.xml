@@ -96,21 +96,21 @@
 	<string name="error_remote_not_found">Ezinezkoa zure hurruneko bezeroarekin elkartzea.  Ez dirudi piztuta dagoenik.</string>
 	<string name="error_connecting">Elkarketa Akatsa</string>
 	<string name="button_continue">Jarraitu</string>
-	<string name="action_about">BiglyBT-ri Buruz</string>
+	<string name="action_about">Torrent TV-ri Buruz</string>
 	<string name="about_thanks_header">Aplikazio honen atalak, eskerrak:</string>
-	<string name="login_guide">Joan hona |Tresnak| &gt; |Hurruneko Parekatzea| mahaigaineko BiglyBT bezeroan zure Hurruneko Sarbide Kodea aurkitzeko.  @@&lt;a href=\"https://wiki.biglybt.com/w/Android_Remote_Guide\"&gt;Gida&lt;/a&gt;</string>
+	<string name="login_guide">Joan hona |Tresnak| &gt; |Hurruneko Parekatzea| mahaigaineko Torrent TV bezeroan zure Hurruneko Sarbide Kodea aurkitzeko.  @@&lt;a href=\"https://wiki.biglybt.com/w/Android_Remote_Guide\"&gt;Gida&lt;/a&gt;</string>
 	<string name="dialog_delete_title">Kendu Torrenta?</string>
 	<string name="dialog_delete_message">\'%s\' torrenta kendu egingo da.</string>
 	<string name="dialog_delete_button_remove">Kendu</string>
 	<string name="profile_list_header">Hurruneko Bezero Eskuragarriak</string>
 	<string name="movedata_history">Historia</string>
 	<string name="move_data_storeinhistory">Biltegiratu kokalekua historian</string>
-	<string name="biglybt_logo">BiglyBT Logoa</string>
+	<string name="biglybt_logo">Torrent TV Logoa</string>
 	<string name="action_refresh">Berritu</string>
 	<string name="about_ideas">Gure aplikazioa gogoko baduzu mailatu gaitzazu &lt;a href=\"market://details?id=com.biglybt.android.client\"&gt;Google Play Store&lt;/a&gt;n!</string>
 	<string name="addtorrent_info">Ez baduzu torrent agiri bat, bat bilatu dezakezu zure hurruneko makinaren bilaketa ereduak erabiliz.  Besterik gabe klikatu bilaketa botoia eta idatzi bilaketa hitz bat.</string>
 	<string name="profile_ac_explain">Zure elkarketa ezarpenak, IP helbidea eta ataka bezalakoak, guztiak zure Sarbide Kodeak kudeatzen ditu</string>
-	<string name="biglybt_required">Barkatu, \'%s\' ezaugarriak BiglyBT bezero bati elkarturik egotea behar du.  Eskertuko genuke aldatuko bazenu! ^_^</string>
+	<string name="biglybt_required">Barkatu, \'%s\' ezaugarriak Torrent TV bezero bati elkarturik egotea behar du.  Eskertuko genuke aldatuko bazenu! ^_^</string>
 	<string name="old_rpc">Zure hurruneko makina Transmission bertsio zahar batekin ari da.  Eginkizun zenbait (edo guztiak!) badaiteke lan ez egitea.  Emaitz hoberako, mesedez eguneratu Transmission 2.40 (RPC 14) edo handiagora</string>
 	<string name="last_used_ago">Azken elkarketa: %s</string>
 	<string name="last_used_never">Inoiz elkartu gabe</string>
@@ -123,9 +123,9 @@
 	<string name="torrent_status_queued_dl">Lerrokatuta Jeisteko</string>
 	<string name="torrent_status_queued_ul">Lerrokatuta Emaritzarako</string>
 	<string name="torrent_status_checking">Agiriak egiaztatzen</string>
-	<string name="local_name">Tokiko BiglyBT %s</string>
-	<string name="local_vuze_name">Tokiko Vuze App %s</string>
-	<string name="local_vuze_remote_name">Tokiko Hurruneko Vuze -&gt; %s</string>
+	<string name="local_name">Tokiko Torrent TV %s</string>
+	<string name="local_vuze_name">Tokiko Torrent TV App %s</string>
+	<string name="local_vuze_remote_name">Tokiko Hurruneko Torrent TV -&gt; %s</string>
 	<string name="dialog_delete_datatoo">Kendu jeitsitako agiriak ere</string>
 	<string name="multi_select_tip">Ikutu eta Heutsi hautapen anitzerako. <i>EGINDA</i> deshautatzeko.</string>
 	<string name="generic_x_of_y">%1$s -&gt; %2$s-tik</string>
@@ -228,7 +228,7 @@
 	<string name="select_multiple_items">Hautatu Gai Ugari</string>
 	<string name="import_profiles">Inportatu Profilak</string>
 	<string name="action_add_profile">Gehitu Profila</string>
-	<string name="toast_core_starting">BiglyBT Nukleoa abiatzen</string>
+	<string name="toast_core_starting">Torrent TV Nukleoa abiatzen</string>
 	<string name="action_shutdown_core">Itzali Zerbitzua</string>
 	<string name="ms_engines">Gailuak</string>
 	<string name="search_filter">Iragazkiak</string>

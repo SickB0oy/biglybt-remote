@@ -83,9 +83,9 @@
 	<string name="profile_password">Password</string>
 	<string name="action_delete_pref">Tanggalin ang profile</string>
 	<string name="dialog_delete_button_remove">Alisin</string>
-	<string name="local_name">Lokal BiglyBT sa %s</string>
-	<string name="local_vuze_name">Lokal Vuze App on %s</string>
-	<string name="local_vuze_remote_name">Lokal Vuze na malayo %s</string>
+	<string name="local_name">Lokal Torrent TV sa %s</string>
+	<string name="local_vuze_name">Lokal Torrent TV App on %s</string>
+	<string name="local_vuze_remote_name">Lokal Torrent TV na malayo %s</string>
 	<string name="dialog_delete_datatoo">Tangagalin din ang naidownload na files</string>
 	<string name="multi_select_tip">Tapikin ang &amp; Hawakan para mag multi-select</string>
 	<string name="generic_x_of_y">%1$s sa %2$s</string>
@@ -159,7 +159,7 @@
 	<string name="export_profiles">Maglabas ng Profiles</string>
 	<string name="import_profiles">Pag-angkat ng Profiles</string>
 	<string name="action_add_profile">Magdagdag ng Profile</string>
-	<string name="toast_core_starting">Pagsimula ng BiglyBT Core</string>
+	<string name="toast_core_starting">Pagsimula ng Torrent TV Core</string>
 	<string name="action_shutdown_core">Serbisyong Shutdown</string>
 	<plurals name="torrent_count">
 		<item quantity="one">%1$d torrent</item>
@@ -235,9 +235,9 @@
 	<string name="weeks">mga linggo</string>
 	<string name="months">mga buwan</string>
 	<string name="years">mga taon</string>
-	<string name="giveback_consider_subscription">Pakiusap na i-konsider ang pagbili ng suskripsyon, para ating mapatuloy ang pagpanatili at pagbuo ng BiglyBT para sa Android.</string>
+	<string name="giveback_consider_subscription">Pakiusap na i-konsider ang pagbili ng suskripsyon, para ating mapatuloy ang pagpanatili at pagbuo ng Torrent TV para sa Android.</string>
 	<string name="giveback_already_subscribed">Ikaw ay may hawak na suskripsyon. Salamat ng marami! Pwede mong ma e kansel ang suskripsyon sa nao mang oras sa pamamagitan ng Google Play-&gt;Mga Suskripsyon&lt;br&gt;&lt;br&gt;Kun gusto mong mag ambag sa ibang paraan, Pakiusap paki tingnan ang aming &lt;a href=\"https://www.biglybt.com/contribute\"&gt;Contributing&lt;/a&gt; page.</string>
-	<string name="giveback_firstline">BiglyBT ay hindi nagpapabayad sa mga napunung features, o e kripple ang software hangang sa makabayad ka.</string>
+	<string name="giveback_firstline">Torrent TV ay hindi nagpapabayad sa mga napunung features, o e kripple ang software hangang sa makabayad ka.</string>
 	<string name="giveback_title">Ibigay ang ibalik</string>
 	<string name="giveback_no_google">Paki-usap bisitahin&lt;a href=\"https://www.biglybt.com/contribute\"&gt;biglybt.com/contribute&lt;/a&gt;, o iboto ang mga ideya para sa Android app at&lt;a href=\"https://vote.biglybt.com/android\"&gt;vote.biglybt.com/android&lt;/a&gt;</string>
 	<string name="movedata_place_in_subfolder">Ilagay sa &lt;b&gt;%1$s&lt;/b&gt; subfolder</string>
@@ -256,13 +256,13 @@
 	<string name="login_server_title">Torrent gamit ang device na ito</string>
 	<string name="login_server_subtitle">Patakbuhin ang torrent kliyente sa iyong device</string>
 	<string name="login_remote_title">Ikonekta sa Remote Client</string>
-	<string name="login_remote_subtitle">Kontrolin ang remotely running BiglyBT, Pagkanap o ang Vuze client</string>
+	<string name="login_remote_subtitle">Kontrolin ang remotely running Torrent TV, Pagkanap o ang Torrent TV client</string>
 	<string name="setting_speed_on_summary">Paganahin at %1$s</string>
 	<string name="unlimited">Walang limitado</string>
 	<string name="header_openoptions">Punuan ng Torrent%1$s</string>
 	<string name="rp_update_interval_mobile_same">Kapariho sa non- mobile</string>
-	<string name="private_external_storage">BiglyBT Pribadong Eksternal na Storage</string>
-	<string name="private_internal_storage">BiglyBT Pribadong Internal na Storage</string>
+	<string name="private_external_storage">Torrent TV Pribadong Eksternal na Storage</string>
+	<string name="private_internal_storage">Torrent TV Pribadong Internal na Storage</string>
 	<string name="dialog_remove_profile_title">Tanggalin ang profile?</string>
 	<string name="dialog_remove_profile_text">Configuration Settings sa profile \'%1$s\' ay nabura.</string>
 	<string name="button_remove">Tanggalin</string>

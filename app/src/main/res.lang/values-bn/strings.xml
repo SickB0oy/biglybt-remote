@@ -96,9 +96,9 @@
 	<string name="error_remote_not_found">আপনার দূরবর্তী ক্লায়েন্টে সংযোগ করতে অক্ষম। এটি চলমান হতে প্রদর্শিত হবে না।</string>
 	<string name="error_connecting">সংযোগ করার সময় ত্রুটি</string>
 	<string name="button_continue">চালিয়ে যান</string>
-	<string name="action_about">BiglyBT সম্পর্কে</string>
+	<string name="action_about">Torrent TV সম্পর্কে</string>
 	<string name="about_thanks_header">এই অ্যাপ্লিকেশন অংশগুলি ধন্যবাদ জানাচ্ছে:</string>
-	<string name="login_guide">কাছে যাও | টুল | &gt; | দূরবর্তী একদল | আপনার দূরবর্তী অ্যাক্সেস কোড খুঁজে বের করতে BiglyBT বা Vuze ডেস্কটপ ক্লায়েন্ট।.</string>
+	<string name="login_guide">কাছে যাও | টুল | &gt; | দূরবর্তী একদল | আপনার দূরবর্তী অ্যাক্সেস কোড খুঁজে বের করতে Torrent TV বা Torrent TV ডেস্কটপ ক্লায়েন্ট।.</string>
 	<string name="login_guide2">নিজে হাতে রিমোট কনফিগার করুন &lt; href = \"biglybt://remote/cmd=advlogin\" &gt; উন্নত লগইন &lt; /a &gt;।  দেখতে @@ &lt; href = \"http://wiki.biglybt.com/w/Android_Remote_Guide\" &gt; &lt; /a &gt; পথ আরো সহায়তার জন্য।</string>
 	<string name="dialog_delete_title">টরেন্ট সরান?</string>
 	<string name="dialog_delete_message">টর্নেট \'%s\' সরানো হবে।</string>
@@ -106,11 +106,11 @@
 	<string name="profile_list_header">বিদ্যমান গ্রাহকবৃন্দ</string>
 	<string name="movedata_history">ইতিহাস</string>
 	<string name="move_data_storeinhistory">ইতিহাসের অবস্থান সঞ্চয় করুন</string>
-	<string name="biglybt_logo">BiglyBT লোগো</string>
+	<string name="biglybt_logo">Torrent TV লোগো</string>
 	<string name="action_refresh">সতেজকরণ করুন</string>
 	<string name="addtorrent_info">আপনার যদি কোনও টরেন্ট ফাইল না থাকে, তাহলে আপনি আপনার রিমোট মেশিনের অনুসন্ধান টেমপ্লেট ব্যবহার করে একটি অনুসন্ধান করতে পারেন। একটি অনুসন্ধান শব্দে অনুসন্ধান বোতামে ক্লিক করুন এবং টাইপ করুন।</string>
 	<string name="profile_ac_explain">আপনার সংযোগ সেটিংস, যেমন IP ঠিকানা এবং পোর্ট, আপনার সমস্ত অ্যাক্সেস কোড দ্বারা পরিচালিত হয়</string>
-	<string name="biglybt_required">দুঃখিত, বৈশিষ্ট্য \'%s\' এর জন্য BiglyBT ক্লায়েন্টের সাথে সংযোগ প্রয়োজন। যদি আপনি সুইচড করে থাকতেন তাহলে আমরা এটি পছন্দ করতাম! ^: _ ^</string>
+	<string name="biglybt_required">দুঃখিত, বৈশিষ্ট্য \'%s\' এর জন্য Torrent TV ক্লায়েন্টের সাথে সংযোগ প্রয়োজন। যদি আপনি সুইচড করে থাকতেন তাহলে আমরা এটি পছন্দ করতাম! ^: _ ^</string>
 	<string name="old_rpc">আপনার দূরবর্তী মেশিন ট্রান্সমিশন একটি পুরানো সংস্করণ চলমান হয়। কিছু (বা সব!) কার্যকারিতা কাজ করতে পারে না। ভাল ফলাফলের জন্য, 2.40 (RPC 14) বা তার থেকে উচ্চতর ট্রান্সমিশন আপগ্রেড করুন</string>
 	<string name="last_used_ago">সর্বশেষ যুক্ত হয়েছে %s</string>
 	<string name="last_used_never">কখনো সংযুক্ত নেই</string>
@@ -123,9 +123,9 @@
 	<string name="torrent_status_queued_dl">ডাউনলোড করার জন্য সারিবদ্ধ</string>
 	<string name="torrent_status_queued_ul">Seeding এর জন্য সারিবদ্ধ</string>
 	<string name="torrent_status_checking">ফাইলগুলি যাচাই করা হচ্ছে</string>
-	<string name="local_name">স্থানীয় BiglyBT এ %s</string>
+	<string name="local_name">স্থানীয় Torrent TV এ %s</string>
 	<string name="local_vuze_name">স্থানীয় ভুজে অ্যাপ্লিকেশন এ%s</string>
-	<string name="local_vuze_remote_name">স্থানীয় Vuze রিমোট %s উপর</string>
+	<string name="local_vuze_remote_name">স্থানীয় Torrent TV রিমোট %s উপর</string>
 	<string name="dialog_delete_datatoo">ডাউনলোড করা ফাইলগুলিও সরান</string>
 	<string name="multi_select_tip">&amp; ট্যাপ করুন বহু নির্বাচন করুন</string>
 	<string name="generic_x_of_y">%1$s, %2$s</string>
@@ -181,7 +181,7 @@
 	<string name="drawer_open">ড্রয়ার খুলুন</string>
 	<string name="drawer_close">ড্রয়ার বন্ধ করুন</string>
 	<string name="title_activity_rcm">আবিষ্কারের ঝাঁক</string>
-	<string name="rcm_na">%1$s দর্শন করুন পরবর্তী সময়ে আপনি আপনার দূরবর্তী মেশিন আসন্ন নির্বাচন BiglyBT.\n\nThe একটি সাম্প্রতিক সংস্করণ প্রয়োজন | সাহায্য | &gt; | হালনাগাদের জন্য পরীক্ষণ করুন | BiglyBT জন্য সর্বশেষ আপডেট করতে তৈরি।</string>
+	<string name="rcm_na">%1$s দর্শন করুন পরবর্তী সময়ে আপনি আপনার দূরবর্তী মেশিন আসন্ন নির্বাচন Torrent TV.\n\nThe একটি সাম্প্রতিক সংস্করণ প্রয়োজন | সাহায্য | &gt; | হালনাগাদের জন্য পরীক্ষণ করুন | Torrent TV জন্য সর্বশেষ আপডেট করতে তৈরি।</string>
 	<string name="change_name_title">টরেন্ট নাম পরিবর্তন করুন</string>
 	<string name="change_name_message">এই প্রদর্শন নামটি পরিবর্তন করা টরেন্ট ডেটা সংরক্ষণ স্থান পরিবর্তন করবে না</string>
 	<string name="torrent_url_add_failed">&lt;b&gt;%1$s&lt;/b&gt; নয় বৈধ টরেন্ট ফাইল।   প্রথম পাঁচটা-বাইট হয়&lt;b&gt;%2$s&lt;/b&gt; আপনি  যাতে করে ভাগ্য \n\n এই যন্ত্র ব্যবহার করে টরেন্ট ফাইলটি ডাউনলোড করে এবং সংরক্ষিত টরেন্ট ফাইল যুক্ত করার।</string>
@@ -200,7 +200,7 @@
 	<string name="torrent_open_options_title">টরেন্ট খুলুন</string>
 	<string name="not_torrent_file_kitkat">খুলতে পারেনি &lt;b&gt;%1$s&lt;/b&gt;  যেহেতু আপনি কিটক্যাট (অ্যানড্রইড ভি 4) -এ রয়েছেন, এটির ফাইলটি সম্ভবত বহিরাগত স্টোরেজ থাকা অবস্থায় বা অন্য অ্যাপে সংরক্ষিত একটি অবস্থানের কারণে, যেটি আমরা পড়তে অনুমতিপ্রাপ্ত না।</string>
 	<string name="x_space_free">%1$s বিনামূল্যে</string>
-	<string name="ask_rating_message">আপনার অব্যাহত সমর্থনের জন্য আপনাকে ধন্যবাদ :3\n\nআপনি BiglyBT ব্যবহার করে উপভোগ করেন,দয়া করে Play Store আমাদের অ্যাপ্লিকেশন রেট করার জন্য একটি মুহূর্ত নিন।.</string>
+	<string name="ask_rating_message">আপনার অব্যাহত সমর্থনের জন্য আপনাকে ধন্যবাদ :3\n\nআপনি Torrent TV ব্যবহার করে উপভোগ করেন,দয়া করে Play Store আমাদের অ্যাপ্লিকেশন রেট করার জন্য একটি মুহূর্ত নিন।.</string>
 	<string name="no_thanks">না, ধন্যবাদ</string>
 	<string name="rate_now">এখন রেট দিন</string>
 	<string name="later">পরে</string>
@@ -231,7 +231,7 @@
 	<string name="export_profiles">প্রোফাইল রপ্তানি করুন</string>
 	<string name="import_profiles">প্রোফাইল আমদানি করুন</string>
 	<string name="action_add_profile">প্রোফাইল যুক্ত করুন</string>
-	<string name="toast_core_starting">BiglyBT কোর আপ শুরু হচ্ছে</string>
+	<string name="toast_core_starting">Torrent TV কোর আপ শুরু হচ্ছে</string>
 	<string name="action_shutdown_core">বন্ধ পরিষেবা</string>
 	<plurals name="torrent_actions_for_multiple">
 		<item quantity="one">কাজের জন্য %1$d টরেন্ট</item>
@@ -353,8 +353,8 @@
 	<string name="weeks">সপ্তাহ</string>
 	<string name="months">মাস</string>
 	<string name="years">বছর</string>
-	<string name="giveback_consider_subscription">একটি সাবস্ক্রিপশন ক্রয় বিবেচনা করুন, যাতে আমরা বজায় রাখা এবং Android এর জন্য BiglyBT বিকাশ চালিয়ে যেতে পারেন</string>
-	<string name="giveback_firstline">BiglyBT অতিরিক্ত বৈশিষ্ট্যগুলির জন্য চার্জ করবেন না, যতক্ষণ না আপনি অর্থ প্রদান করবেন ততক্ষণ সফ্টওয়্যারটি নষ্ট করবেন না।</string>
+	<string name="giveback_consider_subscription">একটি সাবস্ক্রিপশন ক্রয় বিবেচনা করুন, যাতে আমরা বজায় রাখা এবং Android এর জন্য Torrent TV বিকাশ চালিয়ে যেতে পারেন</string>
+	<string name="giveback_firstline">Torrent TV অতিরিক্ত বৈশিষ্ট্যগুলির জন্য চার্জ করবেন না, যতক্ষণ না আপনি অর্থ প্রদান করবেন ততক্ষণ সফ্টওয়্যারটি নষ্ট করবেন না।</string>
 	<string name="giveback_title">ফেরৎ পাঠান</string>
 	<string name="giveback_no_google">অনুগ্রহ করে ভিজিট করুন &lt; href = \"https://www.biglybt.com/contribute\" &gt; biglybt.com/contribute &lt; /a &gt; বা অ্যান্ড্রয়েড অ্যাপ এ ধারণার উপর ভোট &lt; href = \"https://vote.biglybt.com/android\" &gt; vote.biglybt.com/android &lt; /a &gt;</string>
 	<string name="movedata_place_in_subfolder">&lt;b&gt;%1$s&lt;/b&gt; সাবফোলারে স্থান রাখুন</string>
@@ -373,13 +373,13 @@
 	<string name="login_server_title">টরেন্ট করুন এই ডিভাইস ব্যবহার করে</string>
 	<string name="login_server_subtitle">পুরো টরেন্ট ক্লায়েন্ট আপনার ডিভাইসে চালু করুন</string>
 	<string name="login_remote_title">দূরবর্তী ক্লায়েন্টের সাথে সংযুক্ত করুন</string>
-	<string name="login_remote_subtitle">দূরবর্তীভাবে চলমান BiglyBT, ট্রান্সমিশন, বা Vuze ক্লায়েন্ট নিয়ন্ত্রণ করুন</string>
+	<string name="login_remote_subtitle">দূরবর্তীভাবে চলমান Torrent TV, ট্রান্সমিশন, বা Torrent TV ক্লায়েন্ট নিয়ন্ত্রণ করুন</string>
 	<string name="setting_speed_on_summary">%1$s এ সক্ষম</string>
 	<string name="unlimited">সীমাহীন</string>
 	<string name="header_openoptions">টরেন্ট যুক্ত করুন%1$s</string>
 	<string name="rp_update_interval_mobile_same">যেমন-মোবাইল</string>
-	<string name="private_external_storage">BiglyBT ব্যক্তিগত বহিরাগত সংগ্রহস্থল</string>
-	<string name="private_internal_storage">BiglyBT ব্যক্তিগত বহিরাগত সংগ্রহস্থল</string>
+	<string name="private_external_storage">Torrent TV ব্যক্তিগত বহিরাগত সংগ্রহস্থল</string>
+	<string name="private_internal_storage">Torrent TV ব্যক্তিগত বহিরাগত সংগ্রহস্থল</string>
 	<string name="dialog_remove_profile_title">প্রোফাইল অপসারণ করুন?</string>
 	<string name="dialog_remove_profile_text">প্রোফাইল \'%1$s\'-এর জন্য কনফিগারেশন সেটিংস বিলোপ করা হবে।</string>
 	<string name="button_remove">সরান</string>

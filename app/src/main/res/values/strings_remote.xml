@@ -10,5 +10,5 @@
 	<string name="plus_later">Later</string>
 	<string name="plus_remote_banner">Remote access: %1$s\nUser: %2$s    Password: %3$s</string>
 	<string name="plus_remote_banner_nopw">Remote access: %1$s</string>
-	<string name="plus_about">Torrent TV is a torrent client for Android TV and phones, based on BiglyBT: updated for recent Android versions, with USB drive support, a safer remote access and a new remote control page.&lt;br/&gt;&lt;br/&gt;Source code and updates: &lt;a href="https://github.com/SickB0oy/biglybt-remote"&gt;github.com/SickB0oy/biglybt-remote&lt;/a&gt;&lt;br/&gt;Based on BiglyBT by Bigly Software: &lt;a href="https://www.biglybt.com"&gt;biglybt.com&lt;/a&gt;</string>
+	<string name="plus_about">Torrent TV is a torrent client for Android TV and phones: download in the living room and control it from your phone or computer.&lt;br/&gt;&lt;br/&gt;Free software under the GPL license. &lt;a href="https://github.com/SickB0oy/biglybt-remote"&gt;Source code and updates&lt;/a&gt;</string>
 </resources>

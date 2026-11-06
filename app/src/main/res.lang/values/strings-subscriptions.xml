@@ -6,7 +6,7 @@
 		<item quantity="one">Actions for %1$d subscription entries</item>
 		<item quantity="other">Actions for %1$d subscription entries</item>
 	</plurals>
-	<string name="subscription_results_header">Subscription <xliff:g example="Cat Videos" id="subcription_name">&lt;b>%1$s&lt;/b></xliff:g> on <xliff:g example="Local BiglyBT on Galaxy Tab" id="profile_name">&lt;b>%2$s&lt;/b></xliff:g></string>
+	<string name="subscription_results_header">Subscription <xliff:g example="Cat Videos" id="subcription_name">&lt;b>%1$s&lt;/b></xliff:g> on <xliff:g example="Local Torrent TV on Galaxy Tab" id="profile_name">&lt;b>%2$s&lt;/b></xliff:g></string>
 	<plurals name="subscription_results_subheader">
 		<item quantity="one">&lt;b>%1$s&lt;/b> result, &lt;b>%2$s&lt;/b> new</item>
 		<item quantity="other">&lt;b>%1$s&lt;/b> results, &lt;b>%2$s&lt;/b> new</item>

@@ -97,10 +97,10 @@
 	<string name="error_remote_not_found">Hindi makakonekta sa iyong remote client. Ito ay hindi lumilitaw na tumatakbo.</string>
 	<string name="error_connecting">Error sa Pagkonekta</string>
 	<string name="button_continue">Magpatuloy</string>
-	<string name="action_about">Tungkol sa BiglyBT</string>
+	<string name="action_about">Tungkol sa Torrent TV</string>
 	<string name="about_thanks_header">Mga bahagi ng app na ito salamat sa:</string>
 	<string name="about_translator">%1$s pagsasalin na ibinigay ng ilagay ang iyong pangalan dito</string>
-	<string name="login_guide">Pumunta sa mga |Tool |&gt;|na malayuang pagpapares|sa Biglybt o Vuze desktop client upang mahanap ang iyong remote access code.</string>
+	<string name="login_guide">Pumunta sa mga |Tool |&gt;|na malayuang pagpapares|sa Biglybt o Torrent TV desktop client upang mahanap ang iyong remote access code.</string>
 	<string name="dialog_delete_title">Tanggalin ang Torrent?</string>
 	<string name="dialog_delete_message">Ang torrent%s ay aalisin.</string>
 	<string name="dialog_delete_button_remove">Alisin</string>

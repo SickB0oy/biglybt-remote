@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="core_noti_title">BiglyBT Torrenting Service</string>
+	<string name="core_noti_title">Torrent TV Torrenting Service</string>
 	<string name="core_noti_restarting">E de restart</string>
 	<string name="core_noti_starting">E don de start</string>
 	<string name="core_noti_stopping">E de stop</string>

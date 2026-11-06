@@ -163,7 +163,7 @@
 				<category android:name="android.intent.category.LEANBACK_LAUNCHER"/>
 			</intent-filter>
 
-			<intent-filter android:label="BiglyBT Remote" android:autoVerify="true">
+			<intent-filter android:label="Torrent TV Remote" android:autoVerify="true">
 				<action android:name="android.intent.action.VIEW"/>
 
 				<category android:name="android.intent.category.BROWSABLE"/>
@@ -173,7 +173,7 @@
 				<data android:scheme="https" android:host="remote.biglybt.com" android:pathPrefix="/android"/>
 			</intent-filter>
 
-			<intent-filter android:label="BiglyBT Torrent Url Opener">
+			<intent-filter android:label="Torrent TV Torrent Url Opener">
 				<action android:name="android.intent.action.VIEW"/>
 
 				<category android:name="android.intent.category.BROWSABLE"/>
@@ -305,7 +305,7 @@
 
 			</intent-filter>
 
-			<intent-filter android:label="BiglyBT File Opener">
+			<intent-filter android:label="Torrent TV File Opener">
 				<action android:name="android.intent.action.VIEW"/>
 
 				<category android:name="android.intent.category.BROWSABLE"/>
@@ -421,7 +421,7 @@
 				<!-- << https << -->
 			</intent-filter>
 
-			<intent-filter android:label="BiglyBT Magnet URI Opener">
+			<intent-filter android:label="Torrent TV Magnet URI Opener">
 				<action android:name="android.intent.action.VIEW"/>
 
 				<category android:name="android.intent.category.BROWSABLE"/>
@@ -430,7 +430,7 @@
 				<data android:scheme="magnet"/>
 			</intent-filter>
 
-			<intent-filter android:label="BiglyBT Scheme URI Opener">
+			<intent-filter android:label="Torrent TV Scheme URI Opener">
 				<action android:name="android.intent.action.VIEW"/>
 
 				<category android:name="android.intent.category.BROWSABLE"/>
@@ -440,7 +440,7 @@
 				<data android:scheme="biglybt"/>
 			</intent-filter>
 
-			<intent-filter android:label="BiglyBT URL Opener">
+			<intent-filter android:label="Torrent TV URL Opener">
 				<action android:name="android.intent.action.VIEW"/>
 
 				<category android:name="android.intent.category.BROWSABLE"/>
@@ -452,7 +452,7 @@
 					android:mimeType="application/x-bittorrent"/>
 			</intent-filter>
 
-			<intent-filter android:label="BiglyBT Opener">
+			<intent-filter android:label="Torrent TV Opener">
 				<!-- Tested on Android 33, Google Drive & Files & "Files by Google" -->
 				<!-- This is also the one File Commander uses for "Open With", even though mimetype sent is */* -->
 				<action android:name="android.intent.action.VIEW"/>
@@ -466,7 +466,7 @@
 					android:mimeType="application/x-bittorrent"/>
 			</intent-filter>
 
-			<intent-filter android:label="BiglyBT Manage">
+			<intent-filter android:label="Torrent TV Manage">
 				<action android:name="android.provider.action.MANAGE_DOCUMENT"/>
 
 				<category android:name="android.intent.category.BROWSABLE"/>
@@ -478,7 +478,7 @@
 					android:mimeType="application/x-bittorrent"/>
 			</intent-filter>
 
-			<intent-filter android:label="BiglyBT File Opener">
+			<intent-filter android:label="Torrent TV File Opener">
 				<action android:name="android.intent.action.VIEW"/>
 
 				<category android:name="android.intent.category.BROWSABLE"/>
@@ -504,7 +504,7 @@
 					android:mimeType="application/x-vuze"/>
 			</intent-filter>
 
-			<intent-filter android:label="BiglyBT file:// Opener">
+			<intent-filter android:label="Torrent TV file:// Opener">
 				<action android:name="android.intent.action.VIEW"/>
 
 				<category android:name="android.intent.category.BROWSABLE"/>
@@ -599,7 +599,7 @@
 					android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.biglybt"/>
 			</intent-filter>
 
-			<intent-filter android:label="BiglyBT content:// Opener">
+			<intent-filter android:label="Torrent TV content:// Opener">
 				<action android:name="android.intent.action.VIEW"/>
 
 				<category android:name="android.intent.category.BROWSABLE"/>
@@ -694,7 +694,7 @@
 					android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.biglybt"/>
 			</intent-filter>
 
-			<intent-filter android:label="BiglyBT content:// opener">
+			<intent-filter android:label="Torrent TV content:// opener">
 				<action android:name="android.intent.action.VIEW"/>
 
 				<category android:name="android.intent.category.BROWSABLE"/>
@@ -716,7 +716,7 @@
 					android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.torrent"/>
 			</intent-filter>
 
-			<intent-filter android:label="BiglyBT File content:// opener">
+			<intent-filter android:label="Torrent TV File content:// opener">
 				<!-- Solid Explorer (but not the label), Mi File Manager -->
 				<action android:name="android.intent.action.VIEW"/>
 
@@ -742,7 +742,7 @@
 					android:pathPattern=".*\\..*\\..*\\..*\\.vuze"/>
 			</intent-filter>
 
-			<intent-filter android:label="BiglyBT file:// opener">
+			<intent-filter android:label="Torrent TV file:// opener">
 				<action android:name="android.intent.action.VIEW"/>
 
 				<category android:name="android.intent.category.BROWSABLE"/>

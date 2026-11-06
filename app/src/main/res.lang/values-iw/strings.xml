@@ -96,10 +96,10 @@
 	<string name="error_remote_not_found">אין אפשרות להתחבר לשלוחה מרחוק. ניראה שאינה מופעלת.</string>
 	<string name="error_connecting">שגיאה בהתחברות</string>
 	<string name="button_continue">המשך</string>
-	<string name="action_about">אודות BiglyBT</string>
+	<string name="action_about">אודות Torrent TV</string>
 	<string name="about_thanks_header">חלקים של יישום זה הודות ל:</string>
 	<string name="about_translator">%1$s תרגום סופק ע\"י הכנסשםכאן</string>
-	<string name="login_guide">לך אל | כלים|&gt; | חיבור מרחוק | בשרת BiglyBT או Vuze desktop על מנת למצוא את הקוד גישה מרחוק.</string>
+	<string name="login_guide">לך אל | כלים|&gt; | חיבור מרחוק | בשרת Torrent TV או Torrent TV desktop על מנת למצוא את הקוד גישה מרחוק.</string>
 	<string name="login_guide2">על מנת להגדיר את המדריך לשליטה מרחוק, נסה את &lt;a href=\"biglybt://remote/cmd=advlogin\"&gt;Advanced Login&lt;/a&gt;. עיין ב @@&lt;a href=\"http://wiki.biglybt.com/w/Android_Remote_Guide\"&gt;Guide&lt;/a&gt; לעזרה נוספת.</string>
 	<string name="dialog_delete_title">האם להסיר טורנט?</string>
 	<string name="dialog_delete_message">הטורנט \'%s\' יוסר.</string>
@@ -107,13 +107,13 @@
 	<string name="profile_list_header">שרתים זמינים</string>
 	<string name="movedata_history">היסטוריה</string>
 	<string name="move_data_storeinhistory">אחסן מיקום בהיסטוריה</string>
-	<string name="biglybt_logo">BiglyBT לוגו</string>
+	<string name="biglybt_logo">Torrent TV לוגו</string>
 	<string name="action_refresh">רענן</string>
 	<string name="about_ideas">אם אהבת את האפליקציה, אנא שקול ל &lt;a href=\"subscribe\"&gt;subscription&lt;/a&gt; כדי לעזור להתפתחות הקהילה. או, אם אתה חסר פרוטה, דרג אותנו 
 ב &lt;a href=\"market://details?id=com.biglybt.android.client\"&gt;Google Play Store&lt;/a&gt;!</string>
 	<string name="addtorrent_info">אם אין לך תיקיית טורנט, תוכל לחפש אחת בעזרת דופסי מכשיר השליטה מרחוק. פשוט לחץ על כפתור החיפוש ורשום את מה שתרצה לחפש.</string>
 	<string name="profile_ac_explain">הגדרות החיבור שלך, כמו כתובת IP ושלוחה, מנוהלים ע\"י קוד הגישה שלך</string>
-	<string name="biglybt_required">סליחה, מאפיין \'%s\' דורש חיבור לשרת BiglyBT. נשמח אם תחליפו לחיבור זה_^!^</string>
+	<string name="biglybt_required">סליחה, מאפיין \'%s\' דורש חיבור לשרת Torrent TV. נשמח אם תחליפו לחיבור זה_^!^</string>
 	<string name="old_rpc">מכשיר השליטה מרחוק שלך עובד על גרסאת שדר ישנה. חלק (או כל!) מהפעולות עלולות לא לעבוד. לתוצאות טובות יותר, אנא שדרג לגירסאת שדר 2.40 RPC 14)) ומעלה</string>
 	<string name="last_used_ago">התחבר לאחרונה %s</string>
 	<string name="last_used_never">אף פעם לא התחבר</string>
@@ -128,9 +128,9 @@
 	<string name="torrent_status_queued_dl">ממתין בתור להורדה</string>
 	<string name="torrent_status_queued_ul">ממתין בתור לספק</string>
 	<string name="torrent_status_checking">מאמת קבצים</string>
-	<string name="local_name">BiglyBT מקומי ב- %s</string>
-	<string name="local_vuze_name">אפליקציית Vuze מקומית ב- %s</string>
-	<string name="local_vuze_remote_name">שליטה מרחוק Vuze מקומית ב- %s</string>
+	<string name="local_name">Torrent TV מקומי ב- %s</string>
+	<string name="local_vuze_name">אפליקציית Torrent TV מקומית ב- %s</string>
+	<string name="local_vuze_remote_name">שליטה מרחוק Torrent TV מקומית ב- %s</string>
 	<string name="dialog_delete_datatoo">הסר גם קבצים שהורדו</string>
 	<string name="multi_select_tip">הקש על &amp; החזק לבחירה מרובה</string>
 	<string name="generic_x_of_y">%1$s מ %2$s</string>
@@ -186,7 +186,7 @@
 	<string name="drawer_open">פתח מגירה</string>
 	<string name="drawer_close">סגור מגירה</string>
 	<string name="title_activity_rcm">ממצאים המוניים</string>
-	<string name="rcm_na">תצוגת %1$s דורשת גרסא עדכנית של BiglyBT.\n\n בפעם הבאה שאתה ליד המכשיר שליטה מרחוק שלך, בחר |Help| &gt; |בדוק עדכונים | ב-BiglyBT כדי לעדכן לגרסא העדכנית.</string>
+	<string name="rcm_na">תצוגת %1$s דורשת גרסא עדכנית של Torrent TV.\n\n בפעם הבאה שאתה ליד המכשיר שליטה מרחוק שלך, בחר |Help| &gt; |בדוק עדכונים | ב-Torrent TV כדי לעדכן לגרסא העדכנית.</string>
 	<string name="change_name_title">שנה שם טורנט</string>
 	<string name="change_name_message">שינוי שם תצוגה זה לא ישנה את מיקום שמירת המידע של הטורנט</string>
 	<string name="torrent_url_add_failed_openurl">פתיחת כתובת אינטרנט</string>
@@ -204,7 +204,7 @@
 	<string name="torrent_open_options_title">פתח טורנט</string>
 	<string name="not_torrent_file_kitkat">לא יכול לפתוח את &lt;b&gt;%1$s&lt;/b&gt;. מאחר ואתה ב Kitkat (Android v4), כנראה בגלל שהתיקיה נמצאת בזכרון פנימי או שמורה על אפליקציה אחרת במיקום שאין לנו רשות לקרוא.</string>
 	<string name="x_space_free">%1$s פנוי</string>
-	<string name="ask_rating_message">תודה לך על התמיכה המתמשכת. :3\n\nIf שנהנת מהשימוש ב-BiglyBT, אנא השקע רגע לדרג את האפליקציה שלנו ב-Play Store.</string>
+	<string name="ask_rating_message">תודה לך על התמיכה המתמשכת. :3\n\nIf שנהנת מהשימוש ב-Torrent TV, אנא השקע רגע לדרג את האפליקציה שלנו ב-Play Store.</string>
 	<string name="no_thanks">לא, תודה</string>
 	<string name="rate_now">דרג עכשיו</string>
 	<string name="later">מאוחר יותר</string>

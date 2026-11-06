@@ -47,6 +47,8 @@ public class DialogFragmentRemoteAccessQR
 
 	private static final String KEY_QR_URL_WEBUI = "qrURLw";
 
+	private static final String KEY_WEB_ONLY = "webOnly";
+
 	@Thunk
 	int viewMode = R.id.remote_access_qr_toggle_biglybt;
 
@@ -73,6 +75,13 @@ public class DialogFragmentRemoteAccessQR
 
 		MaterialButtonToggleGroup toggleGroup = view.findViewById(
 				R.id.remote_access_qr_toggle);
+		Bundle a = getArguments();
+		if (a != null && a.getBoolean(KEY_WEB_ONLY) && toggleGroup != null) {
+			// Torrent TV: only the web page QR code (no companion app)
+			viewMode = R.id.remote_access_qr_toggle_webui;
+			toggleGroup.setVisibility(View.GONE);
+			toggleGroup = null;
+		}
 		if (toggleGroup != null) {
 			viewMode = toggleGroup.getCheckedButtonId();
 			toggleGroup.addOnButtonCheckedListener((group, checkedId, isChecked) -> {
@@ -139,6 +148,18 @@ public class DialogFragmentRemoteAccessQR
 											});
 		}
 
+	}
+
+	/** Torrent TV: shows only the web page QR code */
+	public static void openWebOnly(FragmentManager fragmentManager,
+			String urlWebUI) {
+		DialogFragmentRemoteAccessQR dlg = new DialogFragmentRemoteAccessQR();
+		Bundle bundle = new Bundle();
+		bundle.putString(KEY_QR_URL_BIGLYBT, urlWebUI);
+		bundle.putString(KEY_QR_URL_WEBUI, urlWebUI);
+		bundle.putBoolean(KEY_WEB_ONLY, true);
+		dlg.setArguments(bundle);
+		AndroidUtilsUI.showDialog(dlg, fragmentManager, TAG);
 	}
 
 	public static void open(FragmentManager fragmentManager, String url,

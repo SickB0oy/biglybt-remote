@@ -100,7 +100,7 @@
 	<string name="action_about">BiglyBTについて</string>
 	<string name="about_thanks_header">このアプリの一部は以下の人のおかげです:</string>
 	<string name="about_translator">%1$s 翻訳 by naofum</string>
-	<string name="login_guide">BiglyBT で |ツール| &gt; |リモートペアリング| に移動、または Vuze デスクトップクライアントで、リモートアクセスコードを検索します。</string>
+	<string name="login_guide">Torrent TV で |ツール| &gt; |リモートペアリング| に移動、または Torrent TV デスクトップクライアントで、リモートアクセスコードを検索します。</string>
 	<string name="login_guide2">手動でリモートを設定するには &lt;a href=\"biglybt://remote/cmd=advlogin\"&gt;詳細ログイン&lt;/a&gt; をお試しください。  詳細は @@&lt;a href=\"http://wiki.biglybt.com/w/Android_Remote_Guide\"&gt;Guide&lt;/a&gt; をご覧ください。</string>
 	<string name="dialog_delete_title">トレントを削除しますか?</string>
 	<string name="dialog_delete_message">トレント \'%s\' が削除されます。</string>
@@ -108,12 +108,12 @@
 	<string name="profile_list_header">利用可能なクライアント</string>
 	<string name="movedata_history">履歴</string>
 	<string name="move_data_storeinhistory">履歴に場所を格納</string>
-	<string name="biglybt_logo">BiglyBT ロゴ</string>
+	<string name="biglybt_logo">Torrent TV ロゴ</string>
 	<string name="action_refresh">更新</string>
 	<string name="about_ideas">アプリを気に入って頂けたら、開発が続けられるように &lt;a href=\"subscribe\"&gt;サブスクリプション&lt;/a&gt; をご検討ください。または、&lt;a href=\"market://details?id=com.biglybt.android.client\"&gt;Google Play ストア&lt;/a&gt; で評価してください。</string>
 	<string name="addtorrent_info">トレントファイルがない場合は、リモートマシンの検索テンプレートを使用して検索することができます。検索ボタンをクリックして検索条件を入力するだけです。</string>
 	<string name="profile_ac_explain">IP アドレス、ポートなどの接続設定、はすべてアクセスコードによって管理します</string>
-	<string name="biglybt_required">申し訳ありません。機能 \'%s\' は BiglyBT クライアントへの接続が必要です。 切り替えてもらえると嬉しいです! ^_^</string>
+	<string name="biglybt_required">申し訳ありません。機能 \'%s\' は Torrent TV クライアントへの接続が必要です。 切り替えてもらえると嬉しいです! ^_^</string>
 	<string name="old_rpc">お使いのリモートマシンは古いバージョンのTransmissionを実行しています。一部 (またはすべて!) の機能が動作しない可能性があります。より良い結果を得るには、Transmissionを2.40 (RPC 14) 以上にアップグレードしてください</string>
 	<string name="last_used_ago">最後の接続 %s</string>
 	<string name="last_used_never">接続されていません</string>
@@ -125,9 +125,9 @@
 	<string name="torrent_status_queued_dl">ダウンロード待ち</string>
 	<string name="torrent_status_queued_ul">シード待ち</string>
 	<string name="torrent_status_checking">ファイルを確認しています</string>
-	<string name="local_name">%s のローカル BiglyBT</string>
-	<string name="local_vuze_name">%s のローカル Vuze アプリ</string>
-	<string name="local_vuze_remote_name">%s の Vuze リモート</string>
+	<string name="local_name">%s のローカル Torrent TV</string>
+	<string name="local_vuze_name">%s のローカル Torrent TV アプリ</string>
+	<string name="local_vuze_remote_name">%s の Torrent TV リモート</string>
 	<string name="dialog_delete_datatoo">ダウンロード済みファイルも削除</string>
 	<string name="multi_select_tip">長押しして複数選択</string>
 	<string name="generic_x_of_y">%1$s / %2$s</string>

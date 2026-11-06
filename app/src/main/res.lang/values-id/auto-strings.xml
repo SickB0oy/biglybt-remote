@@ -24,13 +24,13 @@ daftar yang didasarkan pada keyakinan baik keyakinan bahwa situs pelacak tersebu
 Tapi Anda berasumsi, dan kami menolak, semua risiko termasuk menggunakan situs pelacak tersebut.\n
 \n
 Jika Anda ingin mengaktifkan situs pelacak tersebut setelah membaca &lt;A HREF=\"https://wiki.biglybt.com/w/Swarm_Discoveries\"> di sini &lt;/A> tentang situs tersebut dan beberapa risiko penggunaannya, pilih opsi di bawah ini.</string>
-	<string name="rcm_ftux_option_preselect">AKTIFKAN BiglyBT Situs Pelacak Terpilih Sebelumnya.\n
+	<string name="rcm_ftux_option_preselect">AKTIFKAN Torrent TV Situs Pelacak Terpilih Sebelumnya.\n
 \n
 Saya telah membaca &lt;A HREF=\"https://wiki.biglybt.com/w/Swarm_Discoveries\"> di sini &lt;/A> dan\n
 \n
 &lt;A HREF=\"http://en.wikipedia.org/wiki/BitTorrent#Legal_issues\"> di sini &lt;/A> tentang situs tersebut dan beberapa risiko penggunaannya,\n
 \n
-dan saya MEMAHAMI DAN SETUJU bahwa BiglyBT tidak bertanggung jawab atas apa pun dengan mengaktifkan fungsi ini dan menggunakan pelacak tersebut.\n
+dan saya MEMAHAMI DAN SETUJU bahwa Torrent TV tidak bertanggung jawab atas apa pun dengan mengaktifkan fungsi ini dan menggunakan pelacak tersebut.\n
 \n
 Saya setuju bahwa ini adalah tanggung jawab saya untuk memastikan bahwa saya hanya mendownload konten yang halal dan tidak melanggar.</string>
 	<string name="rcm_ftux_info2">Jika anda ingin Swarm Discovery untuk menemukan berkas \"yang berkaitan\" dengan berkas torrent anda yang sudah ada dari semua sumber,\n
@@ -42,15 +42,15 @@ terlepas dari situs pelacak apa torrent tersebut berisi.\n
 \n
 Saya telah membaca &lt;A HREF=\"https://wiki.biglybt.com/w/Swarm_Discoveries\">disini&lt;/A> dan &lt;A HREF=\"http://en.wikipedia.org/wiki/BitTorrent#Legal_issues\">disini&lt;/A> tentang situs tersebut dan beberapa resiko dari penggunaannya.\n
 \n
-dan SAYA MENGERTI DAN SETUJU bahwa BiglyBT tidak memiliki tanggung jawab apapun dengan saya mengaktifkan fungsi ini dan menggunakan semua penemuan.\n
+dan SAYA MENGERTI DAN SETUJU bahwa Torrent TV tidak memiliki tanggung jawab apapun dengan saya mengaktifkan fungsi ini dan menggunakan semua penemuan.\n
 \n
 Saya setuju bahwa itu adalah tanggung jawab saya untuk memastikan bahwa saya hanya mengunduh konten yang sah menurut hukum dan tidak melanggar.</string>
-	<string name="rcm_ftux_smallprint">Setiap penggunaan BiglyBT yang melanggar hak seseorang atau identitas tidak diperbolehkan.
+	<string name="rcm_ftux_smallprint">Setiap penggunaan Torrent TV yang melanggar hak seseorang atau identitas tidak diperbolehkan.
 &lt;A HREF=\"https://wiki.biglybt.com/w/FAQ_Legal\"> Lainnya &lt;/A>.</string>
 	<string name="rcm_ftux2_heading">Informasi tambahan dan Peringatan tentang fitur ini</string>
-	<string name="rcm_ftux2_info">Untuk situs pelacak yang tidak termasuk dalam situs pelacak yang dipilih sebelumnya oleh BiglyBT, kami tambahkan peringatan bahwa beberapa dari situs pelacak tersebut mungkin disangka menjadi lebih untuk melacak berkas torrent yang mungkin melanggar atas hak-hak yang lainnya, termasuk hak cipta, dan mungkin menyertakan konten \"dewasa\" lebih banyak, beberapa mungkin bisa dituduh untuk melanggar atas hak-hak yang lainnya.\n
+	<string name="rcm_ftux2_info">Untuk situs pelacak yang tidak termasuk dalam situs pelacak yang dipilih sebelumnya oleh Torrent TV, kami tambahkan peringatan bahwa beberapa dari situs pelacak tersebut mungkin disangka menjadi lebih untuk melacak berkas torrent yang mungkin melanggar atas hak-hak yang lainnya, termasuk hak cipta, dan mungkin menyertakan konten \"dewasa\" lebih banyak, beberapa mungkin bisa dituduh untuk melanggar atas hak-hak yang lainnya.\n
 \n
-Diberikan tentang bagaimana Penemuan Swarm bekerja, berkas torrent pihak ketiga yang mungkin secara otomatis dianggap \"terkait\" dengan berkas torrent pada perangkat anda yang ditemukan dengan salah satu cara BiglyBT situs pelacak yang dipilih sebelumnya atau \"semua\" penemuan, mungkin \"terkait\" hanya oleh kebaikan dari kenyataan bahwa jika anda dan pengguna lainnya memiliki \"ABC.torrent,\" contohnya, dan banyak atau beberapa dari pengguna lain tersebut memiliki \"XXX.torrent,\" Penemuan Swarm mungkin menganggap \"XXX.torrent\" menjadi \"terkait\".\n
+Diberikan tentang bagaimana Penemuan Swarm bekerja, berkas torrent pihak ketiga yang mungkin secara otomatis dianggap \"terkait\" dengan berkas torrent pada perangkat anda yang ditemukan dengan salah satu cara Torrent TV situs pelacak yang dipilih sebelumnya atau \"semua\" penemuan, mungkin \"terkait\" hanya oleh kebaikan dari kenyataan bahwa jika anda dan pengguna lainnya memiliki \"ABC.torrent,\" contohnya, dan banyak atau beberapa dari pengguna lain tersebut memiliki \"XXX.torrent,\" Penemuan Swarm mungkin menganggap \"XXX.torrent\" menjadi \"terkait\".\n
 \n
 Anda mungkin ingin mengambil perhatian tambahan dalam memilih konten Penemuan Swarm apa yang ingin anda unduh, dan juga kemudian membuatnya tersedia untuk unggahan.</string>
 	<string name="rcm_ftux2_agree">Saya mengerti dan setuju.\n
@@ -61,7 +61,7 @@ terlepas dari situs pelacak apa torrent tersebut berisi.\n
 \n
 Saya telah membaca &lt;A HREF=\"https://wiki.biglybt.com/w/Swarm_Discoveries\">disini&lt;/A> dan &lt;A HREF=\"http://en.wikipedia.org/wiki/BitTorrent#Legal_issues\">disini&lt;/A> tentang situs pelacak tersebut dan beberapa resiko penggunaannya.\n
 \n
-dan SAYA MENGERTI DAN SETUJU bahwa BiglyBT tidak ada tanggung jawab apapun dengan saya mengaktifkan fungsi ini.\n
+dan SAYA MENGERTI DAN SETUJU bahwa Torrent TV tidak ada tanggung jawab apapun dengan saya mengaktifkan fungsi ini.\n
 \n
 Saya setuju bahwa itu adalah tanggung jawab saya untuk memastikan bahwa saya hanya mengunduh konten yang sah menurut hukum dan tidak melanggar.</string>
 	<string name="drawer_rcm">Penemuan Swarm</string>

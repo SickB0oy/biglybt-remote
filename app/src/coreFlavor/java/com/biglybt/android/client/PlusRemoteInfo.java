@@ -51,10 +51,7 @@ public class PlusRemoteInfo
 	}
 
 	public void showQr(FragmentActivity activity) {
-		String host = webUrl.substring("http://".length(), webUrl.lastIndexOf(':'));
-		String url = "biglybt://remote/profile?h=" + host + "&p="
-				+ RPC.LOCAL_BIGLYBT_PORT;
-		DialogFragmentRemoteAccessQR.open(activity.getSupportFragmentManager(), url,
+		DialogFragmentRemoteAccessQR.openWebOnly(activity.getSupportFragmentManager(),
 				webUrl);
 	}
 }

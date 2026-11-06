@@ -10,5 +10,6 @@
 	<string name="plus_later">Plus tard</string>
 	<string name="plus_remote_banner">Connexion à distance : %1$s\nIdentifiant : %2$s    Mot de passe : %3$s</string>
 	<string name="plus_remote_banner_nopw">Connexion à distance : %1$s</string>
-	<string name="plus_about">Torrent TV est un client torrent pour Android TV et téléphone, basé sur BiglyBT : mise à jour pour les Android récents, compatible avec les disques USB, avec un accès à distance plus sûr et une nouvelle page de commande à distance.&lt;br/&gt;&lt;br/&gt;Code source et mises à jour : &lt;a href="https://github.com/SickB0oy/biglybt-remote"&gt;github.com/SickB0oy/biglybt-remote&lt;/a&gt;&lt;br/&gt;D\'après BiglyBT de Bigly Software : &lt;a href="https://www.biglybt.com"&gt;biglybt.com&lt;/a&gt;</string>
+	<string name="plus_about">Torrent TV est un client torrent pour Android TV et téléphone : il télécharge dans le salon et se pilote depuis ton téléphone ou ton ordinateur.&lt;br/&gt;&lt;br/&gt;Logiciel libre sous licence GPL. &lt;a href="https://github.com/SickB0oy/biglybt-remote"&gt;Code source et mises à jour&lt;/a&gt;</string>
+	<string name="dialog_remote_access_webui_qr_info">Scanne ce QR code avec ton téléphone pour ouvrir la page de commande à distance.</string>
 </resources>

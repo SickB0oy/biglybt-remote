@@ -327,6 +327,20 @@ public class BiglyBTManager
 
 		COConfigurationManager.setParameter("ui", UI_NAME);
 
+		// Torrent TV: default download folder is Download/Torrent TV instead of
+		// Download/BiglyBT (only when still on the default)
+		try {
+			String savePath = COConfigurationManager.getStringParameter(
+					ConfigKeys.File.SCFG_DEFAULT_SAVE_PATH);
+			if (savePath != null && savePath.endsWith(java.io.File.separator + "BiglyBT")) {
+				COConfigurationManager.setParameter(ConfigKeys.File.SCFG_DEFAULT_SAVE_PATH,
+						savePath.substring(0, savePath.length() - "BiglyBT".length())
+								+ "Torrent TV");
+			}
+		} catch (Throwable t) {
+			Log.e(TAG, "Can't set the default download folder", t);
+		}
+
 		FileUtil.newFile(COConfigurationManager.getStringParameter(
 				ConfigKeys.File.SCFG_DEFAULT_SAVE_PATH)).mkdirs();
 		FileUtil.newFile(COConfigurationManager.getStringParameter(

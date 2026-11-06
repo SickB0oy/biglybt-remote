@@ -98,10 +98,10 @@
 	<string name="error_remote_not_found">Uzak istemcinize bağlanılamıyor. Çalışıyor gibi görünmüyor.</string>
 	<string name="error_connecting">Bağlanma Hatası</string>
 	<string name="button_continue">Devam</string>
-	<string name="action_about">BiglyBT Hakkında</string>
+	<string name="action_about">Torrent TV Hakkında</string>
 	<string name="about_thanks_header">Bu uygulamanın bazı bölümleri aşağıdakiler sayesindedir:</string>
 	<string name="about_translator">%1$s çevirisi Burak Yavuz (BouRock) tarafından yapıldı</string>
-	<string name="login_guide">Uzaktan Erişim Kodu\'nuzu bulmak için BiglyBT veya Vuze masaüstü istemcisinde |Araçlar| &gt; |Uzak Eşleştirme| menüsüne gidin.</string>
+	<string name="login_guide">Uzaktan Erişim Kodu\'nuzu bulmak için Torrent TV veya Torrent TV masaüstü istemcisinde |Araçlar| &gt; |Uzak Eşleştirme| menüsüne gidin.</string>
 	<string name="login_guide2">Elle uzağı yapılandırmak için &lt;a href=\"biglybt://remote/cmd=advlogin\"&gt;Gelişmiş Oturum Açma&lt;/a&gt;\'yı deneyin. Daha fazla yardım için @@ &lt;a href=\"http://wiki.biglybt.com/w/Android_Remote_Guide\"&gt;Rehbere&lt;/a&gt; bakın.</string>
 	<string name="dialog_delete_title">Torrent kaldırılsın mı?</string>
 	<string name="dialog_delete_message">\'%s\' torrent\'i kaldırılacaktır.</string>
@@ -109,12 +109,12 @@
 	<string name="profile_list_header">Mevcut İstemciler</string>
 	<string name="movedata_history">Geçmiş</string>
 	<string name="move_data_storeinhistory">Geçmişte konumu sakla</string>
-	<string name="biglybt_logo">BiglyBT Logosu</string>
+	<string name="biglybt_logo">Torrent TV Logosu</string>
 	<string name="action_refresh">Yenile</string>
 	<string name="about_ideas">Uygulamamızı beğeniyorsanız, geliştirmeye devam etmemize yardım etmek için bir &lt;a href=\"subscribe\"&gt;abonelik&lt;/a&gt; düşünün. Ya da, paranız yoksa, bizi &lt;a href=\"market://details?id=com.biglybt.android.client\"&gt;Google Play Mağazası\'nda&lt;/a&gt; değerlendirin!</string>
 	<string name="addtorrent_info">Eğer bir torrent dosyanız yoksa, uzak makinenizin arama şablonlarını kullanarak arama yapabilirsiniz. Sadece arama düğmesini tıklamanız ve bir arama terimi yazmanız yeterli.</string>
 	<string name="profile_ac_explain">IP adresi ve bağlantı noktası gibi bağlantı ayarlarınızın tümü Erişim Kodunuz tarafından yönetilir</string>
-	<string name="biglybt_required">Üzgünüz, \'%s\' özelliği, bir BiglyBT istemcisiyle bağlantı gerektiriyor. Değiştirirseniz seviniriz! ^ _ ^</string>
+	<string name="biglybt_required">Üzgünüz, \'%s\' özelliği, bir Torrent TV istemcisiyle bağlantı gerektiriyor. Değiştirirseniz seviniriz! ^ _ ^</string>
 	<string name="old_rpc">Uzak makineniz Transmission\'ın eski bir sürümünü çalıştırıyor. Bazı (veya tüm!) işlevsellik çalışmayabilir. Daha iyi sonuçlar almak için lütfen Transmission sürümünü, 2.40 (RPC 14) veya daha yüksek sürüme yükseltin</string>
 	<string name="last_used_ago">Son bağlanma %s</string>
 	<string name="last_used_never">Hiç bağlanmadı</string>
@@ -127,9 +127,9 @@
 	<string name="torrent_status_queued_dl">İndirme için Kuyruğa Alındı</string>
 	<string name="torrent_status_queued_ul">Gönderim için Kuyruğa Alındı</string>
 	<string name="torrent_status_checking">Dosyalar doğrulanıyor</string>
-	<string name="local_name">%s üzerinde Yerel BiglyBT</string>
-	<string name="local_vuze_name">%s üzerinde Yerel Vuze Uygulaması</string>
-	<string name="local_vuze_remote_name">%s üzerinde Yerel Vuze Kumandası</string>
+	<string name="local_name">%s üzerinde Yerel Torrent TV</string>
+	<string name="local_vuze_name">%s üzerinde Yerel Torrent TV Uygulaması</string>
+	<string name="local_vuze_remote_name">%s üzerinde Yerel Torrent TV Kumandası</string>
 	<string name="dialog_delete_datatoo">İndirilen dosyaları da kaldır</string>
 	<string name="multi_select_tip">Çoklu seçim için Dokunun ve Tutun</string>
 	<string name="generic_x_of_y">%1$s / %2$s</string>
@@ -209,7 +209,7 @@
 	<string name="title_activity_rcm">Sürü Keşifleri</string>
 	<string name="accept">Kabul Et</string>
 	<string name="decline">Reddet</string>
-	<string name="rcm_na">%1$s görünümü, BiglyBT\'nin en son sürümünü gerektirir.\n\nUzak makinenizin yanında olduğunuz bir sonraki sefer, en son yapıma güncellemek için BiglyBT\'de |Yardım| &gt; |Güncellemeleri Denetle| seçeneğini seçin.</string>
+	<string name="rcm_na">%1$s görünümü, Torrent TV\'nin en son sürümünü gerektirir.\n\nUzak makinenizin yanında olduğunuz bir sonraki sefer, en son yapıma güncellemek için Torrent TV\'de |Yardım| &gt; |Güncellemeleri Denetle| seçeneğini seçin.</string>
 	<string name="change_name_title">Torrent Adını Değiştirin</string>
 	<string name="change_name_message">Bu ekran adını değiştirmek torrent verilerinin kaydetme konumunu değiştirmeyecek</string>
 	<string name="torrent_url_add_failed">&lt;b&gt;%1$s&lt;/b&gt; geçerli bir torrent dosyası değil. İlk beş bayt &lt;b&gt;%2$s&lt;/b&gt;	
@@ -229,7 +229,7 @@
 	<string name="torrent_open_options_title">Torrent\'i Aç</string>
 	<string name="not_torrent_file_kitkat">&lt;b&gt;%1$s&lt;/b&gt; açılamadı. Kitkat\'ta (Android v4) olduğunuzdan, büyük olasılıkla dosyanın harici depolamada olmasından veya başka bir uygulama tarafından okuma izinlerine sahip olmadığımız bir konuma kaydedildiğinden dolayıdır.</string>
 	<string name="x_space_free">%1$s boş</string>
-	<string name="ask_rating_message">Sürekli desteğiniz için teşekkür ederiz. :3\n\nEğer BiglyBT\'yi kullanmaktan keyif alıyorsanız, Play Store\'da uygulamamızı değerlendirmek için lütfen bir dakikanızı ayırın.</string>
+	<string name="ask_rating_message">Sürekli desteğiniz için teşekkür ederiz. :3\n\nEğer Torrent TV\'yi kullanmaktan keyif alıyorsanız, Play Store\'da uygulamamızı değerlendirmek için lütfen bir dakikanızı ayırın.</string>
 	<string name="no_thanks">Hayır, Teşekkürler</string>
 	<string name="rate_now">Şimdi Değerlendir</string>
 	<string name="later">Sonra</string>
@@ -262,8 +262,8 @@
 	<string name="export_profiles">Profilleri Dışa Aktar</string>
 	<string name="import_profiles">Profilleri İçe Aktar</string>
 	<string name="action_add_profile">Profil Ekle</string>
-	<string name="toast_core_starting">BiglyBT Çekirdeği başlatılıyor</string>
-	<string name="toast_core_restarting">BiglyBT Çekirdeği yeniden başlatılıyor</string>
+	<string name="toast_core_starting">Torrent TV Çekirdeği başlatılıyor</string>
+	<string name="toast_core_restarting">Torrent TV Çekirdeği yeniden başlatılıyor</string>
 	<string name="action_shutdown_core">Hizmeti Kapat</string>
 	<plurals name="torrent_actions_for_multiple">
 		<item quantity="one">%1$d torrent için eylemler</item>
@@ -387,9 +387,9 @@
 	<string name="weeks">hafta</string>
 	<string name="months">ay</string>
 	<string name="years">yıl</string>
-	<string name="giveback_consider_subscription">Android için BiglyBT\'nin bakımını yapmaya ve geliştirmeye devam edebilmemiz için lütfen bir abonelik satın almayı düşünün.</string>
+	<string name="giveback_consider_subscription">Android için Torrent TV\'nin bakımını yapmaya ve geliştirmeye devam edebilmemiz için lütfen bir abonelik satın almayı düşünün.</string>
 	<string name="giveback_already_subscribed">Zaten bir aboneliğiniz bulunmakta. Çok teşekkür ederiz! Aboneliğinizi istediğiniz zaman Google Play-&gt;Hesap-&gt;Abonelikler&lt;br&gt;&lt;br&gt; menüsünü kullanarak iptal edebilirsiniz. Eğer diğer yollarla katkıda bulunmak isterseniz, lütfen &lt;a href=\"https://www.biglybt.com/contribute\"&gt;Katkıda bulunma&lt;/a&gt; sayfamızı gözden geçirin.</string>
-	<string name="giveback_firstline">BiglyBT ek özellikler için ücret talep etmez ne de ödeme yapmanıza kadar yazılıma zarar vermez.</string>
+	<string name="giveback_firstline">Torrent TV ek özellikler için ücret talep etmez ne de ödeme yapmanıza kadar yazılıma zarar vermez.</string>
 	<string name="giveback_title">Geri Ver</string>
 	<string name="giveback_no_google">Lütfen &lt;a href=\"https://www.biglybt.com/contribute\"&gt;biglybt.com/contribute&lt;/a&gt;, adresini ziyaret edin ya da &lt;a href=\"https://vote.biglybt.com/android\"&gt;vote.biglybt.com/android&lt;/a&gt; adresinde Android uygulaması için fikirleri oylayın</string>
 	<string name="movedata_place_in_subfolder">&lt;b&gt;%1$s&lt;/b&gt; alt klasörüne yerleştir</string>
@@ -408,14 +408,14 @@
 	<string name="login_server_title">Bu Cihazda Torrent Kullanımı</string>
 	<string name="login_server_subtitle">Cihazınızda tam bir torrent istemcisi çalıştırın</string>
 	<string name="login_remote_title">Uzak İstemciye Bağlan</string>
-	<string name="login_remote_subtitle">Çalışan bir BiglyBT, Transmission veya Vuze istemcisini uzaktan denetleyin</string>
+	<string name="login_remote_subtitle">Çalışan bir Torrent TV, Transmission veya Torrent TV istemcisini uzaktan denetleyin</string>
 	<string name="setting_speed_on_summary">%1$s olarak ayarlandı</string>
 	<string name="unlimited">Sınırsız</string>
 	<string name="header_openoptions">%1$s Torrent\'ini Ekle</string>
 	<string name="rp_update_interval_mobile_same">Mobil olmayanla aynı</string>
-	<string name="private_external_storage">BiglyBT Özel Harici Depolama</string>
-	<string name="private_internal_storage">BiglyBT Özel Dahili Depolama</string>
-	<string name="private_internal_storage_warning">Uyarı: BiglyBT\'yi kaldırırsanız Özel Dahili Depolama içinde depolanan dosyalar silinecektir</string>
+	<string name="private_external_storage">Torrent TV Özel Harici Depolama</string>
+	<string name="private_internal_storage">Torrent TV Özel Dahili Depolama</string>
+	<string name="private_internal_storage_warning">Uyarı: Torrent TV\'yi kaldırırsanız Özel Dahili Depolama içinde depolanan dosyalar silinecektir</string>
 	<string name="dialog_remove_profile_title">Profil Kaldırılsın mı?</string>
 	<string name="dialog_remove_profile_text">\'%1$s\' profili için yapılandırma ayarları silinecektir.</string>
 	<string name="button_remove">Kaldır</string>
@@ -533,7 +533,7 @@ Verilerin hiçbiri kişisel olarak tanımlanabilir bilgiler içermez ve verileri
 Veriler üçüncü taraf veri işleyicileriyle paylaşılmaz ve sunucularımızda kalıcı olarak saklanmaz.
 Gönderilen veriler aşağıdaki gibidir:</string>
 	<string name="gdpr_full_client_data">* Uyg kimliği (her zaman \"az\")\n
-* Uyg adı (her zaman \"BiglyBT\")\n
+* Uyg adı (her zaman \"Torrent TV\")\n
 * Şu anki ve 1. istemci sürümü\n
 * İS adı ve sürümü ve mimarisi\n
 * Arayüz (her zaman \"ac\")\n
@@ -545,10 +545,10 @@ Gönderilen veriler aşağıdaki gibidir:</string>
 	<string name="password_is_set">Parola Ayarlandı</string>
 	<string name="action_remote_access_qr"><![CDATA[Kaydet ve QR kodu göster]]></string>
 	<string name="dialog_title_remote_access_qr">Uzaktan Erişim QR kodu</string>
-	<string name="dialog_remote_access_biglybt_qr_info">BiglyBT yüklü bir android cihazda bu QR Kodunu taratın.\n&lt;small&gt;Daha Eski BiglyBT Android istemcileri bir &lt;b&gt;Erişim kodu \'PROFİLİ\' bilinmiyor&lt;/b&gt;&lt;/small&gt; hatası gösterecektir.</string>
+	<string name="dialog_remote_access_biglybt_qr_info">Torrent TV yüklü bir android cihazda bu QR Kodunu taratın.\n&lt;small&gt;Daha Eski Torrent TV Android istemcileri bir &lt;b&gt;Erişim kodu \'PROFİLİ\' bilinmiyor&lt;/b&gt;&lt;/small&gt; hatası gösterecektir.</string>
 	<string name="dialog_remote_access_webui_qr_info">Herhangi bir modern tarayıcıda web arayüzüne erişmek için bu QR Kodu taratın.</string>
 	<string name="dialog_remote_access_webui_qr_button">Web Arayüzü QR Kodu</string>
-	<string name="dialog_remote_access_biglybt_qr_button">BiglyBT QR Kodu</string>
+	<string name="dialog_remote_access_biglybt_qr_button">Torrent TV QR Kodu</string>
 	<string name="rpc_not_authorized_adv">Yetkili Değil.  Lütfen Kullanıcı Adı ve Parolanın doğru olduğundan emin olun.</string>
 	<string name="password_is_required">Parola gerekli</string>
 	<string name="prefsummary_proxy_port">B.Noktası %1$d</string>
@@ -583,7 +583,7 @@ Gönderilen veriler aşağıdaki gibidir:</string>
 	<string name="AskResetToDefault">Ayar varsayılan değere sıfırlansın mı?</string>
 	<string name="AlreadyDefault">Ayar zaten varsayılan değerde</string>
 	<string name="folder_permissions_needed">Klasör İzinleri Gerekli</string>
-	<string name="ask_for_folder_auth">BiglyBT’nin\n\n%2$s için\n\n&lt;b&gt;%1$s&lt;/b&gt; izinlerine ihtiyacı var</string>
+	<string name="ask_for_folder_auth">Torrent TV’nin\n\n%2$s için\n\n&lt;b&gt;%1$s&lt;/b&gt; izinlerine ihtiyacı var</string>
 	<string name="ask_for_folder_auth_old">Size Android’in klasör seçim uygulaması gösterilecektir. Yetkilendirmek için bulunduğu yola gitmek ve \"%1$s\" seçeneğine tıklamak zorundasınız</string>
 	<string name="ask_for_folder_auth_new">Size gerekli klasörün bulunduğu Android’in klasör seçim uygulaması gösterilecektir. Yetkilendirmek için \"%1$s\" seçeneğini tıklayın</string>
 	<string name="folder_auth_shieldtv">Seçme düğmesiyle zorluk yaşayan &lt;b&gt;Shield TV kullanıcıları&lt;/b&gt; için: bir klasör yukarı çıkın ve ardından düğmeyi otomatik olarak vurgulamak için klasöre dönün. Alternatif olarak SHIELD TV REMOTE uygulamasının izleme dörtgenini kullanabilirsiniz.</string>
