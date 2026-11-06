@@ -268,17 +268,6 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
 }
 .res-meta .seed { color: var(--done); font-weight: 700; }
 .res .actions { margin-top: 12px; }
-.res-sub { color: var(--muted); font-size: 14px; margin-top: 4px; }
-.srcs { display: grid; gap: 8px; margin-top: 12px; }
-.src {
-  display: flex; align-items: center; gap: 6px 14px; flex-wrap: wrap;
-  background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 8px 10px;
-}
-.src .badge { background: var(--soft); border-radius: 8px; padding: 1px 8px; font-weight: 800; font-size: 13px; }
-.src .seed { color: var(--done); font-weight: 700; font-size: 14px; }
-.src .leech, .src .sz { color: var(--muted); font-size: 14px; }
-.src .grow { flex: 1; }
-.src .btn { padding: 7px 12px; }
 #searchTrk { grid-column: 1 / -1; }
 .src a.site { color: var(--indigo); font-weight: 700; font-size: 13px; text-decoration: none; white-space: nowrap; }
 .res a.btn { text-decoration: none; color: var(--ink); }
@@ -1294,11 +1283,6 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
 
   var sTracker = "";         // "" = all trackers
 
-  // Same release on several trackers: compare names without punctuation
-  // ("Tsundere-Raws" and "TsundereRaws" are the same release)
-  function releaseKey(title) {
-    return String(title).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]+/g, "");
-  }
   function sTrackerNames() {
     if (!sResults || !sResults.results) return [];
     var seen = {};
@@ -1322,20 +1306,6 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
     renderResults();
   });
 
-  function groupResults(list) {
-    var groups = {}, order = [];
-    list.forEach(function (x) {
-      var k = releaseKey(x.title);
-      if (!groups[k]) { groups[k] = []; order.push(k); }
-      groups[k].push(x);
-    });
-    return order.map(function (k) {
-      var srcs = groups[k].sort(function (a, b) { return (b.seeders || 0) - (a.seeders || 0); });
-      var newest = srcs.reduce(function (m, x) { return Math.max(m, x.date || 0); }, 0);
-      return { title: srcs[0].title, size: srcs[0].size, date: newest, best: srcs[0].seeders || 0, srcs: srcs };
-    }).sort(function (a, b) { return b.best - a.best; });
-  }
-
   function renderResults() {
     if (sBusy) { sStatus.textContent = t("searching"); resultsEl.innerHTML = ""; return; }
     if (!sResults) { sStatus.textContent = ""; resultsEl.innerHTML = ""; renderTrackerChips(); return; }
@@ -1347,34 +1317,29 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
       resultsEl.innerHTML = "";
       return;
     }
-    var list = r.results.filter(function (x) { return !sTracker || x.tracker === sTracker; });
-    var groups = groupResults(list);
-    var head = groups.length === 0 ? t("noResults") : groups.length === 1 ? t("oneResult") : t("nResults", groups.length);
+    var list = r.results.filter(function (x) { return !sTracker || x.tracker === sTracker; })
+      .sort(function (a, b) { return (b.seeders || 0) - (a.seeders || 0); });
+    var head = list.length === 0 ? t("noResults") : list.length === 1 ? t("oneResult") : t("nResults", list.length);
     var warn = (r.errors || []).map(function (e) {
       return '<span class="warn">' + esc(e.tracker) + " : " + esc(errText(e.error)) + '</span>';
     }).join("");
     sStatus.innerHTML = esc(head) + warn;
-    resultsEl.innerHTML = groups.map(function (g) {
-      return '<li class="res">' +
-        '<div class="res-title">' + esc(g.title) + '</div>' +
-        '<div class="res-sub">' +
-          (g.size >= 0 ? size(g.size) : '') +
-          (g.date ? (g.size >= 0 ? ' · ' : '') + date(g.date) : '') +
+    resultsEl.innerHTML = list.map(function (x) {
+      var done = !!sAdded[x.ref];
+      return '<li class="res" data-ref="' + esc(x.ref) + '">' +
+        '<div class="res-title">' + esc(x.title) + '</div>' +
+        '<div class="res-meta">' +
+          '<span class="badge">' + esc(x.tracker) + '</span>' +
+          (x.size >= 0 ? '<span>' + size(x.size) + '</span>' : '') +
+          (x.seeders >= 0 ? '<span class="seed">▲ ' + esc(t("nSeeders", x.seeders)) + '</span>' : '') +
+          (x.leechers >= 0 ? '<span>▼ ' + esc(t("nLeechers", x.leechers)) + '</span>' : '') +
+          (x.date ? '<span>' + date(x.date) + '</span>' : '') +
         '</div>' +
-        '<div class="srcs">' + g.srcs.map(function (x) {
-          var done = !!sAdded[x.ref];
-          var otherSize = x.size >= 0 && g.size >= 0 && Math.abs(x.size - g.size) > g.size * 0.02;
-          return '<div class="src" data-ref="' + esc(x.ref) + '">' +
-            '<span class="badge">' + esc(x.tracker) + '</span>' +
-            (x.seeders >= 0 ? '<span class="seed" title="' + esc(t("nSeeders", x.seeders)) + '">▲ ' + x.seeders + '</span>' : '') +
-            (x.leechers >= 0 ? '<span class="leech" title="' + esc(t("nLeechers", x.leechers)) + '">▼ ' + x.leechers + '</span>' : '') +
-            (otherSize ? '<span class="sz">' + size(x.size) + '</span>' : '') +
-            '<span class="grow"></span>' +
-            (x.details ? '<a class="site" href="' + esc(x.details) + '" target="_blank" rel="noopener noreferrer" title="' + esc(t("site")) + '">' + esc(t("siteShort")) + '</a>' : '') +
-            '<button class="btn primary" data-dl' + (done ? " disabled" : "") + '>' +
-              esc(done ? t("addedOk") : t("download")) + '</button>' +
-          '</div>';
-        }).join("") + '</div>' +
+        '<div class="actions">' +
+          '<button class="btn primary" data-dl' + (done ? " disabled" : "") + '>' +
+            esc(done ? t("addedOk") : t("download")) + '</button>' +
+          (x.details ? '<a class="btn" href="' + esc(x.details) + '" target="_blank" rel="noopener noreferrer">' + esc(t("site")) + '</a>' : '') +
+        '</div>' +
       '</li>';
     }).join("");
   }
@@ -1397,7 +1362,7 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
     if (e.target.closest("#goSettings")) { document.getElementById("openSettings").click(); return; }
     var b = e.target.closest("[data-dl]");
     if (!b) return;
-    var ref = b.closest(".src").getAttribute("data-ref");
+    var ref = b.closest(".res").getAttribute("data-ref");
     b.disabled = true;
     ttv("/ttv/add", { ref: ref }).then(function (r) {
       if (r.magnet) {
