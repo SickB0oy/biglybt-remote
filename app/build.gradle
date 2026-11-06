@@ -29,10 +29,10 @@ android {
             abiFilters 'armeabi-v7a', 'arm64-v8a'
         }
         // Distinct id so it installs next to the official BiglyBT
-        applicationId "io.github.sickb0oy.torrenttv"
+        applicationId "app.torrenttv"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionName "1.3.4.4-plus22"
+        versionName "1.3.4.4-plus23"
         // a.b.c -> aabbccdd, where dd = build #
         versionCode 1030404
         multiDexEnabled true
