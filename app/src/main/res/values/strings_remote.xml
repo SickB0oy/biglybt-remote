@@ -11,4 +11,20 @@
 	<string name="plus_remote_banner">Remote access: %1$s\nUser: %2$s    Password: %3$s</string>
 	<string name="plus_remote_banner_nopw">Remote access: %1$s</string>
 	<string name="plus_about">Torrent TV is a torrent client for Android TV and phones: download in the living room and control it from your phone or computer.&lt;br/&gt;&lt;br/&gt;Free software under the GPL license. &lt;a href="https://github.com/SickB0oy/torrent-tv"&gt;Source code and updates&lt;/a&gt;</string>
+	<string name="player_play">Play</string>
+	<string name="player_pause">Pause</string>
+	<string name="player_back">Back</string>
+	<string name="player_rewind">Back 10 seconds</string>
+	<string name="player_forward">Forward 10 seconds</string>
+	<string name="player_audio">Audio track</string>
+	<string name="player_subtitles">Subtitles</string>
+	<string name="player_off">Off</string>
+	<string name="player_no_tracks">Nothing to choose from in this file</string>
+	<string name="player_aspect">Picture format</string>
+	<string name="player_aspect_fit">Fit to screen</string>
+	<string name="player_aspect_fill">Fill the screen</string>
+	<string name="player_aspect_16_9">16:9</string>
+	<string name="player_aspect_4_3">4:3</string>
+	<string name="player_error">Can\'t play this file</string>
+	<string name="player_resumed">Resumed at %1$s</string>
 </resources>

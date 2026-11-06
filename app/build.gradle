@@ -24,11 +24,15 @@ android {
     compileSdk rootProject.ext.compileSdkVersion
 
     defaultConfig {
+        // libVLC is native: ship only the ARM builds used by TVs and phones
+        ndk {
+            abiFilters 'armeabi-v7a', 'arm64-v8a'
+        }
         // Distinct id so it installs next to the official BiglyBT
         applicationId "com.biglybt.android.client.plus"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionName "1.3.4.4-plus8"
+        versionName "1.3.4.4-plus9"
         // a.b.c -> aabbccdd, where dd = build #
         versionCode 1030404
         multiDexEnabled true
@@ -133,6 +137,9 @@ repositories {
 
 
 dependencies {
+    // Torrent TV: built-in player (VLC engine, LGPL 2.1+)
+    implementation 'org.videolan.android:libvlc-all:3.7.6'
+
     // This solves conflicts error between 
     // org.jetbrains.kotlin:kotlin-stdlib:1.8.0 & org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.21
     // leanback uses 1.6.21, but kotlin-stdlib-jdk7 & kotlin-stdlib-jdk8 were 

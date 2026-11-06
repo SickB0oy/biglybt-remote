@@ -12,4 +12,20 @@
 	<string name="plus_remote_banner_nopw">Connexion à distance : %1$s</string>
 	<string name="plus_about">Torrent TV est un client torrent pour Android TV et téléphone : il télécharge dans le salon et se pilote depuis ton téléphone ou ton ordinateur.&lt;br/&gt;&lt;br/&gt;Logiciel libre sous licence GPL. &lt;a href="https://github.com/SickB0oy/torrent-tv"&gt;Code source et mises à jour&lt;/a&gt;</string>
 	<string name="dialog_remote_access_webui_qr_info">Scanne ce QR code avec ton téléphone pour ouvrir la page de commande à distance.</string>
+	<string name="player_play">Lire</string>
+	<string name="player_pause">Pause</string>
+	<string name="player_back">Retour</string>
+	<string name="player_rewind">Reculer de 10 secondes</string>
+	<string name="player_forward">Avancer de 10 secondes</string>
+	<string name="player_audio">Piste audio</string>
+	<string name="player_subtitles">Sous-titres</string>
+	<string name="player_off">Désactivés</string>
+	<string name="player_no_tracks">Rien à choisir dans ce fichier</string>
+	<string name="player_aspect">Format de l\'image</string>
+	<string name="player_aspect_fit">Ajusté à l\'écran</string>
+	<string name="player_aspect_fill">Plein écran</string>
+	<string name="player_aspect_16_9">16:9</string>
+	<string name="player_aspect_4_3">4:3</string>
+	<string name="player_error">Impossible de lire ce fichier</string>
+	<string name="player_resumed">Reprise à %1$s</string>
 </resources>

@@ -1175,6 +1175,13 @@ public class FilesFragment
 		return false;
 	}
 
+	/** Torrent TV: file types opened in the built-in player */
+	private static final java.util.Set<String> PLAYER_EXTENSIONS = new java.util.HashSet<>(
+			java.util.Arrays.asList("mkv", "mp4", "m4v", "avi", "mov", "wmv", "flv",
+					"webm", "ts", "m2ts", "mts", "mpg", "mpeg", "vob", "ogv", "3gp",
+					"divx", "xvid", "rmvb", "mp3", "flac", "m4a", "aac", "ogg", "opus",
+					"wav", "wma", "ac3", "dts", "mka"));
+
 	@Thunk
 	boolean reallyStreamFile(Map<?, ?> selectedFile, final String contentURL) {
 		if (contentURL == null || contentURL.length() == 0) {
@@ -1182,10 +1189,27 @@ public class FilesFragment
 		}
 		Context context = getContext();
 
+		// Torrent TV: play videos and music in the built-in VLC player
+		String playerName = MapUtils.getMapString(selectedFile,
+				TransmissionVars.FIELD_FILES_NAME, null);
+		String ext = playerName == null ? ""
+				: playerName.substring(playerName.lastIndexOf('.') + 1).toLowerCase(
+						Locale.US);
+		if (context != null && PLAYER_EXTENSIONS.contains(ext)) {
+			String title = playerName;
+			int slash = title.lastIndexOf('/');
+			if (slash >= 0) {
+				title = title.substring(slash + 1);
+			}
+			com.biglybt.android.client.activity.PlayerActivity.play(context,
+					Uri.parse(contentURL), title);
+			return true;
+		}
+
 		Uri uri;
 		if (contentURL.startsWith("file://") && context != null) {
 			try {
-				uri = FileProvider.getUriForFile(context, "com.biglybt.files",
+				uri = FileProvider.getUriForFile(context, context.getPackageName() + ".files",
 						new File(Uri.decode(contentURL.substring(7))));
 			} catch (Throwable e) {
 				// For IllegalArgumentException, see

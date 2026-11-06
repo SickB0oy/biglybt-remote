@@ -44,7 +44,8 @@ public class PaulBurkeFileUtils
 {
 	public static final boolean DEBUG = AndroidUtils.DEBUG;
 
-	private static final String AUTHORITY = "com.biglybt.files";
+	// Matches android:authorities="${applicationId}.files" in the manifest
+	private static final String AUTHORITY_SUFFIX = ".files";
 
 	/**
 	 * Get a file path from a Uri. This will get the the path for Storage Access
@@ -271,7 +272,9 @@ public class PaulBurkeFileUtils
 	 * @author paulburke
 	 */
 	public static boolean isLocalStorageDocument(Uri uri) {
-		return AUTHORITY.equals(uri.getAuthority());
+		String authority = uri.getAuthority();
+		return authority != null && authority.endsWith(AUTHORITY_SUFFIX)
+				&& authority.startsWith("com.biglybt.android.client");
 	}
 
 	/**

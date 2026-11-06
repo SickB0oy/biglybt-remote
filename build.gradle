@@ -43,7 +43,7 @@ allprojects {
     }
     project.ext {
         // My test v15 device crashes (probably material related/HW acceleration), so I've given up on ICS
-        minSdkVersion = 16
+        minSdkVersion = 21  // libVLC needs Android 5.0+
         // Android 15. Required by Google Play for updates, and brings the
         // Android 14+ foreground service rules (see core flavor manifest)
         targetSdkVersion = 35

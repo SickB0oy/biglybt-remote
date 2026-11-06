@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Round button; a filled ring shows which button the TV remote is on -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+	<item android:state_focused="true">
+		<shape android:shape="oval">
+			<solid android:color="#4D8A93F7" />
+			<stroke android:width="2dp" android:color="#FFFFFFFF" />
+		</shape>
+	</item>
+	<item android:state_pressed="true">
+		<shape android:shape="oval"><solid android:color="#33FFFFFF" /></shape>
+	</item>
+	<item>
+		<shape android:shape="oval"><solid android:color="#00000000" /></shape>
+	</item>
+</selector>
