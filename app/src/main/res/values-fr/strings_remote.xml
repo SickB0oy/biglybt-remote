@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string name="all_files_access_title">Autoriser l\'accès à tous les fichiers</string>
-	<string name="all_files_access_message">Pour télécharger sur une clé USB, un disque dur ou une carte SD des torrents qui contiennent des dossiers, BiglyBT a besoin de l\'autorisation « Accès à tous les fichiers ». Sans elle, ces torrents échouent avec « Folder Permissions Needed ».</string>
+	<string name="all_files_access_message">Pour télécharger sur une clé USB, un disque dur ou une carte SD des torrents qui contiennent des dossiers, Torrent TV a besoin de l\'autorisation « Accès à tous les fichiers ». Sans elle, ces torrents échouent avec « Folder Permissions Needed ».</string>
 	<string name="all_files_access_open">Ouvrir les paramètres</string>
 	<string name="all_files_access_later">Plus tard</string>
 	<string name="all_files_access_never">Ne plus demander</string>
@@ -10,5 +10,5 @@
 	<string name="plus_later">Plus tard</string>
 	<string name="plus_remote_banner">Connexion à distance : %1$s\nIdentifiant : %2$s    Mot de passe : %3$s</string>
 	<string name="plus_remote_banner_nopw">Connexion à distance : %1$s</string>
-	<string name="plus_about">BiglyBT Plus est une version modifiée de BiglyBT pour Android : mise à jour pour les Android récents, compatible avec les disques USB, avec un accès à distance plus sûr et une nouvelle page de commande à distance.&lt;br/&gt;&lt;br/&gt;Code source et mises à jour : &lt;a href="https://github.com/SickB0oy/biglybt-remote"&gt;github.com/SickB0oy/biglybt-remote&lt;/a&gt;&lt;br/&gt;D\'après BiglyBT de Bigly Software : &lt;a href="https://www.biglybt.com"&gt;biglybt.com&lt;/a&gt;</string>
+	<string name="plus_about">Torrent TV est un client torrent pour Android TV et téléphone, basé sur BiglyBT : mise à jour pour les Android récents, compatible avec les disques USB, avec un accès à distance plus sûr et une nouvelle page de commande à distance.&lt;br/&gt;&lt;br/&gt;Code source et mises à jour : &lt;a href="https://github.com/SickB0oy/biglybt-remote"&gt;github.com/SickB0oy/biglybt-remote&lt;/a&gt;&lt;br/&gt;D\'après BiglyBT de Bigly Software : &lt;a href="https://www.biglybt.com"&gt;biglybt.com&lt;/a&gt;</string>
 </resources>

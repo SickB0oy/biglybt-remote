@@ -1,4 +1,4 @@
-# BiglyBT Plus
+# Torrent TV (BiglyBT Plus)
 
 Version modifiée de [BiglyBT pour Android](https://github.com/BiglySoftware/BiglyBT-Android)
 (licence GPL), mise à jour et corrigée. Nom de paquet distinct

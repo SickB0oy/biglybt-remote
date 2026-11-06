@@ -1,6 +1,6 @@
 {
-  "name": "BiglyBT Plus",
-  "short_name": "BiglyBT",
+  "name": "Torrent TV",
+  "short_name": "Torrent TV",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#12142A",

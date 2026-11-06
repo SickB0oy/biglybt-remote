@@ -155,7 +155,7 @@
 			tools:ignore="IntentFilterUniqueDataAttributes"
 			>
 
-			<intent-filter android:label="BiglyBT Plus">
+			<intent-filter android:label="Torrent TV">
 				<action android:name="android.intent.action.MAIN"/>
 
 				<category android:name="android.intent.category.LAUNCHER"/>
