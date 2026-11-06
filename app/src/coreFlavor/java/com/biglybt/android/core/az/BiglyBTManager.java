@@ -342,8 +342,26 @@ public class BiglyBTManager
 		COConfigurationManager.setParameter(Logging.SCFG_LOGGING_DIR, "C:\\temp");
 		COConfigurationManager.setParameter("Logger.DebugFiles.Enabled", false);
 
+		// Torrent TV: Swarm Discoveries (aercm) has no UI any more, so don't
+		// load it: less memory, CPU and background network use
+		COConfigurationManager.setParameter("PluginInfo.aercm.enabled", false);
+
+		// Torrent TV: the desktop default write cache is 4 MB, far too small for
+		// 30+ MB/s downloads to a USB drive (many small writes). Size it from the
+		// heap Android gives this process, without overriding a user's choice.
+		try {
+			android.app.ActivityManager am = (android.app.ActivityManager) BiglyBTApp.getContext().getSystemService(
+					android.content.Context.ACTIVITY_SERVICE);
+			int heapMB = am == null ? 0 : am.getLargeMemoryClass();
+			long cacheMB = Math.max(4, Math.min(64, heapMB / 8));
+			if (COConfigurationManager.getIntParameter("diskmanager.perf.cache.size") <= 4) {
+				COConfigurationManager.setParameter("diskmanager.perf.cache.size", cacheMB);
+			}
+		} catch (Throwable t) {
+			Log.e(TAG, "Can't size the disk cache", t);
+		}
+
 		// Ensure plugins are enabled..
-		COConfigurationManager.setParameter("PluginInfo.aercm.enabled", true);
 		COConfigurationManager.setParameter("PluginInfo.azutp.enabled", true);
 		COConfigurationManager.setParameter("PluginInfo.azbpmagnet.enabled", true);
 		COConfigurationManager.setParameter("PluginInfo.azbpupnp.enabled", true);
