@@ -47,7 +47,7 @@ allprojects {
         // Android 15. Required by Google Play for updates, and brings the
         // Android 14+ foreground service rules (see core flavor manifest)
         targetSdkVersion = 35
-        compileSdkVersion = 35
+        compileSdkVersion = 36  // required by libVLC 3.7
     }
 }
 
