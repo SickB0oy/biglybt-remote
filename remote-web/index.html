@@ -506,6 +506,7 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
       keyOk: "Clé enregistrée",
       keyChange: "Changer",
       saving: "Enregistrement…",
+      latest: "Dernières sorties",
       allTrackers: "Tous les trackers",
       nSources: "{0} sources",
       siteShort: "Voir ↗"
@@ -577,6 +578,7 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
       keyOk: "Key saved",
       keyChange: "Change",
       saving: "Saving…",
+      latest: "Latest releases",
       allTrackers: "All trackers",
       nSources: "{0} sources",
       siteShort: "View ↗"
@@ -648,6 +650,7 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
       keyOk: "Schlüssel gespeichert",
       keyChange: "Ändern",
       saving: "Wird gespeichert…",
+      latest: "Neueste Veröffentlichungen",
       allTrackers: "Alle Tracker",
       nSources: "{0} Quellen",
       siteShort: "Ansehen ↗"
@@ -1258,7 +1261,11 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
     document.getElementById("searchForm").hidden = !s;
     document.getElementById("searchPanel").hidden = !s;
     document.getElementById("openAdd").hidden = s;
-    if (s) setTimeout(function () { document.getElementById("sq").focus(); }, 30);
+    if (s) {
+      // First time: show the latest releases right away
+      if (!sResults && !sBusy) runSearch();
+      setTimeout(function () { document.getElementById("sq").focus(); }, 30);
+    }
   }
   document.getElementById("tabTorrents").onclick = function () { setMode("torrents"); };
   document.getElementById("tabSearch").onclick = function () { setMode("search"); };
@@ -1320,6 +1327,7 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
     var list = r.results.filter(function (x) { return !sTracker || x.tracker === sTracker; })
       .sort(function (a, b) { return (b.seeders || 0) - (a.seeders || 0); });
     var head = list.length === 0 ? t("noResults") : list.length === 1 ? t("oneResult") : t("nResults", list.length);
+    if (!sQuery && list.length) head = t("latest") + " · " + head;
     var warn = (r.errors || []).map(function (e) {
       return '<span class="warn">' + esc(e.tracker) + " : " + esc(errText(e.error)) + '</span>';
     }).join("");
@@ -1344,8 +1352,10 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
     }).join("");
   }
 
+  var sQuery = "";
   function runSearch() {
     var q = document.getElementById("sq").value.trim();
+    sQuery = q;
     sBusy = true; renderResults();
     ttv("/ttv/search", { q: q, cat: sCat }).then(function (r) {
       sResults = r;
