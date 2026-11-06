@@ -180,6 +180,22 @@ public class TorrentListFragment
 	 * BiglyBT Plus: shows the address, user and password to open on a phone or
 	 * computer, at the top of the list. Tapping it shows a QR code.
 	 */
+	/** Remote access address, known once the banner is filled */
+	private String plusWebUrl;
+
+	/**
+	 * Empty list message: on a phone "tap +", on a TV the address to open on
+	 * the phone or computer, since there is no "add" button there.
+	 */
+	@NonNull
+	private CharSequence emptyListText() {
+		if (AndroidUtils.isTV(BiglyBTApp.getContext())) {
+			return plusWebUrl == null ? getString(R.string.torrent_list_empty_tv_nourl)
+					: getString(R.string.torrent_list_empty_tv, plusWebUrl);
+		}
+		return getString(R.string.torrent_list_empty);
+	}
+
 	private void updatePlusRemoteBanner() {
 		View root = getView();
 		final TextView banner = root == null ? null
@@ -213,6 +229,11 @@ public class TorrentListFragment
 								info.password);
 				banner.setText(text);
 				banner.setVisibility(View.VISIBLE);
+				plusWebUrl = info.webUrl;
+				if (tvEmpty != null && session != null && !session.isDestroyed()
+						&& session.torrent.getCount() == 0) {
+					tvEmpty.setText(emptyListText());
+				}
 				banner.setOnClickListener(v -> {
 					FragmentActivity fa = getActivity();
 					if (fa != null) {
@@ -438,7 +459,7 @@ public class TorrentListFragment
 		tvTorrentCount = activity.findViewById(R.id.wvTorrentCount);
 		tvEmpty = activity.findViewById(R.id.tv_empty);
 		if (tvEmpty != null) {
-			tvEmpty.setText(R.string.torrent_list_empty);
+			tvEmpty.setText(emptyListText());
 		}
 
 		Toolbar abToolBar = requireActivity().findViewById(R.id.actionbar);
@@ -502,6 +523,16 @@ public class TorrentListFragment
 
 					@Override
 					public int[] getRestrictToMenuIDs() {
+						if (AndroidUtils.isTV(BiglyBTApp.getContext())) {
+							// No "add" on a TV: torrents come from the phone or computer
+							return new int[] {
+								R.id.action_refresh,
+								R.id.action_library,
+								R.id.action_start_all,
+								R.id.action_stop_all,
+								R.id.action_settings
+							};
+						}
 						return new int[] {
 							R.id.action_refresh,
 							R.id.action_library,
@@ -1471,8 +1502,11 @@ public class TorrentListFragment
 				if (tvEmpty != null) {
 					Session session = getSession();
 					int size = session.torrent.getCount();
-					tvEmpty.setText(size > 0 ? R.string.list_filtered_empty
-							: R.string.torrent_list_empty);
+					if (size > 0) {
+						tvEmpty.setText(R.string.list_filtered_empty);
+					} else {
+						tvEmpty.setText(emptyListText());
+					}
 				}
 
 			}

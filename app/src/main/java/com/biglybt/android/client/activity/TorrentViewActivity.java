@@ -575,6 +575,8 @@ public class TorrentViewActivity
 		MenuItem menuAdd = menu.findItem(R.id.action_add_torrent);
 		if (menuAdd != null) {
 			menuAdd.setEnabled(isOnline && uiReady);
+			// On a TV, torrents are added from the phone or computer (remote access)
+			menuAdd.setVisible(!AndroidUtils.isTV(BiglyBTApp.getContext()));
 		}
 
 		MenuItem menuSearch = menu.findItem(R.id.action_search);

@@ -63,4 +63,6 @@
 	<string name="service_start">Dienst starten</string>
 	<string name="service_stopped_title">Der Dienst ist beendet</string>
 	<string name="service_stopped_text">Solange der Dienst beendet ist, wird nichts heruntergeladen oder geteilt. Auch der Fernzugriff ist aus. Bereits heruntergeladene Filme können Sie weiterhin ansehen.</string>
+	<string name="torrent_list_empty_tv">Noch keine Torrents.\n\nFügen Sie Torrents vom Smartphone oder Computer aus hinzu:\n%1$s</string>
+	<string name="torrent_list_empty_tv_nourl">Noch keine Torrents.\n\nFügen Sie Torrents vom Smartphone oder Computer über den Fernzugriff hinzu.</string>
 </resources>
