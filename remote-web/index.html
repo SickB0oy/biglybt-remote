@@ -268,7 +268,6 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
 }
 .res-meta .seed { color: var(--done); font-weight: 700; }
 .res-meta .free { background: var(--done); color: #fff; border-radius: 8px; padding: 1px 8px; font-weight: 800; font-size: 13px; }
-.res-meta .exclu { background: var(--violet); color: #fff; border-radius: 8px; padding: 1px 8px; font-weight: 800; font-size: 13px; }
 .res .actions { margin-top: 12px; }
 #searchTrk { grid-column: 1 / -1; }
 .src a.site { color: var(--indigo); font-weight: 700; font-size: 13px; text-decoration: none; white-space: nowrap; }
@@ -342,7 +341,6 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
       <button class="tab" id="tabTorrents" role="tab" aria-selected="true" data-i18n="tabTorrents"></button>
       <button class="tab" id="tabSearch" role="tab" aria-selected="false" data-i18n="tabSearch"></button>
       <button class="tab" id="tabFree" role="tab" aria-selected="false" data-i18n="tabFree"></button>
-      <button class="tab" id="tabExclu" role="tab" aria-selected="false" data-i18n="tabExclu"></button>
     </div>
     <div class="filters" role="group" data-i18n-aria="filterTorrents" id="filters"></div>
     <div class="search-row" id="localSearch">
@@ -512,11 +510,7 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
       saving: "Enregistrement…",
       latest: "Dernières sorties",
       tabFree: "Freeleech",
-      tabExclu: "Exclus",
-      exclusives: "Exclusivités",
-      excluBadge: "Exclu",
       noFree: "Aucun torrent freeleech parmi ces résultats",
-      noExclu: "Aucune exclusivité trouvée. Les trackers ne signalent peut-être pas les exclusivités dans leur API.",
       allTrackers: "Tous les trackers",
       nSources: "{0} sources",
       siteShort: "Voir ↗"
@@ -590,11 +584,7 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
       saving: "Saving…",
       latest: "Latest releases",
       tabFree: "Freeleech",
-      tabExclu: "Exclusives",
-      exclusives: "Exclusives",
-      excluBadge: "Exclusive",
       noFree: "No freeleech torrent in these results",
-      noExclu: "No exclusive found. The trackers may not flag exclusives in their API.",
       allTrackers: "All trackers",
       nSources: "{0} sources",
       siteShort: "View ↗"
@@ -668,11 +658,7 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
       saving: "Wird gespeichert…",
       latest: "Neueste Veröffentlichungen",
       tabFree: "Freeleech",
-      tabExclu: "Exklusiv",
-      exclusives: "Exklusiv",
-      excluBadge: "Exklusiv",
       noFree: "Kein Freeleech-Torrent in diesen Ergebnissen",
-      noExclu: "Keine Exklusivität gefunden. Die Tracker kennzeichnen Exklusivitäten möglicherweise nicht in ihrer API.",
       allTrackers: "Alle Tracker",
       nSources: "{0} Quellen",
       siteShort: "Ansehen ↗"
@@ -1274,7 +1260,7 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
     var prev = mode;
     mode = m;
     var s = m !== "torrents";
-    ["Torrents", "Search", "Free", "Exclu"].forEach(function (k) {
+    ["Torrents", "Search", "Free"].forEach(function (k) {
       document.getElementById("tab" + k).setAttribute("aria-selected",
         String(m === k.toLowerCase() || (k === "Torrents" && m === "torrents")));
     });
@@ -1288,7 +1274,7 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
     document.getElementById("searchTrk").hidden = !s || sTrackerNames().length < 2;
     if (!s) return;
     if (m !== "search" && (prev === "search" || prev === "torrents") && sQuery) {
-      // Freeleech / exclusives: start from the latest releases
+      // Freeleech: start from the latest releases
       document.getElementById("sq").value = "";
       if (!sBusy) runSearch();
     } else if (!sResults && !sBusy) {
@@ -1302,7 +1288,6 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
   document.getElementById("tabTorrents").onclick = function () { setMode("torrents"); };
   document.getElementById("tabSearch").onclick = function () { setMode("search"); };
   document.getElementById("tabFree").onclick = function () { setMode("free"); };
-  document.getElementById("tabExclu").onclick = function () { setMode("exclu"); };
 
   /* ---------- Tracker search ---------- */
   var sCat = "all";
@@ -1361,15 +1346,12 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
     var list = r.results.filter(function (x) {
       if (sTracker && x.tracker !== sTracker) return false;
       if (mode === "free") return !!x.free;
-      if (mode === "exclu") return !!x.exclu;
       return true;
     })
       .sort(function (a, b) { return (b.seeders || 0) - (a.seeders || 0); });
     var head = list.length === 0 ? t("noResults") : list.length === 1 ? t("oneResult") : t("nResults", list.length);
     if (mode === "free" && !list.length) head = t("noFree");
-    else if (mode === "exclu" && !list.length) head = t("noExclu");
     else if (mode === "free") head = t("tabFree") + " · " + head;
-    else if (mode === "exclu") head = t("exclusives") + " · " + head;
     else if (!sQuery && list.length) head = t("latest") + " · " + head;
     var warn = (r.errors || []).map(function (e) {
       return '<span class="warn">' + esc(e.tracker) + " : " + esc(errText(e.error)) + '</span>';
@@ -1382,7 +1364,6 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
         '<div class="res-meta">' +
           '<span class="badge">' + esc(x.tracker) + '</span>' +
           (x.free ? '<span class="free">Freeleech</span>' : '') +
-          (x.exclu ? '<span class="exclu">' + esc(t("excluBadge")) + '</span>' : '') +
           (x.size >= 0 ? '<span>' + size(x.size) + '</span>' : '') +
           (x.seeders >= 0 ? '<span class="seed">▲ ' + esc(t("nSeeders", x.seeders)) + '</span>' : '') +
           (x.leechers >= 0 ? '<span>▼ ' + esc(t("nLeechers", x.leechers)) + '</span>' : '') +
