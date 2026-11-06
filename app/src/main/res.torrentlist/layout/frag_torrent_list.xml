@@ -55,7 +55,6 @@
 		android:layout_marginBottom="4dp"
 		android:minHeight="52dp"
 		android:nextFocusUp="@id/plus_remote_banner"
-		android:nextFocusDown="@id/listTorrents"
 		android:text="@string/service_stop"
 		android:textAllCaps="false"
 		android:textColor="#FFFFFFFF"
@@ -67,6 +66,58 @@
 		app:iconGravity="textStart"
 		app:iconTint="#FFFFFFFF"
 		tools:visibility="visible"/>
+
+	<!-- Torrent TV: filters, always visible (replaces the side menu) -->
+	<HorizontalScrollView
+		android:id="@+id/plus_filters_scroll"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:paddingStart="12dp"
+		android:paddingEnd="12dp"
+		android:scrollbars="none"
+		android:visibility="gone"
+		tools:visibility="visible">
+
+		<com.google.android.material.chip.ChipGroup
+			xmlns:app="http://schemas.android.com/apk/res-auto"
+			android:id="@+id/plus_filters"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			app:chipSpacingHorizontal="8dp"
+			app:selectionRequired="true"
+			app:singleLine="true"
+			app:singleSelection="true">
+
+			<com.google.android.material.chip.Chip
+				android:id="@+id/plus_filter_all"
+				style="@style/Widget.MaterialComponents.Chip.Choice"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:checked="true"
+				android:text="@string/plus_filter_all"/>
+
+			<com.google.android.material.chip.Chip
+				android:id="@+id/plus_filter_active"
+				style="@style/Widget.MaterialComponents.Chip.Choice"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/plus_filter_active"/>
+
+			<com.google.android.material.chip.Chip
+				android:id="@+id/plus_filter_done"
+				style="@style/Widget.MaterialComponents.Chip.Choice"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/plus_filter_done"/>
+
+			<com.google.android.material.chip.Chip
+				android:id="@+id/plus_filter_paused"
+				style="@style/Widget.MaterialComponents.Chip.Choice"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/plus_filter_paused"/>
+		</com.google.android.material.chip.ChipGroup>
+	</HorizontalScrollView>
 	<FrameLayout
 		android:layout_width="match_parent"
 		android:layout_height="0dp"

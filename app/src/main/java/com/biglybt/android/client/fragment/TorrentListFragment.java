@@ -180,6 +180,53 @@ public class TorrentListFragment
 	 * BiglyBT Plus: shows the address, user and password to open on a phone or
 	 * computer, at the top of the list. Tapping it shows a QR code.
 	 */
+	/**
+	 * Torrent TV: "All / Downloading / Done / Paused" chips above the list,
+	 * instead of the side menu. Not on a TV, which keeps its side list.
+	 */
+	private void setupPlusFilters(@NonNull View root) {
+		View scroll = root.findViewById(R.id.plus_filters_scroll);
+		com.google.android.material.chip.ChipGroup group = root.findViewById(
+				R.id.plus_filters);
+		if (scroll == null || group == null
+				|| AndroidUtils.isTV(BiglyBTApp.getContext())) {
+			return;
+		}
+		scroll.setVisibility(View.VISIBLE);
+
+		long stored = session.getRemoteProfile().getFilterBy();
+		int checked;
+		if (stored == TorrentListFilter.FILTERBY_INCOMPLETE) {
+			checked = R.id.plus_filter_active;
+		} else if (stored == TorrentListFilter.FILTERBY_COMPLETE) {
+			checked = R.id.plus_filter_done;
+		} else if (stored == TorrentListFilter.FILTERBY_STOPPED) {
+			checked = R.id.plus_filter_paused;
+		} else {
+			checked = R.id.plus_filter_all;
+			if (stored != TorrentListFilter.FILTERBY_ALL) {
+				// A tag chosen in the old side menu: back to "All"
+				session.getRemoteProfile().setFilterBy(TorrentListFilter.FILTERBY_ALL);
+				session.saveProfile();
+			}
+		}
+		group.check(checked);
+		group.setOnCheckedStateChangeListener((g, ids) -> {
+			if (ids.isEmpty()) {
+				return;
+			}
+			int id = ids.get(0);
+			long mode = id == R.id.plus_filter_active
+					? TorrentListFilter.FILTERBY_INCOMPLETE
+					: id == R.id.plus_filter_done ? TorrentListFilter.FILTERBY_COMPLETE
+							: id == R.id.plus_filter_paused
+									? TorrentListFilter.FILTERBY_STOPPED
+									: TorrentListFilter.FILTERBY_ALL;
+			com.google.android.material.chip.Chip chip = g.findViewById(id);
+			filterBy(mode, chip == null ? "" : chip.getText().toString(), true);
+		});
+	}
+
 	/** Remote access address, known once the banner is filled */
 	private String plusWebUrl;
 
@@ -365,6 +412,7 @@ public class TorrentListFragment
 			@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 		View fragView = inflater.inflate(R.layout.frag_torrent_list, container,
 				false);
+		setupPlusFilters(fragView);
 
 		setupActionModeCallback();
 

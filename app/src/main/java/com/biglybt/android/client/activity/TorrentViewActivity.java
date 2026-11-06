@@ -114,6 +114,14 @@ public class TorrentViewActivity
 		int contentViewID = AndroidUtils.isTV(this)
 				? R.layout.activity_torrent_view_tv : R.layout.activity_torrent_view;
 		setContentView(contentViewID);
+		if (!AndroidUtils.isTV(this)) {
+			// Torrent TV: filters are chips above the list now; the header bar
+			// only held the side menu button and the current filter
+			View header = findViewById(R.id.tvHeader);
+			if (header != null) {
+				header.setVisibility(View.GONE);
+			}
+		}
 		setupActionBar();
 
 		// setup view ids now because listeners below may trigger as soon as we
@@ -192,6 +200,12 @@ public class TorrentViewActivity
 	}
 
 	/** Called when a drawer has settled in a completely open state. */
+	@Override
+	public boolean useDrawer() {
+		// Torrent TV: no side menu on phones (filters are above the list)
+		return false;
+	}
+
 	@Override
 	public void onDrawerOpened(@NonNull View drawerView) {
 		super.onDrawerOpened(drawerView);

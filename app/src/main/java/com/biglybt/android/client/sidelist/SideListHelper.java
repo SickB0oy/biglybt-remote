@@ -317,7 +317,9 @@ public class SideListHelper<ADAPTERITEM extends Comparable<ADAPTERITEM>>
 		if (activity instanceof AppCompatActivity) {
 			AppCompatActivity abActivity = (AppCompatActivity) activity;
 
-			if (isInDrawer) {
+			boolean drawerDisabled = activity instanceof com.biglybt.android.client.activity.DrawerActivity
+					&& !((com.biglybt.android.client.activity.DrawerActivity) activity).useDrawer();
+			if (isInDrawer && !drawerDisabled) {
 				ActionBar ab = abActivity.getSupportActionBar();
 				if (ab != null) {
 					ab.setDisplayHomeAsUpEnabled(true);

@@ -48,11 +48,11 @@ public class TorrentListFilter
 
 	private final static int FILTERBY_ACTIVE = 4;
 
-	private final static int FILTERBY_COMPLETE = 9;
+	public final static int FILTERBY_COMPLETE = 9;
 
-	private final static int FILTERBY_INCOMPLETE = 1;
+	public final static int FILTERBY_INCOMPLETE = 1;
 
-	private final static int FILTERBY_STOPPED = 2;
+	public final static int FILTERBY_STOPPED = 2;
 
 	private static final String RESULTFIELD_LIST = "list";
 
@@ -81,6 +81,9 @@ public class TorrentListFilter
 
 	private int defaultSortID;
 
+	/** Index of the "Age" (date added) sort in createSortDefinitions */
+	private static final int SORT_ID_AGE = 2;
+
 	TorrentListFilter(
 			@NonNull SessionAdapterFilterTalkback<TorrentListAdapterItem> talkback) {
 		super(talkback);
@@ -88,10 +91,13 @@ public class TorrentListFilter
 
 		StoredSortByInfo sortByInfo = talkback.getSession().getRemoteProfile().getSortByInfo(
 				"");
-		SortDefinition sortDefinition = SortDefinition.findSortDefinition(
-				sortByInfo, getSortDefinitions(), defaultSortID);
-		boolean isAsc = sortByInfo == null ? sortDefinition.isSortAsc()
-				: sortByInfo.isAsc;
+		// Torrent TV: always the most recently added first, no sort menu
+		SortDefinition sortDefinition = getSortDefinitions().get(SORT_ID_AGE);
+		if (sortDefinition == null) {
+			sortDefinition = SortDefinition.findSortDefinition(sortByInfo,
+					getSortDefinitions(), defaultSortID);
+		}
+		boolean isAsc = false;
 
 		setSorter(new TorrentListSorter(talkback, sortDefinition, isAsc));
 	}

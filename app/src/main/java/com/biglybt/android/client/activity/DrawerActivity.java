@@ -58,6 +58,21 @@ public abstract class DrawerActivity
 			}
 			return;
 		}
+		if (!useDrawer()) {
+			// Torrent TV: no side menu here, keep it closed and hide its buttons
+			((DrawerLayout) viewById).setDrawerLockMode(
+					DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+			View button = findViewById(R.id.manual_drawer_button);
+			if (button != null) {
+				button.setVisibility(View.GONE);
+			}
+			ActionBar ab = getSupportActionBar();
+			if (ab != null) {
+				ab.setDisplayHomeAsUpEnabled(false);
+				ab.setHomeButtonEnabled(false);
+			}
+			return;
+		}
 		mDrawerLayout = (DrawerLayout) viewById;
 		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
 				R.string.drawer_open, R.string.drawer_close) {
@@ -183,6 +198,11 @@ public abstract class DrawerActivity
 	}
 
 	public void onDrawerClosed(View view) {
+	}
+
+	/** false: the side menu (drawer) is not used by this screen */
+	public boolean useDrawer() {
+		return true;
 	}
 
 	public abstract void onDrawerOpened(@NonNull View view);

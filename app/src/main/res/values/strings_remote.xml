@@ -68,4 +68,8 @@
 	<string name="service_stopped_text">No downloading or seeding while the service is stopped. Remote access is off too. Movies already downloaded can still be watched.</string>
 	<string name="torrent_list_empty_tv">No torrents yet.\n\nAdd torrents from your phone or computer at\n%1$s</string>
 	<string name="torrent_list_empty_tv_nourl">No torrents yet.\n\nAdd torrents from your phone or computer with remote access.</string>
+	<string name="plus_filter_all">All</string>
+	<string name="plus_filter_active">Downloading</string>
+	<string name="plus_filter_done">Done</string>
+	<string name="plus_filter_paused">Paused</string>
 </resources>
