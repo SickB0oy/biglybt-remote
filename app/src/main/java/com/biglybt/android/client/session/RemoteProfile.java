@@ -567,7 +567,7 @@ public class RemoteProfile
 	public String getRemoteTypeName() {
 		switch (remoteType) {
 			case TYPE_LOOKUP:
-				return "BiglyBT";
+				return "Torrent TV";
 			case TYPE_CORE:
 				return "Core";
 			case TYPE_NORMAL:

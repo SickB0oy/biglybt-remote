@@ -100,14 +100,14 @@
 	<string name="action_about">Tungkol sa Torrent TV</string>
 	<string name="about_thanks_header">Mga bahagi ng app na ito salamat sa:</string>
 	<string name="about_translator">%1$s pagsasalin na ibinigay ng ilagay ang iyong pangalan dito</string>
-	<string name="login_guide">Pumunta sa mga |Tool |&gt;|na malayuang pagpapares|sa Biglybt o Torrent TV desktop client upang mahanap ang iyong remote access code.</string>
+	<string name="login_guide">Pumunta sa mga |Tool |&gt;|na malayuang pagpapares|sa Torrent TV o Torrent TV desktop client upang mahanap ang iyong remote access code.</string>
 	<string name="dialog_delete_title">Tanggalin ang Torrent?</string>
 	<string name="dialog_delete_message">Ang torrent%s ay aalisin.</string>
 	<string name="dialog_delete_button_remove">Alisin</string>
 	<string name="profile_list_header">Magagamit na mga kliyente</string>
 	<string name="movedata_history">Kasaysayan</string>
 	<string name="move_data_storeinhistory">Tindahan ng lokasyon sa kasaysayan</string>
-	<string name="biglybt_logo">Biglybt Logo</string>
+	<string name="biglybt_logo">Torrent TV Logo</string>
 	<string name="action_refresh">Refresh</string>
 	<string name="generic_x_of_y">%1$s ng %2$s</string>
 	<!-- Displayed when a file is marked as not wanted (or deleted), but shares a piece with a file that is wanted, and therefore is required to be partially downloaded -->

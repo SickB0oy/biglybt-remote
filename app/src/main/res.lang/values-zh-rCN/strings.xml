@@ -98,10 +98,10 @@
 	<string name="error_remote_not_found">无法连接到远程客户端。未运行。</string>
 	<string name="error_connecting">连接错误</string>
 	<string name="button_continue">继续</string>
-	<string name="action_about">关于BiglyBT</string>
+	<string name="action_about">关于Torrent TV</string>
 	<string name="about_thanks_header">本应用部分应感谢：</string>
 	<string name="about_translator">%1$s 翻译由佛壁灯及 Wangwenjing 提供</string>
-	<string name="login_guide">转到|工具| &gt; |远程配对|在BiglyBT或Vuze桌面客户端中查找远程访问码。</string>
+	<string name="login_guide">转到|工具| &gt; |远程配对|在Torrent TV或Torrent TV桌面客户端中查找远程访问码。</string>
 	<string name="login_guide2">配置手动远端请尝试&lt;a href=\"biglybt://remote/cmd=advlogin\"&gt;高级登录&lt;/a&gt;。请参阅@@&lt;a href=\"http://wiki.biglybt.com/w/Android_Remote_Guide\"&gt;指南&lt;/a&gt;以获取更多帮助。</string>
 	<string name="dialog_delete_title">移除种子？</string>
 	<string name="dialog_delete_message">种子\'%s\'将被删除。</string>
@@ -109,12 +109,12 @@
 	<string name="profile_list_header">可用客户端</string>
 	<string name="movedata_history">历史记录</string>
 	<string name="move_data_storeinhistory">在历史记录中存储位置</string>
-	<string name="biglybt_logo">BiglyBT徽标</string>
+	<string name="biglybt_logo">Torrent TV徽标</string>
 	<string name="action_refresh">刷新</string>
 	<string name="about_ideas">如果你喜欢本应用，请&lt;a href=\"subscribe\"&gt;订阅&lt;/a&gt;以帮助我们继续开发。或者，如果您无余额，请在&lt;a href=\"market://details?id=com.biglybt.android.client\"&gt;谷歌商店&lt;/a&gt;中给予评分！</string>
 	<string name="addtorrent_info">如果您没有种子文件，可以使用远程主机的搜索模板搜索。只需点击搜索按钮并输入关键词。</string>
 	<string name="profile_ac_explain">您的连接设置（如IP地址与端口）由访问码管理</string>
-	<string name="biglybt_required">对不起，\"%s\"功能需要连接到BiglyBT客户端。感谢您的支持！^_^</string>
+	<string name="biglybt_required">对不起，\"%s\"功能需要连接到Torrent TV客户端。感谢您的支持！^_^</string>
 	<string name="old_rpc">您的远程主机运行旧版本的传输。 某些（或全部）功能将无法工作。 请将传输升级到2.40（RPC 14）或更高版本以获得更佳效果</string>
 	<string name="last_used_ago">上次连接%s</string>
 	<string name="last_used_never">从未连接</string>
@@ -126,9 +126,9 @@
 	<string name="torrent_status_queued_dl">排队等待下载</string>
 	<string name="torrent_status_queued_ul">排队做种</string>
 	<string name="torrent_status_checking">校验文件</string>
-	<string name="local_name">本地BiglyBT的%s</string>
-	<string name="local_vuze_name">本地Vuze应用的%s</string>
-	<string name="local_vuze_remote_name">本地Vuze远程%s</string>
+	<string name="local_name">本地Torrent TV的%s</string>
+	<string name="local_vuze_name">本地Torrent TV应用的%s</string>
+	<string name="local_vuze_remote_name">本地Torrent TV远程%s</string>
 	<string name="dialog_delete_datatoo">同时删除已下载文件</string>
 	<string name="multi_select_tip">点击并按住以进行多选</string>
 	<string name="generic_x_of_y">第 %1$s 个，共计 %2$s 个</string>
@@ -224,7 +224,7 @@
 	<string name="torrent_open_options_title">打开 Torrent</string>
 	<string name="not_torrent_file_kitkat">无法打开&lt;b&gt;%1$s&lt;/b&gt;。您在使用Kitkat（安卓4），此错误极可能由于本文件由其它应用保存至本应用无权限访问的路径。</string>
 	<string name="x_space_free">%1$s 空闲</string>
-	<string name="ask_rating_message">感谢您一如既往的支持。:3\n\n 如果您喜欢BiglyBT， 请花一点时间从应用商店给我们评分。</string>
+	<string name="ask_rating_message">感谢您一如既往的支持。:3\n\n 如果您喜欢Torrent TV， 请花一点时间从应用商店给我们评分。</string>
 	<string name="no_thanks">不用了</string>
 	<string name="rate_now">现在评分</string>
 	<string name="later">稍后</string>
@@ -256,8 +256,8 @@
 	<string name="export_profiles">导出资料</string>
 	<string name="import_profiles">导入资料</string>
 	<string name="action_add_profile">添加资料</string>
-	<string name="toast_core_starting">启动BiglyBT核心功能</string>
-	<string name="toast_core_restarting">正在重启BiglyBT Core</string>
+	<string name="toast_core_starting">启动Torrent TV核心功能</string>
+	<string name="toast_core_restarting">正在重启Torrent TV Core</string>
 	<string name="action_shutdown_core">关闭服务</string>
 	<plurals name="torrent_actions_for_multiple">
 		<item quantity="other">%1$d种子的操作</item>
@@ -374,7 +374,7 @@
 	<string name="weeks">周</string>
 	<string name="months">月</string>
 	<string name="years">年</string>
-	<string name="giveback_consider_subscription">请考虑购买订阅，以便我们可以继续为安卓维护和发展BiglyBT。</string>
+	<string name="giveback_consider_subscription">请考虑购买订阅，以便我们可以继续为安卓维护和发展Torrent TV。</string>
 	<string name="giveback_already_subscribed">您已经拥有订阅。非常感谢！您可以随时使用谷歌商店-&gt;账户-&gt;订单&lt;br&gt;&lt;br&gt;取消订阅。如果您想以其他方式进行捐赠，请查看我们的&lt;a href=\"https://www.biglybt.com/contribute\"&gt;贡献&lt;/a&gt;页面。</string>
 	<string name="giveback_firstline">Torrent TV 不收取额外的功能的费用，也不会在支付前削弱软件功能。</string>
 	<string name="giveback_title">回馈开发者</string>
@@ -395,7 +395,7 @@
 	<string name="login_server_title">使用此设备的种子</string>
 	<string name="login_server_subtitle">在设备上运行完整BT客户端</string>
 	<string name="login_remote_title">连接到远程客户端</string>
-	<string name="login_remote_subtitle">控制远程运BiglyBT、传输或 Torrent TV 客户端</string>
+	<string name="login_remote_subtitle">控制远程运Torrent TV、传输或 Torrent TV 客户端</string>
 	<string name="setting_speed_on_summary">启用于%1$s</string>
 	<string name="unlimited">无限制</string>
 	<string name="header_openoptions">添加种子%1$s</string>

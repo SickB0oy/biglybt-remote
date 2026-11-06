@@ -726,7 +726,7 @@ public class AppPreferences
 			@NonNull ActivityResultLauncher<Intent> launcher) {
 		if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
 			Intent intent = FileUtils.createNewFileChooserIntent("application/json",
-					null, "BiglyBTSettings.json");
+					null, "TorrentTVSettings.json");
 			if (intent != null) {
 				launcher.launch(intent);
 				return;
@@ -742,7 +742,7 @@ public class AppPreferences
 		String resultText;
 		String failText = null;
 		BufferedWriter writer = null;
-		String filename = "BiglyBTSettings.json";
+		String filename = "TorrentTVSettings.json";
 		String parentPath = "";
 		try {
 			if (uri == null) {

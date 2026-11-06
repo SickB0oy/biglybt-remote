@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- BiglyBT Plus: French strings missing from the upstream translation -->
+<!-- Torrent TV: French strings missing from the upstream translation -->
 <resources>
 	<string name="core_auto_start_on_boot_auth">Pour démarrer automatiquement avec l\'appareil, Torrent TV doit être exclu de l\'optimisation de la batterie.</string>
 	<string name="disable_auto_start">Désactiver le démarrage auto</string>

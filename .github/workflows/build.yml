@@ -28,6 +28,16 @@ jobs:
 
       - uses: gradle/actions/setup-gradle@v4
 
+      # Torrent TV: the browser login window of remote access shows the web
+      # server name ("BiglyBT - ..."). Rename it there only: the client name
+      # sent to trackers stays BiglyBT, which private trackers allow.
+      - name: Patch remote access server name
+        run: |
+          f=core/core/src/com/biglybt/ui/webplugin/WebPlugin.java
+          grep -q 'Constants.APP_NAME + " - " + plugin_interface.getPluginName(),' "$f"
+          sed -i 's/Constants.APP_NAME + " - " + plugin_interface.getPluginName(),/"Torrent TV",/' "$f"
+          grep -n '"Torrent TV",' "$f"
+
       - name: Set up signing key
         id: sign
         env:

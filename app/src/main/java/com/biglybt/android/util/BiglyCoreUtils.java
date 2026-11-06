@@ -177,10 +177,10 @@ public class BiglyCoreUtils
 							: coreSession.getCurrentActivity();
 					if (activity != null && !activity.isFinishing()) {
 						AndroidUtilsUI.showConnectionError(activity,
-								"Can't connect while BiglyBT Core is shutting down", false);
+								"Can't connect while Torrent TV is shutting down", false);
 					} else {
 						CustomToast.showText(
-								"Can't connect while BiglyBT Core is shutting down",
+								"Can't connect while Torrent TV is shutting down",
 								Toast.LENGTH_LONG);
 						if (coreSession != null) {
 							SessionManager.removeSession(

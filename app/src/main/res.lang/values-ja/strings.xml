@@ -97,7 +97,7 @@
 	<string name="error_remote_not_found">リモートクライアントに接続できません。実行中ではないようです。</string>
 	<string name="error_connecting">接続エラー</string>
 	<string name="button_continue">続行</string>
-	<string name="action_about">BiglyBTについて</string>
+	<string name="action_about">Torrent TVについて</string>
 	<string name="about_thanks_header">このアプリの一部は以下の人のおかげです:</string>
 	<string name="about_translator">%1$s 翻訳 by naofum</string>
 	<string name="login_guide">Torrent TV で |ツール| &gt; |リモートペアリング| に移動、または Torrent TV デスクトップクライアントで、リモートアクセスコードを検索します。</string>

@@ -113,7 +113,7 @@
 	<string name="about_ideas">Se ti piace la nostra app, perfavore considera un\'&lt;ahref=\"subscribe\"&gt;iscrizione&lt;/a&gt; per aiutare a continuare lo sviluppo. O se hai voglia, valutaci sul &lt;lt;a href=\"market://details?id=com.biglybt.android.client\"&amp;gtGoogle Play Store&lt;/a&gt;!</string>
 	<string name="addtorrent_info">Se non hai un file torrent, puoi cercarne uno usando la tua macchina remota di ricerca miniature. Semplicemente clicca sul pulsante cerca e digitaci un termine di ricerca.</string>
 	<string name="profile_ac_explain">Le tue impostazioni di connessione, come l\'indirizzo IP e la porta, sono gestite dal tuo Access Code</string>
-	<string name="biglybt_required">Ci spiace, la funzione \'%s\' richiede una connessione ad un client BiglyBt. Ci farebbe piacere se cambiasse! ^_^</string>
+	<string name="biglybt_required">Ci spiace, la funzione \'%s\' richiede una connessione ad un client Torrent TV. Ci farebbe piacere se cambiasse! ^_^</string>
 	<string name="old_rpc">La tua macchina remota sta eseguendo una vecchia versione di Trasmissione. Alcune (o tutte!) le funzioni potrebbero non funzionare. Per migliori risultati, perfavore aggiorna Trasmissione alla 2.40 (RPC 14) o superiore</string>
 	<string name="last_used_ago">Ultima connessione %s</string>
 	<string name="last_used_never">Mai connesso</string>
@@ -398,7 +398,7 @@ Potresti avere migliore fortuna scaricando il file torrent usando questo disposi
 	<string name="login_server_title">Torrent Usando Questo Dispositivo</string>
 	<string name="login_server_subtitle">Esegui un client torrent completo sul tuo dispositivo</string>
 	<string name="login_remote_title">Connetti al Client Remoto</string>
-	<string name="login_remote_subtitle">Controlla un BiglyBt, Trasmissione o client Torrent TV, in esecuzione remotamente</string>
+	<string name="login_remote_subtitle">Controlla un Torrent TV, Trasmissione o client Torrent TV, in esecuzione remotamente</string>
 	<string name="setting_speed_on_summary">Abilitato a %1$s</string>
 	<string name="unlimited">Illimitato</string>
 	<string name="header_openoptions">Aggiungi Torrent %1$s</string>
@@ -535,7 +535,7 @@ I dati inviati sono come seguono:</string>
 	<string name="password_is_set">Password impostata</string>
 	<string name="action_remote_access_qr"><![CDATA[Salva & mostra codice QR]]></string>
 	<string name="dialog_title_remote_access_qr">Codice QR Accesso Remoto</string>
-	<string name="dialog_remote_access_biglybt_qr_info">Scansiona questo codice QR su un dispositivo Android con BiglyBt installato.\n&lt;small&gt; Vecchi client Android di Torrent TV mostreranno un\'errore di &lt;b&gt; codice accesso \'PROFILO\' sconosciuto&lt;/b&gt;&lt;/small&gt;.</string>
+	<string name="dialog_remote_access_biglybt_qr_info">Scansiona questo codice QR su un dispositivo Android con Torrent TV installato.\n&lt;small&gt; Vecchi client Android di Torrent TV mostreranno un\'errore di &lt;b&gt; codice accesso \'PROFILO\' sconosciuto&lt;/b&gt;&lt;/small&gt;.</string>
 	<string name="dialog_remote_access_webui_qr_info">Scansiona questo Codice QR per accedere all\'ui web su ogni browser moderno.</string>
 	<string name="dialog_remote_access_webui_qr_button">Codice QR WebUI</string>
 	<string name="dialog_remote_access_biglybt_qr_button">Codice QR Torrent TV</string>

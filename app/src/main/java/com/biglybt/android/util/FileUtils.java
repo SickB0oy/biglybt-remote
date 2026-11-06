@@ -666,7 +666,7 @@ public class FileUtils
 		}
 
 		try {
-			File tempFile = new File(f, "BiglyBT-OkToDelete.tmp");
+			File tempFile = new File(f, "TorrentTV-OkToDelete.tmp");
 			if (tempFile.exists()) {
 				return tempFile.delete();
 			}
