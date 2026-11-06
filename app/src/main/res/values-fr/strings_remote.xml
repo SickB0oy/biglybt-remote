@@ -10,7 +10,7 @@
 	<string name="plus_later">Plus tard</string>
 	<string name="plus_remote_banner">Connexion à distance : %1$s\nIdentifiant : %2$s    Mot de passe : %3$s</string>
 	<string name="plus_remote_banner_nopw">Connexion à distance : %1$s</string>
-	<string name="plus_about">Torrent TV est un client torrent pour Android TV et téléphone : il télécharge dans le salon et se pilote depuis ton téléphone ou ton ordinateur.&lt;br/&gt;&lt;br/&gt;Données et images des films et séries : TMDB. Ce produit utilise l\'API TMDB mais n\'est ni approuvé ni certifié par TMDB.&lt;br/&gt;&lt;br/&gt;Logiciel libre sous licence GPL. &lt;a href="https://github.com/SickB0oy/torrent-tv"&gt;Code source et mises à jour&lt;/a&gt;</string>
+	<string name="plus_about">Torrent TV est un client torrent pour Android TV et téléphone : il télécharge dans le salon et se pilote depuis ton téléphone ou ton ordinateur.&lt;br/&gt;&lt;br/&gt;Données et images des films et séries : TMDB. Ce produit utilise l\'API TMDB mais n\'est ni approuvé ni certifié par TMDB.&lt;br/&gt;&lt;br/&gt;Logiciel libre sous licence GPL. &lt;a href="https://github.com/SickB0oy/torrent-tv"&gt;Code source et mises à jour&lt;/a&gt;, &lt;a href="https://github.com/SickB0oy/torrent-tv/blob/master/THIRD_PARTY.md"&gt;composants open source&lt;/a&gt;</string>
 	<string name="dialog_remote_access_webui_qr_info">Scanne ce QR code avec ton téléphone pour ouvrir la page de commande à distance.</string>
 	<string name="player_play">Lire</string>
 	<string name="player_pause">Pause</string>

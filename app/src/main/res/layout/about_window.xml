@@ -37,32 +37,19 @@
 			android:textAppearance="?android:attr/textAppearanceMedium"
 			tools:text="@string/about_ideas"/>
 
+		<!-- Torrent TV: translator credit and component list removed from the
+		     screen; components and licenses are listed in THIRD_PARTY.md -->
 		<TextView
 			android:id="@+id/about_translator"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:paddingBottom="16dp"
-			android:paddingTop="16dp"
-			android:textAppearance="?android:attr/textAppearanceMedium"
-			android:visibility="gone"
-			tools:text="@string/about_translator"
-			tools:visibility="visible"/>
-
-		<TextView
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_marginTop="20dp"
-			android:text="@string/about_thanks_header"
-			android:textAppearance="?android:attr/textAppearanceMedium"/>
+			android:visibility="gone"/>
 
 		<TextView
 			android:id="@+id/about_thanksto"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_marginTop="10dp"
-			android:textAppearance="?android:attr/textAppearanceSmall"
-			android:textColor="?android:attr/textColorPrimary"
-			tools:text="@string/about_thanks"/>
+			android:visibility="gone"/>
 
 	</LinearLayout>
 

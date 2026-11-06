@@ -54,9 +54,6 @@ public class DialogFragmentAbout
 
 		AlertDialog.Builder builder = alertDialogBuilder.builder;
 
-		AndroidUtilsUI.linkify(activity,
-				alertDialogBuilder.view.findViewById(R.id.about_thanksto), null,
-				R.string.about_thanks);
 		// BiglyBT Plus: what this build is and where its source code lives
 		// (replaces the subscription / Play Store rating text)
 		AndroidUtilsUI.linkify(activity,
@@ -78,19 +75,6 @@ public class DialogFragmentAbout
 				tvLicense.setText(license);
 			}
 		} catch (NameNotFoundException ignore) {
-		}
-
-		final TextView tvTranslator = alertDialogBuilder.view.findViewById(
-				R.id.about_translator);
-		if (tvTranslator != null) {
-			String translator = getString(R.string.about_translator,
-					Locale.getDefault().getDisplayLanguage());
-			if (translator.contains("PUTYOURNAMEHERE")) {
-				tvTranslator.setVisibility(View.GONE);
-			} else {
-				tvTranslator.setText(translator);
-				tvTranslator.setVisibility(View.VISIBLE);
-			}
 		}
 
 		// Add action buttons
