@@ -25,6 +25,9 @@ public class PlusRemoteInfo
 		return null;
 	}
 
+	public static void newPassword() {
+	}
+
 	public void showQr(FragmentActivity activity) {
 	}
 }

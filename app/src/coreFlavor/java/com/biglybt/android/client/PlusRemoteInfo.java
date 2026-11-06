@@ -50,6 +50,12 @@ public class PlusRemoteInfo
 				ra.user, ra.reqPW ? ra.pw : null);
 	}
 
+	/** A new random password, each time the app is opened */
+	@WorkerThread
+	public static void newPassword() {
+		CorePrefs.getInstance().newRemotePassword();
+	}
+
 	public void showQr(FragmentActivity activity) {
 		DialogFragmentRemoteAccessQR.openWebOnly(activity.getSupportFragmentManager(),
 				webUrl);

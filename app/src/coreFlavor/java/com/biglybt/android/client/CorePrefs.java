@@ -299,6 +299,16 @@ public class CorePrefs
 		super.finalize();
 	}
 
+	/**
+	 * New random remote access password. Applied right away here, and in the
+	 * torrent service through the shared preferences listener.
+	 */
+	public void newRemotePassword() {
+		TrayPreferences prefs = BiglyBTApp.getAppPreferences().preferences;
+		prefs.put(PREF_CORE_RACCESS_PW, AndroidUtils.generateEasyPW(8));
+		loadPref(prefs, PREF_CORE_RACCESS_PW);
+	}
+
 	public CoreRemoteAccessPreferences getRemoteAccessPreferences() {
 		return raPrefs;
 	}
