@@ -871,9 +871,22 @@
 		<activity
 			android:name=".activity.LibraryActivity"
 			android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|navigation"
-			android:exported="false"
+			android:exported="true"
 			android:label="@string/library_title"
 			android:theme="@style/Theme.TorrentTV.Library" />
+			<!-- Torrent TV: second tile on the Android TV home screen, straight to the library -->
+		<activity-alias
+			android:name=".LibraryLauncher"
+			android:banner="@drawable/library_banner"
+			android:exported="true"
+			android:icon="@mipmap/ic_launcher"
+			android:label="@string/library_tile"
+			android:targetActivity=".activity.LibraryActivity">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+			</intent-filter>
+		</activity-alias>
 	</application>
 
 	<queries>

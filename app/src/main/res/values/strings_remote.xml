@@ -58,4 +58,5 @@
 	<string name="library_seen">Watched</string>
 	<string name="library_in_progress">In progress</string>
 	<string name="library_tmdb_credit">Data and images from &lt;a href="https://www.themoviedb.org"&gt;TMDB&lt;/a&gt;. This product uses the TMDB API but is not endorsed or certified by TMDB.</string>
+	<string name="library_tile">Torrent TV Movies</string>
 </resources>

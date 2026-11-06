@@ -26,6 +26,7 @@
 	<!-- BiglyBT Plus: remote access address and password, tap for a QR code -->
 	<TextView
 		android:id="@+id/plus_remote_banner"
+		android:nextFocusDown="@id/listTorrents"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:background="@drawable/plus_remote_banner_bg"
@@ -60,6 +61,7 @@
 
 			<com.biglybt.android.adapter.FlexibleRecyclerView
 				android:id="@+id/listTorrents"
+				android:focusedByDefault="true"
 				android:layout_width="fill_parent"
 				android:layout_height="fill_parent"
 				android:fastScrollEnabled="true"

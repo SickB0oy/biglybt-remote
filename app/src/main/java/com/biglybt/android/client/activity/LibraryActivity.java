@@ -70,6 +70,10 @@ public class LibraryActivity
 
 	private boolean scanning;
 
+	private boolean focusedOnce;
+
+	private RecyclerView grid;
+
 	public static void open(@NonNull Context context,
 			@Nullable ArrayList<String> dirs) {
 		Intent i = new Intent(context, LibraryActivity.class);
@@ -99,6 +103,7 @@ public class LibraryActivity
 		credit.setMovementMethod(LinkMovementMethod.getInstance());
 
 		RecyclerView list = findViewById(R.id.library_grid);
+		grid = list;
 		int widthDp = (int) (getResources().getDisplayMetrics().widthPixels
 				/ getResources().getDisplayMetrics().density);
 		int span = Math.max(2, widthDp / 150);
@@ -130,6 +135,18 @@ public class LibraryActivity
 		items.addAll(list);
 		adapter.notifyDataSetChanged();
 		updateEmpty();
+		// TV remote: start on the first poster rather than the Back button
+		if (!focusedOnce && !items.isEmpty()) {
+			focusedOnce = true;
+			grid.post(() -> {
+				RecyclerView.ViewHolder first = grid.findViewHolderForAdapterPosition(0);
+				View current = getCurrentFocus();
+				if (first != null && (current == null
+						|| current.getId() == R.id.library_back)) {
+					first.itemView.requestFocus();
+				}
+			});
+		}
 	}
 
 	private void updateEmpty() {

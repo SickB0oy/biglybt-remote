@@ -59,4 +59,5 @@
 	<string name="library_seen">Vu</string>
 	<string name="library_in_progress">En cours</string>
 	<string name="library_tmdb_credit">Données et images : &lt;a href="https://www.themoviedb.org"&gt;TMDB&lt;/a&gt;. Ce produit utilise l\'API TMDB mais n\'est ni approuvé ni certifié par TMDB.</string>
+	<string name="library_tile">Films Torrent TV</string>
 </resources>
