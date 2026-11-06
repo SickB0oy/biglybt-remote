@@ -299,10 +299,4 @@
 			android:title="@string/action_rate"/>
 	</PreferenceCategory>
 
-	<PreferenceCategory android:title="@string/prefcat_advanced" android:key="advanced">
-		<Preference
-			android:id="@+id/action_full_settings"
-			android:key="action_full_settings"
-			android:title="@string/action_full_settings"/>
-	</PreferenceCategory>
 </PreferenceScreen>

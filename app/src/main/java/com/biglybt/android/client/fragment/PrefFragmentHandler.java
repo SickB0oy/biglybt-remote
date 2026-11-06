@@ -94,7 +94,6 @@ public class PrefFragmentHandler
 
 	private static final String KEY_ACTION_ISSUE = "action_issue";
 
-	private static final String KEY_ACTION_FULL_SETTINGS = "action_full_settings";
 
 	private static final String KEY_PEER_PORT_RANDOM = "peer_port_random";
 
@@ -539,27 +538,6 @@ public class PrefFragmentHandler
 
 		////////////////////////////////
 
-		Preference pgAdvanced = findPreference("advanced");
-		if (pgAdvanced != null) {
-			Session session = activity.getSession();
-			boolean visible = session != null
-					&& session.getSupports(RPCSupports.SUPPORTS_CONFIG);
-			pgAdvanced.setVisible(visible);
-
-			if (visible) {
-				Preference prefFullSettings = findPreference(KEY_ACTION_FULL_SETTINGS);
-				if (prefFullSettings != null) {
-					Bundle extras = prefFullSettings.getExtras();
-					extras.putString("SectionID", "root");
-					extras.putString("SectionName",
-							prefFullSettings.getTitle().toString());
-					prefFullSettings.setFragment(AndroidUtils.isTV(activity)
-							&& Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP
-									? AllSettingFragmentLB.class.getName()
-									: AllSettingsFragmentM.class.getName());
-				}
-			}
-		}
 	}
 
 	private static String formatTime(Resources res, int secs) {
