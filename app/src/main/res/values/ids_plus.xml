@@ -4,4 +4,5 @@
 	<item name="action_giveback" type="id"/>
 	<item name="action_rate" type="id"/>
 	<item name="action_issue" type="id"/>
+	<item name="plus_insets_applied" type="id"/>
 </resources>

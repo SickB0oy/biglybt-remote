@@ -46,7 +46,7 @@ allprojects {
         minSdkVersion = 21  // libVLC needs Android 5.0+
         // Android 15. Required by Google Play for updates, and brings the
         // Android 14+ foreground service rules (see core flavor manifest)
-        targetSdkVersion = 35
+        targetSdkVersion = 36
         compileSdkVersion = 36  // required by libVLC 3.7
     }
 }

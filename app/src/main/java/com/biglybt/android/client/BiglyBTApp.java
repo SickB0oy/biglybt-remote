@@ -98,6 +98,7 @@ public class BiglyBTApp
 	@Override
 	public void onCreate() {
 		super.onCreate();
+		SystemBarInsets.register(this);
 
 		applicationContext = (Application) getApplicationContext();
 
