@@ -217,6 +217,9 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
   border: 1px solid var(--line); background: var(--bg); border-radius: 10px; padding: 7px 10px; width: 96px;
 }
 .set input[type=text] { width: 100%; grid-column: 1 / -1; }
+.set select {
+  border: 1px solid var(--line); background: var(--bg); border-radius: 10px; padding: 7px 10px; max-width: 220px;
+}
 .set input:disabled { opacity: .45; }
 .unit { color: var(--muted); font-size: 14px; }
 .switch { position: relative; width: 46px; height: 28px; flex: none; }
@@ -252,7 +255,7 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
 </style>
 </head>
 <body>
-<div class="offline" id="offline" role="status">Connexion perdue avec Torrent TV. Vérifie que l'appli est ouverte et que tu es sur le même Wi-Fi.</div>
+<div class="offline" id="offline" role="status" data-i18n="offline"></div>
 
 <header class="top">
   <div class="brand">
@@ -264,16 +267,16 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
     </svg>
     <div>
       <div class="brand-name">Torrent TV</div>
-      <div class="brand-sub" id="sub">Connexion…</div>
+      <div class="brand-sub" id="sub" data-i18n="connecting"></div>
     </div>
     <span class="spacer"></span>
-    <button class="icon-btn" id="openSettings" title="Paramètres" aria-label="Paramètres">
+    <button class="icon-btn" id="openSettings" data-i18n-label="settings">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
     </button>
-    <button class="icon-btn" id="pauseAll" title="Tout mettre en pause" aria-label="Tout mettre en pause">
+    <button class="icon-btn" id="pauseAll" data-i18n-label="pauseAll">
       <svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1.5"/><rect x="14" y="5" width="4" height="14" rx="1.5"/></svg>
     </button>
-    <button class="icon-btn" id="resumeAll" title="Tout reprendre" aria-label="Tout reprendre">
+    <button class="icon-btn" id="resumeAll" data-i18n-label="resumeAll">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg>
     </button>
   </div>
@@ -285,20 +288,20 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
         <path d="M12 4v15M5.5 12.5 12 19l6.5-6.5"/>
       </svg>
       <span class="speed-value" id="downVal">0</span>
-      <span class="speed-unit" id="downUnit">Ko/s</span>
+      <span class="speed-unit" id="downUnit"></span>
     </div>
     <div class="speed-side">
-      <span>Envoi <b id="up">0 Ko/s</b></span>
-      <span>Espace libre <b id="free">—</b></span>
+      <span><span data-i18n="upload"></span> <b id="up"></b></span>
+      <span><span data-i18n="freeSpace"></span> <b id="free">—</b></span>
     </div>
   </div>
 </header>
 
 <div class="bar">
   <div class="bar-in">
-    <div class="filters" role="group" aria-label="Filtrer les torrents" id="filters"></div>
+    <div class="filters" role="group" data-i18n-aria="filterTorrents" id="filters"></div>
     <div class="search-row">
-      <input class="search" id="search" type="search" placeholder="Rechercher" aria-label="Rechercher un torrent">
+      <input class="search" id="search" type="search" data-i18n-ph="search" data-i18n-aria="searchTorrent">
     </div>
   </div>
 </div>
@@ -310,56 +313,198 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
 
 <button class="fab" id="openAdd">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
-  Ajouter
+  <span data-i18n="add"></span>
 </button>
 
 <dialog id="addDlg" aria-labelledby="addTitle">
   <form class="sheet" id="addForm" method="dialog">
-    <h2 id="addTitle">Ajouter des torrents</h2>
-    <p>Colle des liens magnet ou des adresses de fichiers .torrent, un par ligne, ou choisis des fichiers.</p>
-    <textarea id="links" placeholder="magnet:?xt=urn:btih:…" aria-label="Liens magnet ou adresses .torrent"></textarea>
+    <h2 id="addTitle" data-i18n="addTitle"></h2>
+    <p data-i18n="addHelp"></p>
+    <textarea id="links" placeholder="magnet:?xt=urn:btih:…" data-i18n-aria="linksLabel"></textarea>
     <div class="drop" id="dropArea">
-      <label for="files">Choisir des fichiers .torrent</label> ou glisse-les ici
+      <label for="files" data-i18n="chooseFiles"></label> <span data-i18n="orDrag"></span>
       <input id="files" type="file" accept=".torrent,application/x-bittorrent" multiple>
       <div class="picked" id="picked"></div>
     </div>
     <div class="sheet-actions">
-      <button type="button" class="btn" id="cancelAdd">Annuler</button>
-      <button type="submit" class="btn primary" id="submitAdd">Ajouter</button>
+      <button type="button" class="btn" id="cancelAdd" data-i18n="cancel"></button>
+      <button type="submit" class="btn primary" id="submitAdd" data-i18n="add"></button>
     </div>
   </form>
 </dialog>
 
 <dialog id="delDlg" aria-labelledby="delTitle">
   <div class="sheet">
-    <h2 id="delTitle">Supprimer ce torrent ?</h2>
+    <h2 id="delTitle" data-i18n="delTitle"></h2>
     <p id="delName"></p>
-    <label class="opt"><input type="checkbox" id="delFiles"> Supprimer aussi les fichiers téléchargés</label>
+    <label class="opt"><input type="checkbox" id="delFiles"> <span data-i18n="delFiles"></span></label>
     <div class="sheet-actions">
-      <button type="button" class="btn" id="delCancel">Annuler</button>
-      <button type="button" class="btn primary" id="delOk" style="background:var(--error);border-color:var(--error)">Supprimer</button>
+      <button type="button" class="btn" id="delCancel" data-i18n="cancel"></button>
+      <button type="button" class="btn primary" id="delOk" style="background:var(--error);border-color:var(--error)" data-i18n="remove"></button>
     </div>
   </div>
 </dialog>
 
 <dialog id="setDlg" class="settings" aria-labelledby="setTitle">
   <form class="sheet" id="setForm" method="dialog">
-    <h2 id="setTitle">Paramètres</h2>
-    <p>Ces réglages s'appliquent à Torrent TV sur l'appareil qui télécharge.</p>
-    <div id="setBody" class="loading">Chargement des paramètres…</div>
+    <h2 id="setTitle" data-i18n="settings"></h2>
+    <p data-i18n="setHelp"></p>
+    <section class="group">
+      <div class="set">
+        <label for="langSel" data-i18n="language"></label>
+        <select id="langSel">
+          <option value="" data-i18n="langAuto"></option>
+          <option value="fr">Français</option>
+          <option value="en">English</option>
+          <option value="de">Deutsch</option>
+        </select>
+      </div>
+    </section>
+    <div id="setBody" class="loading"></div>
     <div class="sheet-actions">
-      <button type="button" class="btn" id="setCancel">Annuler</button>
-      <button type="submit" class="btn primary" id="setSave">Enregistrer</button>
+      <button type="button" class="btn" id="setCancel" data-i18n="cancel"></button>
+      <button type="submit" class="btn primary" id="setSave" data-i18n="save"></button>
     </div>
   </form>
 </dialog>
 
-<div class="dropzone" id="dropzone"><div>Dépose les fichiers .torrent pour les ajouter</div></div>
+<div class="dropzone" id="dropzone"><div data-i18n="dropHere"></div></div>
 <div id="toast" role="status"></div>
 
 <script>
 (function () {
   "use strict";
+
+  /* ---------- Languages ---------- */
+  var STR = {
+    fr: {
+      offline: "Connexion perdue avec Torrent TV. Vérifie que l'appli est ouverte et que tu es sur le même Wi-Fi.",
+      connecting: "Connexion…", settings: "Paramètres", pauseAll: "Tout mettre en pause", resumeAll: "Tout reprendre",
+      upload: "Envoi", freeSpace: "Espace libre", filterTorrents: "Filtrer les torrents", search: "Rechercher",
+      searchTorrent: "Rechercher un torrent", add: "Ajouter", addTitle: "Ajouter des torrents",
+      addHelp: "Colle des liens magnet ou des adresses de fichiers .torrent, un par ligne, ou choisis des fichiers.",
+      linksLabel: "Liens magnet ou adresses .torrent", chooseFiles: "Choisir des fichiers .torrent", orDrag: "ou glisse-les ici",
+      cancel: "Annuler", delTitle: "Supprimer ce torrent ?", delFiles: "Supprimer aussi les fichiers téléchargés",
+      remove: "Supprimer", save: "Enregistrer", setHelp: "Ces réglages s'appliquent à Torrent TV sur l'appareil qui télécharge.",
+      loadingSettings: "Chargement des paramètres…", dropHere: "Dépose les fichiers .torrent pour les ajouter",
+      language: "Langue", langAuto: "Langue du navigateur",
+      unauthorized: "Identifiants refusés. Recharge la page pour te reconnecter.", error: "Erreur {0}", unknownError: "Erreur inconnue",
+      lessMinute: "moins d'une minute", dShort: "j", hShort: "h", minShort: "min",
+      stError: "Erreur", stCheck: "Vérification", stDone: "Terminé", stPaused: "En pause", stQueued: "En file d'attente",
+      stMeta: "Recherche des informations", nPeers: "{0} pairs", left: "encore {0}", stSeeding: "Terminé, en partage", sent: "{0} envoyés",
+      fAll: "Tous", fActive: "En cours", fDone: "Terminés", fPaused: "En pause", fErrors: "Erreurs",
+      emptyT: "Aucun torrent", emptyD: "Appuie sur « Ajouter » pour coller un lien magnet ou envoyer un fichier .torrent.",
+      emptyFT: "Rien dans cette catégorie", emptyFD: "Change de filtre ou efface la recherche.",
+      size: "Taille", remaining: "Reste", peers: "Pairs", peersOf: "{0} sur {1}", added: "Ajouté", folder: "Dossier",
+      resume: "Reprendre", pause: "Mettre en pause", torrents1: "1 torrent", torrentsN: "{0} torrents", downloadingN: "{0} en téléchargement",
+      offlineSub: "Hors ligne", doneStart: "Reprise", doneStop: "Mis en pause", allPaused: "Tous les torrents sont en pause",
+      allResumed: "Tous les torrents ont repris", delWith: "Supprimé avec ses fichiers", delKept: "Supprimé de la liste, fichiers conservés",
+      readFail: "Lecture impossible : {0}", added1: "1 torrent ajouté", addedN: "{0} torrents ajoutés", dup1: "1 déjà présent",
+      dupN: "{0} déjà présents", failed: "échec : {0}", nothing: "Rien à ajouter", pasteOrChoose: "Colle un lien ou choisis un fichier .torrent",
+      onlyTorrent: "Seuls les fichiers .torrent sont acceptés", gSpeed: "Vitesse", limitDown: "Limiter la réception",
+      limitUp: "Limiter l'envoi", limitUpHelp: "Limiter l'envoi évite de ralentir ta connexion pendant que tu joues en ligne.",
+      gTorrents: "Torrents", dlDir: "Dossier de téléchargement", startAdded: "Démarrer les torrents dès l'ajout",
+      readSetFail: "Impossible de lire les paramètres : {0}", noChange: "Aucun changement", saved: "Paramètres enregistrés",
+      saveFail: "Échec de l'enregistrement : {0}"
+    },
+    en: {
+      offline: "Lost connection to Torrent TV. Check that the app is open and that you are on the same Wi-Fi.",
+      connecting: "Connecting…", settings: "Settings", pauseAll: "Pause all", resumeAll: "Resume all",
+      upload: "Upload", freeSpace: "Free space", filterTorrents: "Filter torrents", search: "Search",
+      searchTorrent: "Search for a torrent", add: "Add", addTitle: "Add torrents",
+      addHelp: "Paste magnet links or .torrent file addresses, one per line, or choose files.",
+      linksLabel: "Magnet links or .torrent addresses", chooseFiles: "Choose .torrent files", orDrag: "or drop them here",
+      cancel: "Cancel", delTitle: "Delete this torrent?", delFiles: "Also delete the downloaded files",
+      remove: "Delete", save: "Save", setHelp: "These settings apply to Torrent TV on the downloading device.",
+      loadingSettings: "Loading settings…", dropHere: "Drop the .torrent files to add them",
+      language: "Language", langAuto: "Browser language",
+      unauthorized: "Credentials rejected. Reload the page to sign in again.", error: "Error {0}", unknownError: "Unknown error",
+      lessMinute: "less than a minute", dShort: "d", hShort: "h", minShort: "min",
+      stError: "Error", stCheck: "Checking", stDone: "Done", stPaused: "Paused", stQueued: "Queued",
+      stMeta: "Getting information", nPeers: "{0} peers", left: "{0} left", stSeeding: "Done, seeding", sent: "{0} sent",
+      fAll: "All", fActive: "Active", fDone: "Done", fPaused: "Paused", fErrors: "Errors",
+      emptyT: "No torrents", emptyD: "Tap “Add” to paste a magnet link or send a .torrent file.",
+      emptyFT: "Nothing in this category", emptyFD: "Change the filter or clear the search.",
+      size: "Size", remaining: "Left", peers: "Peers", peersOf: "{0} of {1}", added: "Added", folder: "Folder",
+      resume: "Resume", pause: "Pause", torrents1: "1 torrent", torrentsN: "{0} torrents", downloadingN: "{0} downloading",
+      offlineSub: "Offline", doneStart: "Resumed", doneStop: "Paused", allPaused: "All torrents are paused",
+      allResumed: "All torrents resumed", delWith: "Deleted with its files", delKept: "Removed from the list, files kept",
+      readFail: "Can't read {0}", added1: "1 torrent added", addedN: "{0} torrents added", dup1: "1 already there",
+      dupN: "{0} already there", failed: "failed: {0}", nothing: "Nothing to add", pasteOrChoose: "Paste a link or choose a .torrent file",
+      onlyTorrent: "Only .torrent files are accepted", gSpeed: "Speed", limitDown: "Limit download",
+      limitUp: "Limit upload", limitUpHelp: "Limiting upload keeps your connection fast while you play online.",
+      gTorrents: "Torrents", dlDir: "Download folder", startAdded: "Start torrents as soon as they are added",
+      readSetFail: "Can't read the settings: {0}", noChange: "No changes", saved: "Settings saved",
+      saveFail: "Couldn't save: {0}"
+    },
+    de: {
+      offline: "Verbindung zu Torrent TV verloren. Prüfen Sie, ob die App geöffnet ist und Sie im selben WLAN sind.",
+      connecting: "Verbinde…", settings: "Einstellungen", pauseAll: "Alle pausieren", resumeAll: "Alle fortsetzen",
+      upload: "Upload", freeSpace: "Freier Speicher", filterTorrents: "Torrents filtern", search: "Suchen",
+      searchTorrent: "Torrent suchen", add: "Hinzufügen", addTitle: "Torrents hinzufügen",
+      addHelp: "Fügen Sie Magnet-Links oder Adressen von .torrent-Dateien ein, einen pro Zeile, oder wählen Sie Dateien.",
+      linksLabel: "Magnet-Links oder .torrent-Adressen", chooseFiles: ".torrent-Dateien auswählen", orDrag: "oder hierher ziehen",
+      cancel: "Abbrechen", delTitle: "Diesen Torrent löschen?", delFiles: "Auch die heruntergeladenen Dateien löschen",
+      remove: "Löschen", save: "Speichern", setHelp: "Diese Einstellungen gelten für Torrent TV auf dem herunterladenden Gerät.",
+      loadingSettings: "Einstellungen werden geladen…", dropHere: ".torrent-Dateien hier ablegen, um sie hinzuzufügen",
+      language: "Sprache", langAuto: "Browsersprache",
+      unauthorized: "Anmeldedaten abgelehnt. Laden Sie die Seite neu, um sich erneut anzumelden.", error: "Fehler {0}", unknownError: "Unbekannter Fehler",
+      lessMinute: "weniger als eine Minute", dShort: "T", hShort: "Std", minShort: "Min",
+      stError: "Fehler", stCheck: "Wird geprüft", stDone: "Fertig", stPaused: "Pausiert", stQueued: "In Warteschlange",
+      stMeta: "Informationen werden abgerufen", nPeers: "{0} Peers", left: "noch {0}", stSeeding: "Fertig, wird geteilt", sent: "{0} gesendet",
+      fAll: "Alle", fActive: "Aktiv", fDone: "Fertig", fPaused: "Pausiert", fErrors: "Fehler",
+      emptyT: "Keine Torrents", emptyD: "Tippen Sie auf „Hinzufügen“, um einen Magnet-Link einzufügen oder eine .torrent-Datei zu senden.",
+      emptyFT: "Nichts in dieser Kategorie", emptyFD: "Ändern Sie den Filter oder leeren Sie die Suche.",
+      size: "Größe", remaining: "Verbleibend", peers: "Peers", peersOf: "{0} von {1}", added: "Hinzugefügt", folder: "Ordner",
+      resume: "Fortsetzen", pause: "Pausieren", torrents1: "1 Torrent", torrentsN: "{0} Torrents", downloadingN: "{0} im Download",
+      offlineSub: "Offline", doneStart: "Fortgesetzt", doneStop: "Pausiert", allPaused: "Alle Torrents sind pausiert",
+      allResumed: "Alle Torrents wurden fortgesetzt", delWith: "Mit Dateien gelöscht", delKept: "Aus der Liste entfernt, Dateien behalten",
+      readFail: "{0} kann nicht gelesen werden", added1: "1 Torrent hinzugefügt", addedN: "{0} Torrents hinzugefügt", dup1: "1 bereits vorhanden",
+      dupN: "{0} bereits vorhanden", failed: "fehlgeschlagen: {0}", nothing: "Nichts hinzuzufügen", pasteOrChoose: "Fügen Sie einen Link ein oder wählen Sie eine .torrent-Datei",
+      onlyTorrent: "Nur .torrent-Dateien werden akzeptiert", gSpeed: "Geschwindigkeit", limitDown: "Download begrenzen",
+      limitUp: "Upload begrenzen", limitUpHelp: "Ein begrenzter Upload hält Ihre Verbindung schnell, während Sie online spielen.",
+      gTorrents: "Torrents", dlDir: "Download-Ordner", startAdded: "Torrents sofort nach dem Hinzufügen starten",
+      readSetFail: "Einstellungen können nicht gelesen werden: {0}", noChange: "Keine Änderungen", saved: "Einstellungen gespeichert",
+      saveFail: "Speichern fehlgeschlagen: {0}"
+    }
+  };
+  var LOCALES = { fr: "fr-FR", en: "en-GB", de: "de-DE" };
+
+  var chosenLang = "";
+  try { chosenLang = localStorage.getItem("ttv.lang") || ""; } catch (e) {}
+  function browserLang() {
+    var langs = navigator.languages || [navigator.language || "en"];
+    for (var i = 0; i < langs.length; i++) {
+      var l = String(langs[i]).slice(0, 2).toLowerCase();
+      if (STR[l]) return l;
+    }
+    return "en";
+  }
+  var lang = STR[chosenLang] ? chosenLang : browserLang();
+
+  function t(key) {
+    var s = (STR[lang] && STR[lang][key]) || STR.en[key] || key;
+    for (var i = 1; i < arguments.length; i++) s = s.split("{" + (i - 1) + "}").join(arguments[i]);
+    return s;
+  }
+
+  function applyStatic() {
+    document.documentElement.lang = lang;
+    Array.prototype.forEach.call(document.querySelectorAll("[data-i18n]"), function (el) {
+      el.textContent = t(el.getAttribute("data-i18n"));
+    });
+    Array.prototype.forEach.call(document.querySelectorAll("[data-i18n-label]"), function (el) {
+      var s = t(el.getAttribute("data-i18n-label"));
+      el.title = s; el.setAttribute("aria-label", s);
+    });
+    Array.prototype.forEach.call(document.querySelectorAll("[data-i18n-aria]"), function (el) {
+      el.setAttribute("aria-label", t(el.getAttribute("data-i18n-aria")));
+    });
+    Array.prototype.forEach.call(document.querySelectorAll("[data-i18n-ph]"), function (el) {
+      el.placeholder = t(el.getAttribute("data-i18n-ph"));
+    });
+    document.getElementById("langSel").value = chosenLang;
+  }
 
   /* ---------- Transmission RPC ---------- */
   var RPC = "/transmission/rpc";
@@ -378,10 +523,10 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
           sessionId = r.headers.get("X-Transmission-Session-Id");
           return attempt(false);
         }
-        if (r.status === 401) throw new Error("Identifiants refusés. Recharge la page pour te reconnecter.");
-        if (!r.ok) throw new Error("Erreur " + r.status);
+        if (r.status === 401) { var e401 = new Error(t("unauthorized")); e401.auth = true; throw e401; }
+        if (!r.ok) throw new Error(t("error", r.status));
         return r.json().then(function (j) {
-          if (j.result !== "success") throw new Error(j.result || "Erreur inconnue");
+          if (j.result !== "success") throw new Error(j.result || t("unknownError"));
           return j.arguments || {};
         });
       });
@@ -392,24 +537,31 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
   /* ---------- Formatting ---------- */
   function sizeParts(b) {
     if (b == null || b < 0) return ["—", ""];
-    var u = ["o", "Ko", "Mo", "Go", "To"], i = 0;
+    var u = lang === "fr" ? ["o", "Ko", "Mo", "Go", "To"] : ["B", "KB", "MB", "GB", "TB"], i = 0;
     while (b >= 1000 && i < u.length - 1) { b /= 1024; i++; }
-    var n = i === 0 ? String(Math.round(b)) : b.toFixed(b < 10 ? 1 : 0).replace(".", ",");
+    var n = i === 0 ? String(Math.round(b)) : b.toFixed(b < 10 ? 1 : 0);
+    if (lang !== "en") n = n.replace(".", ",");
     return [n, u[i]];
   }
+  function unit0() { return lang === "fr" ? "o" : "B"; }
   function size(b) { var p = sizeParts(b); return p[1] ? p[0] + " " + p[1] : p[0]; }
-  function speed(b) { var p = sizeParts(b || 0); return p[0] + " " + (p[1] || "o") + "/s"; }
+  function speed(b) { var p = sizeParts(b || 0); return p[0] + " " + (p[1] || unit0()) + "/s"; }
+  function kbs() { return lang === "fr" ? "Ko/s" : "KB/s"; }
   function eta(s) {
     if (s == null || s < 0) return null;
-    if (s < 60) return "moins d'une minute";
+    if (s < 60) return t("lessMinute");
     var m = Math.floor(s / 60), h = Math.floor(m / 60), d = Math.floor(h / 24);
-    if (d > 0) return d + " j " + (h % 24) + " h";
-    if (h > 0) return h + " h " + (m % 60) + " min";
-    return m + " min";
+    if (d > 0) return d + " " + t("dShort") + " " + (h % 24) + " " + t("hShort");
+    if (h > 0) return h + " " + t("hShort") + " " + (m % 60) + " " + t("minShort");
+    return m + " " + t("minShort");
   }
-  function date(t) {
-    if (!t) return "—";
-    return new Date(t * 1000).toLocaleString("fr-FR", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" });
+  function date(ts) {
+    if (!ts) return "—";
+    return new Date(ts * 1000).toLocaleString(LOCALES[lang], { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" });
+  }
+  function pctText(p) {
+    var s = String(p);
+    return (lang === "en" ? s + "%" : s.replace(".", ",") + " %");
   }
   function esc(s) {
     return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
@@ -420,30 +572,30 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
   /* ---------- State model ---------- */
   // Transmission status: 0 stopped, 1 queued to check, 2 checking,
   // 3 queued to download, 4 downloading, 5 queued to seed, 6 seeding
-  function describe(t) {
-    var pct = Math.floor((t.percentDone || 0) * 1000) / 10;
-    if (t.error > 0) return { cls: "s-error", label: "Erreur", detail: t.errorString || "", group: "error", pct: pct };
-    if (t.status === 1 || t.status === 2) {
-      return { cls: "s-check", label: "Vérification", detail: t.recheckProgress ? Math.round(t.recheckProgress * 100) + " %" : "", group: "active", pct: pct };
+  function describe(x) {
+    var pct = Math.floor((x.percentDone || 0) * 1000) / 10;
+    if (x.error > 0) return { cls: "s-error", label: t("stError"), detail: x.errorString || "", group: "error", pct: pct };
+    if (x.status === 1 || x.status === 2) {
+      return { cls: "s-check", label: t("stCheck"), detail: x.recheckProgress ? pctText(Math.round(x.recheckProgress * 100)) : "", group: "active", pct: pct };
     }
-    if (t.status === 0) {
-      if (t.percentDone >= 1) return { cls: "s-done", label: "Terminé", detail: "", group: "done", pct: pct };
-      return { cls: "s-paused", label: "En pause", detail: "", group: "paused", pct: pct };
+    if (x.status === 0) {
+      if (x.percentDone >= 1) return { cls: "s-done", label: t("stDone"), detail: "", group: "done", pct: pct };
+      return { cls: "s-paused", label: t("stPaused"), detail: "", group: "paused", pct: pct };
     }
-    if (t.status === 3) return { cls: "", label: "En file d'attente", detail: "", group: "active", pct: pct };
-    if (t.status === 4) {
-      if (t.metadataPercentComplete != null && t.metadataPercentComplete < 1) {
-        return { cls: "", label: "Recherche des informations", detail: t.peersConnected + " pairs", group: "active", pct: pct };
+    if (x.status === 3) return { cls: "", label: t("stQueued"), detail: "", group: "active", pct: pct };
+    if (x.status === 4) {
+      if (x.metadataPercentComplete != null && x.metadataPercentComplete < 1) {
+        return { cls: "", label: t("stMeta"), detail: t("nPeers", x.peersConnected), group: "active", pct: pct };
       }
-      var e = eta(t.eta);
-      return { cls: "", label: speed(t.rateDownload), detail: e ? "encore " + e : "", group: "active", pct: pct };
+      var e = eta(x.eta);
+      return { cls: "", label: speed(x.rateDownload), detail: e ? t("left", e) : "", group: "active", pct: pct };
     }
-    if (t.status === 5 || t.status === 6) return { cls: "s-done", label: "Terminé, en partage", detail: t.rateUpload > 0 ? speed(t.rateUpload) + " envoyés" : "", group: "done", pct: pct };
+    if (x.status === 5 || x.status === 6) return { cls: "s-done", label: t("stSeeding"), detail: x.rateUpload > 0 ? t("sent", speed(x.rateUpload)) : "", group: "done", pct: pct };
     return { cls: "", label: "—", detail: "", group: "active", pct: pct };
   }
 
   var FILTERS = [
-    ["all", "Tous"], ["active", "En cours"], ["done", "Terminés"], ["paused", "En pause"], ["error", "Erreurs"]
+    ["all", "fAll"], ["active", "fActive"], ["done", "fDone"], ["paused", "fPaused"], ["error", "fErrors"]
   ];
   var FIELDS = ["id", "name", "status", "percentDone", "rateDownload", "rateUpload", "eta", "totalSize",
     "sizeWhenDone", "leftUntilDone", "peersConnected", "peersSendingToUs", "uploadRatio", "error",
@@ -451,9 +603,12 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
     "downloadedEver", "recheckProgress", "hashString"];
 
   var torrents = [];
+  var lastStats = {};
+  var online = null;
   var filter = "all";
   var open = {};
   var downloadDir = null;
+  var freeBytes = null;
 
   var listEl = document.getElementById("list");
   var filtersEl = document.getElementById("filters");
@@ -463,9 +618,9 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
 
   function renderFilters() {
     var counts = { all: torrents.length, active: 0, done: 0, paused: 0, error: 0 };
-    torrents.forEach(function (t) { counts[describe(t).group]++; });
+    torrents.forEach(function (x) { counts[describe(x).group]++; });
     filtersEl.innerHTML = FILTERS.filter(function (f) { return f[0] !== "error" || counts.error > 0; }).map(function (f) {
-      return '<button class="chip" data-f="' + f[0] + '" aria-pressed="' + (filter === f[0]) + '">' + f[1] +
+      return '<button class="chip" data-f="' + f[0] + '" aria-pressed="' + (filter === f[0]) + '">' + t(f[1]) +
         '<span class="n">' + counts[f[0]] + '</span></button>';
     }).join("");
   }
@@ -477,47 +632,46 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
 
   function renderList() {
     var q = searchEl.value.trim().toLowerCase();
-    var shown = sorted(torrents.filter(function (t) {
-      if (filter !== "all" && describe(t).group !== filter) return false;
-      return !q || t.name.toLowerCase().indexOf(q) >= 0;
+    var shown = sorted(torrents.filter(function (x) {
+      if (filter !== "all" && describe(x).group !== filter) return false;
+      return !q || x.name.toLowerCase().indexOf(q) >= 0;
     }));
 
     if (!torrents.length) {
-      listEl.innerHTML = '<li class="empty"><b>Aucun torrent</b>Appuie sur « Ajouter » pour coller un lien magnet ou envoyer un fichier .torrent.</li>';
+      listEl.innerHTML = '<li class="empty"><b>' + esc(t("emptyT")) + '</b>' + esc(t("emptyD")) + '</li>';
       return;
     }
     if (!shown.length) {
-      listEl.innerHTML = '<li class="empty"><b>Rien dans cette catégorie</b>Change de filtre ou efface la recherche.</li>';
+      listEl.innerHTML = '<li class="empty"><b>' + esc(t("emptyFT")) + '</b>' + esc(t("emptyFD")) + '</li>';
       return;
     }
 
-    listEl.innerHTML = shown.map(function (t) {
-      var d = describe(t);
-      var paused = t.status === 0;
-      var isOpen = !!open[t.id];
-      var pctTxt = String(d.pct).replace(".", ",") + " %";
-      return '<li class="row ' + d.cls + (isOpen ? " open" : "") + '" data-id="' + t.id + '">' +
+    listEl.innerHTML = shown.map(function (x) {
+      var d = describe(x);
+      var paused = x.status === 0;
+      var isOpen = !!open[x.id];
+      return '<li class="row ' + d.cls + (isOpen ? " open" : "") + '" data-id="' + x.id + '">' +
         '<button class="row-head" aria-expanded="' + isOpen + '">' +
-          '<div class="name">' + esc(t.name) + '</div>' +
+          '<div class="name">' + esc(x.name) + '</div>' +
           '<div class="state"><span class="dot"></span><strong>' + esc(d.label) + '</strong>' +
             (d.detail ? '<span>' + esc(d.detail) + '</span>' : '') + '</div>' +
           '<div class="progress"><div class="track"><div class="fill" style="width:' + Math.min(100, d.pct) + '%"></div></div>' +
-            '<span class="pct">' + pctTxt + '</span></div>' +
+            '<span class="pct">' + pctText(d.pct) + '</span></div>' +
         '</button>' +
         '<div class="details">' +
           '<dl class="facts">' +
-            '<div><dt>Taille</dt><dd>' + size(t.sizeWhenDone || t.totalSize) + '</dd></div>' +
-            '<div><dt>Reste</dt><dd>' + size(t.leftUntilDone) + '</dd></div>' +
-            '<div><dt>Pairs</dt><dd>' + t.peersSendingToUs + ' sur ' + t.peersConnected + '</dd></div>' +
-            '<div><dt>Ajouté</dt><dd>' + date(t.addedDate) + '</dd></div>' +
-            '<div class="wide"><dt>Dossier</dt><dd>' + esc(t.downloadDir || "—") + '</dd></div>' +
-            (t.error > 0 ? '<div class="wide"><dt>Erreur</dt><dd>' + esc(t.errorString) + '</dd></div>' : '') +
+            '<div><dt>' + t("size") + '</dt><dd>' + size(x.sizeWhenDone || x.totalSize) + '</dd></div>' +
+            '<div><dt>' + t("remaining") + '</dt><dd>' + size(x.leftUntilDone) + '</dd></div>' +
+            '<div><dt>' + t("peers") + '</dt><dd>' + t("peersOf", x.peersSendingToUs, x.peersConnected) + '</dd></div>' +
+            '<div><dt>' + t("added") + '</dt><dd>' + date(x.addedDate) + '</dd></div>' +
+            '<div class="wide"><dt>' + t("folder") + '</dt><dd>' + esc(x.downloadDir || "—") + '</dd></div>' +
+            (x.error > 0 ? '<div class="wide"><dt>' + t("stError") + '</dt><dd>' + esc(x.errorString) + '</dd></div>' : '') +
           '</dl>' +
           '<div class="actions">' +
             (paused
-              ? '<button class="btn primary" data-act="start">Reprendre</button>'
-              : '<button class="btn" data-act="stop">Mettre en pause</button>') +
-            '<button class="btn danger" data-act="remove">Supprimer</button>' +
+              ? '<button class="btn primary" data-act="start">' + t("resume") + '</button>'
+              : '<button class="btn" data-act="stop">' + t("pause") + '</button>') +
+            '<button class="btn danger" data-act="remove">' + t("remove") + '</button>' +
           '</div>' +
         '</div>' +
       '</li>';
@@ -528,16 +682,34 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
   function renderSpeeds(stats) {
     var p = sizeParts(stats.downloadSpeed || 0);
     document.getElementById("downVal").textContent = p[0];
-    document.getElementById("downUnit").textContent = (p[1] || "o") + "/s";
+    document.getElementById("downUnit").textContent = (p[1] || unit0()) + "/s";
     document.getElementById("up").textContent = speed(stats.uploadSpeed || 0);
+    document.getElementById("free").textContent = freeBytes == null ? "—" : size(freeBytes);
   }
 
   var subEl = document.getElementById("sub");
   var offlineEl = document.getElementById("offline");
+  var offlineMsg = null;
   function setOnline(ok, msg) {
+    online = ok;
+    offlineMsg = msg || null;
     offlineEl.style.display = ok ? "none" : "block";
-    if (msg) offlineEl.textContent = msg;
+    offlineEl.textContent = offlineMsg || t("offline");
     subEl.classList.toggle("bad", !ok);
+  }
+  function renderSub() {
+    if (online === null) { subEl.textContent = t("connecting"); return; }
+    if (!online) { subEl.textContent = t("offlineSub"); return; }
+    var active = torrents.filter(function (x) { return x.status === 4; }).length;
+    subEl.textContent = (torrents.length === 1 ? t("torrents1") : t("torrentsN", torrents.length)) +
+      (active ? ", " + t("downloadingN", active) : "");
+  }
+
+  function renderAll() {
+    renderSpeeds(lastStats);
+    renderSub();
+    renderFilters();
+    renderList();
   }
 
   /* ---------- Polling ---------- */
@@ -550,16 +722,12 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
       rpc("session-stats")
     ]).then(function (res) {
       torrents = res[0].torrents || [];
-      renderSpeeds(res[1]);
-      var active = torrents.filter(function (t) { return t.status === 4; }).length;
-      subEl.textContent = torrents.length + " torrent" + (torrents.length > 1 ? "s" : "") +
-        (active ? ", " + active + " en téléchargement" : "");
+      lastStats = res[1] || {};
       setOnline(true);
-      renderFilters();
-      renderList();
+      renderAll();
     }).catch(function (e) {
-      subEl.textContent = "Hors ligne";
-      setOnline(false, /Identifiants/.test(e.message) ? e.message : null);
+      setOnline(false, e.auth ? e.message : null);
+      renderSub();
     }).then(function () { busy = false; });
   }
 
@@ -567,10 +735,12 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
     rpc("session-get").then(function (s) {
       downloadDir = s["download-dir"];
       if (s["download-dir-free-space"] != null) {
-        document.getElementById("free").textContent = size(s["download-dir-free-space"]);
+        freeBytes = s["download-dir-free-space"];
+        renderSpeeds(lastStats);
       } else if (downloadDir) {
         return rpc("free-space", { path: downloadDir }).then(function (f) {
-          document.getElementById("free").textContent = size(f["size-bytes"]);
+          freeBytes = f["size-bytes"];
+          renderSpeeds(lastStats);
         });
       }
     }).catch(function () {});
@@ -607,26 +777,26 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
     }
     var act = actBtn.getAttribute("data-act");
     if (act === "remove") {
-      var t = torrents.filter(function (x) { return x.id === id; })[0];
+      var x = torrents.filter(function (y) { return y.id === id; })[0];
       pendingDelete = id;
-      document.getElementById("delName").textContent = t ? t.name : "";
+      document.getElementById("delName").textContent = x ? x.name : "";
       document.getElementById("delFiles").checked = false;
       showDialog(delDlg);
       return;
     }
-    var method = { start: "torrent-start", stop: "torrent-stop", verify: "torrent-verify", announce: "torrent-reannounce" }[act];
-    var done = { start: "Reprise", stop: "Mis en pause", verify: "Vérification lancée", announce: "Recherche de pairs relancée" }[act];
+    var method = { start: "torrent-start", stop: "torrent-stop" }[act];
+    var done = { start: t("doneStart"), stop: t("doneStop") }[act];
     actBtn.disabled = true;
     rpc(method, { ids: [id] }).then(function () { toast(done); return refresh(); })
       .catch(function (err) { toast(err.message); actBtn.disabled = false; });
   });
 
   document.getElementById("pauseAll").onclick = function () {
-    rpc("torrent-stop", {}).then(function () { toast("Tous les torrents sont en pause"); refresh(); })
+    rpc("torrent-stop", {}).then(function () { toast(t("allPaused")); refresh(); })
       .catch(function (err) { toast(err.message); });
   };
   document.getElementById("resumeAll").onclick = function () {
-    rpc("torrent-start", {}).then(function () { toast("Tous les torrents ont repris"); refresh(); })
+    rpc("torrent-start", {}).then(function () { toast(t("allResumed")); refresh(); })
       .catch(function (err) { toast(err.message); });
   };
 
@@ -643,7 +813,7 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
     closeDialog(delDlg);
     rpc("torrent-remove", { ids: [id], "delete-local-data": withFiles }).then(function () {
       delete open[id];
-      toast(withFiles ? "Supprimé avec ses fichiers" : "Supprimé de la liste, fichiers conservés");
+      toast(withFiles ? t("delWith") : t("delKept"));
       refresh();
     }).catch(function (err) { toast(err.message); });
   };
@@ -670,7 +840,7 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
     return new Promise(function (resolve, reject) {
       var r = new FileReader();
       r.onload = function () { resolve(String(r.result).split(",")[1] || ""); };
-      r.onerror = function () { reject(new Error("Lecture impossible : " + file.name)); };
+      r.onerror = function () { reject(new Error(t("readFail", file.name))); };
       r.readAsDataURL(file);
     });
   }
@@ -679,8 +849,8 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
     var jobs = [];
     links.forEach(function (l) {
       jobs.push(rpc("torrent-add", { filename: l, paused: paused }).then(function (a) {
-        var t = a["torrent-added"] || a["torrent-duplicate"];
-        return { ok: true, dup: !!a["torrent-duplicate"], name: t && t.name ? t.name : l.slice(0, 40) };
+        var x = a["torrent-added"] || a["torrent-duplicate"];
+        return { ok: true, dup: !!a["torrent-duplicate"], name: x && x.name ? x.name : l.slice(0, 40) };
       }).catch(function (e) { return { ok: false, name: l.slice(0, 40), err: e.message }; }));
     });
     files.forEach(function (f) {
@@ -695,10 +865,10 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
       var dup = res.filter(function (r) { return r.dup; }).length;
       var bad = res.filter(function (r) { return !r.ok; });
       var msg = [];
-      if (ok) msg.push(ok === 1 ? "1 torrent ajouté" : ok + " torrents ajoutés");
-      if (dup) msg.push(dup === 1 ? "1 déjà présent" : dup + " déjà présents");
-      if (bad.length) msg.push("échec : " + bad.map(function (b) { return b.name + " (" + b.err + ")"; }).join(", "));
-      toast(msg.join(", ") || "Rien à ajouter");
+      if (ok) msg.push(ok === 1 ? t("added1") : t("addedN", ok));
+      if (dup) msg.push(dup === 1 ? t("dup1") : t("dupN", dup));
+      if (bad.length) msg.push(t("failed", bad.map(function (b) { return b.name + " (" + b.err + ")"; }).join(", ")));
+      toast(msg.join(", ") || t("nothing"));
       refresh();
       return bad.length === 0;
     });
@@ -707,7 +877,7 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
   document.getElementById("addForm").addEventListener("submit", function (e) {
     e.preventDefault();
     var links = linksEl.value.split(/\s+/).map(function (s) { return s.trim(); }).filter(Boolean);
-    if (!links.length && !queuedFiles.length) { toast("Colle un lien ou choisis un fichier .torrent"); return; }
+    if (!links.length && !queuedFiles.length) { toast(t("pasteOrChoose")); return; }
     var btn = document.getElementById("submitAdd");
     btn.disabled = true;
     addAll(links, queuedFiles, false).then(function (allOk) {
@@ -725,7 +895,7 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
     if (!hasFiles(e)) return;
     e.preventDefault(); dragDepth = 0; dz.classList.remove("on");
     var files = Array.prototype.filter.call(e.dataTransfer.files, function (f) { return /\.torrent$/i.test(f.name); });
-    if (!files.length) { toast("Seuls les fichiers .torrent sont acceptés"); return; }
+    if (!files.length) { toast(t("onlyTorrent")); return; }
     if (addDlg.open) { setFiles(files); return; }
     addAll([], files, false);
   });
@@ -742,26 +912,35 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
     return '<span class="inline"><input type="number" min="0" step="' + (step || 1) + '" inputmode="decimal" id="' + id +
       '" value="' + esc(val) + '">' + (unit ? '<span class="unit">' + unit + '</span>' : '') + '</span>';
   }
-  function limitRow(label, key, help, unit, step) {
-    return '<div class="set"><label for="' + key + '-on">' + label + '</label>' + sw(key + "-on", current[key + "-enabled"]) +
-      '<span></span>' + num(key, current[key], unit, step) + (help ? '<small>' + help + '</small>' : '') + '</div>';
+
+  // Keeps what the user typed when the language changes while the dialog is open
+  function formValues() {
+    if (!document.getElementById("download-dir")) return null;
+    function v(id) { return document.getElementById(id); }
+    return {
+      "speed-limit-down-enabled": v("speed-limit-down-on").checked,
+      "speed-limit-down": v("speed-limit-down").value,
+      "speed-limit-up-enabled": v("speed-limit-up-on").checked,
+      "speed-limit-up": v("speed-limit-up").value,
+      "download-dir": v("download-dir").value,
+      "start-added-torrents": v("start-added-torrents").checked
+    };
   }
 
-  function renderSettings() {
-    var c = current;
+  function renderSettings(c) {
     setBody.className = "";
     setBody.innerHTML =
-      '<section class="group"><h3>Vitesse</h3>' +
-        '<div class="set"><label for="speed-limit-down-on">Limiter la réception</label>' + sw("speed-limit-down-on", c["speed-limit-down-enabled"]) +
-          '<span></span>' + num("speed-limit-down", c["speed-limit-down"], "Ko/s") + '</div>' +
-        '<div class="set"><label for="speed-limit-up-on">Limiter l\'envoi</label>' + sw("speed-limit-up-on", c["speed-limit-up-enabled"]) +
-          '<span></span>' + num("speed-limit-up", c["speed-limit-up"], "Ko/s") +
-          '<small>Limiter l\'envoi évite de ralentir ta connexion pendant que tu joues en ligne.</small></div>' +
+      '<section class="group"><h3>' + t("gSpeed") + '</h3>' +
+        '<div class="set"><label for="speed-limit-down-on">' + t("limitDown") + '</label>' + sw("speed-limit-down-on", c["speed-limit-down-enabled"]) +
+          '<span></span>' + num("speed-limit-down", c["speed-limit-down"], kbs()) + '</div>' +
+        '<div class="set"><label for="speed-limit-up-on">' + t("limitUp") + '</label>' + sw("speed-limit-up-on", c["speed-limit-up-enabled"]) +
+          '<span></span>' + num("speed-limit-up", c["speed-limit-up"], kbs()) +
+          '<small>' + t("limitUpHelp") + '</small></div>' +
       '</section>' +
-      '<section class="group"><h3>Torrents</h3>' +
-        '<div class="set"><label for="download-dir">Dossier de téléchargement</label><span></span>' +
+      '<section class="group"><h3>' + t("gTorrents") + '</h3>' +
+        '<div class="set"><label for="download-dir">' + t("dlDir") + '</label><span></span>' +
           '<input type="text" id="download-dir" value="' + esc(c["download-dir"]) + '" spellcheck="false"></div>' +
-        '<div class="set"><label for="start-added-torrents">Démarrer les torrents dès l\'ajout</label>' + sw("start-added-torrents", c["start-added-torrents"]) + '</div>' +
+        '<div class="set"><label for="start-added-torrents">' + t("startAdded") + '</label>' + sw("start-added-torrents", c["start-added-torrents"]) + '</div>' +
       '</section>';
     syncDisabled();
   }
@@ -776,13 +955,31 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
   setBody.addEventListener("change", syncDisabled);
 
   document.getElementById("openSettings").onclick = function () {
+    current = null;
     setBody.className = "loading";
-    setBody.textContent = "Chargement des paramètres…";
+    setBody.textContent = t("loadingSettings");
+    document.getElementById("langSel").value = chosenLang;
     showDialog(setDlg);
-    rpc("session-get").then(function (s) { current = s; renderSettings(); })
-      .catch(function (e) { setBody.textContent = "Impossible de lire les paramètres : " + e.message; });
+    rpc("session-get").then(function (s) { current = s; renderSettings(s); })
+      .catch(function (e) { setBody.textContent = t("readSetFail", e.message); });
   };
   document.getElementById("setCancel").onclick = function () { closeDialog(setDlg); };
+
+  // Language applies right away, it is stored in this browser only
+  document.getElementById("langSel").addEventListener("change", function () {
+    chosenLang = this.value;
+    try {
+      if (chosenLang) localStorage.setItem("ttv.lang", chosenLang);
+      else localStorage.removeItem("ttv.lang");
+    } catch (e) {}
+    lang = STR[chosenLang] ? chosenLang : browserLang();
+    var typed = formValues();
+    applyStatic();
+    if (online === false) setOnline(false, offlineMsg);
+    renderAll();
+    if (current) renderSettings(typed || current);
+    else if (setBody.className === "loading") setBody.textContent = t("loadingSettings");
+  });
 
   document.getElementById("setForm").addEventListener("submit", function (e) {
     e.preventDefault();
@@ -801,18 +998,20 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
     // Only send what changed
     var changed = {};
     Object.keys(args).forEach(function (k) { if (current[k] !== args[k]) changed[k] = args[k]; });
-    if (!Object.keys(changed).length) { closeDialog(setDlg); toast("Aucun changement"); return; }
+    if (!Object.keys(changed).length) { closeDialog(setDlg); toast(t("noChange")); return; }
     var btn = document.getElementById("setSave");
     btn.disabled = true;
     rpc("session-set", changed).then(function () {
       closeDialog(setDlg);
-      toast("Paramètres enregistrés");
+      toast(t("saved"));
       refreshSession();
-    }).catch(function (err) { toast("Échec de l'enregistrement : " + err.message); })
+    }).catch(function (err) { toast(t("saveFail", err.message)); })
       .then(function () { btn.disabled = false; });
   });
 
   /* Start */
+  applyStatic();
+  renderAll();
   refresh();
   refreshSession();
   setInterval(function () { if (!document.hidden) refresh(); }, 2000);
