@@ -2,7 +2,7 @@
 
 Version modifiée de [BiglyBT pour Android](https://github.com/BiglySoftware/BiglyBT-Android)
 (licence GPL), mise à jour et corrigée. Nom de paquet distinct
-(`com.biglybt.android.client.plus`) : s'installe à côté de BiglyBT officiel.
+(`io.github.sickb0oy.torrenttv`) : s'installe à côté de BiglyBT officiel.
 
 ## Corrections
 

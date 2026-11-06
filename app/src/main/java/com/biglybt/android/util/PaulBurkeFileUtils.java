@@ -274,7 +274,8 @@ public class PaulBurkeFileUtils
 	public static boolean isLocalStorageDocument(Uri uri) {
 		String authority = uri.getAuthority();
 		return authority != null && authority.endsWith(AUTHORITY_SUFFIX)
-				&& authority.startsWith("com.biglybt.android.client");
+				&& authority.startsWith(
+						com.biglybt.android.client.BiglyBTApp.getContext().getPackageName());
 	}
 
 	/**
