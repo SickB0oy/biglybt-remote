@@ -32,7 +32,7 @@ android {
         applicationId "app.torrenttv"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionName "1.3.4.4-plus23"
+        versionName "1.3.4.4-plus24"
         // a.b.c -> aabbccdd, where dd = build #
         versionCode 1030404
         multiDexEnabled true
@@ -283,6 +283,16 @@ tasks.register('copyPluginFiles') {
                 from(entry.value)
                 into("$destDir14/${entry.key}")
             }
+        }
+
+        // Torrent TV: the remote access plugin, with tracker search added
+        def xmProps = file("$destDir14/xmwebui/plugin.properties")
+        xmProps.text = xmProps.text
+                .replace('com.aelitis.azureus.plugins.xmwebui.XMWebUIPlugin',
+                        'com.biglybt.android.core.az.TorrentTVWebPlugin')
+                .replace('plugin.name=BiglyBT Web Remote', 'plugin.name=Torrent TV')
+        if (!xmProps.text.contains('TorrentTVWebPlugin')) {
+            throw new GradleException('xmwebui plugin.properties: plugin.class not replaced')
         }
 
         // BiglyBT Plus: the modern remote web page replaces the Transmission one

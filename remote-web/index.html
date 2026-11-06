@@ -247,6 +247,37 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
   display: none; background: var(--error); color: #fff; text-align: center; font-size: 14px; padding: 8px 12px;
 }
 
+/* ---------- Tabs & tracker search ---------- */
+.tabs { display: flex; gap: 4px; background: var(--soft); padding: 4px; border-radius: 14px; grid-column: 1 / -1; }
+.tab {
+  flex: 1; border: 0; background: none; padding: 8px 12px; border-radius: 10px;
+  font-weight: 700; font-size: 15px; color: var(--muted);
+}
+.tab[aria-selected="true"] { background: var(--surface); color: var(--ink); box-shadow: 0 1px 4px rgba(0,0,0,.12); }
+[hidden] { display: none !important; }
+.sstatus { color: var(--muted); font-size: 14px; padding: 10px 2px 0; }
+.sstatus .warn { color: var(--error); display: block; margin-top: 4px; }
+.res {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 16px;
+  margin: 10px 0; padding: 14px 16px; list-style: none;
+}
+.res-title { font-weight: 700; overflow-wrap: anywhere; line-height: 1.3; }
+.res-meta { display: flex; flex-wrap: wrap; gap: 4px 14px; margin-top: 6px; color: var(--muted); font-size: 14px; }
+.res-meta .badge {
+  background: var(--soft); color: var(--ink); border-radius: 8px; padding: 1px 8px; font-weight: 700; font-size: 13px;
+}
+.res-meta .seed { color: var(--done); font-weight: 700; }
+.res .actions { margin-top: 12px; }
+.res a.btn { text-decoration: none; color: var(--ink); }
+.trk { border: 1px solid var(--line); border-radius: 14px; padding: 12px; margin-top: 10px; display: grid; gap: 8px; }
+.trk label { font-size: 13px; color: var(--muted); font-weight: 600; display: grid; gap: 4px; }
+.trk input {
+  width: 100%; border: 1px solid var(--line); background: var(--bg); border-radius: 10px; padding: 8px 10px;
+}
+.trk-foot { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
+.trk-foot a { color: var(--indigo); font-size: 13px; font-weight: 700; }
+.group > small { display: block; color: var(--muted); font-size: 13px; }
+
 @media (min-width: 760px) {
   .bar-in { grid-template-columns: 1fr 340px; align-items: center; }
   .fab { right: max(24px, calc(50% - 440px)); }
@@ -299,15 +330,32 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
 
 <div class="bar">
   <div class="bar-in">
+    <div class="tabs" role="tablist">
+      <button class="tab" id="tabTorrents" role="tab" aria-selected="true" data-i18n="tabTorrents"></button>
+      <button class="tab" id="tabSearch" role="tab" aria-selected="false" data-i18n="tabSearch"></button>
+    </div>
     <div class="filters" role="group" data-i18n-aria="filterTorrents" id="filters"></div>
-    <div class="search-row">
+    <div class="search-row" id="localSearch">
       <input class="search" id="search" type="search" data-i18n-ph="search" data-i18n-aria="searchTorrent">
     </div>
+    <div class="filters" role="group" id="searchCats" hidden>
+      <button class="chip" data-c="all" aria-pressed="true" data-i18n="cAll"></button>
+      <button class="chip" data-c="movies" aria-pressed="false" data-i18n="cMovies"></button>
+      <button class="chip" data-c="tv" aria-pressed="false" data-i18n="cTv"></button>
+    </div>
+    <form class="search-row" id="searchForm" hidden>
+      <input class="search" id="sq" type="search" enterkeyhint="search" data-i18n-ph="searchPh" data-i18n-aria="tabSearch">
+      <button class="btn primary" type="submit" data-i18n="go"></button>
+    </form>
   </div>
 </div>
 
 <main>
   <ul class="list" id="list"></ul>
+  <section id="searchPanel" hidden>
+    <div class="sstatus" id="sStatus" aria-live="polite"></div>
+    <ul class="list" id="results"></ul>
+  </section>
 </main>
 
 
@@ -361,6 +409,12 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
       </div>
     </section>
     <div id="setBody" class="loading"></div>
+    <section class="group">
+      <h3 data-i18n="gTrackers"></h3>
+      <small data-i18n="trkHelp"></small>
+      <div id="trkList"></div>
+      <div class="actions"><button type="button" class="btn" id="trkAdd" data-i18n="trkAdd"></button></div>
+    </section>
     <div class="sheet-actions">
       <button type="button" class="btn" id="setCancel" data-i18n="cancel"></button>
       <button type="submit" class="btn primary" id="setSave" data-i18n="save"></button>
@@ -405,7 +459,42 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
       limitUp: "Limiter l'envoi", limitUpHelp: "Limiter l'envoi évite de ralentir ta connexion pendant que tu joues en ligne.",
       gTorrents: "Torrents", dlDir: "Dossier de téléchargement", startAdded: "Démarrer les torrents dès l'ajout",
       readSetFail: "Impossible de lire les paramètres : {0}", noChange: "Aucun changement", saved: "Paramètres enregistrés",
-      saveFail: "Échec de l'enregistrement : {0}"
+      saveFail: "Échec de l'enregistrement : {0}",
+      tabTorrents: "Torrents",
+      tabSearch: "Rechercher",
+      searchPh: "Titre d'un film, d'une série…",
+      go: "Rechercher",
+      cAll: "Tout",
+      cMovies: "Films",
+      cTv: "Séries",
+      searching: "Recherche en cours…",
+      nResults: "{0} résultats",
+      oneResult: "1 résultat",
+      noResults: "Aucun résultat",
+      noTrackers: "Aucun tracker avec une clé API. Ajoute tes clés dans ⚙️ Paramètres, section Trackers.",
+      openSettings: "Ouvrir les paramètres",
+      download: "Télécharger",
+      addedOk: "Ajouté ✓",
+      site: "Voir sur le site",
+      nSeeders: "{0} seeders",
+      nLeechers: "{0} leechers",
+      eAuth: "clé API refusée",
+      eTimeout: "pas de réponse",
+      eExpired: "Résultat expiré, relance la recherche",
+      eNotTorrent: "le lien ne donne pas de fichier .torrent",
+      dlAdded: "Ajouté : {0}",
+      dlDup: "Déjà dans la liste : {0}",
+      gTrackers: "Trackers",
+      trkHelp: "La recherche passe par l'API Torznab de chaque tracker. Tes clés restent sur l'appareil : elles ne sont jamais renvoyées au navigateur.",
+      trkName: "Nom",
+      trkUrl: "Adresse API (Torznab)",
+      trkKey: "Clé API",
+      keySaved: "Clé enregistrée, laisse vide pour la garder",
+      keyPaste: "Colle ta clé API",
+      whereKey: "Où trouver ma clé ?",
+      trkRemove: "Retirer",
+      trkAdd: "Ajouter un tracker",
+      trkFail: "Trackers : {0}"
     },
     en: {
       offline: "Lost connection to Torrent TV. Check that the app is open and that you are on the same Wi-Fi.",
@@ -435,7 +524,42 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
       limitUp: "Limit upload", limitUpHelp: "Limiting upload keeps your connection fast while you play online.",
       gTorrents: "Torrents", dlDir: "Download folder", startAdded: "Start torrents as soon as they are added",
       readSetFail: "Can't read the settings: {0}", noChange: "No changes", saved: "Settings saved",
-      saveFail: "Couldn't save: {0}"
+      saveFail: "Couldn't save: {0}",
+      tabTorrents: "Torrents",
+      tabSearch: "Search",
+      searchPh: "Movie or TV show title…",
+      go: "Search",
+      cAll: "All",
+      cMovies: "Movies",
+      cTv: "TV shows",
+      searching: "Searching…",
+      nResults: "{0} results",
+      oneResult: "1 result",
+      noResults: "No results",
+      noTrackers: "No tracker with an API key. Add your keys in ⚙️ Settings, Trackers section.",
+      openSettings: "Open settings",
+      download: "Download",
+      addedOk: "Added ✓",
+      site: "Open on site",
+      nSeeders: "{0} seeders",
+      nLeechers: "{0} leechers",
+      eAuth: "API key rejected",
+      eTimeout: "no response",
+      eExpired: "Result expired, search again",
+      eNotTorrent: "the link did not return a .torrent file",
+      dlAdded: "Added: {0}",
+      dlDup: "Already in the list: {0}",
+      gTrackers: "Trackers",
+      trkHelp: "Search uses the Torznab API of each tracker. Your keys stay on the device: they are never sent back to the browser.",
+      trkName: "Name",
+      trkUrl: "API address (Torznab)",
+      trkKey: "API key",
+      keySaved: "Key saved, leave empty to keep it",
+      keyPaste: "Paste your API key",
+      whereKey: "Where is my key?",
+      trkRemove: "Remove",
+      trkAdd: "Add a tracker",
+      trkFail: "Trackers: {0}"
     },
     de: {
       offline: "Verbindung zu Torrent TV verloren. Prüfen Sie, ob die App geöffnet ist und Sie im selben WLAN sind.",
@@ -465,7 +589,42 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
       limitUp: "Upload begrenzen", limitUpHelp: "Ein begrenzter Upload hält Ihre Verbindung schnell, während Sie online spielen.",
       gTorrents: "Torrents", dlDir: "Download-Ordner", startAdded: "Torrents sofort nach dem Hinzufügen starten",
       readSetFail: "Einstellungen können nicht gelesen werden: {0}", noChange: "Keine Änderungen", saved: "Einstellungen gespeichert",
-      saveFail: "Speichern fehlgeschlagen: {0}"
+      saveFail: "Speichern fehlgeschlagen: {0}",
+      tabTorrents: "Torrents",
+      tabSearch: "Suchen",
+      searchPh: "Titel eines Films oder einer Serie…",
+      go: "Suchen",
+      cAll: "Alle",
+      cMovies: "Filme",
+      cTv: "Serien",
+      searching: "Suche läuft…",
+      nResults: "{0} Ergebnisse",
+      oneResult: "1 Ergebnis",
+      noResults: "Keine Ergebnisse",
+      noTrackers: "Kein Tracker mit API-Schlüssel. Fügen Sie Ihre Schlüssel unter ⚙️ Einstellungen, Abschnitt Tracker, hinzu.",
+      openSettings: "Einstellungen öffnen",
+      download: "Herunterladen",
+      addedOk: "Hinzugefügt ✓",
+      site: "Auf der Seite öffnen",
+      nSeeders: "{0} Seeder",
+      nLeechers: "{0} Leecher",
+      eAuth: "API-Schlüssel abgelehnt",
+      eTimeout: "keine Antwort",
+      eExpired: "Ergebnis abgelaufen, bitte erneut suchen",
+      eNotTorrent: "der Link liefert keine .torrent-Datei",
+      dlAdded: "Hinzugefügt: {0}",
+      dlDup: "Bereits in der Liste: {0}",
+      gTrackers: "Tracker",
+      trkHelp: "Die Suche nutzt die Torznab-API jedes Trackers. Ihre Schlüssel bleiben auf dem Gerät und werden nie an den Browser zurückgesendet.",
+      trkName: "Name",
+      trkUrl: "API-Adresse (Torznab)",
+      trkKey: "API-Schlüssel",
+      keySaved: "Schlüssel gespeichert, leer lassen zum Behalten",
+      keyPaste: "API-Schlüssel einfügen",
+      whereKey: "Wo finde ich meinen Schlüssel?",
+      trkRemove: "Entfernen",
+      trkAdd: "Tracker hinzufügen",
+      trkFail: "Tracker: {0}"
     }
   };
   var LOCALES = { fr: "fr-FR", en: "en-GB", de: "de-DE" };
@@ -532,6 +691,24 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
       });
     };
     return attempt(true);
+  }
+
+  /* ---------- Torrent TV commands (tracker search, on the device) ---------- */
+  var ERR = { AUTH: "eAuth", TIMEOUT: "eTimeout", EXPIRED: "eExpired", NOT_TORRENT: "eNotTorrent" };
+  function errText(m) { return ERR[m] ? t(ERR[m]) : m; }
+  function ttv(path, body) {
+    return fetch(path, {
+      method: "POST", credentials: "same-origin",
+      headers: { "Content-Type": "application/json", "X-TTV": "1" },
+      body: JSON.stringify(body || {})
+    }).then(function (r) {
+      if (r.status === 401) throw new Error(t("unauthorized"));
+      if (!r.ok) throw new Error(t("error", r.status));
+      return r.json();
+    }).then(function (j) {
+      if (j.error) throw new Error(errText(j.error));
+      return j;
+    });
   }
 
   /* ---------- Formatting ---------- */
@@ -960,6 +1137,7 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
     setBody.textContent = t("loadingSettings");
     document.getElementById("langSel").value = chosenLang;
     showDialog(setDlg);
+    loadTrackers();
     rpc("session-get").then(function (s) { current = s; renderSettings(s); })
       .catch(function (e) { setBody.textContent = t("readSetFail", e.message); });
   };
@@ -979,35 +1157,213 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
     renderAll();
     if (current) renderSettings(typed || current);
     else if (setBody.className === "loading") setBody.textContent = t("loadingSettings");
+    renderTrackers();
+    renderResults();
   });
 
   document.getElementById("setForm").addEventListener("submit", function (e) {
     e.preventDefault();
-    if (!current) { closeDialog(setDlg); return; }
-    function v(id) { return document.getElementById(id); }
-    function n(id) { var x = parseFloat(String(v(id).value).replace(",", ".")); return isNaN(x) ? 0 : x; }
-    var dir = v("download-dir").value.trim();
-    var args = {
-      "speed-limit-down-enabled": v("speed-limit-down-on").checked,
-      "speed-limit-down": Math.round(n("speed-limit-down")),
-      "speed-limit-up-enabled": v("speed-limit-up-on").checked,
-      "speed-limit-up": Math.round(n("speed-limit-up")),
-      "start-added-torrents": v("start-added-torrents").checked
-    };
-    if (dir) args["download-dir"] = dir;
-    // Only send what changed
-    var changed = {};
-    Object.keys(args).forEach(function (k) { if (current[k] !== args[k]) changed[k] = args[k]; });
-    if (!Object.keys(changed).length) { closeDialog(setDlg); toast(t("noChange")); return; }
+    var jobs = [];
+    if (current) {
+      var v = function (id) { return document.getElementById(id); };
+      var n = function (id) { var x = parseFloat(String(v(id).value).replace(",", ".")); return isNaN(x) ? 0 : x; };
+      var dir = v("download-dir").value.trim();
+      var args = {
+        "speed-limit-down-enabled": v("speed-limit-down-on").checked,
+        "speed-limit-down": Math.round(n("speed-limit-down")),
+        "speed-limit-up-enabled": v("speed-limit-up-on").checked,
+        "speed-limit-up": Math.round(n("speed-limit-up")),
+        "start-added-torrents": v("start-added-torrents").checked
+      };
+      if (dir) args["download-dir"] = dir;
+      // Only send what changed
+      var changed = {};
+      Object.keys(args).forEach(function (k) { if (current[k] !== args[k]) changed[k] = args[k]; });
+      if (Object.keys(changed).length) {
+        jobs.push(rpc("session-set", changed).then(refreshSession));
+      }
+    }
+    if (trkDirty) {
+      var list = trackers.map(function (x) {
+        return { id: x.id || "", name: (x.name || "").trim(), url: (x.url || "").trim(), key: (x.key || "").trim() };
+      });
+      jobs.push(ttv("/ttv/trackers/set", { trackers: list }).then(function (r) {
+        trackers = (r.trackers || []).map(function (x) { x.key = ""; return x; });
+        trkDirty = false;
+      }).catch(function (err) { throw new Error(t("trkFail", err.message)); }));
+    }
+    if (!jobs.length) { closeDialog(setDlg); toast(t("noChange")); return; }
     var btn = document.getElementById("setSave");
     btn.disabled = true;
-    rpc("session-set", changed).then(function () {
+    Promise.all(jobs).then(function () {
       closeDialog(setDlg);
       toast(t("saved"));
-      refreshSession();
     }).catch(function (err) { toast(t("saveFail", err.message)); })
       .then(function () { btn.disabled = false; });
   });
+
+  /* ---------- Tabs ---------- */
+  var mode = "torrents";
+  function setMode(m) {
+    mode = m;
+    var s = m === "search";
+    document.getElementById("tabTorrents").setAttribute("aria-selected", String(!s));
+    document.getElementById("tabSearch").setAttribute("aria-selected", String(s));
+    filtersEl.hidden = s;
+    document.getElementById("localSearch").hidden = s;
+    listEl.hidden = s;
+    document.getElementById("searchCats").hidden = !s;
+    document.getElementById("searchForm").hidden = !s;
+    document.getElementById("searchPanel").hidden = !s;
+    document.getElementById("openAdd").hidden = s;
+    if (s) setTimeout(function () { document.getElementById("sq").focus(); }, 30);
+  }
+  document.getElementById("tabTorrents").onclick = function () { setMode("torrents"); };
+  document.getElementById("tabSearch").onclick = function () { setMode("search"); };
+
+  /* ---------- Tracker search ---------- */
+  var sCat = "all";
+  var sResults = null;       // last answer: { results, errors, searched }
+  var sAdded = {};           // ref -> true once added
+  var sBusy = false;
+  var sStatus = document.getElementById("sStatus");
+  var resultsEl = document.getElementById("results");
+
+  document.getElementById("searchCats").addEventListener("click", function (e) {
+    var b = e.target.closest(".chip");
+    if (!b) return;
+    sCat = b.getAttribute("data-c");
+    Array.prototype.forEach.call(this.querySelectorAll(".chip"), function (c) {
+      c.setAttribute("aria-pressed", String(c === b));
+    });
+    if (sResults) runSearch();
+  });
+
+  function renderResults() {
+    if (sBusy) { sStatus.textContent = t("searching"); resultsEl.innerHTML = ""; return; }
+    if (!sResults) { sStatus.textContent = ""; resultsEl.innerHTML = ""; return; }
+    var r = sResults;
+    if (!r.searched) {
+      sStatus.innerHTML = esc(t("noTrackers")) +
+        ' <button type="button" class="btn" id="goSettings">' + esc(t("openSettings")) + '</button>';
+      resultsEl.innerHTML = "";
+      return;
+    }
+    var list = r.results.slice().sort(function (a, b) { return (b.seeders || 0) - (a.seeders || 0); });
+    var head = list.length === 0 ? t("noResults") : list.length === 1 ? t("oneResult") : t("nResults", list.length);
+    var warn = (r.errors || []).map(function (e) {
+      return '<span class="warn">' + esc(e.tracker) + " : " + esc(errText(e.error)) + '</span>';
+    }).join("");
+    sStatus.innerHTML = esc(head) + warn;
+    resultsEl.innerHTML = list.map(function (x) {
+      var done = !!sAdded[x.ref];
+      return '<li class="res" data-ref="' + esc(x.ref) + '">' +
+        '<div class="res-title">' + esc(x.title) + '</div>' +
+        '<div class="res-meta">' +
+          '<span class="badge">' + esc(x.tracker) + '</span>' +
+          (x.size >= 0 ? '<span>' + size(x.size) + '</span>' : '') +
+          (x.seeders >= 0 ? '<span class="seed">▲ ' + esc(t("nSeeders", x.seeders)) + '</span>' : '') +
+          (x.leechers >= 0 ? '<span>▼ ' + esc(t("nLeechers", x.leechers)) + '</span>' : '') +
+          (x.date ? '<span>' + date(x.date) + '</span>' : '') +
+        '</div>' +
+        '<div class="actions">' +
+          '<button class="btn primary" data-dl' + (done ? " disabled" : "") + '>' +
+            esc(done ? t("addedOk") : t("download")) + '</button>' +
+          (x.details ? '<a class="btn" href="' + esc(x.details) + '" target="_blank" rel="noopener noreferrer">' + esc(t("site")) + '</a>' : '') +
+        '</div>' +
+      '</li>';
+    }).join("");
+  }
+
+  function runSearch() {
+    var q = document.getElementById("sq").value.trim();
+    sBusy = true; renderResults();
+    ttv("/ttv/search", { q: q, cat: sCat }).then(function (r) {
+      sResults = r;
+    }).catch(function (err) {
+      sResults = { results: [], errors: [{ tracker: "Torrent TV", error: err.message }], searched: 1 };
+    }).then(function () { sBusy = false; renderResults(); });
+  }
+  document.getElementById("searchForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (!sBusy) runSearch();
+  });
+
+  document.getElementById("searchPanel").addEventListener("click", function (e) {
+    if (e.target.closest("#goSettings")) { document.getElementById("openSettings").click(); return; }
+    var b = e.target.closest("[data-dl]");
+    if (!b) return;
+    var ref = b.closest(".res").getAttribute("data-ref");
+    b.disabled = true;
+    ttv("/ttv/add", { ref: ref }).then(function (r) {
+      if (r.magnet) {
+        return rpc("torrent-add", { filename: r.magnet }).then(function (a) {
+          var x = a["torrent-added"] || a["torrent-duplicate"];
+          return { added: x && x.name ? x.name : "magnet", duplicate: a["torrent-duplicate"] ? (x && x.name) : null };
+        });
+      }
+      return r;
+    }).then(function (r) {
+      sAdded[ref] = true;
+      toast(r.duplicate ? t("dlDup", r.duplicate) : t("dlAdded", r.added));
+      renderResults();
+      refresh();
+    }).catch(function (err) { b.disabled = false; toast(err.message); });
+  });
+
+  /* ---------- Trackers (settings) ---------- */
+  var KEY_PAGES = {
+    c411: "https://c411.org/user/integrations",
+    tr4ker: "https://tr4ker.net/mon-compte/parametres"
+  };
+  var trackers = [];
+  var trkDirty = false;
+  var trkList = document.getElementById("trkList");
+
+  function renderTrackers() {
+    trkList.innerHTML = trackers.map(function (x, i) {
+      var page = KEY_PAGES[x.id];
+      return '<div class="trk" data-i="' + i + '">' +
+        '<label>' + esc(t("trkName")) + '<input data-f="name" value="' + esc(x.name) + '" autocomplete="off"></label>' +
+        '<label>' + esc(t("trkUrl")) + '<input data-f="url" type="url" value="' + esc(x.url) + '" spellcheck="false" autocomplete="off"></label>' +
+        '<label>' + esc(t("trkKey")) + '<input data-f="key" type="password" value="' + esc(x.key || "") + '" autocomplete="off" spellcheck="false" placeholder="' +
+          esc(x.hasKey ? t("keySaved") : t("keyPaste")) + '"></label>' +
+        '<div class="trk-foot">' +
+          (page ? '<a href="' + page + '" target="_blank" rel="noopener noreferrer">' + esc(t("whereKey")) + '</a>' : '<span></span>') +
+          '<button type="button" class="btn danger" data-rm>' + esc(t("trkRemove")) + '</button>' +
+        '</div>' +
+      '</div>';
+    }).join("");
+  }
+  trkList.addEventListener("input", function (e) {
+    var box = e.target.closest(".trk"), f = e.target.getAttribute("data-f");
+    if (!box || !f) return;
+    trackers[Number(box.getAttribute("data-i"))][f] = e.target.value;
+    trkDirty = true;
+  });
+  trkList.addEventListener("click", function (e) {
+    if (!e.target.closest("[data-rm]")) return;
+    trackers.splice(Number(e.target.closest(".trk").getAttribute("data-i")), 1);
+    trkDirty = true;
+    renderTrackers();
+  });
+  document.getElementById("trkAdd").onclick = function () {
+    trackers.push({ id: "", name: "", url: "", key: "", hasKey: false });
+    trkDirty = true;
+    renderTrackers();
+    var inputs = trkList.querySelectorAll('.trk:last-child input');
+    if (inputs[0]) inputs[0].focus();
+  };
+  function loadTrackers() {
+    trkDirty = false;
+    trackers = [];
+    renderTrackers();
+    ttv("/ttv/trackers/get").then(function (r) {
+      if (trkDirty) return;
+      trackers = (r.trackers || []).map(function (x) { x.key = ""; return x; });
+      renderTrackers();
+    }).catch(function (err) { toast(t("trkFail", err.message)); });
+  }
 
   /* Start */
   applyStatic();
