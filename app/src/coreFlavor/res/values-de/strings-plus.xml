@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="core_auto_start_on_boot_auth">Für den automatischen Start beim Einschalten muss die Akku-Optimierung auf „Nicht eingeschränkt“ oder „Aus“ gestellt sein</string>
+	<string name="fileaccess_direct_short">Direkt</string>
+	<string name="no_saf_support">Der Zugriff auf externen Speicher (SD-Karte) über das Storage Access Framework (SAF) von Android ist auf diesem Gerät und dieser Android-Version nicht verfügbar.</string>
+	<string name="disable_auto_start">Autostart deaktivieren</string>
+</resources>

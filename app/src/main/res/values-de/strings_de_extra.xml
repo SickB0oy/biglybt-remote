@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Fehlende deutsche Übersetzungen -->
+<resources>
+	<string name="profile_rpc_path">RPC-Pfad</string>
+	<string name="torrent_file_partial_dl">Teilweiser Download</string>
+	<string name="torrentInfo_row_activePeerCount">Aktive Peers</string>
+	<string name="torrentInfo_row_connectedPeers">Verbundene Peers</string>
+	<string name="torrent_row_peers">%1$s von %2$s Peers aktiv</string>
+	<string name="toast_core_restarting">Torrent-TV-Kern wird neu gestartet</string>
+	<string name="metasearch_cached">Zwischengespeicherte Suchen</string>
+	<string name="settings_no_value">&lt;Nicht gesetzt&gt;</string>
+	<string name="AskResetToDefault">Einstellung auf den Standardwert zurücksetzen?</string>
+	<string name="AlreadyDefault">Die Einstellung hat bereits den Standardwert</string>
+	<string name="folder_permissions_needed">Ordnerberechtigung erforderlich</string>
+	<string name="ask_for_folder_auth">Torrent TV benötigt Zugriff auf\n\n&lt;b&gt;%1$s&lt;/b&gt; für\n\n%2$s</string>
+	<string name="ask_for_folder_auth_old">Die Ordnerauswahl von Android wird geöffnet. Navigieren Sie zum Ordner und tippen Sie auf „%1$s“, um den Zugriff zu erlauben</string>
+	<string name="ask_for_folder_auth_new">Die Ordnerauswahl von Android wird mit dem benötigten Ordner geöffnet. Tippen Sie auf „%1$s“, um den Zugriff zu erlauben</string>
+	<string name="folder_auth_shieldtv">Auf der &lt;b&gt;Shield TV&lt;/b&gt;, falls die Auswahltaste nicht reagiert: gehen Sie einen Ordner nach oben und dann zurück, damit die Taste markiert wird. Alternativ können Sie das Touchpad der App SHIELD TV REMOTE verwenden.</string>
+	<string name="os_select_button_old">AUSWÄHLEN</string>
+	<string name="os_select_button_new">DIESEN ORDNER VERWENDEN</string>
+	<string name="folder_permission_missing">Ordnerberechtigung fehlt</string>
+	<string name="authorize">Erlauben</string>
+	<string name="authorized_wrong_path_title">Falscher Ordner erlaubt</string>
+	<string name="authorized_wrong_path">Sie haben &lt;b&gt;%1$s&lt;/b&gt; statt &lt;b&gt;%2$s&lt;/b&gt; erlaubt</string>
+	<string name="sequential_download">Sequenzieller Download</string>
+	<string name="reset_to_default">Auf Standardwert zurücksetzen</string>
+	<string name="magnet_lookup">Magnet-Suche</string>
+</resources>

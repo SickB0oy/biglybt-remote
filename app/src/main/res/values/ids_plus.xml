@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- Ids of removed settings entries, still referenced by the menu code -->
+	<item name="action_giveback" type="id"/>
+	<item name="action_rate" type="id"/>
+	<item name="action_issue" type="id"/>
+</resources>

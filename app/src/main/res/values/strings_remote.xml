@@ -59,4 +59,7 @@
 	<string name="library_in_progress">In progress</string>
 	<string name="library_tmdb_credit">Data and images from &lt;a href="https://www.themoviedb.org"&gt;TMDB&lt;/a&gt;. This product uses the TMDB API but is not endorsed or certified by TMDB.</string>
 	<string name="library_tile">Torrent TV Movies</string>
+	<string name="preftitle_language">Language</string>
+	<string name="language_system">System language</string>
+	<string name="prefcat_info">Information</string>
 </resources>

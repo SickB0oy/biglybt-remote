@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Traductions françaises qui manquaient dans la version d'origine -->
+<resources>
+	<string name="profile_rpc_path">Chemin RPC</string>
+	<string name="torrent_file_partial_dl">Téléchargement partiel</string>
+	<string name="torrentInfo_row_hash">Empreinte du torrent</string>
+	<string name="torrentInfo_row_activePeerCount">Pairs actifs</string>
+	<string name="torrentInfo_row_connectedPeers">Pairs connectés</string>
+	<string name="accept">Accepter</string>
+	<string name="decline">Refuser</string>
+	<string name="torrent_row_peers">%1$s pairs actifs sur %2$s</string>
+	<string name="toast_core_restarting">Redémarrage du moteur Torrent TV</string>
+	<string name="TorrentListSectionName_ETA_none">Durée inconnue</string>
+	<string name="TorrentListSectionName_ETA_available">Durée estimée</string>
+	<string name="TorrentListSectionName_Progress">Terminés de %1$d %% à %2$d %%</string>
+	<string name="months">mois</string>
+	<string name="movedata_place_in_subfolder">Placer dans le sous-dossier &lt;b&gt;%1$s&lt;/b&gt;</string>
+	<string name="movedata_currentlocation">Emplacement actuel : &lt;b&gt;%1$s&lt;/b&gt;</string>
+	<string name="dialog_nobrowser_message">Ouvre manuellement &lt;b&gt;%1$s&lt;/b&gt;</string>
+	<string name="error_x">Erreur : %1$s</string>
+	<string name="dialog_title_error_loading_config">Erreur de chargement de la configuration</string>
+	<string name="button_clipboard_url">Lien du presse-papiers</string>
+	<string name="login_server_title">Torrent sur cet appareil</string>
+	<string name="login_server_subtitle">Lancer un client torrent complet sur cet appareil</string>
+	<string name="rp_update_interval_mobile_same">Comme hors réseau mobile</string>
+	<string name="private_external_storage">Stockage externe privé de Torrent TV</string>
+	<string name="private_internal_storage">Stockage interne privé de Torrent TV</string>
+	<string name="private_internal_storage_warning">Attention : les fichiers enregistrés dans le stockage interne privé seront effacés si tu désinstalles Torrent TV</string>
+	<string name="statetag_force_started">Forcé</string>
+	<string name="downloading_position_x">Position n° %1$s dans la file</string>
+	<string name="refresh_every_x">Toutes les %1$s</string>
+	<string name="refresh_every_x_on_mobile">Toutes les %1$s en réseau mobile</string>
+	<string name="refresh_every_x_on_nonmobile">Toutes les %1$s hors réseau mobile</string>
+	<string name="refresh_manual_mobile">Actualisation manuelle en réseau mobile</string>
+	<string name="refresh_manual_nonmobile">Actualisation manuelle hors réseau mobile</string>
+	<string name="preftitle_max_dl_speed">Vitesse de téléchargement max.</string>
+	<string name="prefswitch_theme_dark">Sombre</string>
+	<string name="prefswitch_theme_light">Clair</string>
+	<plurals name="seconds_short">
+		<item quantity="one">%d s</item>
+		<item quantity="other">%d s</item>
+	</plurals>
+	<plurals name="minutes_short">
+		<item quantity="one">%d min</item>
+		<item quantity="other">%d min</item>
+	</plurals>
+	<plurals name="hours_short">
+		<item quantity="one">%d h</item>
+		<item quantity="other">%d h</item>
+	</plurals>
+	<plurals name="days_short">
+		<item quantity="one">%d j</item>
+		<item quantity="other">%d j</item>
+	</plurals>
+	<plurals name="years_short">
+		<item quantity="one">%d an</item>
+		<item quantity="other">%d ans</item>
+	</plurals>
+	<string name="proxy_host">Nom d\'hôte du proxy</string>
+	<string name="proxy_user">Utilisateur du proxy</string>
+	<string name="proxy_pw">Mot de passe du proxy</string>
+	<string name="proxy_port">Port du proxy</string>
+	<string name="pref_proxy_disabled">Proxy désactivé</string>
+	<string name="dialog_remote_access_webui_qr_button">QR code de la page web</string>
+	<string name="rpc_not_authorized_adv">Accès refusé. Vérifie le nom d\'utilisateur et le mot de passe.</string>
+	<string name="password_is_required">Le mot de passe est obligatoire</string>
+	<string name="prefsummary_proxy_port">Port %1$d</string>
+	<string name="backspace">Effacer</string>
+	<string name="action_sel_verify">Vérifier les données</string>
+	<string name="sideactions_filtered_file_header">Actions pour les %1$s fichiers filtrés</string>
+	<string name="sideactions_all_file_header">Actions pour les %1$s fichiers</string>
+	<string name="sideactions_torrent_header">Actions sur le torrent</string>
+	<string name="sideactions_peers_header">Actions sur les pairs</string>
+	<string name="sideactions_tag_header">Actions sur l\'étiquette</string>
+	<string name="filter_only_complete">Terminés seulement</string>
+	<string name="filter_only_wanted">Sélectionnés seulement</string>
+	<plurals name="folder_summary_simple">
+		<item quantity="one">%1$s fichier, %2$s</item>
+		<item quantity="other">%1$s fichiers, %2$s</item>
+	</plurals>
+	<string name="folder_summary">%1$s fichiers sélectionnés sur %2$s, %3$s sur %4$s.</string>
+	<string name="folder_summary_filtered">Filtre : %3$s fichiers, dont %1$s sélectionnés (%2$s).</string>
+	<string name="folder_summary_filtered_all_wanted">Filtre : %1$s fichiers sélectionnés (%2$s).</string>
+	<string name="show_only_chosen">Afficher seulement la sélection</string>
+	<string name="read_only">Lecture seule</string>
+	<string name="default_save_location">Dossier de téléchargement par défaut</string>
+	<string name="metasearch_engine_all">Tous</string>
+	<string name="metasearch_cached">Recherches en cache</string>
+	<string name="loading">Chargement…</string>
+	<string name="settings_no_value">&lt;Non défini&gt;</string>
+	<string name="AskResetToDefault">Remettre ce réglage à sa valeur par défaut ?</string>
+	<string name="AlreadyDefault">Ce réglage a déjà sa valeur par défaut</string>
+	<string name="folder_permissions_needed">Autorisation du dossier requise</string>
+	<string name="ask_for_folder_auth">Torrent TV a besoin d\'accéder à\n\n&lt;b&gt;%1$s&lt;/b&gt; pour\n\n%2$s</string>
+	<string name="ask_for_folder_auth_old">Le sélecteur de dossiers d\'Android va s\'ouvrir. Va jusqu\'au dossier puis appuie sur « %1$s » pour autoriser l\'accès</string>
+	<string name="ask_for_folder_auth_new">Le sélecteur de dossiers d\'Android va s\'ouvrir sur le bon dossier. Appuie sur « %1$s » pour autoriser l\'accès</string>
+	<string name="folder_auth_shieldtv">Sur &lt;b&gt;Shield TV&lt;/b&gt;, si le bouton de sélection ne réagit pas : remonte d\'un dossier puis reviens dans le dossier, le bouton sera alors sélectionné. Tu peux aussi utiliser le pavé tactile de l\'appli SHIELD TV REMOTE.</string>
+	<string name="os_select_button_old">SÉLECTIONNER</string>
+	<string name="os_select_button_new">UTILISER CE DOSSIER</string>
+	<string name="folder_permission_missing">Autorisation du dossier manquante</string>
+	<string name="authorize">Autoriser</string>
+	<string name="authorized_wrong_path_title">Mauvais dossier autorisé</string>
+	<string name="authorized_wrong_path">Tu as autorisé &lt;b&gt;%1$s&lt;/b&gt; au lieu de &lt;b&gt;%2$s&lt;/b&gt;</string>
+</resources>

@@ -55,7 +55,19 @@
 		android:theme="@style/ThemeBlack"
 		android:usesCleartextTraffic="true"
 		android:fullBackupContent="@xml/backup_descriptor"
+		android:localeConfig="@xml/locales_config"
 		>
+
+		<!-- Per-app language: saves the choice on Android 12 and lower -->
+		<service
+			android:name="androidx.appcompat.app.AppLocalesMetadataHolderService"
+			android:enabled="false"
+			android:exported="false">
+			<meta-data
+				android:name="autoStoreLocales"
+				android:value="true"/>
+		</service>
+
 
 		<meta-data android:name="android.max_aspect" android:value="2.1" />
 		

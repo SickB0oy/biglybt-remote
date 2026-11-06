@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="all_files_access_title">Zugriff auf alle Dateien erlauben</string>
+	<string name="all_files_access_message">Um Torrents mit Ordnern auf einen USB-Stick, eine Festplatte oder eine SD-Karte herunterzuladen, benötigt Torrent TV die Berechtigung „Zugriff auf alle Dateien“. Ohne sie schlagen diese Torrents mit „Ordnerberechtigung erforderlich“ fehl.</string>
+	<string name="all_files_access_open">Einstellungen öffnen</string>
+	<string name="all_files_access_later">Später</string>
+	<string name="all_files_access_never">Nicht mehr fragen</string>
+	<string name="all_files_access_no_screen">Dieses Gerät hat keinen Bildschirm, um diese Berechtigung zu erteilen. Führen Sie auf einem Computer aus:\n\nadb shell appops set %1$s MANAGE_EXTERNAL_STORAGE allow</string>
+	<string name="plus_allow">Erlauben</string>
+	<string name="plus_later">Später</string>
+	<string name="plus_remote_banner">Fernzugriff: %1$s\nBenutzer: %2$s    Passwort: %3$s</string>
+	<string name="plus_remote_banner_nopw">Fernzugriff: %1$s</string>
+	<string name="plus_about">Torrent TV ist ein Torrent-Client für Android TV und Smartphones: Er lädt im Wohnzimmer herunter und lässt sich vom Smartphone oder Computer aus steuern.&lt;br/&gt;&lt;br/&gt;Daten und Bilder zu Filmen und Serien: TMDB. Dieses Produkt verwendet die TMDB-API, ist aber weder von TMDB unterstützt noch zertifiziert.&lt;br/&gt;&lt;br/&gt;Freie Software unter der GPL-Lizenz. &lt;a href="https://github.com/SickB0oy/torrent-tv"&gt;Quellcode und Updates&lt;/a&gt;, &lt;a href="https://github.com/SickB0oy/torrent-tv/blob/master/THIRD_PARTY.md"&gt;Open-Source-Komponenten&lt;/a&gt;</string>
+	<string name="dialog_remote_access_webui_qr_info">Scannen Sie diesen QR-Code mit Ihrem Smartphone, um die Fernsteuerungsseite zu öffnen.</string>
+	<string name="player_play">Abspielen</string>
+	<string name="player_pause">Pause</string>
+	<string name="player_back">Zurück</string>
+	<string name="player_rewind">10 Sekunden zurück</string>
+	<string name="player_forward">10 Sekunden vor</string>
+	<string name="player_audio">Tonspur</string>
+	<string name="player_subtitles">Untertitel</string>
+	<string name="player_off">Aus</string>
+	<string name="player_no_tracks">In dieser Datei gibt es nichts zur Auswahl</string>
+	<string name="player_aspect">Bildformat</string>
+	<string name="player_aspect_fit">An Bildschirm anpassen</string>
+	<string name="player_aspect_fill">Bildschirm füllen</string>
+	<string name="player_error">Diese Datei kann nicht abgespielt werden</string>
+	<string name="player_resumed">Fortgesetzt bei %1$s</string>
+	<string name="library_title">Filme und Serien</string>
+	<string name="library_open">Mediathek</string>
+	<string name="library_refresh">Aktualisieren</string>
+	<string name="library_scanning">Suche nach Videos…</string>
+	<plurals name="library_count">
+		<item quantity="one">%d Video</item>
+		<item quantity="other">%d Videos</item>
+	</plurals>
+	<string name="library_empty">Noch keine Videos. Abgeschlossene Downloads erscheinen hier.</string>
+	<string name="library_need_key">Um Cover und Inhaltsangaben anzuzeigen, fügen Sie Ihren kostenlosen TMDB-Schlüssel hinzu. Erstellen Sie ein Konto auf &lt;a href="https://www.themoviedb.org/signup"&gt;themoviedb.org&lt;/a&gt; und kopieren Sie unter Einstellungen, API das &lt;b&gt;API Read Access Token&lt;/b&gt;.</string>
+	<string name="library_enter_key">Meinen TMDB-Schlüssel eingeben</string>
+	<string name="library_key_title">TMDB-Schlüssel</string>
+	<string name="library_key_message">Fügen Sie Ihr API Read Access Token (oder Ihren v3-API-Schlüssel) von themoviedb.org, Einstellungen, API ein.</string>
+	<string name="library_key_save">Speichern</string>
+	<string name="library_key_checking">Schlüssel wird geprüft…</string>
+	<string name="library_key_ok">TMDB-Schlüssel gespeichert</string>
+	<string name="library_key_bad">Dieser Schlüssel funktioniert nicht (%1$s). Prüfen Sie, ob Sie ihn vollständig kopiert haben.</string>
+	<string name="library_play">Abspielen</string>
+	<string name="library_resume">Fortsetzen</string>
+	<string name="library_close">Schließen</string>
+	<string name="library_fix">Falscher Film?</string>
+	<string name="library_fix_title">Richtigen Titel suchen</string>
+	<string name="library_fix_message">Geben Sie den Titel ein, und das Jahr, falls bekannt.</string>
+	<string name="library_fix_search">Suchen</string>
+	<string name="library_fix_ok">Aktualisiert</string>
+	<string name="library_not_found">Nicht auf TMDB gefunden. Nutzen Sie „Falscher Film?“, um nach dem Titel zu suchen.</string>
+	<string name="library_no_overview">Keine Inhaltsangabe verfügbar.</string>
+	<string name="library_seen">Gesehen</string>
+	<string name="library_in_progress">Angefangen</string>
+	<string name="library_tmdb_credit">Daten und Bilder von &lt;a href="https://www.themoviedb.org"&gt;TMDB&lt;/a&gt;. Dieses Produkt verwendet die TMDB-API, ist aber weder von TMDB unterstützt noch zertifiziert.</string>
+	<string name="library_tile">Torrent TV Filme</string>
+	<string name="preftitle_language">Sprache</string>
+	<string name="language_system">Systemsprache</string>
+	<string name="prefcat_info">Informationen</string>
+</resources>

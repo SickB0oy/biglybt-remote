@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="fileaccess_saf">Accès SAF</string>
+	<string name="fileaccess_direct">Accès direct</string>
+	<string name="fileaccess_direct_short">Direct</string>
+	<string name="saf_warning_title">Sélecteur de dossiers</string>
+</resources>

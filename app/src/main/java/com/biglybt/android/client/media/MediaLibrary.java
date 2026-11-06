@@ -112,6 +112,9 @@ public class MediaLibrary
 
 		public long fetchedAt;
 
+		/** TMDB language used for title and synopsis */
+		public String lang;
+
 		public boolean hasMetadata() {
 			return tmdbId > 0;
 		}
@@ -149,6 +152,7 @@ public class MediaLibrary
 			o.put("episodeTitle", episodeTitle == null ? "" : episodeTitle);
 			o.put("guessed", guessedTitle == null ? "" : guessedTitle);
 			o.put("fetchedAt", fetchedAt);
+			o.put("lang", lang == null ? "" : lang);
 			return o;
 		}
 
@@ -170,6 +174,7 @@ public class MediaLibrary
 			i.episodeTitle = emptyToNull(o.optString("episodeTitle"));
 			i.guessedTitle = o.optString("guessed");
 			i.fetchedAt = o.optLong("fetchedAt");
+			i.lang = o.optString("lang");
 			return i;
 		}
 	}
@@ -307,11 +312,18 @@ public class MediaLibrary
 			long age = now - it.fetchedAt;
 			boolean stale = it.hasMetadata() ? age > MAX_AGE_MS
 					: age > NOT_FOUND_RETRY_MS;
-			if (it.fetchedAt > 0 && !stale) {
+			boolean otherLang = it.hasMetadata()
+					&& !tmdbLanguage().equals(it.lang);
+			if (it.fetchedAt > 0 && !stale && !otherLang) {
 				continue;
 			}
 			try {
-				lookup(token, it, it.guessedTitle, it.year);
+				if (otherLang && !stale) {
+					// Language changed: reload the same title, keep the match
+					relocalize(token, it);
+				} else {
+					lookup(token, it, it.guessedTitle, it.year);
+				}
 				changed = true;
 			} catch (IOException e) {
 				Log.w(TAG, "TMDB lookup failed for " + it.guessedTitle, e);
@@ -514,6 +526,7 @@ public class MediaLibrary
 	private void lookup(String token, Item item, String title, String year)
 			throws IOException {
 		item.fetchedAt = System.currentTimeMillis();
+		item.lang = tmdbLanguage();
 		if (TextUtils.isEmpty(title)) {
 			return;
 		}
@@ -543,8 +556,32 @@ public class MediaLibrary
 		item.rating = best.optDouble("vote_average", 0);
 		item.posterPath = emptyToNull(best.optString("poster_path", ""));
 		item.backdropPath = emptyToNull(best.optString("backdrop_path", ""));
+		loadEpisode(token, item);
+	}
 
-		if (tv && item.isEpisode()) {
+	/** Reload title and synopsis of an already matched item in the current language */
+	@WorkerThread
+	private void relocalize(String token, Item item) throws IOException {
+		boolean tv = "tv".equals(item.type);
+		JSONObject o = get(token, (tv ? "tv/" : "movie/") + item.tmdbId, null);
+		item.fetchedAt = System.currentTimeMillis();
+		item.lang = tmdbLanguage();
+		if (o == null) {
+			return;
+		}
+		item.title = o.optString(tv ? "name" : "title", item.title);
+		item.overview = o.optString("overview", "");
+		String poster = emptyToNull(o.optString("poster_path", ""));
+		if (poster != null) {
+			item.posterPath = poster;
+		}
+		item.episodeTitle = null;
+		loadEpisode(token, item);
+	}
+
+	@WorkerThread
+	private void loadEpisode(String token, Item item) {
+		if ("tv".equals(item.type) && item.isEpisode()) {
 			try {
 				JSONObject e = get(token, "tv/" + item.tmdbId + "/season/" + item.season
 						+ "/episode/" + item.episode, null);
@@ -558,6 +595,20 @@ public class MediaLibrary
 			} catch (IOException ignore) {
 				// Keep the series info
 			}
+		}
+	}
+
+	/** TMDB language matching the app language: fr-FR, de-DE or en-US */
+	@NonNull
+	public static String tmdbLanguage() {
+		String l = com.biglybt.android.client.AppLanguage.current();
+		switch (l) {
+			case "fr":
+				return "fr-FR";
+			case "de":
+				return "de-DE";
+			default:
+				return "en-US";
 		}
 	}
 
@@ -583,8 +634,7 @@ public class MediaLibrary
 	private JSONObject get(String token, String path,
 			@Nullable java.util.Map<String, String> query) throws IOException {
 		HttpUrl.Builder url = HttpUrl.parse("https://api.themoviedb.org/3/" + path).newBuilder();
-		url.addQueryParameter("language",
-				Locale.getDefault().getLanguage().equals("fr") ? "fr-FR" : "en-US");
+		url.addQueryParameter("language", tmdbLanguage());
 		if (query != null) {
 			for (java.util.Map.Entry<String, String> e : query.entrySet()) {
 				url.addQueryParameter(e.getKey(), e.getValue());

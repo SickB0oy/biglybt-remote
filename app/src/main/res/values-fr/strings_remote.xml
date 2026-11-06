@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string name="all_files_access_title">Autoriser l\'accès à tous les fichiers</string>
-	<string name="all_files_access_message">Pour télécharger sur une clé USB, un disque dur ou une carte SD des torrents qui contiennent des dossiers, Torrent TV a besoin de l\'autorisation « Accès à tous les fichiers ». Sans elle, ces torrents échouent avec « Folder Permissions Needed ».</string>
+	<string name="all_files_access_message">Pour télécharger sur une clé USB, un disque dur ou une carte SD des torrents qui contiennent des dossiers, Torrent TV a besoin de l\'autorisation « Accès à tous les fichiers ». Sans elle, ces torrents échouent avec « Autorisation du dossier requise ».</string>
 	<string name="all_files_access_open">Ouvrir les paramètres</string>
 	<string name="all_files_access_later">Plus tard</string>
 	<string name="all_files_access_never">Ne plus demander</string>
-	<string name="all_files_access_no_screen">Cet appareil n\'a pas d\'écran pour accorder cette autorisation. Depuis un ordinateur, lancez :\n\nadb shell appops set %1$s MANAGE_EXTERNAL_STORAGE allow</string>
+	<string name="all_files_access_no_screen">Cet appareil n\'a pas d\'écran pour accorder cette autorisation. Depuis un ordinateur, lance :\n\nadb shell appops set %1$s MANAGE_EXTERNAL_STORAGE allow</string>
 	<string name="plus_allow">Autoriser</string>
 	<string name="plus_later">Plus tard</string>
 	<string name="plus_remote_banner">Connexion à distance : %1$s\nIdentifiant : %2$s    Mot de passe : %3$s</string>
@@ -60,4 +60,7 @@
 	<string name="library_in_progress">En cours</string>
 	<string name="library_tmdb_credit">Données et images : &lt;a href="https://www.themoviedb.org"&gt;TMDB&lt;/a&gt;. Ce produit utilise l\'API TMDB mais n\'est ni approuvé ni certifié par TMDB.</string>
 	<string name="library_tile">Films Torrent TV</string>
+	<string name="preftitle_language">Langue</string>
+	<string name="language_system">Langue du système</string>
+	<string name="prefcat_info">Informations</string>
 </resources>

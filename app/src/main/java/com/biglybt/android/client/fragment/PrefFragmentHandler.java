@@ -29,6 +29,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.preference.*;
 
+import com.biglybt.android.client.AppLanguage;
 import com.biglybt.android.client.*;
 import com.biglybt.android.client.R;
 import com.biglybt.android.client.activity.SessionActivity;
@@ -86,13 +87,9 @@ public class PrefFragmentHandler
 
 	private static final String KEY_THEME_DARK = "ui_theme";
 
+	private static final String KEY_LANGUAGE = "ui_language";
+
 	private static final String KEY_ACTION_ABOUT = "action_about";
-
-	private static final String KEY_ACTION_GIVEBACK = "action_giveback";
-
-	private static final String KEY_ACTION_RATE = "action_rate";
-
-	private static final String KEY_ACTION_ISSUE = "action_issue";
 
 
 	private static final String KEY_PEER_PORT_RANDOM = "peer_port_random";
@@ -295,32 +292,15 @@ public class PrefFragmentHandler
 				return true;
 			}
 
+			case KEY_LANGUAGE: {
+				AppLanguage.showPicker(activity);
+				return true;
+			}
+
 			case KEY_ACTION_ABOUT: {
 				DialogFragmentAbout dlg = new DialogFragmentAbout();
 				AndroidUtilsUI.showDialog(dlg,
 						AndroidUtilsUI.getSafeParentFragmentManager(fragment), "About");
-				return true;
-			}
-
-			case KEY_ACTION_GIVEBACK: {
-				DialogFragmentGiveback.openDialog(activity,
-						AndroidUtilsUI.getSafeParentFragmentManager(fragment), true, TAG);
-				return true;
-			}
-
-			case KEY_ACTION_RATE: {
-				AndroidUtilsUI.openMarket(activity, activity.getPackageName());
-				AnalyticsTracker.getInstance(activity).sendEvent(
-						AnalyticsTracker.CAT_UI_ACTION, AnalyticsTracker.ACTION_RATING,
-						"PrefClick", null);
-				return true;
-			}
-
-			case KEY_ACTION_ISSUE: {
-				String url = BiglyBTApp.URL_BUGS;
-				Intent i = new Intent(Intent.ACTION_VIEW);
-				i.setData(Uri.parse(url));
-				activity.startActivity(i);
 				return true;
 			}
 
@@ -496,6 +476,11 @@ public class PrefFragmentHandler
 			prefShowOpenOptions.setChecked(ds.getBoolean(KEY_SHOW_OPEN_OPTIONS));
 		}
 
+		Preference prefLanguage = findPreference(KEY_LANGUAGE);
+		if (prefLanguage != null) {
+			prefLanguage.setSummary(AppLanguage.label(activity));
+		}
+
 		TwoStatePreference prefUITheme = (TwoStatePreference) findPreference(
 				KEY_THEME_DARK);
 		if (prefUITheme != null) {
@@ -525,15 +510,6 @@ public class PrefFragmentHandler
 				s += resources.getString(R.string.pref_peerport_current, peerPort);
 			}
 			prefPortSettings.setSummary(s);
-		}
-
-		////////////////////////////////
-		// Social
-		////////////////////////////////
-
-		final Preference prefIssue = findPreference(KEY_ACTION_ISSUE);
-		if (prefIssue != null) {
-			prefIssue.setVisible(!AndroidUtils.isTV(activity));
 		}
 
 		////////////////////////////////
