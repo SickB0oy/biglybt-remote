@@ -104,6 +104,8 @@ public class TorrentViewActivity
 	@Override
 	protected void onCreateWithSession(Bundle savedInstanceState) {
 		setDefaultKeyMode(DEFAULT_KEYS_SEARCH_LOCAL);
+		// Ready before the first "Play" from a torrent's file list
+		com.biglybt.android.client.media.PlayerEngine.warmUp(this);
 
 		activityIntent = savedInstanceState == null ? getIntent() : null;
 

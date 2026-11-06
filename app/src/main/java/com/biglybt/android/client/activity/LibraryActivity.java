@@ -112,6 +112,7 @@ public class LibraryActivity
 	protected void onCreate(@Nullable Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_library);
+		com.biglybt.android.client.media.PlayerEngine.warmUp(this);
 		applySystemBarInsets();
 		library = new MediaLibrary(this);
 

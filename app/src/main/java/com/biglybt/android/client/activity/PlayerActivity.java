@@ -84,6 +84,9 @@ public class PlayerActivity
 
 	private boolean resumeDone;
 
+	/** Saved position the video was started at, in ms */
+	private long resumeFrom;
+
 	private int scaleMode = 0;
 
 	private final Handler handler = new Handler(Looper.getMainLooper());
@@ -160,13 +163,8 @@ public class PlayerActivity
 			}
 		});
 
-		ArrayList<String> options = new ArrayList<>();
-		options.add("--network-caching=2000");
-		options.add("--file-caching=1500");
-		options.add("--audio-time-stretch");
-		// Most French subtitle files that aren't UTF-8 are Windows-1252
-		options.add("--subsdec-encoding=Windows-1252");
-		libVLC = new LibVLC(this, options);
+		// Shared instance, usually already prepared in the background
+		libVLC = com.biglybt.android.client.media.PlayerEngine.get(this);
 		player = new MediaPlayer(libVLC);
 		player.setEventListener(this::onPlayerEvent);
 
@@ -187,6 +185,12 @@ public class PlayerActivity
 			return;
 		}
 		media.setHWDecoderEnabled(true, false);
+		// Start directly at the saved position: no second wait to seek there
+		long resumeAt = positions().getLong(key(), 0);
+		if (resumeAt > 0) {
+			media.addOption(":start-time=" + (resumeAt / 1000.0));
+			resumeFrom = resumeAt;
+		}
 		player.setMedia(media);
 		media.release();
 	}
@@ -223,10 +227,8 @@ public class PlayerActivity
 			player.release();
 			player = null;
 		}
-		if (libVLC != null) {
-			libVLC.release();
-			libVLC = null;
-		}
+		// libVLC is shared (PlayerEngine): kept for the next video
+		libVLC = null;
 		if (pfd != null) {
 			try {
 				pfd.close();
@@ -525,10 +527,9 @@ public class PlayerActivity
 			return;
 		}
 		resumeDone = true;
-		long t = positions().getLong(key(), 0);
-		if (t > 0) {
-			player.setTime(t);
-			Toast.makeText(this, getString(R.string.player_resumed, formatTime(t)),
+		if (resumeFrom > 0) {
+			// Already started there with ":start-time"
+			Toast.makeText(this, getString(R.string.player_resumed, formatTime(resumeFrom)),
 					Toast.LENGTH_SHORT).show();
 		}
 	}
