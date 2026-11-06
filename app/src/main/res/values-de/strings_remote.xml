@@ -11,7 +11,6 @@
 	<string name="plus_remote_banner">Fernzugriff: %1$s\nBenutzer: %2$s    Passwort: %3$s</string>
 	<string name="plus_remote_banner_nopw">Fernzugriff: %1$s</string>
 	<string name="plus_about">Torrent TV ist ein Torrent-Client für Android TV und Smartphones: Er lädt im Wohnzimmer herunter und lässt sich vom Smartphone oder Computer aus steuern.&lt;br/&gt;&lt;br/&gt;Daten und Bilder zu Filmen und Serien: TMDB. Dieses Produkt verwendet die TMDB-API, ist aber weder von TMDB unterstützt noch zertifiziert.&lt;br/&gt;&lt;br/&gt;Freie Software unter der GPL-Lizenz. &lt;a href="https://github.com/SickB0oy/torrent-tv"&gt;Quellcode und Updates&lt;/a&gt;, &lt;a href="https://github.com/SickB0oy/torrent-tv/blob/master/THIRD_PARTY.md"&gt;Open-Source-Komponenten&lt;/a&gt;</string>
-	<string name="dialog_remote_access_webui_qr_info">Scannen Sie diesen QR-Code mit Ihrem Smartphone, um die Fernsteuerungsseite zu öffnen.</string>
 	<string name="player_play">Abspielen</string>
 	<string name="player_pause">Pause</string>
 	<string name="player_back">Zurück</string>

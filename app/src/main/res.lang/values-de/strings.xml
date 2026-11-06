@@ -540,7 +540,7 @@ Die gesendeten Daten lauten wie folgt:</string>
 	<string name="action_remote_access_qr"><![CDATA[Speichern & QR-Code anzeigen]]></string>
 	<string name="dialog_title_remote_access_qr">QR-Code für Remote-Zugriff</string>
 	<string name="dialog_remote_access_biglybt_qr_info">Scannen Sie diesen QR-Code auf einem Android-Gerät, auf dem Torrent TV installiert ist. \n&lt;small&gt;Ältere Torrent TV Android-Clients zeigen einen Fehler von &lt;b&gt;Zugriffscode \'PROFILE\' unbekannt&lt;/b&gt;&lt;/small&gt; an.</string>
-	<string name="dialog_remote_access_webui_qr_info">Scannen Sie diesen QR-Code, um mit jedem modernen Browser auf das Web-UI zuzugreifen.</string>
+	<string name="dialog_remote_access_webui_qr_info">Scannen Sie diesen QR-Code mit Ihrem Smartphone, um die Fernsteuerungsseite zu öffnen.</string>
 	<string name="dialog_remote_access_webui_qr_button">WebUI QR-Code</string>
 	<string name="dialog_remote_access_biglybt_qr_button">Torrent TV QR-Code</string>
 	<string name="rpc_not_authorized_adv">Nicht autorisiert. Bitte stellen Sie sicher, dass der Benutzername und das Passwort korrekt sind.</string>
