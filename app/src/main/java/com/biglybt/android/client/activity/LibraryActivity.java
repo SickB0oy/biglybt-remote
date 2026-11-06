@@ -83,10 +83,36 @@ public class LibraryActivity
 		context.startActivity(i);
 	}
 
+	/**
+	 * On phones that draw the app behind the status and navigation bars
+	 * (Android 15+), keep the header and the TMDB credit out from under them.
+	 */
+	private void applySystemBarInsets() {
+		final View header = findViewById(R.id.library_header);
+		final View credit = findViewById(R.id.library_credit);
+		final View root = ((ViewGroup) findViewById(android.R.id.content)).getChildAt(0);
+		final int hTop = header.getPaddingTop(), cBottom = credit.getPaddingBottom();
+		final int rLeft = root.getPaddingLeft(), rRight = root.getPaddingRight();
+		androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener(root, (v, insets) -> {
+			androidx.core.graphics.Insets bars = insets.getInsets(
+					androidx.core.view.WindowInsetsCompat.Type.systemBars()
+							| androidx.core.view.WindowInsetsCompat.Type.displayCutout());
+			v.setPadding(rLeft + bars.left, v.getPaddingTop(), rRight + bars.right,
+					v.getPaddingBottom());
+			header.setPadding(header.getPaddingLeft(), hTop + bars.top,
+					header.getPaddingRight(), header.getPaddingBottom());
+			credit.setPadding(credit.getPaddingLeft(), credit.getPaddingTop(),
+					credit.getPaddingRight(), cBottom + bars.bottom);
+			return insets;
+		});
+		androidx.core.view.ViewCompat.requestApplyInsets(root);
+	}
+
 	@Override
 	protected void onCreate(@Nullable Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_library);
+		applySystemBarInsets();
 		library = new MediaLibrary(this);
 
 		tvStatus = findViewById(R.id.library_status);

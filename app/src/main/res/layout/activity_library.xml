@@ -7,6 +7,7 @@
 	android:orientation="vertical">
 
 	<LinearLayout
+		android:id="@+id/library_header"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:background="@drawable/plus_remote_banner_bg"
