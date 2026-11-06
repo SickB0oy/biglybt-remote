@@ -356,6 +356,8 @@ public class TorrentTVWebPlugin
 			}
 			long size = parseLong(text(item, "size"), -1);
 			long seeders = -1, peers = -1;
+			double dlFactor = 1;
+			boolean exclusive = EXCLU_TITLE.matcher(title).find();
 			List<Integer> categories = new ArrayList<>();
 			for (String tag : new String[] {
 				"torznab:attr",
@@ -382,6 +384,24 @@ public class TorrentTVWebPlugin
 							long c = parseLong(v, -1);
 							if (c > 0) {
 								categories.add((int) c);
+							}
+							break;
+						case "downloadvolumefactor":
+							try {
+								dlFactor = Double.parseDouble(v.trim());
+							} catch (Throwable ignore) {
+							}
+							break;
+						default:
+							// No standard Torznab field for "exclusive": look for the
+							// usual ways trackers mark them (tag, internal, exclu…)
+							String ln = n.toLowerCase(Locale.ROOT);
+							String lv = v.toLowerCase(Locale.ROOT);
+							if (ln.contains("exclu") || ln.equals("internal")) {
+								exclusive |= !lv.isEmpty() && !lv.equals("0")
+										&& !lv.equals("false") && !lv.equals("no");
+							} else if (ln.equals("tag") || ln.equals("tags")) {
+								exclusive |= lv.contains("exclu") || lv.contains("internal");
 							}
 							break;
 					}
@@ -424,6 +444,12 @@ public class TorrentTVWebPlugin
 			r.put("date", date);
 			r.put("tracker", t.optString("name"));
 			r.put("kind", kindOf(categories));
+			if (dlFactor == 0) {
+				r.put("free", true);
+			}
+			if (exclusive) {
+				r.put("exclu", true);
+			}
 			if (!details.isEmpty()) {
 				r.put("details", details);
 			}
@@ -431,6 +457,10 @@ public class TorrentTVWebPlugin
 		}
 		return out;
 	}
+
+	/** "[EXCLU]", "EXCLUSIVITE", "Exclusive"… in the release name */
+	private static final java.util.regex.Pattern EXCLU_TITLE = java.util.regex.Pattern.compile(
+			"(?i)(^|[^a-z])exclu(sive|sivite|sivité)?([^a-z]|$)");
 
 	private static String kindOf(List<Integer> cats) {
 		for (int c : cats) {
