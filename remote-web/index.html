@@ -268,6 +268,19 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
 }
 .res-meta .seed { color: var(--done); font-weight: 700; }
 .res .actions { margin-top: 12px; }
+.res-sub { color: var(--muted); font-size: 14px; margin-top: 4px; }
+.srcs { display: grid; gap: 8px; margin-top: 12px; }
+.src {
+  display: flex; align-items: center; gap: 6px 14px; flex-wrap: wrap;
+  background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 8px 10px;
+}
+.src .badge { background: var(--soft); border-radius: 8px; padding: 1px 8px; font-weight: 800; font-size: 13px; }
+.src .seed { color: var(--done); font-weight: 700; font-size: 14px; }
+.src .leech, .src .sz { color: var(--muted); font-size: 14px; }
+.src .grow { flex: 1; }
+.src .btn { padding: 7px 12px; }
+#searchTrk { grid-column: 1 / -1; }
+.src a.site { color: var(--indigo); font-weight: 700; font-size: 13px; text-decoration: none; white-space: nowrap; }
 .res a.btn { text-decoration: none; color: var(--ink); }
 .trk { border: 1px solid var(--line); border-radius: 14px; padding: 12px; margin-top: 10px; display: grid; gap: 8px; }
 .trk label { font-size: 13px; color: var(--muted); font-weight: 600; display: grid; gap: 4px; }
@@ -351,6 +364,7 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
       <input class="search" id="sq" type="search" enterkeyhint="search" data-i18n-ph="searchPh" data-i18n-aria="tabSearch">
       <button class="btn primary" type="submit" data-i18n="go"></button>
     </form>
+    <div class="filters" role="group" id="searchTrk" hidden></div>
   </div>
 </div>
 
@@ -502,7 +516,10 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
       trkFail: "Trackers : {0}",
       keyOk: "Clé enregistrée",
       keyChange: "Changer",
-      saving: "Enregistrement…"
+      saving: "Enregistrement…",
+      allTrackers: "Tous les trackers",
+      nSources: "{0} sources",
+      siteShort: "Voir ↗"
     },
     en: {
       offline: "Lost connection to Torrent TV. Check that the app is open and that you are on the same Wi-Fi.",
@@ -570,7 +587,10 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
       trkFail: "Trackers: {0}",
       keyOk: "Key saved",
       keyChange: "Change",
-      saving: "Saving…"
+      saving: "Saving…",
+      allTrackers: "All trackers",
+      nSources: "{0} sources",
+      siteShort: "View ↗"
     },
     de: {
       offline: "Verbindung zu Torrent TV verloren. Prüfen Sie, ob die App geöffnet ist und Sie im selben WLAN sind.",
@@ -638,7 +658,10 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
       trkFail: "Tracker: {0}",
       keyOk: "Schlüssel gespeichert",
       keyChange: "Ändern",
-      saving: "Wird gespeichert…"
+      saving: "Wird gespeichert…",
+      allTrackers: "Alle Tracker",
+      nSources: "{0} Quellen",
+      siteShort: "Ansehen ↗"
     }
   };
   var LOCALES = { fr: "fr-FR", en: "en-GB", de: "de-DE" };
@@ -1242,6 +1265,7 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
     document.getElementById("localSearch").hidden = s;
     listEl.hidden = s;
     document.getElementById("searchCats").hidden = !s;
+    document.getElementById("searchTrk").hidden = !s || !sTrackerNames().length;
     document.getElementById("searchForm").hidden = !s;
     document.getElementById("searchPanel").hidden = !s;
     document.getElementById("openAdd").hidden = s;
@@ -1268,38 +1292,89 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
     if (sResults) runSearch();
   });
 
+  var sTracker = "";         // "" = all trackers
+
+  // Same release on several trackers: compare names without punctuation
+  // ("Tsundere-Raws" and "TsundereRaws" are the same release)
+  function releaseKey(title) {
+    return String(title).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]+/g, "");
+  }
+  function sTrackerNames() {
+    if (!sResults || !sResults.results) return [];
+    var seen = {};
+    sResults.results.forEach(function (x) { seen[x.tracker] = true; });
+    return Object.keys(seen).sort();
+  }
+  function renderTrackerChips() {
+    var el = document.getElementById("searchTrk");
+    var names = sTrackerNames();
+    if (names.indexOf(sTracker) < 0) sTracker = "";
+    el.hidden = mode !== "search" || names.length < 2;
+    el.innerHTML = [""].concat(names).map(function (n) {
+      return '<button class="chip" data-t="' + esc(n) + '" aria-pressed="' + (sTracker === n) + '">' +
+        esc(n || t("allTrackers")) + '</button>';
+    }).join("");
+  }
+  document.getElementById("searchTrk").addEventListener("click", function (e) {
+    var b = e.target.closest(".chip");
+    if (!b) return;
+    sTracker = b.getAttribute("data-t");
+    renderResults();
+  });
+
+  function groupResults(list) {
+    var groups = {}, order = [];
+    list.forEach(function (x) {
+      var k = releaseKey(x.title);
+      if (!groups[k]) { groups[k] = []; order.push(k); }
+      groups[k].push(x);
+    });
+    return order.map(function (k) {
+      var srcs = groups[k].sort(function (a, b) { return (b.seeders || 0) - (a.seeders || 0); });
+      var newest = srcs.reduce(function (m, x) { return Math.max(m, x.date || 0); }, 0);
+      return { title: srcs[0].title, size: srcs[0].size, date: newest, best: srcs[0].seeders || 0, srcs: srcs };
+    }).sort(function (a, b) { return b.best - a.best; });
+  }
+
   function renderResults() {
     if (sBusy) { sStatus.textContent = t("searching"); resultsEl.innerHTML = ""; return; }
-    if (!sResults) { sStatus.textContent = ""; resultsEl.innerHTML = ""; return; }
+    if (!sResults) { sStatus.textContent = ""; resultsEl.innerHTML = ""; renderTrackerChips(); return; }
     var r = sResults;
+    renderTrackerChips();
     if (!r.searched) {
       sStatus.innerHTML = esc(t("noTrackers")) +
         ' <button type="button" class="btn" id="goSettings">' + esc(t("openSettings")) + '</button>';
       resultsEl.innerHTML = "";
       return;
     }
-    var list = r.results.slice().sort(function (a, b) { return (b.seeders || 0) - (a.seeders || 0); });
-    var head = list.length === 0 ? t("noResults") : list.length === 1 ? t("oneResult") : t("nResults", list.length);
+    var list = r.results.filter(function (x) { return !sTracker || x.tracker === sTracker; });
+    var groups = groupResults(list);
+    var head = groups.length === 0 ? t("noResults") : groups.length === 1 ? t("oneResult") : t("nResults", groups.length);
     var warn = (r.errors || []).map(function (e) {
       return '<span class="warn">' + esc(e.tracker) + " : " + esc(errText(e.error)) + '</span>';
     }).join("");
     sStatus.innerHTML = esc(head) + warn;
-    resultsEl.innerHTML = list.map(function (x) {
-      var done = !!sAdded[x.ref];
-      return '<li class="res" data-ref="' + esc(x.ref) + '">' +
-        '<div class="res-title">' + esc(x.title) + '</div>' +
-        '<div class="res-meta">' +
-          '<span class="badge">' + esc(x.tracker) + '</span>' +
-          (x.size >= 0 ? '<span>' + size(x.size) + '</span>' : '') +
-          (x.seeders >= 0 ? '<span class="seed">▲ ' + esc(t("nSeeders", x.seeders)) + '</span>' : '') +
-          (x.leechers >= 0 ? '<span>▼ ' + esc(t("nLeechers", x.leechers)) + '</span>' : '') +
-          (x.date ? '<span>' + date(x.date) + '</span>' : '') +
+    resultsEl.innerHTML = groups.map(function (g) {
+      return '<li class="res">' +
+        '<div class="res-title">' + esc(g.title) + '</div>' +
+        '<div class="res-sub">' +
+          (g.size >= 0 ? size(g.size) : '') +
+          (g.date ? (g.size >= 0 ? ' · ' : '') + date(g.date) : '') +
         '</div>' +
-        '<div class="actions">' +
-          '<button class="btn primary" data-dl' + (done ? " disabled" : "") + '>' +
-            esc(done ? t("addedOk") : t("download")) + '</button>' +
-          (x.details ? '<a class="btn" href="' + esc(x.details) + '" target="_blank" rel="noopener noreferrer">' + esc(t("site")) + '</a>' : '') +
-        '</div>' +
+        '<div class="srcs">' + g.srcs.map(function (x) {
+          var done = !!sAdded[x.ref];
+          var otherSize = x.size >= 0 && g.size >= 0 && Math.abs(x.size - g.size) > g.size * 0.02;
+          return '<div class="src" data-ref="' + esc(x.ref) + '">' +
+            '<span class="badge">' + esc(x.tracker) + '</span>' +
+            (x.seeders >= 0 ? '<span class="seed" title="' + esc(t("nSeeders", x.seeders)) + '">▲ ' + x.seeders + '</span>' : '') +
+            (x.leechers >= 0 ? '<span class="leech" title="' + esc(t("nLeechers", x.leechers)) + '">▼ ' + x.leechers + '</span>' : '') +
+            (otherSize ? '<span class="sz">' + size(x.size) + '</span>' : '') +
+            '<span class="grow"></span>' +
+            (x.details ? '<a class="site" href="' + esc(x.details) + '" target="_blank" rel="noopener noreferrer" title="' + esc(t("site")) + '">' + esc(t("siteShort")) + '</a>' : '') +
+            '<button class="btn primary" data-dl' + (done ? " disabled" : "") + '>' +
+              esc(done ? t("addedOk") : t("download")) + '</button>' +
+          '</div>';
+        }).join("") + '</div>' +
       '</li>';
     }).join("");
   }
@@ -1322,7 +1397,7 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
     if (e.target.closest("#goSettings")) { document.getElementById("openSettings").click(); return; }
     var b = e.target.closest("[data-dl]");
     if (!b) return;
-    var ref = b.closest(".res").getAttribute("data-ref");
+    var ref = b.closest(".src").getAttribute("data-ref");
     b.disabled = true;
     ttv("/ttv/add", { ref: ref }).then(function (r) {
       if (r.magnet) {
