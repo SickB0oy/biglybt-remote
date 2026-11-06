@@ -104,7 +104,6 @@ button { cursor: pointer; }
   flex: 1; min-width: 0; width: 100%; border: 1px solid var(--line); background: var(--surface);
   border-radius: 12px; padding: 9px 12px;
 }
-.sort { flex: none; border: 1px solid var(--line); background: var(--surface); border-radius: 12px; padding: 9px 10px; }
 
 /* ---------- Torrent list: rows, not cards ---------- */
 main { max-width: 880px; margin: 0 auto; padding: 8px 16px 0; }
@@ -156,8 +155,6 @@ main { max-width: 880px; margin: 0 auto; padding: 8px 16px 0; }
 .empty { text-align: center; padding: 56px 20px; color: var(--muted); }
 .empty b { display: block; color: var(--ink); font-size: 18px; margin-bottom: 6px; }
 
-.foot { max-width: 880px; margin: 24px auto 0; padding: 0 20px; color: var(--muted); font-size: 13px; display: flex; gap: 16px; flex-wrap: wrap; }
-.foot a { color: var(--muted); }
 
 /* ---------- Add button & sheet ---------- */
 .fab {
@@ -302,12 +299,6 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
     <div class="filters" role="group" aria-label="Filtrer les torrents" id="filters"></div>
     <div class="search-row">
       <input class="search" id="search" type="search" placeholder="Rechercher" aria-label="Rechercher un torrent">
-      <select class="sort" id="sort" aria-label="Trier">
-        <option value="added">Récents</option>
-        <option value="name">Nom</option>
-        <option value="progress">Avancement</option>
-        <option value="speed">Vitesse</option>
-      </select>
     </div>
   </div>
 </div>
@@ -316,9 +307,6 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
   <ul class="list" id="list"></ul>
 </main>
 
-<footer class="foot">
-  <span id="version"></span>
-</footer>
 
 <button class="fab" id="openAdd">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
@@ -335,7 +323,6 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
       <input id="files" type="file" accept=".torrent,application/x-bittorrent" multiple>
       <div class="picked" id="picked"></div>
     </div>
-    <label class="opt"><input type="checkbox" id="startPaused"> Ajouter en pause</label>
     <div class="sheet-actions">
       <button type="button" class="btn" id="cancelAdd">Annuler</button>
       <button type="submit" class="btn primary" id="submitAdd">Ajouter</button>
@@ -471,9 +458,8 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
   var listEl = document.getElementById("list");
   var filtersEl = document.getElementById("filters");
   var searchEl = document.getElementById("search");
-  var sortEl = document.getElementById("sort");
 
-  try { filter = localStorage.getItem("bbp.filter") || "all"; sortEl.value = localStorage.getItem("bbp.sort") || "added"; } catch (e) {}
+  try { filter = localStorage.getItem("bbp.filter") || "all"; } catch (e) {}
 
   function renderFilters() {
     var counts = { all: torrents.length, active: 0, done: 0, paused: 0, error: 0 };
@@ -484,14 +470,9 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
     }).join("");
   }
 
+  // Most recently added first
   function sorted(list) {
-    var key = sortEl.value;
-    return list.slice().sort(function (a, b) {
-      if (key === "name") return a.name.localeCompare(b.name, "fr");
-      if (key === "progress") return a.percentDone - b.percentDone;
-      if (key === "speed") return (b.rateDownload + b.rateUpload) - (a.rateDownload + a.rateUpload);
-      return b.addedDate - a.addedDate;
-    });
+    return list.slice().sort(function (a, b) { return b.addedDate - a.addedDate; });
   }
 
   function renderList() {
@@ -528,8 +509,6 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
             '<div><dt>Taille</dt><dd>' + size(t.sizeWhenDone || t.totalSize) + '</dd></div>' +
             '<div><dt>Reste</dt><dd>' + size(t.leftUntilDone) + '</dd></div>' +
             '<div><dt>Pairs</dt><dd>' + t.peersSendingToUs + ' sur ' + t.peersConnected + '</dd></div>' +
-            '<div><dt>Envoyé</dt><dd>' + size(t.uploadedEver) + '</dd></div>' +
-            '<div><dt>Ratio</dt><dd>' + (t.uploadRatio >= 0 ? t.uploadRatio.toFixed(2).replace(".", ",") : "—") + '</dd></div>' +
             '<div><dt>Ajouté</dt><dd>' + date(t.addedDate) + '</dd></div>' +
             '<div class="wide"><dt>Dossier</dt><dd>' + esc(t.downloadDir || "—") + '</dd></div>' +
             (t.error > 0 ? '<div class="wide"><dt>Erreur</dt><dd>' + esc(t.errorString) + '</dd></div>' : '') +
@@ -538,8 +517,6 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
             (paused
               ? '<button class="btn primary" data-act="start">Reprendre</button>'
               : '<button class="btn" data-act="stop">Mettre en pause</button>') +
-            '<button class="btn" data-act="verify">Vérifier les fichiers</button>' +
-            '<button class="btn" data-act="announce">Chercher des pairs</button>' +
             '<button class="btn danger" data-act="remove">Supprimer</button>' +
           '</div>' +
         '</div>' +
@@ -589,7 +566,6 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
   function refreshSession() {
     rpc("session-get").then(function (s) {
       downloadDir = s["download-dir"];
-      if (s.version) document.getElementById("version").textContent = "BiglyBT " + s.version;
       if (s["download-dir-free-space"] != null) {
         document.getElementById("free").textContent = size(s["download-dir-free-space"]);
       } else if (downloadDir) {
@@ -618,10 +594,6 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
     renderFilters(); renderList();
   });
   searchEl.addEventListener("input", renderList);
-  sortEl.addEventListener("change", function () {
-    try { localStorage.setItem("bbp.sort", sortEl.value); } catch (err) {}
-    renderList();
-  });
 
   var pendingDelete = null;
   listEl.addEventListener("click", function (e) {
@@ -738,7 +710,7 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
     if (!links.length && !queuedFiles.length) { toast("Colle un lien ou choisis un fichier .torrent"); return; }
     var btn = document.getElementById("submitAdd");
     btn.disabled = true;
-    addAll(links, queuedFiles, document.getElementById("startPaused").checked).then(function (allOk) {
+    addAll(links, queuedFiles, false).then(function (allOk) {
       if (allOk) { linksEl.value = ""; filesEl.value = ""; setFiles([]); closeDialog(addDlg); }
     }).then(function () { btn.disabled = false; });
   });
@@ -790,27 +762,11 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
         '<div class="set"><label for="download-dir">Dossier de téléchargement</label><span></span>' +
           '<input type="text" id="download-dir" value="' + esc(c["download-dir"]) + '" spellcheck="false"></div>' +
         '<div class="set"><label for="start-added-torrents">Démarrer les torrents dès l\'ajout</label>' + sw("start-added-torrents", c["start-added-torrents"]) + '</div>' +
-        '<div class="set"><label for="seedRatio-on">Arrêter le partage à un ratio</label>' + sw("seedRatio-on", c.seedRatioLimited) +
-          '<span></span>' + num("seedRatioLimit", c.seedRatioLimit, "", 0.1) +
-          '<small>Ratio 1 : le torrent s\'arrête après avoir envoyé autant qu\'il a reçu.</small></div>' +
-      '</section>' +
-      '<section class="group"><h3>File d\'attente</h3>' +
-        '<div class="set"><label for="download-queue-on">Téléchargements simultanés maximum</label>' + sw("download-queue-on", c["download-queue-enabled"]) +
-          '<span></span>' + num("download-queue-size", c["download-queue-size"]) + '</div>' +
-        '<div class="set"><label for="seed-queue-on">Partages simultanés maximum</label>' + sw("seed-queue-on", c["seed-queue-enabled"]) +
-          '<span></span>' + num("seed-queue-size", c["seed-queue-size"]) + '</div>' +
-      '</section>' +
-      '<section class="group"><h3>Réseau</h3>' +
-        '<div class="set"><label for="peer-port">Port d\'écoute</label>' + num("peer-port", c["peer-port"]) +
-          '<small>Le port que les autres utilisateurs utilisent pour se connecter à toi.</small></div>' +
-        '<div class="set"><label for="encryption-required">Exiger le chiffrement</label>' + sw("encryption-required", c.encryption === "required") +
-          '<small>Refuse les pairs qui ne chiffrent pas : plus discret, mais moins de sources.</small></div>' +
       '</section>';
     syncDisabled();
   }
 
-  var PAIRS = [["speed-limit-down-on", "speed-limit-down"], ["speed-limit-up-on", "speed-limit-up"],
-    ["seedRatio-on", "seedRatioLimit"], ["download-queue-on", "download-queue-size"], ["seed-queue-on", "seed-queue-size"]];
+  var PAIRS = [["speed-limit-down-on", "speed-limit-down"], ["speed-limit-up-on", "speed-limit-up"]];
   function syncDisabled() {
     PAIRS.forEach(function (p) {
       var a = document.getElementById(p[0]), b = document.getElementById(p[1]);
@@ -833,23 +789,13 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
     if (!current) { closeDialog(setDlg); return; }
     function v(id) { return document.getElementById(id); }
     function n(id) { var x = parseFloat(String(v(id).value).replace(",", ".")); return isNaN(x) ? 0 : x; }
-    var port = Math.round(n("peer-port"));
-    if (port < 1 || port > 65535) { toast("Le port doit être entre 1 et 65535"); return; }
     var dir = v("download-dir").value.trim();
     var args = {
       "speed-limit-down-enabled": v("speed-limit-down-on").checked,
       "speed-limit-down": Math.round(n("speed-limit-down")),
       "speed-limit-up-enabled": v("speed-limit-up-on").checked,
       "speed-limit-up": Math.round(n("speed-limit-up")),
-      "start-added-torrents": v("start-added-torrents").checked,
-      "seedRatioLimited": v("seedRatio-on").checked,
-      "seedRatioLimit": n("seedRatioLimit"),
-      "download-queue-enabled": v("download-queue-on").checked,
-      "download-queue-size": Math.round(n("download-queue-size")),
-      "seed-queue-enabled": v("seed-queue-on").checked,
-      "seed-queue-size": Math.round(n("seed-queue-size")),
-      "peer-port": port,
-      "encryption": v("encryption-required").checked ? "required" : "preferred"
+      "start-added-torrents": v("start-added-torrents").checked
     };
     if (dir) args["download-dir"] = dir;
     // Only send what changed
