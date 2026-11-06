@@ -867,6 +867,13 @@
 			android:resizeableActivity="true"
 			android:supportsPictureInPicture="false"
 			android:theme="@style/Theme.TorrentTV.Player" />
+			<!-- Torrent TV: media library (posters and synopses from TMDB) -->
+		<activity
+			android:name=".activity.LibraryActivity"
+			android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|navigation"
+			android:exported="false"
+			android:label="@string/library_title"
+			android:theme="@style/Theme.TorrentTV.Library" />
 	</application>
 
 	<queries>

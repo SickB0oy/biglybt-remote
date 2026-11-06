@@ -42,6 +42,12 @@
 		android:title="@string/title_activity_subscriptions"
 		app:showAsAction="ifRoom"/>
 	<item
+		android:id="@+id/action_library"
+		android:icon="@drawable/ic_library"
+		android:showAsAction="ifRoom"
+		android:title="@string/library_open"
+		app:showAsAction="ifRoom"/>
+	<item
 		android:id="@+id/action_add_torrent"
 		android:icon="@drawable/ic_add_circle_outline_white_24dp"
 		android:showAsAction="ifRoom"

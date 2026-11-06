@@ -406,6 +406,23 @@ public class TorrentViewActivity
 			intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 			intent.putExtra(SessionManager.BUNDLE_KEY, getRemoteProfileID());
 			startActivity(intent);
+		} else if (itemId == R.id.action_library) {
+			// Torrent TV: media library; scan the folders torrents are saved in
+			java.util.ArrayList<String> dirs = new java.util.ArrayList<>();
+			try {
+				androidx.collection.LongSparseArray<java.util.Map<?, ?>> list = session == null
+						? null : session.torrent.getListAsSparseArray();
+				for (int i = 0; list != null && i < list.size(); i++) {
+					String dir = com.biglybt.android.util.MapUtils.getMapString(list.valueAt(i),
+							TransmissionVars.FIELD_TORRENT_DOWNLOAD_DIR, null);
+					if (dir != null && !dirs.contains(dir)) {
+						dirs.add(dir);
+					}
+				}
+			} catch (Throwable ignore) {
+			}
+			LibraryActivity.open(this, dirs);
+			return true;
 		} else if (itemId == R.id.action_swarm_discoveries) {
 			Intent intent = new Intent(Intent.ACTION_VIEW, null, this,
 					RcmActivity.class);

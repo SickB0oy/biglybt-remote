@@ -10,7 +10,7 @@
 	<string name="plus_later">Plus tard</string>
 	<string name="plus_remote_banner">Connexion à distance : %1$s\nIdentifiant : %2$s    Mot de passe : %3$s</string>
 	<string name="plus_remote_banner_nopw">Connexion à distance : %1$s</string>
-	<string name="plus_about">Torrent TV est un client torrent pour Android TV et téléphone : il télécharge dans le salon et se pilote depuis ton téléphone ou ton ordinateur.&lt;br/&gt;&lt;br/&gt;Logiciel libre sous licence GPL. &lt;a href="https://github.com/SickB0oy/torrent-tv"&gt;Code source et mises à jour&lt;/a&gt;</string>
+	<string name="plus_about">Torrent TV est un client torrent pour Android TV et téléphone : il télécharge dans le salon et se pilote depuis ton téléphone ou ton ordinateur.&lt;br/&gt;&lt;br/&gt;Données et images des films et séries : TMDB. Ce produit utilise l\'API TMDB mais n\'est ni approuvé ni certifié par TMDB.&lt;br/&gt;&lt;br/&gt;Logiciel libre sous licence GPL. &lt;a href="https://github.com/SickB0oy/torrent-tv"&gt;Code source et mises à jour&lt;/a&gt;</string>
 	<string name="dialog_remote_access_webui_qr_info">Scanne ce QR code avec ton téléphone pour ouvrir la page de commande à distance.</string>
 	<string name="player_play">Lire</string>
 	<string name="player_pause">Pause</string>
@@ -28,4 +28,35 @@
 	<string name="player_aspect_4_3">4:3</string>
 	<string name="player_error">Impossible de lire ce fichier</string>
 	<string name="player_resumed">Reprise à %1$s</string>
+	<string name="library_title">Films et séries</string>
+	<string name="library_open">Médiathèque</string>
+	<string name="library_refresh">Actualiser</string>
+	<string name="library_scanning">Recherche des vidéos…</string>
+	<plurals name="library_count">
+		<item quantity="one">%d vidéo</item>
+		<item quantity="other">%d vidéos</item>
+	</plurals>
+	<string name="library_empty">Aucune vidéo pour l\'instant. Les téléchargements terminés apparaîtront ici.</string>
+	<string name="library_need_key">Pour afficher les jaquettes et les résumés, ajoute ta clé TMDB gratuite. Crée un compte sur &lt;a href="https://www.themoviedb.org/signup"&gt;themoviedb.org&lt;/a&gt;, puis dans Paramètres, API, copie le &lt;b&gt;jeton d\'accès en lecture&lt;/b&gt; (API Read Access Token).</string>
+	<string name="library_enter_key">Saisir ma clé TMDB</string>
+	<string name="library_key_title">Clé TMDB</string>
+	<string name="library_key_message">Colle ton jeton d\'accès en lecture (ou ta clé API v3) depuis themoviedb.org, Paramètres, API.</string>
+	<string name="library_key_hint">eyJhbGciOi…</string>
+	<string name="library_key_save">Enregistrer</string>
+	<string name="library_key_checking">Vérification de la clé…</string>
+	<string name="library_key_ok">Clé TMDB enregistrée</string>
+	<string name="library_key_bad">Cette clé ne fonctionne pas (%1$s). Vérifie que tu l\'as copiée en entier.</string>
+	<string name="library_play">Lire</string>
+	<string name="library_resume">Reprendre</string>
+	<string name="library_close">Fermer</string>
+	<string name="library_fix">Pas le bon film ?</string>
+	<string name="library_fix_title">Rechercher le bon titre</string>
+	<string name="library_fix_message">Tape le titre, et l\'année si tu la connais.</string>
+	<string name="library_fix_search">Rechercher</string>
+	<string name="library_fix_ok">Mis à jour</string>
+	<string name="library_not_found">Introuvable sur TMDB. Utilise « Pas le bon film ? » pour chercher par titre.</string>
+	<string name="library_no_overview">Pas de résumé disponible.</string>
+	<string name="library_seen">Vu</string>
+	<string name="library_in_progress">En cours</string>
+	<string name="library_tmdb_credit">Données et images : &lt;a href="https://www.themoviedb.org"&gt;TMDB&lt;/a&gt;. Ce produit utilise l\'API TMDB mais n\'est ni approuvé ni certifié par TMDB.</string>
 </resources>

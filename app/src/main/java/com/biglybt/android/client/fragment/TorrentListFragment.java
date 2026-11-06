@@ -492,6 +492,7 @@ public class TorrentListFragment
 					public int[] getRestrictToMenuIDs() {
 						return new int[] {
 							R.id.action_refresh,
+							R.id.action_library,
 							R.id.action_add_torrent,
 							R.id.action_start_all,
 							R.id.action_stop_all,

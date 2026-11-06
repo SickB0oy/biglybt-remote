@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<color name="library_bg">#FF12142A</color>
+	<color name="library_text">#FFECEDF8</color>
+	<color name="library_muted">#FF9A9EC0</color>
+	<color name="library_accent">#FF9AA2FF</color>
+</resources>

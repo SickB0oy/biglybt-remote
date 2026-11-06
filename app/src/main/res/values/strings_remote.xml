@@ -10,7 +10,7 @@
 	<string name="plus_later">Later</string>
 	<string name="plus_remote_banner">Remote access: %1$s\nUser: %2$s    Password: %3$s</string>
 	<string name="plus_remote_banner_nopw">Remote access: %1$s</string>
-	<string name="plus_about">Torrent TV is a torrent client for Android TV and phones: download in the living room and control it from your phone or computer.&lt;br/&gt;&lt;br/&gt;Free software under the GPL license. &lt;a href="https://github.com/SickB0oy/torrent-tv"&gt;Source code and updates&lt;/a&gt;</string>
+	<string name="plus_about">Torrent TV is a torrent client for Android TV and phones: download in the living room and control it from your phone or computer.&lt;br/&gt;&lt;br/&gt;Movie and series data and images: TMDB. This product uses the TMDB API but is not endorsed or certified by TMDB.&lt;br/&gt;&lt;br/&gt;Free software under the GPL license. &lt;a href="https://github.com/SickB0oy/torrent-tv"&gt;Source code and updates&lt;/a&gt;</string>
 	<string name="player_play">Play</string>
 	<string name="player_pause">Pause</string>
 	<string name="player_back">Back</string>
@@ -27,4 +27,35 @@
 	<string name="player_aspect_4_3">4:3</string>
 	<string name="player_error">Can\'t play this file</string>
 	<string name="player_resumed">Resumed at %1$s</string>
+	<string name="library_title">Movies and series</string>
+	<string name="library_open">Library</string>
+	<string name="library_refresh">Refresh</string>
+	<string name="library_scanning">Looking for videos…</string>
+	<plurals name="library_count">
+		<item quantity="one">%d video</item>
+		<item quantity="other">%d videos</item>
+	</plurals>
+	<string name="library_empty">No videos yet. Finished downloads will show up here.</string>
+	<string name="library_need_key">To show posters and synopses, add your free TMDB key. Create an account on &lt;a href="https://www.themoviedb.org/signup"&gt;themoviedb.org&lt;/a&gt;, then in Settings, API, copy the &lt;b&gt;API Read Access Token&lt;/b&gt;.</string>
+	<string name="library_enter_key">Enter my TMDB key</string>
+	<string name="library_key_title">TMDB key</string>
+	<string name="library_key_message">Paste your API Read Access Token (or v3 API key) from themoviedb.org, Settings, API.</string>
+	<string name="library_key_hint">eyJhbGciOi…</string>
+	<string name="library_key_save">Save</string>
+	<string name="library_key_checking">Checking the key…</string>
+	<string name="library_key_ok">TMDB key saved</string>
+	<string name="library_key_bad">This key doesn\'t work (%1$s). Check that you copied it entirely.</string>
+	<string name="library_play">Play</string>
+	<string name="library_resume">Resume</string>
+	<string name="library_close">Close</string>
+	<string name="library_fix">Wrong movie?</string>
+	<string name="library_fix_title">Search for the right title</string>
+	<string name="library_fix_message">Type the title, and the year if you know it.</string>
+	<string name="library_fix_search">Search</string>
+	<string name="library_fix_ok">Updated</string>
+	<string name="library_not_found">Not found on TMDB. Use "Wrong movie?" to search by title.</string>
+	<string name="library_no_overview">No synopsis available.</string>
+	<string name="library_seen">Watched</string>
+	<string name="library_in_progress">In progress</string>
+	<string name="library_tmdb_credit">Data and images from &lt;a href="https://www.themoviedb.org"&gt;TMDB&lt;/a&gt;. This product uses the TMDB API but is not endorsed or certified by TMDB.</string>
 </resources>

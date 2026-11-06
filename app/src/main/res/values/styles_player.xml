@@ -34,4 +34,11 @@
 		<item name="android:textSize">14sp</item>
 		<item name="android:fontFeatureSettings">tnum</item>
 	</style>
+	<style name="Theme.TorrentTV.Library" parent="Theme.MaterialComponents.NoActionBar">
+		<item name="android:windowBackground">@color/library_bg</item>
+		<item name="android:statusBarColor">#FF3B45C8</item>
+		<item name="colorPrimary">@color/dark_primaryColor</item>
+		<item name="colorAccent">@color/dark_button_primaryColor</item>
+		<item name="colorSecondary">@color/dark_button_primaryColor</item>
+	</style>
 </resources>

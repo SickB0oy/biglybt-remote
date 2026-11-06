@@ -276,6 +276,7 @@ public class PlayerActivity
 				break;
 			case MediaPlayer.Event.EndReached:
 				clearPosition();
+				markWatched();
 				finish();
 				break;
 			case MediaPlayer.Event.EncounteredError:
@@ -506,7 +507,13 @@ public class PlayerActivity
 			positions().edit().putLong(key(), t).apply();
 		} else if (length > 0 && t >= length * 0.95) {
 			clearPosition();
+			markWatched();
 		}
+	}
+
+	/** Read by the media library to show "Watched" */
+	private void markWatched() {
+		positions().edit().putBoolean("watched:" + key(), true).apply();
 	}
 
 	private void clearPosition() {
