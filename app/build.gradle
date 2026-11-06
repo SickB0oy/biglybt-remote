@@ -28,7 +28,7 @@ android {
         applicationId "com.biglybt.android.client.plus"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionName "1.3.4.4-plus7"
+        versionName "1.3.4.4-plus8"
         // a.b.c -> aabbccdd, where dd = build #
         versionCode 1030404
         multiDexEnabled true
