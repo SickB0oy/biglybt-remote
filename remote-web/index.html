@@ -257,10 +257,11 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
 <header class="top">
   <div class="brand">
     <svg class="tile" viewBox="0 0 108 108" aria-hidden="true">
-      <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3D7BFF"/><stop offset="1" stop-color="#8A4DFF"/></linearGradient></defs>
+      <defs><linearGradient id="lg" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="108" y2="108"><stop offset="0" stop-color="#3D7BFF"/><stop offset="1" stop-color="#8A4DFF"/></linearGradient></defs>
       <rect width="108" height="108" rx="26" fill="url(#lg)"/>
-      <path d="M36.5,33 V75 M36.5,33 H53.5 a10.5,10.5 0 0 1 0,21 H36.5 M36.5,54 H56 a10.5,10.5 0 0 1 0,21 H36.5" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-      <circle cx="71.5" cy="33.5" r="5" fill="#fff" opacity=".9"/>
+      <path d="M48,40 H84 M66,40 V77 M57.5,69 L66,77.5 L74.5,69" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M24,30 H60 M42,30 V74" fill="none" stroke="url(#lg)" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M24,30 H60 M42,30 V74" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
     <div>
       <div class="brand-name">Torrent TV</div>

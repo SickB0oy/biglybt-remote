@@ -1,10 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- BiglyBT Plus "B" monogram -->
+<!-- Torrent TV launcher foreground: TT monogram -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:aapt="http://schemas.android.com/aapt"
 	android:width="108dp" android:height="108dp"
 	android:viewportWidth="108" android:viewportHeight="108">
-	<path android:pathData="M36.5,33 V75 M36.5,33 H53.5 a10.5,10.5 0 0 1 0,21 H36.5 M36.5,54 H56 a10.5,10.5 0 0 1 0,21 H36.5"
+	<!-- back T: translucent, ending in a download arrow -->
+	<path android:pathData="M48,40 H84 M66,40 V77 M57.5,69 L66,77.5 L74.5,69"
+		android:strokeColor="#FFFFFFFF" android:strokeAlpha="0.5" android:strokeWidth="9"
+		android:strokeLineCap="round" android:strokeLineJoin="round" />
+	<!-- halo in the background colors so the front T reads over the back one -->
+	<path android:pathData="M24,30 H60 M42,30 V74" android:strokeWidth="17"
+		android:strokeLineCap="round" android:strokeLineJoin="round">
+		<aapt:attr name="android:strokeColor">
+			<gradient android:type="linear"
+				android:startX="0" android:startY="0" android:endX="108" android:endY="108"
+				android:startColor="#FF3D7BFF" android:endColor="#FF8A4DFF" />
+		</aapt:attr>
+	</path>
+	<!-- front T -->
+	<path android:pathData="M24,30 H60 M42,30 V74"
 		android:strokeColor="#FFFFFFFF" android:strokeWidth="9"
 		android:strokeLineCap="round" android:strokeLineJoin="round" />
-	<path android:pathData="M66.5,33.5 a5,5 0 1 0 10,0 a5,5 0 1 0 -10,0 Z" android:fillColor="#E6FFFFFF" />
 </vector>

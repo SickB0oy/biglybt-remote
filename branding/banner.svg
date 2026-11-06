@@ -6,10 +6,9 @@
     </linearGradient>
   </defs>
   <rect width="320" height="180" fill="url(#g)"/>
-  <g transform="translate(22 46) scale(0.82)">
-    <path d="M36.5,33 V75 M36.5,33 H53.5 a10.5,10.5 0 0 1 0,21 H36.5 M36.5,54 H56 a10.5,10.5 0 0 1 0,21 H36.5"
-          fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="71.5" cy="33.5" r="5" fill="#fff" opacity="0.9"/>
+  <g transform="translate(8 46) scale(0.82)">
+    <path d="M48,40 H84 M66,40 V77 M57.5,69 L66,77.5 L74.5,69" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M24,30 H60 M42,30 V74" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <text x="108" y="104" font-family="DejaVu Sans, Roboto, Arial, sans-serif" font-weight="bold" font-size="32" fill="#fff">Torrent TV</text>
 </svg>
