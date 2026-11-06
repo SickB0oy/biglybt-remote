@@ -318,7 +318,7 @@
 	<string name="title_message_from_client">Nachricht vom Remote-Client</string>
 	<string name="list_filtered_empty">Keine Ergebnisse passen zu Ihren aktuellen Filtern.</string>
 	<string name="empty_list">Die Liste ist leer :(</string>
-	<string name="torrent_list_empty">Keine Torrents vorhanden.\n\nSie können mit Metasearch nach Torrents suchen, Torrents mit Schwarm-Entdeckungen entdecken, bestehende RSS-Torrent-Feeds abonnieren oder Torrents manuell hinzufügen.</string>
+	<string name="torrent_list_empty">Noch keine Torrents.\n\nTippen Sie auf +, um einen Torrent oder Magnet-Link hinzuzufügen.</string>
 	<string name="rcm_list_empty">Keine Schwarm-Entdeckungen. Je mehr Torrents Sie herunterladen, desto mehr Entdeckungen werden gefunden.</string>
 	<string name="spoken_sorted_ascending">Aufsteigend sortiert</string>
 	<string name="spoken_sorted_descending">Absteigend sortiert</string>

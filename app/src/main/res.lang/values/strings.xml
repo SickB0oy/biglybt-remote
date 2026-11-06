@@ -374,7 +374,7 @@
 	<string name="title_message_from_client">Message From Remote Client</string>
 	<string name="list_filtered_empty">No results match your current filters.</string>
 	<string name="empty_list">List is empty :(</string>
-	<string name="torrent_list_empty">No torrents to display.\n\nYou can search for torrents with Metasearch, discover torrents with Swarm Discoveries, subscribe to existing RSS torrent feeds, or manually add torrents.</string>
+	<string name="torrent_list_empty">No torrents yet.\n\nTap + to add a torrent or a magnet link.</string>
 	<string name="rcm_list_empty">No Swarm Discoveries.  The more torrents you download, the more discoveries will be found.</string>
 
 	<string name="spoken_sorted_ascending">Sorted Ascending</string>

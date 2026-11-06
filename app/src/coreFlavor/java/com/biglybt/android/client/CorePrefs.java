@@ -230,10 +230,14 @@ public class CorePrefs
 				pw = AndroidUtils.generateEasyPW(8);
 				prefs.put(PREF_CORE_RACCESS_PW, pw);
 			}
+			String user = prefs.getString(PREF_CORE_RACCESS_USER, null);
+			if (user == null || user.isEmpty() || "biglybt".equals(user)) {
+				// Short user name matching the app name (old default was "biglybt")
+				user = "ttv";
+				prefs.put(PREF_CORE_RACCESS_USER, user);
+			}
 			setRemAccessPrefs(prefs.getBoolean(PREF_CORE_ALLOWLANACCESS, true),
-					prefs.getBoolean(PREF_CORE_RACCESS_REQPW, true),
-					getPrefString(prefs, PREF_CORE_RACCESS_USER, "biglybt"),
-					pw);
+					prefs.getBoolean(PREF_CORE_RACCESS_REQPW, true), user, pw);
 		}
 	}
 

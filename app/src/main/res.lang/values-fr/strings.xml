@@ -314,7 +314,7 @@
 	<string name="title_message_from_client">Message du client distant</string>
 	<string name="list_filtered_empty">Aucun résultat pour vos critères de recherche.</string>
 	<string name="empty_list">La liste est vide :(</string>
-	<string name="torrent_list_empty">Aucun torrent à afficher.\n\nVous pouvez rechercher des torrents avec Metasearch, découvrir des torrents avec Swarm Discoveries, vous abonner aux flux RSS existants, ou ajouter manuellement des torrents.</string>
+	<string name="torrent_list_empty">Aucun torrent pour l\'instant.\n\nAppuie sur + pour ajouter un torrent ou un lien magnet.</string>
 	<string name="rcm_list_empty">Aucune découverte d\'essaims. Plus vous téléchargez de torrents, plus vous ferez de découvertes.</string>
 	<string name="spoken_sorted_ascending">Tri croissant</string>
 	<string name="spoken_sorted_descending">Tri décroissant</string>
