@@ -355,7 +355,7 @@ public class TorrentTVWebPlugin
 				continue;
 			}
 			long size = parseLong(text(item, "size"), -1);
-			long seeders = -1, peers = -1;
+			long seeders = -1, peers = -1, grabs = -1;
 			double dlFactor = 1;
 			boolean exclusive = EXCLU_TITLE.matcher(title).find();
 			List<Integer> categories = new ArrayList<>();
@@ -374,6 +374,9 @@ public class TorrentTVWebPlugin
 							break;
 						case "peers":
 							peers = parseLong(v, peers);
+							break;
+						case "grabs":
+							grabs = parseLong(v, grabs);
 							break;
 						case "size":
 							if (size < 0) {
@@ -442,6 +445,8 @@ public class TorrentTVWebPlugin
 			r.put("leechers", peers >= 0 && seeders >= 0 ? Math.max(0, peers - seeders)
 					: -1);
 			r.put("date", date);
+			// Times downloaded to the end ("completed")
+			r.put("grabs", grabs);
 			r.put("tracker", t.optString("name"));
 			r.put("kind", kindOf(categories));
 			if (dlFactor == 0) {

@@ -256,6 +256,14 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
 .tab[aria-selected="true"] { background: var(--surface); color: var(--ink); box-shadow: 0 1px 4px rgba(0,0,0,.12); }
 [hidden] { display: none !important; }
 .sstatus { color: var(--muted); font-size: 14px; padding: 10px 2px 0; }
+.sortbar { display: flex; align-items: center; gap: 4px; overflow-x: auto; scrollbar-width: none; padding: 10px 0 2px; }
+.sortbar::-webkit-scrollbar { display: none; }
+.sortbar .lbl { color: var(--muted); font-size: 12px; font-weight: 800; letter-spacing: .06em; margin-right: 4px; }
+.sortbar button {
+  border: 0; background: none; border-radius: 10px; padding: 6px 10px; white-space: nowrap;
+  font-weight: 700; font-size: 14px; color: var(--muted);
+}
+.sortbar button[aria-pressed="true"] { background: var(--indigo); color: #fff; }
 .sstatus .warn { color: var(--error); display: block; margin-top: 4px; }
 .res {
   background: var(--surface); border: 1px solid var(--line); border-radius: 16px;
@@ -363,6 +371,7 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
   <ul class="list" id="list"></ul>
   <section id="searchPanel" hidden>
     <div class="sstatus" id="sStatus" aria-live="polite"></div>
+    <div class="sortbar" id="sSort" role="group" hidden></div>
     <ul class="list" id="results"></ul>
   </section>
 </main>
@@ -509,6 +518,14 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
       keyChange: "Changer",
       saving: "Enregistrement…",
       latest: "Dernières sorties",
+      sortLbl: "TRIER",
+      sAge: "Âge",
+      sSeeders: "Seeders",
+      sLeechers: "Leechers",
+      sSize: "Taille",
+      sGrabs: "Complétés",
+      sName: "Nom",
+      nGrabs: "{0} complétés",
       tabFree: "Freeleech",
       noFree: "Aucun torrent freeleech parmi ces résultats",
       allTrackers: "Tous les trackers",
@@ -583,6 +600,14 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
       keyChange: "Change",
       saving: "Saving…",
       latest: "Latest releases",
+      sortLbl: "SORT",
+      sAge: "Age",
+      sSeeders: "Seeders",
+      sLeechers: "Leechers",
+      sSize: "Size",
+      sGrabs: "Completed",
+      sName: "Name",
+      nGrabs: "{0} completed",
       tabFree: "Freeleech",
       noFree: "No freeleech torrent in these results",
       allTrackers: "All trackers",
@@ -657,6 +682,14 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
       keyChange: "Ändern",
       saving: "Wird gespeichert…",
       latest: "Neueste Veröffentlichungen",
+      sortLbl: "SORTIEREN",
+      sAge: "Alter",
+      sSeeders: "Seeder",
+      sLeechers: "Leecher",
+      sSize: "Größe",
+      sGrabs: "Abgeschlossen",
+      sName: "Name",
+      nGrabs: "{0} abgeschlossen",
       tabFree: "Freeleech",
       noFree: "Kein Freeleech-Torrent in diesen Ergebnissen",
       allTrackers: "Alle Tracker",
@@ -1332,12 +1365,55 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
     renderResults();
   });
 
+  var SORTS = [
+    ["date", "sAge", function (x) { return x.date || 0; }],
+    ["seeders", "sSeeders", function (x) { return x.seeders || 0; }],
+    ["leechers", "sLeechers", function (x) { return x.leechers || 0; }],
+    ["size", "sSize", function (x) { return x.size || 0; }],
+    ["grabs", "sGrabs", function (x) { return x.grabs || 0; }],
+    ["name", "sName", function (x) { return String(x.title).toLowerCase(); }]
+  ];
+  var sSort = "seeders", sDesc = true;
+  try {
+    var saved = JSON.parse(localStorage.getItem("ttv.sort") || "null");
+    if (saved && SORTS.some(function (o) { return o[0] === saved.k; })) { sSort = saved.k; sDesc = !!saved.d; }
+  } catch (e) {}
+  function renderSortBar(show) {
+    var el = document.getElementById("sSort");
+    el.hidden = !show;
+    if (!show) return;
+    el.innerHTML = '<span class="lbl">' + esc(t("sortLbl")) + '</span>' + SORTS.map(function (o) {
+      var on = o[0] === sSort;
+      return '<button type="button" data-s="' + o[0] + '" aria-pressed="' + on + '">' + esc(t(o[1])) +
+        (on ? (sDesc ? " ↓" : " ↑") : "") + '</button>';
+    }).join("");
+  }
+  document.getElementById("sSort").addEventListener("click", function (e) {
+    var b = e.target.closest("[data-s]");
+    if (!b) return;
+    var k = b.getAttribute("data-s");
+    if (k === sSort) sDesc = !sDesc;
+    else { sSort = k; sDesc = k !== "name"; }
+    try { localStorage.setItem("ttv.sort", JSON.stringify({ k: sSort, d: sDesc })); } catch (err) {}
+    renderResults();
+  });
+  function sortList(list) {
+    var key = SORTS.filter(function (o) { return o[0] === sSort; })[0][2];
+    return list.sort(function (a, b) {
+      var x = key(a), y = key(b);
+      var c = x < y ? -1 : x > y ? 1 : 0;
+      if (c === 0) c = (a.seeders || 0) - (b.seeders || 0);
+      return sDesc ? -c : c;
+    });
+  }
+
   function renderResults() {
-    if (sBusy) { sStatus.textContent = t("searching"); resultsEl.innerHTML = ""; return; }
-    if (!sResults) { sStatus.textContent = ""; resultsEl.innerHTML = ""; renderTrackerChips(); return; }
+    if (sBusy) { sStatus.textContent = t("searching"); resultsEl.innerHTML = ""; renderSortBar(false); return; }
+    if (!sResults) { sStatus.textContent = ""; resultsEl.innerHTML = ""; renderSortBar(false); renderTrackerChips(); return; }
     var r = sResults;
     renderTrackerChips();
     if (!r.searched) {
+      renderSortBar(false);
       sStatus.innerHTML = esc(t("noTrackers")) +
         ' <button type="button" class="btn" id="goSettings">' + esc(t("openSettings")) + '</button>';
       resultsEl.innerHTML = "";
@@ -1347,8 +1423,9 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
       if (sTracker && x.tracker !== sTracker) return false;
       if (mode === "free") return !!x.free;
       return true;
-    })
-      .sort(function (a, b) { return (b.seeders || 0) - (a.seeders || 0); });
+    });
+    sortList(list);
+    renderSortBar(list.length > 1);
     var head = list.length === 0 ? t("noResults") : list.length === 1 ? t("oneResult") : t("nResults", list.length);
     if (mode === "free" && !list.length) head = t("noFree");
     else if (mode === "free") head = t("tabFree") + " · " + head;
@@ -1368,6 +1445,7 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
           (x.seeders >= 0 ? '<span class="seed">▲ ' + esc(t("nSeeders", x.seeders)) + '</span>' : '') +
           (x.leechers >= 0 ? '<span>▼ ' + esc(t("nLeechers", x.leechers)) + '</span>' : '') +
           (x.date ? '<span>' + date(x.date) + '</span>' : '') +
+          (x.grabs > 0 ? '<span>✓ ' + esc(t("nGrabs", x.grabs)) + '</span>' : '') +
         '</div>' +
         '<div class="actions">' +
           '<button class="btn primary" data-dl' + (done ? " disabled" : "") + '>' +
