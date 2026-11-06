@@ -37,6 +37,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.security.KeyStore;
 import java.security.SecureRandom;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -50,6 +51,10 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.TrustManagerFactory;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
@@ -511,6 +516,9 @@ public class TorrentTVWebPlugin
 		for (int hop = 0; hop < 6; hop++) {
 			HttpURLConnection c = (HttpURLConnection) new URL(current).openConnection();
 			c.setInstanceFollowRedirects(false);
+			if (c instanceof HttpsURLConnection) {
+				((HttpsURLConnection) c).setSSLSocketFactory(systemSsl());
+			}
 			c.setConnectTimeout(TIMEOUT_MS);
 			c.setReadTimeout(TIMEOUT_MS);
 			c.setRequestProperty("User-Agent", USER_AGENT);
@@ -543,6 +551,31 @@ public class TorrentTVWebPlugin
 			}
 		}
 		throw new IOException("too many redirects");
+	}
+
+	private static SSLSocketFactory systemSslFactory;
+
+	/**
+	 * TLS with Android's own trusted certificates. The torrent engine replaces
+	 * the default ones with its own store, which does not know the
+	 * certificates of most sites ("Trust anchor for certification path not
+	 * found").
+	 */
+	private static synchronized SSLSocketFactory systemSsl() throws IOException {
+		if (systemSslFactory == null) {
+			try {
+				KeyStore ks = KeyStore.getInstance("AndroidCAStore");
+				ks.load(null, null);
+				TrustManagerFactory tmf = TrustManagerFactory.getInstance("X509");
+				tmf.init(ks);
+				SSLContext ctx = SSLContext.getInstance("TLS");
+				ctx.init(null, tmf.getTrustManagers(), null);
+				systemSslFactory = ctx.getSocketFactory();
+			} catch (Exception e) {
+				throw new IOException("TLS: " + e.getMessage(), e);
+			}
+		}
+		return systemSslFactory;
 	}
 
 	private static byte[] readAll(InputStream is) throws IOException {
