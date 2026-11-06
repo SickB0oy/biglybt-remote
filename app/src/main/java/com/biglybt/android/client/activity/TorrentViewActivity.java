@@ -146,9 +146,10 @@ public class TorrentViewActivity
 		tvTVHeader = findViewById(R.id.torrentview_tv_header);
 
 		RemoteProfile remoteProfile = session.getRemoteProfile();
-		setSubtitle(remoteProfile.getNick());
+		// No profile name under the title: there is only one, built in
+		setSubtitle(null);
 		if (tvTVHeader != null) {
-			tvTVHeader.setText(remoteProfile.getNick());
+			tvTVHeader.setText(R.string.app_name);
 		}
 
 		boolean isLocalHost = remoteProfile.isLocalHost();

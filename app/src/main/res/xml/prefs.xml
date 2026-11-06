@@ -43,26 +43,8 @@
 
 	<PreferenceCategory
 		android:title="@string/prefcat_interface">
-		<Preference
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:key="nickname"
-			android:title="@string/profile_nickname"
-			tools:summary="Local BiglyBT on Pixel 2020"/>
 
-		<Preference
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:key="refresh_interval"
-			android:title="@string/preftitle_refresh_interval"
-			tools:summary="Refresh every 30 seconds\nRefresh every 90 seconds when on Mobile"/>
 
-		<com.biglybt.android.widget.SwitchPreference
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:key="small_list"
-			android:title="@string/rp_small_lists"
-			/>
 
 		<Preference
 			android:layout_width="wrap_content"

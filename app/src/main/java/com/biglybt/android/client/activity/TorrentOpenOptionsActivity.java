@@ -192,7 +192,7 @@ public class TorrentOpenOptionsActivity
 		actionBar.setDisplayHomeAsUpEnabled(true);
 
 		RemoteProfile remoteProfile = session.getRemoteProfile();
-		actionBar.setSubtitle(remoteProfile.getNick());
+		actionBar.setSubtitle(null);
 	}
 
 	@Override

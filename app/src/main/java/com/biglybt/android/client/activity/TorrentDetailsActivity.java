@@ -189,7 +189,7 @@ public class TorrentDetailsActivity
 		}
 
 		RemoteProfile remoteProfile = session.getRemoteProfile();
-		actionBar.setSubtitle(remoteProfile.getNick());
+		actionBar.setSubtitle(null);
 
 		actionBar.setDisplayHomeAsUpEnabled(true);
 	}
