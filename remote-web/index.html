@@ -277,6 +277,10 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
 .trk-foot { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
 .trk-foot a { color: var(--indigo); font-size: 13px; font-weight: 700; }
 .group > small { display: block; color: var(--muted); font-size: 13px; }
+.trk .keyok { color: var(--done); font-weight: 700; font-size: 14px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.trk .keyok button { border: 0; background: none; color: var(--indigo); font-weight: 700; padding: 0; font-size: 13px; }
+.trk input.key { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; }
+.form-err { color: var(--error); font-weight: 600; font-size: 14px; margin: 14px 0 0; overflow-wrap: anywhere; }
 
 @media (min-width: 760px) {
   .bar-in { grid-template-columns: 1fr 340px; align-items: center; }
@@ -365,7 +369,7 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
 </button>
 
 <dialog id="addDlg" aria-labelledby="addTitle">
-  <form class="sheet" id="addForm" method="dialog">
+  <form class="sheet" id="addForm" method="dialog" novalidate>
     <h2 id="addTitle" data-i18n="addTitle"></h2>
     <p data-i18n="addHelp"></p>
     <textarea id="links" placeholder="magnet:?xt=urn:btih:…" data-i18n-aria="linksLabel"></textarea>
@@ -394,7 +398,7 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
 </dialog>
 
 <dialog id="setDlg" class="settings" aria-labelledby="setTitle">
-  <form class="sheet" id="setForm" method="dialog">
+  <form class="sheet" id="setForm" method="dialog" novalidate>
     <h2 id="setTitle" data-i18n="settings"></h2>
     <p data-i18n="setHelp"></p>
     <section class="group">
@@ -415,6 +419,7 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
       <div id="trkList"></div>
       <div class="actions"><button type="button" class="btn" id="trkAdd" data-i18n="trkAdd"></button></div>
     </section>
+    <p class="form-err" id="setErr" role="alert" hidden></p>
     <div class="sheet-actions">
       <button type="button" class="btn" id="setCancel" data-i18n="cancel"></button>
       <button type="submit" class="btn primary" id="setSave" data-i18n="save"></button>
@@ -494,7 +499,10 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
       whereKey: "Où trouver ma clé ?",
       trkRemove: "Retirer",
       trkAdd: "Ajouter un tracker",
-      trkFail: "Trackers : {0}"
+      trkFail: "Trackers : {0}",
+      keyOk: "Clé enregistrée",
+      keyChange: "Changer",
+      saving: "Enregistrement…"
     },
     en: {
       offline: "Lost connection to Torrent TV. Check that the app is open and that you are on the same Wi-Fi.",
@@ -559,7 +567,10 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
       whereKey: "Where is my key?",
       trkRemove: "Remove",
       trkAdd: "Add a tracker",
-      trkFail: "Trackers: {0}"
+      trkFail: "Trackers: {0}",
+      keyOk: "Key saved",
+      keyChange: "Change",
+      saving: "Saving…"
     },
     de: {
       offline: "Verbindung zu Torrent TV verloren. Prüfen Sie, ob die App geöffnet ist und Sie im selben WLAN sind.",
@@ -624,7 +635,10 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
       whereKey: "Wo finde ich meinen Schlüssel?",
       trkRemove: "Entfernen",
       trkAdd: "Tracker hinzufügen",
-      trkFail: "Tracker: {0}"
+      trkFail: "Tracker: {0}",
+      keyOk: "Schlüssel gespeichert",
+      keyChange: "Ändern",
+      saving: "Wird gespeichert…"
     }
   };
   var LOCALES = { fr: "fr-FR", en: "en-GB", de: "de-DE" };
@@ -696,9 +710,11 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
   /* ---------- Torrent TV commands (tracker search, on the device) ---------- */
   var ERR = { AUTH: "eAuth", TIMEOUT: "eTimeout", EXPIRED: "eExpired", NOT_TORRENT: "eNotTorrent" };
   function errText(m) { return ERR[m] ? t(ERR[m]) : m; }
-  function ttv(path, body) {
+  function ttv(path, body, timeoutMs) {
+    var ctl = window.AbortController ? new AbortController() : null;
+    var timer = ctl ? setTimeout(function () { ctl.abort(); }, timeoutMs || 45000) : null;
     return fetch(path, {
-      method: "POST", credentials: "same-origin",
+      method: "POST", credentials: "same-origin", signal: ctl ? ctl.signal : undefined,
       headers: { "Content-Type": "application/json", "X-TTV": "1" },
       body: JSON.stringify(body || {})
     }).then(function (r) {
@@ -706,8 +722,13 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
       if (!r.ok) throw new Error(t("error", r.status));
       return r.json();
     }).then(function (j) {
+      if (timer) clearTimeout(timer);
       if (j.error) throw new Error(errText(j.error));
       return j;
+    }, function (e) {
+      if (timer) clearTimeout(timer);
+      if (e && e.name === "AbortError") throw new Error(t("eTimeout"));
+      throw e;
     });
   }
 
@@ -1136,6 +1157,7 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
     setBody.className = "loading";
     setBody.textContent = t("loadingSettings");
     document.getElementById("langSel").value = chosenLang;
+    document.getElementById("setErr").hidden = true;
     showDialog(setDlg);
     loadTrackers();
     rpc("session-get").then(function (s) { current = s; renderSettings(s); })
@@ -1194,12 +1216,19 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
     }
     if (!jobs.length) { closeDialog(setDlg); toast(t("noChange")); return; }
     var btn = document.getElementById("setSave");
+    var errEl = document.getElementById("setErr");
+    errEl.hidden = true;
     btn.disabled = true;
+    btn.textContent = t("saving");
     Promise.all(jobs).then(function () {
       closeDialog(setDlg);
       toast(t("saved"));
-    }).catch(function (err) { toast(t("saveFail", err.message)); })
-      .then(function () { btn.disabled = false; });
+    }).catch(function (err) {
+      // Shown in the window: a toast would be hidden behind it
+      errEl.textContent = t("saveFail", err.message);
+      errEl.hidden = false;
+      errEl.scrollIntoView({ block: "nearest" });
+    }).then(function () { btn.disabled = false; btn.textContent = t("save"); });
   });
 
   /* ---------- Tabs ---------- */
@@ -1326,8 +1355,10 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
       return '<div class="trk" data-i="' + i + '">' +
         '<label>' + esc(t("trkName")) + '<input data-f="name" value="' + esc(x.name) + '" autocomplete="off"></label>' +
         '<label>' + esc(t("trkUrl")) + '<input data-f="url" type="url" value="' + esc(x.url) + '" spellcheck="false" autocomplete="off"></label>' +
-        '<label>' + esc(t("trkKey")) + '<input data-f="key" type="password" value="' + esc(x.key || "") + '" autocomplete="off" spellcheck="false" placeholder="' +
-          esc(x.hasKey ? t("keySaved") : t("keyPaste")) + '"></label>' +
+        (x.hasKey && !x.editKey
+          ? '<div class="keyok">✓ ' + esc(t("keyOk")) + ' <button type="button" data-chg>' + esc(t("keyChange")) + '</button></div>'
+          : '<label>' + esc(t("trkKey")) + '<input class="key" data-f="key" type="text" value="' + esc(x.key || "") +
+            '" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="' + esc(t("keyPaste")) + '"></label>') +
         '<div class="trk-foot">' +
           (page ? '<a href="' + page + '" target="_blank" rel="noopener noreferrer">' + esc(t("whereKey")) + '</a>' : '<span></span>') +
           '<button type="button" class="btn danger" data-rm>' + esc(t("trkRemove")) + '</button>' +
@@ -1342,6 +1373,12 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
     trkDirty = true;
   });
   trkList.addEventListener("click", function (e) {
+    var chg = e.target.closest("[data-chg]");
+    if (chg) {
+      trackers[Number(chg.closest(".trk").getAttribute("data-i"))].editKey = true;
+      renderTrackers();
+      return;
+    }
     if (!e.target.closest("[data-rm]")) return;
     trackers.splice(Number(e.target.closest(".trk").getAttribute("data-i")), 1);
     trkDirty = true;
@@ -1362,7 +1399,11 @@ dialog::backdrop { background: rgba(10, 12, 30, .55); }
       if (trkDirty) return;
       trackers = (r.trackers || []).map(function (x) { x.key = ""; return x; });
       renderTrackers();
-    }).catch(function (err) { toast(t("trkFail", err.message)); });
+    }).catch(function (err) {
+      var errEl = document.getElementById("setErr");
+      errEl.textContent = t("trkFail", err.message);
+      errEl.hidden = false;
+    });
   }
 
   /* Start */
